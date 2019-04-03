@@ -1,0 +1,336 @@
+a {
+    text-decoration: none !important;
+    color: black;
+} 
+
+.card {
+    border-radius: 1em;
+    border: none;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+    transition: 200ms;
+    position: relative;
+    margin-bottom: 1em;
+    transition: width 300ms, box-shadow 200ms, transform 300ms, top 300ms, left 300ms, position 300ms;
+    z-index: 10;
+    float: left;
+}
+.card:hover{
+    transform: scale(0.98);
+    box-shadow: 0 3px 28px rgba(0, 0, 0, 0.4);
+}
+.content {
+    margin-top: 1em;
+    margin-left: 2em;
+    margin-right: 4em;
+    margin-bottom: 0.5em;
+    height: calc(100% - 3em);
+}
+.content.small-title {
+    margin-bottom: 0em;
+
+}
+.lower {
+    position: absolute;
+    bottom: 2.5em;
+    line-height: 0.9em;
+}
+.bottom-text {
+    position: absolute;
+    bottom: 0.5em;;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    
+}
+.app-promo {
+    width: 500px;
+    height: 500px
+}
+@media (max-width: 600px) {
+.app-promo {
+    min-height: 400px;
+    max-height: 600px;
+}
+}
+.grey-text {
+    color: gray;
+}
+.grey-text-lighter {
+    color: lightgray;
+}
+.grey-text-darker {
+    color: darkgray;
+}
+.container {
+    margin-left: 2em;
+    margin-right: 2em;
+    
+}
+@media (max-width: 600px) {
+    .container {
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+    }
+}
+.bottom-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: 3em;
+    border-bottom-right-radius: 1em;
+    border-bottom-left-radius: 1em;
+}
+.bottom-text-bar {
+    position: absolute;
+    top: 2.5em;
+    left: 4em;
+    margin-top: 0.5em;
+    margin-left: 1.75em;
+    margin-right: 1em;
+    margin-bottom: 0.7em;
+    width: 60%;
+}
+h5.bottom-text-bar {
+    top: 0.5em;
+    left: 3em;
+}
+
+.app-icon-bottom-bar {
+    width: 4em;
+    margin: 1em;
+    border-radius: 10px;
+}
+.btn-download {
+    position: absolute;
+    top: 2em;
+    right: 2em;
+    border-radius: 1em;
+    padding-top: 0.3em;
+    padding-bottom: 0.34em;
+    padding-right: 1em;
+    padding-left: 1em;
+    height: 2em;
+    background-color: white;
+    color: rgb(47, 126, 246);
+    min-width: 5em;
+    text-align: center;
+    font-weight: 600;
+}
+.btn-download.right {
+    right: 0;
+}
+.black {
+    background-color: black;
+}
+.card.fullscreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 50vh;
+    z-index: 100;
+    border-radius: 0;
+    margin: 0;
+
+}
+.card.fullscreen:hover {
+    transform: scale(1);
+}
+.card.higher.fullscreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 70vh;
+    z-index: 100;
+    border-radius: 0;
+    margin: 0;
+
+}
+
+.hidden {
+    display: none;
+}
+.close {
+    position: absolute;
+    top: 1.5em;
+    right: 2em;
+    width: 2em;
+    height: 2em;
+    padding-right: 0.5em;
+    padding-left: 0.65em;
+    padding-top: 0.5em;
+    border-radius: 50%;
+    background-color: white;
+    
+}
+.hidden-rollout {
+    max-height: 0;
+}
+.description-page {
+    position: absolute;
+    z-index: 1;
+    display: none;
+    transition: 500ms;
+}
+.description-page.fullscreen {
+    display: block;
+    position: absolute;
+    top: 50vh;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    min-height: 50vh;
+    background-color: white;
+    padding-top: 2em;
+
+}
+.description-page.lower.fullscreen {
+    display: block;
+    position: absolute;
+    top: 70vh;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    min-height: 30vh;
+    background-color: white;
+    padding-top: 2em;
+
+}
+div.app-list {
+    position: relative;
+    margin-top: 1.5em;
+    width: 100%;
+}
+li.app {
+    position: relative;
+    right: 2em;
+    list-style: none;
+    list-style-type: none !important;
+}
+li.app-list::after {
+    content: '';
+    background-color: rgba(156, 156, 156, 0.767);
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    bottom: -1em;
+}
+.app-name {
+    position: absolute;
+    left: 3.5em;
+    top: 0.3em;
+}
+p.subtitle {
+    position: absolute;
+    left: 5.23em;
+    top: 2.2em;
+    font-weight: lighter;
+}
+.bottom-subtitle-bar {
+    position: absolute;
+    top: 2.5em;
+    left: 0em;
+    margin-top: 0.5em;
+    margin-left: 0.75em;
+    margin-right: 1em;
+    margin-bottom: 0.7em;
+    width: 60%;
+}
+h5.bottom-subtitle-bar {
+    top: 0.5em;
+    left: 3em;
+}
+.light-grey {
+    background-color: rgb(240, 240, 240);
+}
+.grey-text {
+    color: rgb(177, 177, 177);
+}
+.app-icon {
+    width: 4em;
+    
+    border-radius: 10px;
+}
+.pay-now {
+    transition: bottom 500ms 100ms, visibility 500ms 300ms;
+    padding: 1em;
+    position: fixed;
+    visibility: hidden;
+    bottom: -100%;
+    width: 30em;
+    left: calc(50% - 15em);
+    background-color: white;
+    z-index: 9999;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    border-radius: 1em;
+}
+@media (max-width: 500px) {
+    .pay-now {
+        border-radius: 0;
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+}
+
+.pay-now .cancel {
+    position: absolute;
+    right: 1.5em;
+    top: 1em;
+    color: rgb(47, 126, 246);
+}
+.header {
+    height: 3em;
+    width: 100%;
+    
+}
+.header h5 {
+    position: relative;
+    left: 0.5em;
+}
+.header::after {
+    content: '';
+    position: absolute;
+    top: 3.5em;
+    background-color: rgba(156, 156, 156, 0.767);
+    height: 1px;
+    width: 90%;
+    margin: 0;
+    left: 5%;
+
+}
+.app-overview-pay .app-name {
+    margin-left: 0.4em;
+    top: 3.1em;
+}
+.app-overview-pay .subtitle {
+    margin-left: 0.43em;
+    top: 6.2em;
+    color: rgb(177, 177, 177);
+}
+.app-overview-pay {
+    margin-bottom: 1.5em;
+}
+.pay-popup-app-icon {
+    margin-top: 0.2em;
+}
+.pay-popup-price {
+    position: absolute;
+    top: 5.5em;
+    right: 2.3em;
+}
+.app-overview-pay::after {
+    content: '';
+    position: absolute;
+    top: 9em;
+    background-color: rgba(156, 156, 156, 0.767);
+    height: 1px;
+    width: 90%;
+    margin: 0;
+    left: 5%;
+
+}
+.pay-popup-account {
+    position: relative;
+    left: 0.5em;
+}

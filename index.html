@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        
+    <title>App Store</title>
+  </head>
+  <body>
+      <main>
+        <div class="row container my-4">
+            <h1 class="text-left" class="">Today</h1>
+        </div>
+        <div class="pay-now">
+                <div class="header">
+                    <h5>App Store</h5><a href="#" class="cancel">Cancel</a>
+                </div>
+                <div class="app-overview-pay">
+                    <div class="pay-popup-app-icon"></div>
+                    <h4 class="pay-popup-name app-name">App Name</h4>
+                    <p class="pay-popup-subtitle subtitle">App subtitle</p>
+                    <span class="pay-popup-price"></span>
+                </div>
+                <div class="">
+                    <div class="pay-popup-account">Account: <span class="email grey-text"></span></div>
+                </div>
+                
+            </div>
+        <div class="row container one">
+                
+        
+        <div class="card app-promo" app-promo back="img/unsplash.jpg" id="one">
+            <div class="content">
+                <b class="grey-text">APP CULTURE</b>
+                <h1 class="grey-text-lighter card-trigger">Bringing Coders Together</h1>
+                <a href="#" class="close hidden"><i class="fas fa-times"></i></a>
+                <p class="bottom-text grey-text-lighter">Tap to meet the two teens behind Patrik's vibrant coding community.</p>
+                <div class="description-page"> <div class="container">
+                <p><b>The best thing</b> about playing games in iMessages? Bantering between turns. Wheter it's bowling or battleships, here's how to add some friendly competition to your chat threads.</p>
+                <ul class="apps-list">
+                    <li class="app app-list"> <div class="app-icon-wrapper" id="yt"></div>
+                        <h4 class="app-name" id="yt"></h4>
+                        <p class="subtitle grey-text" id="yt">Videos, Music etc.</p>
+                        <div class="btn-download right light-grey" id="yt">Get</div>
+                        
+                    </li>
+                </ul>
+            </div>
+            </div>
+            </div>
+        </div>
+    
+    
+    </div>
+    <div class="row container two">
+            <a href="#" class="">
+        <div class="card app-promo higher" back="img/Vetřelci-cover.jpg">
+            <a href="#" class="close hidden"><i class="fas fa-times"></i></a>
+            <div class="content card-trigger">
+                <h1 class="grey-text-lighter lower"><b>GAME <br> OF THE <br> DAY</b></h1>
+            </div>
+            <div class="bottom-bar black"><div class="app-icon-wrapper app-icon-bottom-bar" id="alien"></div>
+                <h5 class="bottom-text-bar grey-text-lighter app-name" id="alien"></h5>
+                <p class="bottom-subtitle-bar subtitle grey-text-lighter" id="alien">Space Survival Horror</p>
+                <a href="#" class="btn-download" id="alien">$2.99</a>
+            </div><div class="description-page lower"> <div class="container">
+                <p class="description" id="alien"></p></div></div>
+            </div>
+            </div>
+        </div>
+    </a>
+    
+    </div>
+        
+</main>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+
+    <script>
+        $(".description").css("visibility", "hidden");
+        $(".card-trigger").click(function() {
+            
+            //$(this).parent().removeClass("container, row");
+            //$(".one").removeClass("container, row");
+            
+            $(this).closest(".card").addClass("fullscreen");
+            $(this).closest(".card").addClass("opened");
+            //$(".card-one").css({"position": "absolute", "top": "0", "left": "0", "width": "100vw", "height": "50vh", "border-radius": "0", "margin": "0", "z-index": "100"});
+            //thisElem.firstChild.classList.add("fullscreen");
+            //$(".card-one").addClass("fullscreen");
+            $(".close").removeClass("hidden");
+            $(this).siblings(".description-page").addClass("fullscreen");
+            $(".description").css("visibility", "visible");
+        });
+        $(".close").click(function() {
+            $(this).closest(".card").removeClass("fullscreen");
+            $(this).closest(".opened").removeClass("opened");
+            $(".card-one").removeClass("fullscreen");
+            $(".close").addClass("hidden");
+            $(this).siblings(".description-page").removeClass("fullscreen")
+            
+            $(".description").css("visibility", "hidden");
+        });
+    </script>
+    <script>
+            
+        </script>
+        
+            
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="js/content-parse.js"></script>
+            <script src="js/content-append.js"></script>
+            <script src="js/pay-popup.js"></script>
+            <script src="js/account-frontend.js"></script>
+            
+            
+  </body>
+</html>

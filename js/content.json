@@ -1,0 +1,20 @@
+{"appname": {
+    "alien": "Alien: Blackout",
+    "yt": "Youtube"
+}, "description": {
+    "alien": "A game that might not even be good, but is paid and costs $2.99.",
+    "yt": "cfcfc"
+}, "icon": {
+    "alien": "img/246x0w.jpg",
+    "yt": "img/youtube.png"
+}, "subtitle": {
+    "alien": "Space Survival Horror",
+    "yt": "Videos, Music etc."
+}, "price": {
+    "alien": "$2.99",
+    "yt": "0"
+}, "location": {
+    "alien": "img/246x0w.jpg",
+    "yt": "img/youtube.png"
+}
+}
