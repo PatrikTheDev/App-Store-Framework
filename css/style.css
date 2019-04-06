@@ -78,6 +78,7 @@ a {
     min-height: 3em;
     border-bottom-right-radius: 1em;
     border-bottom-left-radius: 1em;
+    clear: both;
 }
 .bottom-text-bar {
     position: absolute;
@@ -91,7 +92,7 @@ a {
 }
 h5.bottom-text-bar {
     top: 0.5em;
-    left: 3em;
+    
 }
 
 .app-icon-bottom-bar {
@@ -217,21 +218,27 @@ li.app-list::after {
 }
 .app-name {
     position: absolute;
-    left: 3.5em;
+    left: 3.5rem;
     top: 0.3em;
+}
+.app .app-name {
+    left: 4.5rem;
 }
 p.subtitle {
     position: absolute;
-    left: 5.23em;
+    left: 5.5rem;
     top: 2.2em;
     font-weight: lighter;
+}
+.app .subtitle {
+    left: 4.5rem;
 }
 .bottom-subtitle-bar {
     position: absolute;
     top: 2.5em;
     left: 0em;
     margin-top: 0.5em;
-    margin-left: 0.75em;
+    /*margin-left: 0.75em;*/
     margin-right: 1em;
     margin-bottom: 0.7em;
     width: 60%;
@@ -300,49 +307,61 @@ h5.bottom-subtitle-bar {
 
 }
 .app-overview-pay .app-name {
+    position: relative;
+    left: 0.5rem;
     margin-left: 0.4em;
-    top: 3.1em;
+    top: 0.2em;
 }
 .app-overview-pay .subtitle {
     margin-left: 0.43em;
-    top: 6.2em;
+    position: relative;
+    left: 0.5rem;
+    top: 0em;
     color: rgb(177, 177, 177);
 }
 .app-overview-pay {
+    position: relative;
     margin-bottom: 1.5em;
 }
 .pay-popup-app-icon {
+    float: left;
     margin-top: 0.2em;
 }
 .pay-popup-price {
+    float: right;
     position: absolute;
-    top: 5.5em;
-    right: 2.3em;
+    top: 1.3em;
+    right: 2em;
+    
 }
 .app-overview-pay::after {
     content: '';
     position: absolute;
-    top: 9em;
+    top: 5em;
     background-color: rgba(156, 156, 156, 0.767);
     height: 1px;
-    width: 90%;
+    width: 99%;
     margin: 0;
-    left: 5%;
+    left: 0.5%;
 
 }
 .pay-popup-account {
     position: relative;
     left: 0.5em;
 }
+.pay-popup-account-wrapper{
+    position: relative;
+    clear: both;
+}
 .pay-popup-account-wrapper::after {
     content: '';
     position: absolute;
-    top: 11.7em;
+    top: 2em;
     background-color: rgba(156, 156, 156, 0.767);
     height: 1px;
-    width: 90%;
+    width: 99%;
     margin: 0;
-    left: 5%;
+    left: 0.5%;
 
 }
 .pay-now-container {

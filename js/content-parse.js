@@ -3,42 +3,48 @@ $.getJSON( "js/content.json", function( data){
   JSONItems = data;
   
   $(".description").each(function() {
-    var currentid = this.id;
-    $(this).html("" + JSONItems.description[currentid]);
+    var currentApp = this.getAttribute("app");
+    $(this).html("" + JSONItems.description[currentApp]);
   });
   $(".app-name").each(function() {
-    var currentid = this.id;
-    $(this).html("" + JSONItems.appname[currentid]);
-    $(this).attr("name", JSONItems.appname[currentid]);
+    var currentApp = this.getAttribute("app");
+    $(this).html("" + JSONItems.appname[currentApp]);
+    $(this).attr("name", JSONItems.appname[currentApp]);
     
   });
   $(".subtitle").each(function() {
-    var currentid = this.id;
-    $(this).html("" + JSONItems.subtitle[currentid]);
-    $(this).attr("subtitle", JSONItems.subtitle[currentid]);
+    var currentApp = this.getAttribute("app");
+    $(this).html("" + JSONItems.subtitle[currentApp]);
+    $(this).attr("subtitle", JSONItems.subtitle[currentApp]);
     
   });
   $(".app-icon-wrapper").each(function() {
-    var currentid = this.id;
-    $(this).html('<img class="app-icon" src="' + JSONItems.icon[currentid] + '">');
-    $(this).attr("icon-src", JSONItems.icon[currentid]);
-    $(this).children().attr("icon-src", JSONItems.icon[currentid]);
+    var currentApp = this.getAttribute("app");
+    $(this).html('<img class="app-icon" src="' + JSONItems.icon[currentApp] + '">');
+    $(this).attr("icon-src", JSONItems.icon[currentApp]);
+    $(this).children().attr("icon-src", JSONItems.icon[currentApp]);
   });
   $(".btn-download").each(function() {
-    var currentid = this.id;
-    var price = JSONItems.price[currentid];
+    var currentApp = this.getAttribute("app");
+    var price = JSONItems.price[currentApp];
     if (price == "0") {
         price = "Get";
     };
     $(this).text("" + price);
-    $(this).attr("price", JSONItems.price[currentid]);
-    $(this).attr("location", JSONItems.location[currentid]);
-    $(this).css({"background-color": JSONItems.tint[currentid], "color": JSONItems.textTint[currentid]});
-    $(this).attr("tint", JSONItems.tint[currentid]);
-    $(this).attr("text-tint", JSONItems.textTint[currentid]);
+    $(this).attr("price", JSONItems.price[currentApp]);
+    $(this).attr("location", JSONItems.location[currentApp]);
+    $(this).css({"background-color": JSONItems.tint[currentApp], "color": JSONItems.textTint[currentApp]});
+    $(this).attr("tint", JSONItems.tint[currentApp]);
+    $(this).attr("text-tint", JSONItems.textTint[currentApp]);
+    $(this).attr("text-tint-2", JSONItems.textTint2[currentApp]);
   });
   $(".bottom-bar").each(function() {
-    var currentid = this.id;
-    $(this).css("background-color", JSONItems.tint2[currentid]);
+    var currentApp = this.getAttribute("app");
+    $(this).css("background-color", JSONItems.tint2[currentApp]);
+  });
+  $(".subtitle").each(function() {
+    var currentApp = this.getAttribute("app");
+    $(this).css("color", JSONItems.textTint2[currentApp]);
+    $(this).attr("text-tint-2", JSONItems.textTint2[currentApp]);
   });
 });

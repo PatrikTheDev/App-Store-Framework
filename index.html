@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    
         
     <title>App Store</title>
   </head>
@@ -24,8 +24,8 @@
                 </div>
                 <div class="app-overview-pay">
                     <div class="pay-popup-app-icon"></div>
-                    <h4 class="pay-popup-name app-name">App Name</h4>
-                    <p class="pay-popup-subtitle subtitle">App subtitle</p>
+                    <h4 class="pay-popup-name app-name"></h4>
+                    <p class="pay-popup-subtitle subtitle"></p>
                     <span class="pay-popup-price"></span>
                 </div>
                 <div class="pay-popup-account-wrapper">
@@ -36,7 +36,7 @@
                 </div>           
             </div>
         <div class="row container">
-        <div class="card app-promo" app-promo back="img/unsplash.jpg" id="one">
+        <div class="card app-promo" app-promo back="img/unsplash.jpg">
             <div class="content">
                 <b class="grey-text">APP CULTURE</b>
                 <h1 class="grey-text-lighter card-trigger">Bringing Coders Together</h1>
@@ -45,10 +45,10 @@
                 <div class="description-page"> <div class="container">
                 <p><b>The best thing</b> about playing games in iMessages? Bantering between turns. Wheter it's bowling or battleships, here's how to add some friendly competition to your chat threads.</p>
                 <ul class="apps-list">
-                    <li class="app app-list"> <div class="app-icon-wrapper" id="yt"></div>
-                        <h4 class="app-name" id="yt"></h4>
-                        <p class="subtitle grey-text" id="yt">Videos, Music etc.</p>
-                        <div class="btn-download right light-grey" id="yt">Get</div>
+                    <li class="app app-list" app="yt"> <div class="app-icon-wrapper"></div>
+                        <h4 class="app-name"></h4>
+                        <p class="subtitle grey-text"></p>
+                        <div class="btn-download right light-grey" >Get</div>
                         
                     </li>
                 </ul>
@@ -66,14 +66,14 @@
             <div class="content card-trigger">
                 <h1 class="grey-text-lighter lower"><b>GAME <br> OF THE <br> DAY</b></h1>
             </div>
-            <div class="bottom-bar" id="alien"><div class="app-icon-wrapper app-icon-bottom-bar" id="alien"></div>
-                <h5 class="bottom-text-bar grey-text-lighter app-name" id="alien"></h5>
-                <p class="bottom-subtitle-bar subtitle grey-text-lighter" id="alien">Space Survival Horror</p>
-                <a href="#" class="btn-download" id="alien"></a>
+            <div class="bottom-bar" app="alien"><div class="app-icon-wrapper app-icon-bottom-bar"></div>
+                <h5 class="bottom-text-bar grey-text-lighter app-name"></h5>
+                <p class="bottom-subtitle-bar subtitle grey-text-lighter">Space Survival Horror</p>
+                <a href="#" class="btn-download"></a>
             </div>
-            <div class="description-page lower">
+            <div class="description-page lower" app="alien">
                 <div class="container">
-                    <p class="description" id="alien"></p>
+                    <p class="description" app="alien"></p>
                 </div>
             </div>
         </div>
@@ -81,19 +81,19 @@
 
     <div class="row container">
             
-            <div class="card app-promo" back="img/electra-back.png">
+            <div class="card app-promo" back="img/electra-back.png" app="electra">
                 <a href="#" class="close hidden"><i class="fas fa-times"></i></a>
                 <div class="content card-trigger">
                     <h1 class="grey-text-lighter lower"><b>JAILBREAK <br> YOUR <br> iPHONE</b></h1>
                 </div>
-                <div class="bottom-bar" id="electra"><div class="app-icon-wrapper app-icon-bottom-bar" id="electra"></div>
-                    <h5 class="bottom-text-bar grey-text-lighter app-name" id="electra"></h5>
-                    <p class="bottom-subtitle-bar subtitle grey-text-lighter" id="electra">Space Survival Horror</p>
-                    <a href="#" class="btn-download" id="electra"></a>
+                <div class="bottom-bar" app="electra"><div class="app-icon-wrapper app-icon-bottom-bar"></div>
+                    <h5 class="bottom-text-bar grey-text-lighter app-name" ></h5>
+                    <p class="bottom-subtitle-bar subtitle grey-text-lighter"></p>
+                    <a href="#" class="btn-download"></a>
                 </div>
-                <div class="description-page">
+                <div class="description-page" app="electra">
                     <div class="container">
-                        <p class="description" id="electra"></p>
+                        <p class="description" app="electra"></p>
                     </div>
                 </div>
             </div>
@@ -107,10 +107,11 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <script src="js/app-global.js"></script>
     <script src="js/content-parse.js"></script>
     <script src="js/content-append.js"></script>
     <script src="js/pay-popup.js"></script>
