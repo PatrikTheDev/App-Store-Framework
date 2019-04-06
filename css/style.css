@@ -10,6 +10,7 @@ a {
     transition: 200ms;
     position: relative;
     margin-bottom: 1em;
+    margin-right: 1em;
     transition: width 300ms, box-shadow 200ms, transform 300ms, top 300ms, left 300ms, position 300ms;
     z-index: 10;
     float: left;
@@ -49,6 +50,10 @@ a {
 .app-promo {
     min-height: 400px;
     max-height: 600px;
+    width: 90vw;
+}
+.card {
+    margin-right: 0;
 }
 }
 .grey-text {
