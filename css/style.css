@@ -108,7 +108,7 @@ h5.bottom-text-bar {
 .btn-download {
     position: absolute;
     top: 2em;
-    right: 2em;
+    right: 1.5em;
     border-radius: 1em;
     padding-top: 0.3em;
     padding-bottom: 0.34em;
@@ -120,6 +120,7 @@ h5.bottom-text-bar {
     min-width: 5em;
     text-align: center;
     font-weight: 600;
+    float: right;
 }
 .btn-download.right {
     right: 0;
