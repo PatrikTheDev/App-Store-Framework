@@ -1,0 +1,12 @@
+{"background": {
+    "coders": "img/unsplash.jpg",
+    "electra": "img/electra-back.png",
+    "alien": "img/Vetřelci-cover.jpg"
+}, "title": {
+    "coders": "Bringing Coders Together",
+    "alien": "<b>GAME <br> OF THE <br> DAY</b>",
+    "electra": "<b>JAILBREAK <br> YOUR <br> iPHONE</b>"
+}, "subtitle": {
+    "coders": "APP CULTURE"
+}
+}

@@ -16,7 +16,8 @@ $.getJSON( "js/content.json", function( data){
     var currentApp = this.getAttribute("app");
     $(this).html("" + JSONItems.subtitle[currentApp]);
     $(this).attr("subtitle", JSONItems.subtitle[currentApp]);
-    
+    $(this).css("color", JSONItems.textTint2[currentApp]);
+    $(this).attr("text-tint-2", JSONItems.textTint2[currentApp]);
   });
   $(".app-icon-wrapper").each(function() {
     var currentApp = this.getAttribute("app");
@@ -41,10 +42,5 @@ $.getJSON( "js/content.json", function( data){
   $(".bottom-bar").each(function() {
     var currentApp = this.getAttribute("app");
     $(this).css("background-color", JSONItems.tint2[currentApp]);
-  });
-  $(".subtitle").each(function() {
-    var currentApp = this.getAttribute("app");
-    $(this).css("color", JSONItems.textTint2[currentApp]);
-    $(this).attr("text-tint-2", JSONItems.textTint2[currentApp]);
   });
 });

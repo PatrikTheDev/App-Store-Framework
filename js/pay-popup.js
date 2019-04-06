@@ -11,8 +11,10 @@ $(document).ready(function() {
             var refAppFiles = $(this).attr("location");
             var refAppTint = $(this).attr("tint");
             var refAppTextTint = $(this).attr("text-tint");
+            var refAppTextTint2 = $(this).attr("text-tint-2");
             $(".pay-popup-name").text("" + refAppName);
             $(".pay-popup-subtitle").text("" + refAppSubtitle);
+            $(".pay-popup-subtitle").css("color", refAppTextTint2);
             $(".pay-popup-app-icon").html('<img class="app-icon" src="' + refAppIconSrc + '">');
             $(".pay-popup-price").text("" + refAppPrice);
             $(".pay-now").css("visibility", "visible");

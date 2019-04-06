@@ -9,7 +9,7 @@
 }, "icon": {
     "alien": "img/246x0w.jpg",
     "yt": "img/youtube.png",
-    "electra": "https://mega.nz/#!eMJS1CZR!n1ixxBcnxNv55v8cpHtYs8KojnsqasQ6oO8DojaZgYw"
+    "electra": "img/electra-app-icon-small.jpg"
 }, "subtitle": {
     "alien": "Space Survival Horror",
     "yt": "Videos, Music etc.",
@@ -21,7 +21,7 @@
 }, "location": {
     "alien": "img/246x0w.jpg",
     "yt": "img/youtube.png",
-    "electra": "files/ipas/Electra"
+    "electra": "https://mega.nz/#!eMJS1CZR!n1ixxBcnxNv55v8cpHtYs8KojnsqasQ6oO8DojaZgYw"
 }, "tint": {
     "alien": "rgb(79,124,44)",
     "yt": "rgb(235, 50, 35)",
@@ -37,6 +37,6 @@
 }, "textTint2": {
     "alien": "rgb(79, 124, 44)",
     "yt": "rgb(235, 50, 35)",
-    "electra": "rgb(211, 211, 211)"
+    "electra": "rgb(177, 177, 177)"
 }
 }

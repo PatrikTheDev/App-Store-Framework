@@ -20,7 +20,7 @@
         </div>
         <div class="pay-now">
                 <div class="header">
-                    <h5>App Store</h5><a href="#" class="cancel">Cancel</a>
+                    <h5>App Store</h5><a class="cancel">Cancel</a>
                 </div>
                 <div class="app-overview-pay">
                     <div class="pay-popup-app-icon"></div>
@@ -29,18 +29,18 @@
                     <span class="pay-popup-price"></span>
                 </div>
                 <div class="pay-popup-account-wrapper">
-                    <div class="pay-popup-account">Account: <span class="email grey-text"></span></div>
+                    <div class="pay-popup-account">Account: <span class="email"></span></div>
                 </div>
                 <div class="pay-now-container">
                     <a href="#" class="pay-now-button" download>Download now</a>     
                 </div>           
             </div>
         <div class="row container">
-        <div class="card app-promo" app-promo back="img/unsplash.jpg">
+        <div class="card app-promo" app-promo back="img/unsplash.jpg" card="coders">
             <div class="content">
-                <b class="grey-text">APP CULTURE</b>
-                <h1 class="grey-text-lighter card-trigger">Bringing Coders Together</h1>
-                <a href="#" class="close hidden"><i class="fas fa-times"></i></a>
+                <b class="grey-text small-title" card="coders"></b>
+                <h1 class="grey-text-lighter card-trigger title" card="coders"></h1>
+                <div class="close hidden"><i class="fas fa-times"></i></div>
                 <p class="bottom-text grey-text-lighter">Tap to meet the two teens behind Patrik's vibrant coding community.</p>
                 <div class="description-page"> <div class="container">
                 <p><b>The best thing</b> about playing games in iMessages? Bantering between turns. Wheter it's bowling or battleships, here's how to add some friendly competition to your chat threads.</p>
@@ -61,15 +61,15 @@
     </div>
     <div class="row container">
             
-        <div class="card app-promo higher" back="img/Vetřelci-cover.jpg">
-            <a href="#" class="close hidden"><i class="fas fa-times"></i></a>
+        <div class="card app-promo higher" card="alien">
+            <div class="close hidden"><i class="fas fa-times"></i></div>
             <div class="content card-trigger">
-                <h1 class="grey-text-lighter lower"><b>GAME <br> OF THE <br> DAY</b></h1>
+                <h1 class="grey-text-lighter lower title" card="alien"></h1>
             </div>
             <div class="bottom-bar" app="alien"><div class="app-icon-wrapper app-icon-bottom-bar"></div>
                 <h5 class="bottom-text-bar grey-text-lighter app-name"></h5>
-                <p class="bottom-subtitle-bar subtitle grey-text-lighter">Space Survival Horror</p>
-                <a href="#" class="btn-download"></a>
+                <p class="bottom-subtitle-bar subtitle grey-text-lighter"></p>
+                <div class="btn-download"></div>
             </div>
             <div class="description-page lower" app="alien">
                 <div class="container">
@@ -81,15 +81,15 @@
 
     <div class="row container">
             
-            <div class="card app-promo" back="img/electra-back.png" app="electra">
-                <a href="#" class="close hidden"><i class="fas fa-times"></i></a>
+            <div class="card app-promo" app="electra" card="electra">
+                <div class="close hidden"><i class="fas fa-times"></i></div>
                 <div class="content card-trigger">
-                    <h1 class="grey-text-lighter lower"><b>JAILBREAK <br> YOUR <br> iPHONE</b></h1>
+                    <h1 class="grey-text-lighter lower title" card="electra"><b>JAILBREAK <br> YOUR <br> iPHONE</b></h1>
                 </div>
                 <div class="bottom-bar" app="electra"><div class="app-icon-wrapper app-icon-bottom-bar"></div>
                     <h5 class="bottom-text-bar grey-text-lighter app-name" ></h5>
                     <p class="bottom-subtitle-bar subtitle grey-text-lighter"></p>
-                    <a href="#" class="btn-download"></a>
+                    <div class="btn-download"></div>
                 </div>
                 <div class="description-page" app="electra">
                     <div class="container">
@@ -113,7 +113,7 @@
     
     <script src="js/app-global.js"></script>
     <script src="js/content-parse.js"></script>
-    <script src="js/content-append.js"></script>
+    <script src="js/card-parse.js"></script>
     <script src="js/pay-popup.js"></script>
     <script src="js/account-frontend.js"></script>
     <script src="js/cards-open.js"></script>

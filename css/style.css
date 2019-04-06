@@ -284,7 +284,7 @@ h5.bottom-subtitle-bar {
     position: absolute;
     right: 1.5em;
     top: 1em;
-    color: rgb(47, 126, 246);
+    color: rgb(47, 126, 246) !important;
 }
 .header {
     height: 3em;
@@ -385,4 +385,8 @@ h5.bottom-subtitle-bar {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
     transform: scale(0.98);
     color: white;
+}
+.email {
+    color: rgb(119, 119, 119);
+    font-weight: lighter;
 }
