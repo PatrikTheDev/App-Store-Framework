@@ -33,5 +33,12 @@ $.getJSON( "js/content.json", function( data){
     $(this).text("" + price);
     $(this).attr("price", JSONItems.price[currentid]);
     $(this).attr("location", JSONItems.location[currentid]);
+    $(this).css({"background-color": JSONItems.tint[currentid], "color": JSONItems.textTint[currentid]});
+    $(this).attr("tint", JSONItems.tint[currentid]);
+    $(this).attr("text-tint", JSONItems.textTint[currentid]);
+  });
+  $(".bottom-bar").each(function() {
+    var currentid = this.id;
+    $(this).css("background-color", JSONItems.tint2[currentid]);
   });
 });

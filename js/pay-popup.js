@@ -8,13 +8,17 @@ $(document).ready(function() {
                 refAppPrice = "Free";
             };
             var refAppSubtitle = $(this).siblings(".subtitle").attr("subtitle");
-            
+            var refAppFiles = $(this).attr("location");
+            var refAppTint = $(this).attr("tint");
+            var refAppTextTint = $(this).attr("text-tint");
             $(".pay-popup-name").text("" + refAppName);
             $(".pay-popup-subtitle").text("" + refAppSubtitle);
             $(".pay-popup-app-icon").html('<img class="app-icon" src="' + refAppIconSrc + '">');
             $(".pay-popup-price").text("" + refAppPrice);
             $(".pay-now").css("visibility", "visible");
             $(".pay-now").css("bottom", "1em");
+            $(".pay-now-button").attr("href", refAppFiles);
+            $(".pay-now-button").css({"background-color": refAppTint, "color": refAppTextTint});
         });
         });
         $( function() {

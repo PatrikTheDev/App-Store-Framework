@@ -1,20 +1,38 @@
 {"appname": {
     "alien": "Alien: Blackout",
-    "yt": "Youtube"
+    "yt": "Youtube",
+    "electra": "Electra"
 }, "description": {
     "alien": "A game that might not even be good, but is paid and costs $2.99.",
-    "yt": "cfcfc"
+    "yt": "cfcfc",
+    "electra": "A really bad jailbreak with a great package manager Sileo."
 }, "icon": {
     "alien": "img/246x0w.jpg",
-    "yt": "img/youtube.png"
+    "yt": "img/youtube.png",
+    "electra": "img/electra-app-icon-small.jpg"
 }, "subtitle": {
     "alien": "Space Survival Horror",
-    "yt": "Videos, Music etc."
+    "yt": "Videos, Music etc.",
+    "electra": "Jailbreak with Sileo"
 }, "price": {
     "alien": "$2.99",
-    "yt": "0"
+    "yt": "0",
+    "electra": "0"
 }, "location": {
     "alien": "img/246x0w.jpg",
-    "yt": "img/youtube.png"
+    "yt": "img/youtube.png",
+    "electra": "files/ipas/Electra"
+}, "tint": {
+    "alien": "rgb(79,124,44)",
+    "yt": "rgb(235, 50, 35)",
+    "electra": "rgb(51, 59, 81)"
+}, "textTint": {
+    "alien": "white",
+    "yt": "white",
+    "electra": "white"
+}, "tint2": {
+    "alien": "rgb(31, 0, 0)",
+    "yt": "white",
+    "electra": "transparent"
 }
 }

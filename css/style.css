@@ -249,7 +249,7 @@ h5.bottom-subtitle-bar {
 .app-icon {
     width: 4em;
     
-    border-radius: 10px;
+    border-radius: 18px;
 }
 .pay-now {
     transition: bottom 500ms 100ms, visibility 500ms 300ms;
@@ -333,4 +333,37 @@ h5.bottom-subtitle-bar {
 .pay-popup-account {
     position: relative;
     left: 0.5em;
+}
+.pay-popup-account-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 11.7em;
+    background-color: rgba(156, 156, 156, 0.767);
+    height: 1px;
+    width: 90%;
+    margin: 0;
+    left: 5%;
+
+}
+.pay-now-container {
+    padding-top: 1.2em;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pay-now-button {
+    border-radius: 0.4em;
+    padding: 0.4em 1.2em;
+    background-color: rgb(47, 126, 246);
+    color: white;
+    font-weight: 300;
+    transition: 300ms;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.pay-now-button:hover {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    transform: scale(0.98);
+    color: white;
 }

@@ -16,7 +16,7 @@
   <body>
       <main>
         <div class="row container my-4">
-            <h1 class="text-left" class="">Today</h1>
+            <h1 class="text-left">Today</h1>
         </div>
         <div class="pay-now">
                 <div class="header">
@@ -28,14 +28,14 @@
                     <p class="pay-popup-subtitle subtitle">App subtitle</p>
                     <span class="pay-popup-price"></span>
                 </div>
-                <div class="">
+                <div class="pay-popup-account-wrapper">
                     <div class="pay-popup-account">Account: <span class="email grey-text"></span></div>
                 </div>
-                
+                <div class="pay-now-container">
+                    <a href="#" class="pay-now-button" download>Download now</a>     
+                </div>           
             </div>
-        <div class="row container one">
-                
-        
+        <div class="row container">
         <div class="card app-promo" app-promo back="img/unsplash.jpg" id="one">
             <div class="content">
                 <b class="grey-text">APP CULTURE</b>
@@ -59,73 +59,62 @@
     
     
     </div>
-    <div class="row container two">
-            <a href="#" class="">
+    <div class="row container">
+            
         <div class="card app-promo higher" back="img/Vetřelci-cover.jpg">
             <a href="#" class="close hidden"><i class="fas fa-times"></i></a>
             <div class="content card-trigger">
                 <h1 class="grey-text-lighter lower"><b>GAME <br> OF THE <br> DAY</b></h1>
             </div>
-            <div class="bottom-bar black"><div class="app-icon-wrapper app-icon-bottom-bar" id="alien"></div>
+            <div class="bottom-bar" id="alien"><div class="app-icon-wrapper app-icon-bottom-bar" id="alien"></div>
                 <h5 class="bottom-text-bar grey-text-lighter app-name" id="alien"></h5>
                 <p class="bottom-subtitle-bar subtitle grey-text-lighter" id="alien">Space Survival Horror</p>
-                <a href="#" class="btn-download" id="alien">$2.99</a>
-            </div><div class="description-page lower"> <div class="container">
-                <p class="description" id="alien"></p></div></div>
+                <a href="#" class="btn-download" id="alien"></a>
             </div>
+            <div class="description-page lower">
+                <div class="container">
+                    <p class="description" id="alien"></p>
+                </div>
             </div>
         </div>
-    </a>
-    
     </div>
+
+    <div class="row container">
+            
+            <div class="card app-promo" back="img/electra-back.png">
+                <a href="#" class="close hidden"><i class="fas fa-times"></i></a>
+                <div class="content card-trigger">
+                    <h1 class="grey-text-lighter lower"><b>JAILBREAK <br> YOUR <br> iPHONE</b></h1>
+                </div>
+                <div class="bottom-bar" id="electra"><div class="app-icon-wrapper app-icon-bottom-bar" id="electra"></div>
+                    <h5 class="bottom-text-bar grey-text-lighter app-name" id="electra"></h5>
+                    <p class="bottom-subtitle-bar subtitle grey-text-lighter" id="electra">Space Survival Horror</p>
+                    <a href="#" class="btn-download" id="electra"></a>
+                </div>
+                <div class="description-page">
+                    <div class="container">
+                        <p class="description" id="electra"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+    
+    
         
 </main>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
-
-    <script>
-        $(".description").css("visibility", "hidden");
-        $(".card-trigger").click(function() {
-            
-            //$(this).parent().removeClass("container, row");
-            //$(".one").removeClass("container, row");
-            
-            $(this).closest(".card").addClass("fullscreen");
-            $(this).closest(".card").addClass("opened");
-            //$(".card-one").css({"position": "absolute", "top": "0", "left": "0", "width": "100vw", "height": "50vh", "border-radius": "0", "margin": "0", "z-index": "100"});
-            //thisElem.firstChild.classList.add("fullscreen");
-            //$(".card-one").addClass("fullscreen");
-            $(".close").removeClass("hidden");
-            $(this).siblings(".description-page").addClass("fullscreen");
-            $(".description").css("visibility", "visible");
-        });
-        $(".close").click(function() {
-            $(this).closest(".card").removeClass("fullscreen");
-            $(this).closest(".opened").removeClass("opened");
-            $(".card-one").removeClass("fullscreen");
-            $(".close").addClass("hidden");
-            $(this).siblings(".description-page").removeClass("fullscreen")
-            
-            $(".description").css("visibility", "hidden");
-        });
-    </script>
-    <script>
-            
-        </script>
-        
-            
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-            <script src="js/content-parse.js"></script>
-            <script src="js/content-append.js"></script>
-            <script src="js/pay-popup.js"></script>
-            <script src="js/account-frontend.js"></script>
-            
-            
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/content-parse.js"></script>
+    <script src="js/content-append.js"></script>
+    <script src="js/pay-popup.js"></script>
+    <script src="js/account-frontend.js"></script>
+    <script src="js/cards-open.js"></script>
   </body>
 </html>
