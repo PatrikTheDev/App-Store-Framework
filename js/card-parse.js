@@ -1,5 +1,7 @@
 var JSONItems = [];
-$.getJSON( "js/cards.json", function( data){
+
+function parseCards(path) {
+$.getJSON(path, function( data){
   JSONItems = data;
   
   $(".card").each(function() {
@@ -18,3 +20,4 @@ $.getJSON( "js/cards.json", function( data){
     $(this).attr("card", JSONItems.subtitle[currentCard]);
   });
 });
+};

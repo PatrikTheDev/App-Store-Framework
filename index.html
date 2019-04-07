@@ -14,21 +14,22 @@
     <title>App Store</title>
   </head>
   <body>
+      <div class="variable"></div>
       <main>
           <!--Log in popup-->
             <div class="log-in">
                     <div class="header">
-                        <h5>Log in</h5><a class="cancel">Cancel</a>
+                        <h5 log-in>Log in</h5><a class="cancel">Cancel</a>
                     </div>
                     <div class="log-in-wrapper">
                     <form id="frm1" class="frm1" onsubmit="logIn();">
                         Email: <input type="text" name="email" value=""><br>
                       </form> <div class="log-in-btn" onclick="logIn()">Log in</div>
                     </div>
-                    <p class="reporerror"></p>
+                    <p class="reporterror"></p>
                 </div>
         <div class="row container my-4">
-            <h1 class="text-left">Today</h1>
+            <h1 class="text-left" today>Today</h1>
             <a href="#" class="log-in-homepage">
                 <i class="far fa-user right"></i>
             </a>
@@ -45,10 +46,10 @@
                     <span class="pay-popup-price"></span>
                 </div>
                 <div class="pay-popup-account-wrapper">
-                    <div class="pay-popup-account">Account: <span class="email"></span></div>
+                    <div class="pay-popup-account" account>Account: <span class="email"></span></div>
                 </div>
                 <div class="pay-now-container">
-                    <a href="#" class="pay-now-button" download>Download now</a>     
+                    <a href="#" class="pay-now-button" download pay-now-btn>Download now</a>     
                 </div>           
             </div>
 
@@ -120,7 +121,7 @@
                 <div class="card app-promo" card="featured-apps">
                     <div class="content">
                         <b class="grey-text small-title" card="featured-apps"></b>
-                        <h1 class="grey-text-darker card-trigger title" card="featured-apps"></h1>
+                        <h1 class="card-trigger title" card="featured-apps"></h1>
                         <div class="close hidden"><i class="fas fa-times"></i></div>
                         <ul class="apps-list">
                                 <li class="app app-list" app="yt"> <div class="app-icon-wrapper"></div>
@@ -149,15 +150,20 @@
     
         
 </main>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
+    <script>
+            var variable = $(".variable");
+    </script>
+    <script src="js/main-parse.js"></script>
     <script src="js/app-global.js"></script>
     <script src="js/content-parse.js"></script>
     <script src="js/card-parse.js"></script>
+    <script src="js/translate.js"></script>
     <script src="js/pay-popup.js"></script>
     <script src="js/log-in.js"></script>
     <script src="js/account-frontend.js"></script>

@@ -1,6 +1,6 @@
 function logInPopupOpen() {
     $(".log-in").css("visibility", "visible");
-    $(".log-in").css("bottom", "35vh");
+    $(".log-in").css("bottom", "2em");
 };
 $(".log-in-homepage").click(function() {
     logInPopupOpen();
@@ -11,6 +11,7 @@ function logInPopupClose() {
 };
 $(".cancel").click(function() {
     logInPopupClose();
+    $(".reporterror").html("");
 });
 
 function logIn() {

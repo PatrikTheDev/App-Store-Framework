@@ -1,5 +1,6 @@
 var JSONItems = [];
-$.getJSON( "js/content.json", function( data){
+function parseContent(path) {
+$.getJSON( path, function( data){
   JSONItems = data;
   
   $(".description").each(function() {
@@ -25,11 +26,12 @@ $.getJSON( "js/content.json", function( data){
     $(this).attr("icon-src", JSONItems.icon[currentApp]);
     $(this).children().attr("icon-src", JSONItems.icon[currentApp]);
   });
-  $(".btn-download").each(function() {
+  $(".btn-download").each(function(freeAppText) {
     var currentApp = this.getAttribute("app");
     var price = JSONItems.price[currentApp];
     if (price == "0") {
         price = "Get";
+        $(this).attr("free", "true");
     };
     $(this).text("" + price);
     $(this).attr("price", JSONItems.price[currentApp]);
@@ -44,3 +46,4 @@ $.getJSON( "js/content.json", function( data){
     $(this).css("background-color", JSONItems.tint2[currentApp]);
   });
 });
+};

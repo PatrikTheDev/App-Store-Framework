@@ -25,6 +25,7 @@ $(".btn-download").click(function() {
         $(".pay-now-button").attr("onclick", "logInPopupOpen(); payPopupClose();");
     } else {
         $(".pay-now-button").attr("href", refAppFiles);
+        $(".pay-now-button").attr("onclick", "");
     };
     };
     checkEmail();
