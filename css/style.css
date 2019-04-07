@@ -259,7 +259,7 @@ p.subtitle {
 @media (max-width: 500px) {
     .app .subtitle {
         top: 2em;
-        width: 50%;
+        width: 40%;
         line-height: 1em;
     }
     .app .app-name {
