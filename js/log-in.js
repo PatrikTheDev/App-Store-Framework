@@ -1,16 +1,18 @@
-
-$(".log-in-homepage").click(function() {
+function logInPopupOpen() {
     $(".log-in").css("visibility", "visible");
     $(".log-in").css("bottom", "35vh");
-});
-$(".cancel").click(function() {
-    $(".log-in").css("bottom", "-100%");
-    $(".log-in").css("visibility", "hidden");
+};
+$(".log-in-homepage").click(function() {
+    logInPopupOpen();
 });
 function logInPopupClose() {
     $(".log-in").css("bottom", "-100%");
     $(".log-in").css("visibility", "hidden");
 };
+$(".cancel").click(function() {
+    logInPopupClose();
+});
+
 function logIn() {
     var x = document.getElementById("frm1");
     var email = "";
@@ -25,4 +27,4 @@ function logIn() {
     } else {
         $(".reporterror").html("You have to enter your email!")
     };
-  };
+};

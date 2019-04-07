@@ -15,12 +15,13 @@
   </head>
   <body>
       <main>
+          <!--Log in popup-->
             <div class="log-in">
                     <div class="header">
                         <h5>Log in</h5><a class="cancel">Cancel</a>
                     </div>
                     <div class="log-in-wrapper">
-                    <form id="frm1" class="frm1">
+                    <form id="frm1" class="frm1" onsubmit="logIn();">
                         Email: <input type="text" name="email" value=""><br>
                       </form> <div class="log-in-btn" onclick="logIn()">Log in</div>
                     </div>
@@ -32,6 +33,7 @@
                 <i class="far fa-user right"></i>
             </a>
         </div>
+        <!--Pay now popup-->
         <div class="pay-now">
                 <div class="header">
                     <h5>App Store</h5><a class="cancel">Cancel</a>
@@ -49,6 +51,8 @@
                     <a href="#" class="pay-now-button" download>Download now</a>     
                 </div>           
             </div>
+
+            <!--Cards-->
         <div class="container">
         <div class="card app-promo" app-promo back="img/unsplash.jpg" card="coders">
             <div class="content">
@@ -93,8 +97,7 @@
         </div>
     </div>
 
-    <div class="row container">
-            
+    <div class="container">
             <div class="card app-promo" app="electra" card="electra">
                 <div class="close hidden"><i class="fas fa-times"></i></div>
                 <div class="content card-trigger">
@@ -113,7 +116,30 @@
             </div>
         </div>
         
-    
+        <div class="container">
+                <div class="card app-promo" card="featured-apps">
+                    <div class="content">
+                        <b class="grey-text small-title" card="featured-apps"></b>
+                        <h1 class="grey-text-darker card-trigger title" card="featured-apps"></h1>
+                        <div class="close hidden"><i class="fas fa-times"></i></div>
+                        <ul class="apps-list">
+                                <li class="app app-list" app="yt"> <div class="app-icon-wrapper"></div>
+                                    <h4 class="app-name"></h4>
+                                    <p class="subtitle grey-text"></p>
+                                    <div class="btn-download right light-grey">Get</div>
+                                </li>
+                                <li class="app app-list" app="alien"> <div class="app-icon-wrapper"></div>
+                                    <h4 class="app-name"></h4>
+                                    <p class="subtitle grey-text"></p>
+                                    <div class="btn-download right light-grey">Get</div>
+                                </li>
+                        </ul>
+                        <div class="description-page"> <div class="container">
+                        
+                    </div>
+                    </div>
+                    </div>
+                </div>
     
     
         

@@ -27,7 +27,7 @@ i.right {
 .content {
     margin-top: 1em;
     margin-left: 2em;
-    margin-right: 4em;
+    margin-right: 2em;
     margin-bottom: 0.5em;
     height: calc(100% - 3em);
 }
@@ -129,6 +129,7 @@ h5.bottom-text-bar {
 }
 .btn-download.right {
     right: 0;
+    top: 1.3em;
 }
 .black {
     background-color: black;
@@ -218,6 +219,7 @@ li.app {
     right: 2em;
     list-style: none;
     list-style-type: none !important;
+    margin-bottom: 1.5rem;
 }
 li.app-list::after {
     content: '';
@@ -225,7 +227,7 @@ li.app-list::after {
     height: 1px;
     width: 100%;
     position: absolute;
-    bottom: -1em;
+    bottom: -0.7em;
 }
 .app-name {
     position: absolute;

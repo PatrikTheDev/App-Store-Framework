@@ -23,9 +23,9 @@ $(".btn-download").click(function() {
     $(".pay-now-button").css({"background-color": refAppTint, "color": refAppTextTint});
 });
         
-$( function() {
+
 $(".cancel").click(function() {payPopupClose()});
-});
+
 function payPopupClose() {
     $(".pay-now").css("bottom", "-100%");
     $(".pay-now").css("visibility", "hidden");

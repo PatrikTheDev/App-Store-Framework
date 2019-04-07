@@ -6,7 +6,7 @@ $(".description").css("visibility", "hidden");
             $(".close").removeClass("hidden");
             $(this).siblings(".description-page").addClass("fullscreen");
             $(".description").css("visibility", "visible");
-            window.scrollTo(0, 0);
+            //window.scrollTo(0, 0);
             $(this).closest(".card").addClass("active");
             $(".card").not(".active").hide();
         });

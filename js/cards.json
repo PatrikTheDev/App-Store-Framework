@@ -1,12 +1,15 @@
 {"background": {
     "coders": "img/unsplash.jpg",
     "electra": "img/electra-back.png",
-    "alien": "img/Vetřelci-cover.jpg"
+    "alien": "img/Vetřelci-cover.jpg",
+    "featured-apps": "rgb(211, 211, 211)"
 }, "title": {
     "coders": "Bringing Coders Together",
     "alien": "<b>GAME <br> OF THE <br> DAY</b>",
-    "electra": "<b>JAILBREAK <br> YOUR <br> iPHONE</b>"
+    "electra": "<b>JAILBREAK <br> YOUR <br> iPHONE</b>",
+    "featured-apps": "Apps We All Love"
 }, "subtitle": {
-    "coders": "APP CULTURE"
+    "coders": "APP CULTURE",
+    "featured-apps": "FEATURED APPS"
 }
 }
