@@ -218,14 +218,15 @@ h5.bottom-text-bar {
     padding-top: 2em;
 
 }
-div.app-list {
+.app-list {
     position: relative;
     margin-top: 1.5em;
     width: 100%;
 }
 li.app {
     position: relative;
-    right: 2em;
+    left: 0em;
+    width: 100%;
     list-style: none;
     list-style-type: none !important;
     margin-bottom: 1.5rem;
@@ -291,7 +292,6 @@ h5.bottom-subtitle-bar {
 }
 .app-icon {
     width: 4em;
-    
     border-radius: 18px;
 }
 .pay-now {
@@ -474,4 +474,7 @@ h5.bottom-subtitle-bar {
 }
 .title.fullscreen {
     width: calc(100% - 4em);
+}
+.apps-list {
+    padding-left: 0 !important;
 }
