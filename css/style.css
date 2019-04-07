@@ -405,7 +405,7 @@ h5.bottom-subtitle-bar {
 }
 
 .log-in {
-    transition: bottom 500ms 100ms, visibility 500ms 300ms;
+    transition: bottom 500ms 100ms, visibility 500ms 300ms, box-shadow 300ms;
     padding: 1em;
     position: fixed;
     visibility: hidden;

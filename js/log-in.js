@@ -24,6 +24,8 @@ function logIn() {
     setCookie("email", email, 30);
     checkCookie();
     logInPopupClose();
+    $(".pay-now-button").text("Download now");
+    
     } else {
         $(".reporterror").html("You have to enter your email!")
     };
