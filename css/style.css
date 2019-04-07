@@ -2,7 +2,12 @@ a {
     text-decoration: none !important;
     color: black;
 } 
-
+i.right {
+    position: absolute;
+    top: 2.3rem;
+    right: 2em;
+    font-size: 2em
+}
 .card {
     border-radius: 1em;
     border: none;
@@ -286,7 +291,7 @@ h5.bottom-subtitle-bar {
     }
 }
 
-.pay-now .cancel {
+.cancel {
     position: absolute;
     right: 1.5em;
     top: 1em;
@@ -395,4 +400,50 @@ h5.bottom-subtitle-bar {
 .email {
     color: rgb(119, 119, 119);
     font-weight: lighter;
+}
+
+.log-in {
+    transition: bottom 500ms 100ms, visibility 500ms 300ms;
+    padding: 1em;
+    position: fixed;
+    visibility: hidden;
+    bottom: -100%;
+    width: 30em;
+    left: calc(50% - 15em);
+    background-color: white;
+    z-index: 9999;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    border-radius: 1em;
+}
+@media (max-width: 500px) {
+    .log-in {
+        border-radius: 0;
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+}
+.log-in-btn {
+    border-radius: 0.4em;
+    padding: 0.4em 1.2em;
+    margin: 1em 1em;
+    background-color: rgb(47, 126, 246);
+    color: white;
+    font-weight: 300;
+    transition: 300ms;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    
+    width: 5.5em;
+}
+.log-in-btn:hover {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    transform: scale(0.98);
+    color: white;
+}
+.log-in-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
 }

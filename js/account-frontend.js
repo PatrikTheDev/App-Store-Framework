@@ -24,13 +24,11 @@ function setCookie(cname,cvalue,exdays) {
   function checkCookie() {
     var user=getCookie("email");
     if (user != "") {
-      
+      $(".log-in-homepage").hide();
       $(".email").text(user);
     } else {
-       user = prompt("Please enter your email:","");
-       if (user != "" && user != null) {
-         setCookie("email", user, 30);
-       }
+      $(".email").text("Not logged in");
+       
     }
   }
 checkCookie();

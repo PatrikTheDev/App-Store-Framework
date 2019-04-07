@@ -15,8 +15,22 @@
   </head>
   <body>
       <main>
+            <div class="log-in">
+                    <div class="header">
+                        <h5>Log in</h5><a class="cancel">Cancel</a>
+                    </div>
+                    <div class="log-in-wrapper">
+                    <form id="frm1" class="frm1">
+                        Email: <input type="text" name="email" value=""><br>
+                      </form> <div class="log-in-btn" onclick="logIn()">Log in</div>
+                    </div>
+                    <p class="reporerror"></p>
+                </div>
         <div class="row container my-4">
             <h1 class="text-left">Today</h1>
+            <a href="#" class="log-in-homepage">
+                <i class="far fa-user right"></i>
+            </a>
         </div>
         <div class="pay-now">
                 <div class="header">
@@ -115,6 +129,7 @@
     <script src="js/content-parse.js"></script>
     <script src="js/card-parse.js"></script>
     <script src="js/pay-popup.js"></script>
+    <script src="js/log-in.js"></script>
     <script src="js/account-frontend.js"></script>
     <script src="js/cards-open.js"></script>
   </body>
