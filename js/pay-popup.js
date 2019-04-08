@@ -17,18 +17,28 @@ $(".btn-download").click(function() {
     $(".pay-popup-subtitle").css("color", refAppTextTint2);
     $(".pay-popup-app-icon").html('<img class="app-icon" src="' + refAppIconSrc + '">');
     $(".pay-popup-price").text("" + refAppPrice);
-    checkCookie();
-    
+    checkPayCookie();
+    function checkPayCookie() {
+        var user = getCookie("email");
+        if (user != "") {
+          $(".log-in-homepage").hide();
+          $(".email").text(user);
+          $(".pay-now-button").attr("onclick", "");
+          $(".pay-now-button").attr("href", refAppFiles);
+        } else {
+          $(".email").text("Not logged in");
+           
+        }
+      }
     function checkEmail() {
-    if (email == "Not logged in"){
+    if (email == ""){
         $(".pay-now-button").text("Log in");
         $(".pay-now-button").attr("onclick", "logInPopupOpen(); payPopupClose();");
-    } else {
-        $(".pay-now-button").attr("href", refAppFiles);
-        $(".pay-now-button").attr("onclick", "");
+        
     };
     };
     checkEmail();
+    
     $(".pay-now").css("visibility", "visible");
     $(".pay-now").css("bottom", "1em");
     
