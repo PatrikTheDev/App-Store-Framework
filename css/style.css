@@ -478,3 +478,59 @@ h5.bottom-subtitle-bar {
 .apps-list {
     padding-left: 0 !important;
 }
+.app-page {
+    visibility: hidden;
+    position: fixed;
+    right: -100%;
+    top: 0;
+    transition: right 500ms ease;
+    width: 100vw;
+    min-height: 100vh;
+    background: rgb(255, 255, 255);
+    z-index: 998;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+}
+.app-page-header {
+    position: sticky;
+    top: 0;
+    height: 3em;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    color: rgb(47, 126, 246);
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
+}
+.app-page-header::after {
+    content: '';
+    height: 1px;
+    width: 100%;
+    left: 0;
+    
+    position: absolute;
+    top: 3em;
+}
+.app-page-app-wrapper {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+}
+.app-page-app-icon {
+    float: left;
+    width: 6em;
+    border-radius: 25px;
+    border-width: 0.5px;
+    border-style: solid; 
+    border-color: rgb(177, 177, 177); 
+}
+.app-page-app-name {
+    position: relative;
+    left: 1rem;
+}
+.app-page-app-subtitle {
+    position: relative;
+    left: 1rem;
+}
+.app-page-btn-download {
+    top: 6em;
+}

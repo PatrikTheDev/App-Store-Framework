@@ -11,7 +11,13 @@ $.getJSON( path, function( data){
     var currentApp = this.getAttribute("app");
     $(this).html("" + JSONItems.appname[currentApp]);
     $(this).attr("name", JSONItems.appname[currentApp]);
-    
+    $(this).attr("price", JSONItems.price[currentApp]);
+    $(this).attr("location", JSONItems.location[currentApp]);
+    $(this).attr("tint", JSONItems.tint[currentApp]);
+    $(this).attr("text-tint", JSONItems.textTint[currentApp]);
+    $(this).attr("text-tint-2", JSONItems.textTint2[currentApp]);
+    $(this).attr("icon-src", JSONItems.icon[currentApp]);
+    $(this).attr("subtitle", JSONItems.subtitle[currentApp]);
   });
   $(".subtitle").each(function() {
     var currentApp = this.getAttribute("app");
@@ -40,6 +46,9 @@ $.getJSON( path, function( data){
     $(this).attr("tint", JSONItems.tint[currentApp]);
     $(this).attr("text-tint", JSONItems.textTint[currentApp]);
     $(this).attr("text-tint-2", JSONItems.textTint2[currentApp]);
+    $(this).attr("icon-src", JSONItems.icon[currentApp]);
+    $(this).attr("name", JSONItems.appname[currentApp]);
+    $(this).attr("subtitle", JSONItems.subtitle[currentApp]);
   });
   $(".bottom-bar").each(function() {
     var currentApp = this.getAttribute("app");

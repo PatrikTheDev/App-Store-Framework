@@ -1,12 +1,11 @@
 $(".btn-download").click(function() {
-    var currentid = this.id;
-    var refAppIconSrc = $(this).siblings(".app-icon-wrapper").attr("icon-src");
-    var refAppName = $(this).siblings(".app-name").attr("name");
+    var refAppIconSrc = $(this).attr("icon-src");
+    var refAppName = $(this).attr("name");
     var refAppPrice = $(this).attr("price");
     if (refAppPrice == "0") {
         refAppPrice = "Free";
     };
-    var refAppSubtitle = $(this).siblings(".subtitle").attr("subtitle");
+    var refAppSubtitle = $(this).attr("subtitle");
     var refAppFiles = $(this).attr("location");
     var refAppTint = $(this).attr("tint");
     var refAppTextTint = $(this).attr("text-tint");
@@ -17,7 +16,6 @@ $(".btn-download").click(function() {
     $(".pay-popup-subtitle").css("color", refAppTextTint2);
     $(".pay-popup-app-icon").html('<img class="app-icon" src="' + refAppIconSrc + '">');
     $(".pay-popup-price").text("" + refAppPrice);
-    checkPayCookie();
     function checkPayCookie() {
         var user = getCookie("email");
         if (user != "") {
@@ -25,19 +23,17 @@ $(".btn-download").click(function() {
           $(".email").text(user);
           $(".pay-now-button").attr("onclick", "");
           $(".pay-now-button").attr("href", refAppFiles);
+          
         } else {
           $(".email").text("Not logged in");
+          $(".pay-now-button").text("Log in");
+        $(".pay-now-button").attr("onclick", "logInPopupOpen(); payPopupClose();");
            
         }
-      }
-    function checkEmail() {
-    if (email == ""){
-        $(".pay-now-button").text("Log in");
-        $(".pay-now-button").attr("onclick", "logInPopupOpen(); payPopupClose();");
-        
-    };
-    };
-    checkEmail();
+      };
+    checkPayCookie();
+    
+    
     
     $(".pay-now").css("visibility", "visible");
     $(".pay-now").css("bottom", "1em");

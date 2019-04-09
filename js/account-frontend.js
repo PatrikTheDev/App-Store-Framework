@@ -26,6 +26,7 @@ function setCookie(cname,cvalue,exdays) {
     if (user != "") {
       $(".log-in-homepage").hide();
       $(".email").text(user);
+      $(".pay-now-button").attr("onclick", "");
     } else {
       $(".email").text("Not logged in");
        
