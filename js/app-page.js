@@ -1,6 +1,6 @@
 $(".app-name").click(function() {
     var currentid = this.id;
-    var refAppIconSrc = $(this).siblings(".app-icon-wrapper").attr("icon-src");
+    var refAppIconSrc = $(this).attr("icon-src");
     var refAppName = $(this).attr("name");
     var refAppPrice = $(this).attr("price");
     var freeString = $("[free]").attr("freeString");
@@ -8,7 +8,7 @@ $(".app-name").click(function() {
     if (refAppPrice == "0") {
         refAppPrice = freeString;
     };
-    var refAppSubtitle = $(this).siblings(".subtitle").attr("subtitle");
+    var refAppSubtitle = $(this).attr("subtitle");
     var refAppFiles = $(this).attr("location");
     var refAppTint = $(this).attr("tint");
     var refAppTextTint = $(this).attr("text-tint");

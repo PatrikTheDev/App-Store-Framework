@@ -39,14 +39,23 @@ $(".btn-download").click(function() {
     $(".pay-now").css("bottom", "1em");
     
     $(".pay-now-button").css({"background-color": refAppTint, "color": refAppTextTint});
-    
+    $(".pay-popup-name").attr("name", refAppName);
+    $(".pay-popup-name").attr("price", refAppPrice);
+    $(".pay-popup-name").attr("location", refAppFiles);
+    $(".pay-popup-name").attr("tint", refAppTint);
+    $(".pay-popup-name").attr("text-tint", refAppTextTint);
+    $(".pay-popup-name").attr("text-tint-2", refAppTextTint2);
+    $(".pay-popup-name").attr("icon-src", refAppIconSrc);
+    $(".pay-popup-name").attr("subtitle", refAppSubtitle);
     
     
 });
         
 
 $(".cancel").click(function() {payPopupClose()});
-
+$(".pay-now-button").click(function(){
+    payPopupClose();
+});
 function payPopupClose() {
     $(".pay-now").css("bottom", "-100%");
     $(".pay-now").css("visibility", "hidden");
