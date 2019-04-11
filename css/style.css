@@ -534,3 +534,11 @@ h5.bottom-subtitle-bar {
 .app-page-btn-download {
     top: 6em;
 }
+.fa-star {
+    color: rgb(177, 177, 177);
+}
+.app-page-rating {
+    position: relative;
+    left: 1em;
+    top: -1em;
+}

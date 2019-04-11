@@ -38,5 +38,9 @@
     "alien": "rgb(79, 124, 44)",
     "yt": "rgb(235, 50, 35)",
     "electra": "rgb(177, 177, 177)"
+}, "rating": {
+    "alien": "4",
+    "yt": "3",
+    "electra": "1"
 }
 }
