@@ -10,6 +10,7 @@ $(".btn-download").click(function() {
     var refAppTint = $(this).attr("tint");
     var refAppTextTint = $(this).attr("text-tint");
     var refAppTextTint2 = $(this).attr("text-tint-2");
+    var refAppRating = $(this).attr("rating");
     var email = $(".email").text();
     $(".pay-popup-name").text("" + refAppName);
     $(".pay-popup-subtitle").text("" + refAppSubtitle);
@@ -47,7 +48,7 @@ $(".btn-download").click(function() {
     $(".pay-popup-name").attr("text-tint-2", refAppTextTint2);
     $(".pay-popup-name").attr("icon-src", refAppIconSrc);
     $(".pay-popup-name").attr("subtitle", refAppSubtitle);
-    
+    parseRating(refAppRating);
     
 });
         

@@ -357,7 +357,6 @@ h5.bottom-subtitle-bar {
 }
 .app-overview-pay {
     position: relative;
-    margin-bottom: 1.5em;
 }
 .pay-popup-app-icon {
     float: left;
@@ -373,7 +372,7 @@ h5.bottom-subtitle-bar {
 .app-overview-pay::after {
     content: '';
     position: absolute;
-    top: 5em;
+    top: 5.7rem;
     background-color: rgba(156, 156, 156, 0.767);
     height: 1px;
     width: 99%;
@@ -540,5 +539,10 @@ h5.bottom-subtitle-bar {
 .app-page-rating {
     position: relative;
     left: 1em;
+    top: -1em;
+}
+.pay-popup-rating {
+    position: relative;
+    left: 4.5rem;
     top: -1em;
 }
