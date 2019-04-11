@@ -546,3 +546,7 @@ h5.bottom-subtitle-bar {
     left: 4.5rem;
     top: -1em;
 }
+.fullscreen.full {
+    height: 100vh;
+    max-height: unset;
+}
