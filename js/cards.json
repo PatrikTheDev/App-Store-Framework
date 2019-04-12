@@ -11,5 +11,8 @@
 }, "subtitle": {
     "coders": "APP CULTURE",
     "featured-apps": "FEATURED APPS"
+}, "applistPath": {
+    "coders": "js/apps-coders.json",
+    "featured-apps": "js/apps-featured.json"
 }
 }

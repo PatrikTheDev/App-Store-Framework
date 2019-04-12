@@ -2,7 +2,7 @@ var JSONItems = [];
 $.getJSON( "js/main.json", function( data){
   JSONItems = data;
   parseCards(JSONItems.jsons["cards"]);
-  spawnApps($(".apps-list"), JSONItems.jsons["applist"]);
+  spawnApps($(".apps-list-all"), JSONItems.jsons["applist"]);
   parseContent(JSONItems.jsons["apps"]);
   
   var userLang = navigator.language || navigator.userLanguage;

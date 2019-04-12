@@ -2,7 +2,7 @@
     "jsons": {
         "cards": "js/cards.json",
         "apps": "js/content.json",
-        "applist": "js/apps.json"
+        "applist": "js/apps-all.json"
     }, "languages": {
         "en-EN": "",
         "cs-CZ": "lang/cz.json"

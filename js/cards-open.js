@@ -10,6 +10,7 @@ $(".description").css("visibility", "hidden");
             //window.scrollTo(0, 0);
             $(this).closest(".card").addClass("active");
             $(".card").not(".active").hide();
+            
 
         });
         $(".close").click(function() {
