@@ -1,7 +1,8 @@
 {
     "jsons": {
         "cards": "js/cards.json",
-        "apps": "js/content.json"
+        "apps": "js/content.json",
+        "applist": "js/apps.json"
     }, "languages": {
         "en-EN": "",
         "cs-CZ": "lang/cz.json"
