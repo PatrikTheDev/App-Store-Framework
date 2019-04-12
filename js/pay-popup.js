@@ -48,7 +48,7 @@ $(".btn-download").click(function() {
     $(".pay-popup-name").attr("text-tint-2", refAppTextTint2);
     $(".pay-popup-name").attr("icon-src", refAppIconSrc);
     $(".pay-popup-name").attr("subtitle", refAppSubtitle);
-    parseRating(refAppRating);
+    parseRating(refAppRating, $(".pay-first-star"), $(".pay-second-star"), $(".pay-third-star"), $(".pay-fourth-star"), $(".pay-fifth-star"));
     
 });
         

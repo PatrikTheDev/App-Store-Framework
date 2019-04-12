@@ -33,31 +33,31 @@ $(".app-name").click(function() {
     $(".app-page-btn-download").attr("name", refAppName);
     $(".app-page-btn-download").attr("subtitle", refAppSubtitle);
     $(".app-page-btn-download").attr("icon-src", refAppIconSrc);
-    parseRating(refAppRating);
+    parseRating(refAppRating, $("[first-star]"), $("[second-star]"), $("[third-star]"), $("[fourth-star]"), $("[fifth-star]"));
 });
 $(".back-btn").click(function() {
     $(".card").show();
     $(".app-page").css("right", "-100%");
     $("[fifth-star]").prevAll().addClass("far").removeClass("fas");
 });
-function parseRating(refAppRating) {
+function parseRating(refAppRating, firstStar, secondStar, thirdStar, fourthStar, fifthStar) {
     if (refAppRating == "1") {
-        $("[first-star]").addClass("fas").removeClass("far");
+        firstStar.addClass("fas").removeClass("far");
     }
     if (refAppRating == "2") {
-        $("[second-star]").prevAll().addClass("fas").removeClass("far");
-        $("[second-star]").addClass("fas").removeClass("far");
+        secondStar.prevAll().addClass("fas").removeClass("far");
+        secondStar.addClass("fas").removeClass("far");
     }
     if (refAppRating == "3") {
-        $("[third-star]").prevAll().addClass("fas").removeClass("far");
-        $("[third-star]").addClass("fas").removeClass("far");
+        thirdStar.prevAll().addClass("fas").removeClass("far");
+        thirdStar.addClass("fas").removeClass("far");
     }
     if (refAppRating == "4") {
-        $("[fourth-star]").prevAll().addClass("fas").removeClass("far");
-        $("[fourth-star]").addClass("fas").removeClass("far");
+        fourthStar.prevAll().addClass("fas").removeClass("far");
+        fourthStar.addClass("fas").removeClass("far");
     }
     if (refAppRating == "5") {
-        $("[fifth-star]").prevAll().addClass("fas").removeClass("far");
-        $("[fifth-star]").addClass("fas").removeClass("far");
+        fifthStar.prevAll().addClass("fas").removeClass("far");
+        fifthStar.addClass("fas").removeClass("far");
     }
 };
