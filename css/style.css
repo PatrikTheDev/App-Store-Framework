@@ -12,11 +12,10 @@ i.right {
     border-radius: 1em;
     border: none;
     box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
-    transition: 200ms;
     position: relative;
     margin-bottom: 1em;
     margin-right: 1em;
-    transition: width 300ms, box-shadow 200ms, transform 300ms, top 300ms, left 300ms, position 300ms;
+    transition: 500ms all cubic-bezier(0.65, -0.12, 0.24, 1.47);
     z-index: 10;
     float: left;
 }
@@ -98,6 +97,7 @@ i.right {
     border-bottom-right-radius: 1em;
     border-bottom-left-radius: 1em;
     clear: both;
+    -webkit-backdrop-filter: blur(7px);
 }
 .bottom-text-bar {
     position: absolute;
@@ -129,12 +129,12 @@ h5.bottom-text-bar {
     padding-right: 1em;
     padding-left: 1em;
     height: 2em;
-    background-color: white;
     color: rgb(47, 126, 246);
     min-width: 5em;
     text-align: center;
     font-weight: 600;
     float: right;
+    -webkit-backdrop-filter: blur(7px);
 }
 .btn-download.right {
     right: 0;
@@ -143,8 +143,8 @@ h5.bottom-text-bar {
 .black {
     background-color: black;
 }
-.card.fullscreen {
-    position: absolute;
+/* .card.fullscreen {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
@@ -153,7 +153,7 @@ h5.bottom-text-bar {
     border-radius: 0;
     margin: 0;
 
-}
+} */
 .card.fullscreen:hover {
     transform: scale(1);
 }
@@ -162,7 +162,7 @@ h5.bottom-text-bar {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 70vh;
+    height: 70vh!important;
     z-index: 100;
     border-radius: 0;
     margin: 0;
@@ -302,10 +302,11 @@ h5.bottom-subtitle-bar {
     bottom: -100%;
     width: 30em;
     left: calc(50% - 15em);
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8);
     z-index: 9999;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     border-radius: 1em;
+    -webkit-backdrop-filter: blur(15px);
 }
 @media (max-width: 500px) {
     .pay-now {
@@ -434,10 +435,11 @@ h5.bottom-subtitle-bar {
     bottom: -100%;
     width: 30em;
     left: calc(50% - 15em);
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8);
     z-index: 9999;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     border-radius: 1em;
+    -webkit-backdrop-filter: blur(15px);
 }
 @media (max-width: 500px) {
     .log-in {
@@ -450,14 +452,11 @@ h5.bottom-subtitle-bar {
 .log-in-btn {
     border-radius: 0.4em;
     padding: 0.4em 1.2em;
-    margin: 1em 1em;
     background-color: rgb(47, 126, 246);
     color: white;
     font-weight: 300;
     transition: 300ms;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    
-    width: 5.5em;
 }
 .log-in-btn:hover {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
@@ -465,11 +464,19 @@ h5.bottom-subtitle-bar {
     color: white;
 }
 .log-in-wrapper {
-    display: flex;
     width: 100%;
     height: 100%;
-    justify-content: center;
+    display: flex;
     align-items: center;
+    justify-content: center;
+}
+.log-in-btn-wrapper {
+    margin-top: 1.2em;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .title.fullscreen {
     width: calc(100% - 4em);

@@ -23,7 +23,7 @@
     "yt": "img/youtube.png",
     "electra": "https://mega.nz/#!eMJS1CZR!n1ixxBcnxNv55v8cpHtYs8KojnsqasQ6oO8DojaZgYw"
 }, "tint": {
-    "alien": "rgb(79,124,44)",
+    "alien": "rgba(79,124,44, 0.8)",
     "yt": "rgb(235, 50, 35)",
     "electra": "rgb(51, 59, 81)"
 }, "textTint": {
@@ -31,7 +31,7 @@
     "yt": "white",
     "electra": "white"
 }, "tint2": {
-    "alien": "rgb(31, 0, 0)",
+    "alien": "rgba(31, 0, 0, 0.5)",
     "yt": "white",
     "electra": "transparent"
 }, "textTint2": {

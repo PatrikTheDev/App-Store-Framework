@@ -3,6 +3,6 @@ $("[app]").each(function() {
     $(this).children().attr("app", currentApp);
 });
 $(".card").each(function() {
-    var currentCard = this.getAttribute("card");
-    $(this).children().attr("card", currentCard);
+    var currentCard = $(this).attr("card"); //this.getAttribute("card")
+    $(this).children().children().attr("card", currentCard);
 });

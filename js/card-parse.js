@@ -7,7 +7,7 @@ $.getJSON(path, function( data){
   $(".card").each(function() {
     var currentCard = this.getAttribute("card");
     $(this).css({"background": "url(" + JSONItems.background[currentCard] + ") center", "background-size": "cover"});
-    
+    $(this).attr("back", JSONItems.background[currentCard]);
   });
   $(".title").each(function() {
     var currentCard = this.getAttribute("card");
