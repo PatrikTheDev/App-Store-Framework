@@ -38,7 +38,8 @@ $(".app-name").click(function() {
 $(".back-btn").click(function() {
     $(".card").show();
     $(".app-page").css("right", "-100%");
-    $("[fifth-star]").prevAll().addClass("far").removeClass("fas");
+    // $("[fifth-star]").prevAll().addClass("far").removeClass("fas");
+    resetRating($("[fifth-star]"));
 });
 function parseRating(refAppRating, firstStar, secondStar, thirdStar, fourthStar, fifthStar) {
     if (refAppRating == "1") {
@@ -61,3 +62,7 @@ function parseRating(refAppRating, firstStar, secondStar, thirdStar, fourthStar,
         fifthStar.addClass("fas").removeClass("far");
     }
 };
+function resetRating(lastStar) {
+    lastStar.prevAll().addClass("far").removeClass("fas");
+    lastStar.addClass("far").removeClass("fas");
+}

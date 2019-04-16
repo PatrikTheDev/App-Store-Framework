@@ -1,16 +1,19 @@
 $(".btn-download").click(function() {
-    var refAppIconSrc = $(this).attr("icon-src");
-    var refAppName = $(this).attr("name");
-    var refAppPrice = $(this).attr("price");
+    payPopupInit($(this));
+});
+function payPopupInit(thisElem) {
+  var refAppIconSrc = thisElem.attr("icon-src");
+    var refAppName = thisElem.attr("name");
+    var refAppPrice = thisElem.attr("price");
     if (refAppPrice == "0") {
         refAppPrice = "Free";
     };
-    var refAppSubtitle = $(this).attr("subtitle");
-    var refAppFiles = $(this).attr("location");
-    var refAppTint = $(this).attr("tint");
-    var refAppTextTint = $(this).attr("text-tint");
-    var refAppTextTint2 = $(this).attr("text-tint-2");
-    var refAppRating = $(this).attr("rating");
+    var refAppSubtitle = thisElem.attr("subtitle");
+    var refAppFiles = thisElem.attr("location");
+    var refAppTint = thisElem.attr("tint");
+    var refAppTextTint = thisElem.attr("text-tint");
+    var refAppTextTint2 = thisElem.attr("text-tint-2");
+    var refAppRating = thisElem.attr("rating");
     var email = $(".email").text();
     $(".pay-popup-name").text("" + refAppName);
     $(".pay-popup-subtitle").text("" + refAppSubtitle);
@@ -49,9 +52,8 @@ $(".btn-download").click(function() {
     $(".pay-popup-name").attr("icon-src", refAppIconSrc);
     $(".pay-popup-name").attr("subtitle", refAppSubtitle);
     parseRating(refAppRating, $(".pay-first-star"), $(".pay-second-star"), $(".pay-third-star"), $(".pay-fourth-star"), $(".pay-fifth-star"));
-    
-});
-        
+    $(".bottom-popup").hide();
+}
 
 $(".cancel").click(function() {payPopupClose()});
 $(".pay-now-button").click(function(){
@@ -60,4 +62,5 @@ $(".pay-now-button").click(function(){
 function payPopupClose() {
     $(".pay-now").css("bottom", "-100%");
     $(".pay-now").css("visibility", "hidden");
+    resetRating($(".pay-fifth-star"));
 }
