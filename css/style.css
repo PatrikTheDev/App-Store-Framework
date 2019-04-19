@@ -45,11 +45,24 @@ i.right {
     box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
     position: relative;
     margin-bottom: 1em;
-    margin-right: 1em;
     transition: 500ms all cubic-bezier(0.65, -0.12, 0.24, 1.3);
     z-index: 10;
     float: left;
     -webkit-overflow-scrolling: touch;
+    margin-left: 2em;
+    margin-right: 0em;
+}
+
+@media (max-width: 1000px) {
+    .card {
+        margin-left: 2em;
+        margin-right: 2em;
+    }
+}
+@media (max-width: 600px) {
+    .card {
+        margin-left: 1em;
+    }
 }
 .card:hover{
     transform: scale(0.98);
@@ -511,7 +524,7 @@ h5.bottom-subtitle-bar {
     justify-content: center;
 }
 .title.fullscreen {
-    width: calc(100% - 4em);
+    width: calc(100% - 2em);
 }
 .apps-list {
     padding-left: 0 !important;
@@ -671,4 +684,7 @@ h5.bottom-subtitle-bar {
 }
 .app-name-popupbar {
     left: 3.3rem;
+}
+.card.fullscreen {
+    margin: 0;
 }
