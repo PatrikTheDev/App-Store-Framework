@@ -14,7 +14,7 @@ h1 {
 }
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
   }
   
   p {
@@ -49,6 +49,7 @@ i.right {
     transition: 500ms all cubic-bezier(0.65, -0.12, 0.24, 1.3);
     z-index: 10;
     float: left;
+    -webkit-overflow-scrolling: touch;
 }
 .card:hover{
     transform: scale(0.98);
@@ -78,6 +79,9 @@ i.right {
     position: absolute;
     bottom: 2.5em;
     line-height: 0.9em;
+}
+.lower p {
+    line-height: 1.5em;
 }
 .bottom-text {
     position: absolute;
@@ -176,17 +180,7 @@ h5.bottom-text-bar {
 .black {
     background-color: black;
 }
-/* .card.fullscreen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 50vh;
-    z-index: 100;
-    border-radius: 0;
-    margin: 0;
 
-} */
 .card.fullscreen:hover {
     transform: scale(1);
 }
@@ -326,6 +320,11 @@ h5.bottom-subtitle-bar {
 .app-icon {
     width: 4em;
     border-radius: 18px;
+}
+.app .app-icon, .pay-popup-app-icon .app-icon {
+    border-width: 0.5px;
+    border-style: solid; 
+    border-color: rgb(187, 187, 187); 
 }
 .pay-now {
     transition: bottom 500ms 100ms, visibility 500ms 300ms;
@@ -528,16 +527,26 @@ h5.bottom-subtitle-bar {
     background: rgb(255, 255, 255);
     z-index: 998;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+    overflow: scroll;
+}
+.app-page-content {
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    height: 100vh;
 }
 .app-page-header {
     position: sticky;
+    position: -webkit-sticky;
     top: 0;
     height: 3em;
     display: flex;
     align-items: center;
-    padding: 1em;
+    padding: 1em 0em 1em 1em;
     color: rgb(47, 126, 246);
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.8);
+    /* box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3); */
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 999;
 }
 .app-page-header::after {
     content: '';
@@ -571,15 +580,30 @@ h5.bottom-subtitle-bar {
     left: 1rem;
 }
 .app-page-btn-download {
-    top: 6em;
+    left: 1em;
+    top: 0em;
+    position: relative;
+    float: left;
+    
 }
 .fa-star {
     color: rgb(177, 177, 177);
 }
 .app-page-rating {
     position: relative;
-    left: 1em;
-    top: -1em;
+    left: 0em;
+    top: 0em;
+}
+.app-page-bottom-bar {
+    width: 100%;
+    height: 3rem;
+    padding: 0.5rem;
+    padding-left: 0;
+    position: relative;
+    top: 1em;
+    margin-bottom: 1em;
+    display: flex;
+    align-content: center;
 }
 .pay-popup-rating {
     position: relative;
@@ -600,7 +624,7 @@ h5.bottom-subtitle-bar {
 }
 .bottom-popup {
     position: fixed;
-    bottom: 0;
+    bottom: -100%;
     -webkit-backdrop-filter: blur(15px);
     backdrop-filter: blur(15px);
     background-color: rgba(230, 230, 230, 0.7);
@@ -620,4 +644,31 @@ h5.bottom-subtitle-bar {
     .popup-rating {
         display: none;
     }
+}
+.screenshot-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    margin: 1em;
+}
+.screenshot {
+    display: inline;
+    height: 500px;
+    margin-right: 0.5em;
+    border-radius: 0.5em;
+}
+@media (max-width: 500px) {
+    .screenshot {
+        height: 400px;
+    }
+}
+.rating-num {
+    color: rgb(177, 177, 177);
+    font-size: 1.2rem!important;
+    font-weight: 500!important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"!important;
+}
+.app-name-popupbar {
+    left: 3.3rem;
 }

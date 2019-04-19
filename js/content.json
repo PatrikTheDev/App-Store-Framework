@@ -42,5 +42,13 @@
     "alien": "4",
     "yt": "3",
     "electra": "1"
+}, "screenshots": {
+    "alien": "screenshots/alien.json",
+    "yt": "screenshots/yt.json",
+    "electra": "screenshots/electra.json"
+}, "depictions": {
+    "alien": "depictions/alien.json",
+    "yt": "depictions/yt.json",
+    "electra": "depictions/electra.json"
 }
 }

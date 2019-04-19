@@ -1,0 +1,18 @@
+{
+    "appName": "Alien: Blackout",
+    "description": "A game that might not even be good, but is paid and costs $4.99.",
+    "icon": "img/246x0w.jpg",
+    "subtitle": "Space Survival Horror",
+    "price": "$4.99",
+    "location": "img/246x0w.jpg",
+    "tint": "rgba(79,124,44, 0.8)",
+    "textTint": "white",
+    "tint2": "rgba(31, 0, 0, 0.5)",
+    "textTint2": "rgb(79, 124, 44)",
+    "rating": "4",
+    "screenshots": [
+        "img/electra-back.png", "img/electra-back.png", "img/electra-back.png", "img/electra-back.png"
+    ],
+    "hasHeaderPhoto": true,
+    "headerPhoto": "screenshots/alien/headerPhoto.jpg"
+}

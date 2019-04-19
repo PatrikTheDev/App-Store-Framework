@@ -55,26 +55,33 @@
                 </div>           
             </div>
         <div class="app-page">
+            <div class="app-page-content">
             <div class="app-page-header">
                 <div class="back-btn"><i class="fas fa-chevron-left"></i> Back</div>
             </div>
             <div class="app-page-app-wrapper">
                 <div class="app-page-app-icon-wrapper"></div>
-                <h3 class="app-page-app-name"></h3>
+                <h5 class="app-page-app-name"></h5>
                 <p class="app-page-app-subtitle"></p>
-                <div class="app-page-rating">
-                    <i class="far fa-star" first-star></i><i class="far fa-star" second-star></i><i class="far fa-star" third-star></i><i class="far fa-star" fourth-star></i><i class="far fa-star" fifth-star></i>
+                <div class="app-page-btn-download btn-download">Get</div>
+                <div class="app-page-bottom-bar">
+                        <div class="app-page-rating">
+                            <b class="rating-num"></b>
+                                <i class="far fa-star" first-star></i><i class="far fa-star" second-star></i><i class="far fa-star" third-star></i><i class="far fa-star" fourth-star></i><i class="far fa-star" fifth-star></i>
+                        </div>
+                </div>
+                <div class="app-page-description">
+                    <div class="app-page-text-description"></div>
+                    <div class="screenshot-wrapper app-page-screenshot-wrapper"></div>
                 </div>
                 
-                <div class="app-page-btn-download btn-download">Get</div>
-                
             </div>
-        </div>
+        </div></div>
         <div class="bottom-popup">
                 <div class="app-icon-wrapper app-icon-popupbar"></div>
-                <h5 class="bottom-text-bar grey-text-darker app-name app-name-popupbar"></h5>
-                <p class="bottom-subtitle-bar subtitle subtitle-popupbar grey-text-lighter"></p>
-                <div class="btn-download btn-download-popup"></div>
+                <h5 class="bottom-text-bar grey-text-darker app-name noappend app-name-popupbar"></h5>
+                <p class="bottom-subtitle-bar subtitle noappend subtitle-popupbar grey-text-lighter"></p>
+                <div class="btn-download btn-download-popup noappend"></div>
                 <div class="popup-rating">
                         <i class="far fa-star" first-star></i><i class="far fa-star" second-star></i><i class="far fa-star" third-star></i><i class="far fa-star" fourth-star></i><i class="far fa-star" fifth-star></i>
                     </div>
@@ -89,7 +96,8 @@
                 <div class="close hidden"><i class="fas fa-times"></i></div>
                 <p class="bottom-text grey-text-lighter">Tap to meet the two teens behind Patrik's vibrant coding community.</p>
                 <div class="description-page"> <div class="container">
-                <p><b>The best thing</b> about playing games in iMessages? Bantering between turns. Wheter it's bowling or battleships, here's how to add some friendly competition to your chat threads.</p>
+                <p><b>The best thing</b> about playing games in iMessages? Bantering between turns. Wheter it's bowling or battleships, here's how to add some friendly competition to your chat threads.
+                </p>
                 <ul class="apps-list">
                     <li class="app app-list" app="yt"> <div class="app-icon-wrapper"></div>
                         <h4 class="app-name"></h4>
@@ -166,17 +174,19 @@
                 
 </main>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script   src="https://code.jquery.com/jquery-3.4.0.min.js"   integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="   crossorigin="anonymous"></script>
+
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script   src="https://code.jquery.com/jquery-3.4.0.min.js"   integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="   crossorigin="anonymous"></script>
-    <script>
+        <script>
             var variable = $(".variable");
     </script>
     <script src="js/spawn.js"></script>
     <script src="js/app-global.js"></script>
     <script src="js/main-parse.js"></script>
     <script src="js/content-parse.js"></script>
+    
+    <script src="js/screenshots.js"></script>
     <script src="js/card-parse.js"></script>
     <script src="js/translate.js"></script>
     <script src="js/pay-popup.js"></script>
@@ -185,5 +195,6 @@
     <script src="js/cards-open.js"></script>
     <script src="js/app-page.js"></script>
     <script src="js/bottom-popup.js"></script>
+    <script src="js/content-append.js"></script>
   </body>
 </html>

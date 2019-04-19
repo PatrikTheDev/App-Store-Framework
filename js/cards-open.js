@@ -30,9 +30,10 @@ $(".card-trigger").click(function() {
     $(this).siblings(".description-page").addClass("fullscreen");
     $(".description").css("visibility", "visible");
     card.addClass("active");
-    $(".card").not(".active").hide();
+    $(".card").not(".active").hide().attr("wasHidden", "true");
     $(".today").hide();
     $(".bottom-bar").addClass("fullscreen");
+    
     bottomPopupInit($(this).parent());
 });
 $(".close").click(function() {
@@ -69,7 +70,7 @@ $(".close").click(function() {
     $(".close").addClass("hidden");
     $(this).siblings(".description-page").removeClass("fullscreen");
     $(".description").css("visibility", "hidden");
-    $(".card").not(".active").show();
+    $(".card").not(".active").show().attr("wasHidden", "false");
     $(this).closest(".card").removeClass("active");
     $(".bottom-bar").removeClass("fullscreen");
     

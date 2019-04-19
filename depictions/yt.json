@@ -1,0 +1,17 @@
+{
+    "appName": "Youtube",
+    "description": "Really good app to watch Pewds!",
+    "icon": "img/youtube.png",
+    "subtitle": "Videos, Music etc.",
+    "price": "Free",
+    "location": "img/youtube.png",
+    "tint": "rgb(235, 50, 35)",
+    "textTint": "white",
+    "tint2": "white",
+    "textTint2": "rgb(235, 50, 35)",
+    "rating": "3",
+    "screenshots": [
+        "screenshots/yt/1.PNG", "screenshots/yt/2.PNG", "screenshots/yt/3.PNG", "screenshots/yt/4.png"
+    ],
+    "hasHeaderPhoto": false
+}

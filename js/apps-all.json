@@ -1,5 +1,10 @@
 {
     "applist": [
         "alien", "yt", "electra"
-    ]
+    ],
+    "screenshotPath": {
+        "yt": "screenshots/yt.json",
+        "electra": "screenshots/electra.json",
+        "alien": "screenshots/alien.json"
+    }
 }
