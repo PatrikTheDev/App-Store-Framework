@@ -1,8 +1,3 @@
-function appendDescription() {
-    $(".app-name").each(function() {
-        var description = $(this).parent().siblings().find(".description").attr("description");
-    });
-};
 function appendBtnDownloadContent(path, parent) {
     var JSONItems = [];
     $.getJSON(path, function(data){
