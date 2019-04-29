@@ -1,0 +1,17 @@
+{
+    "appName": "Snapchat",
+    "description": "Really good app to watch Pewds!",
+    "icon": "icons/snapchat.jpg",
+    "subtitle": "Videos, Music etc.",
+    "price": "Free",
+    "location": "icons/snapchat.jpg",
+    "tint": "rgb(255, 250, 84)",
+    "textTint": "black",
+    "tint2": "black",
+    "textTint2": "rgb(235, 222, 74)",
+    "rating": "3",
+    "screenshots": [
+        "screenshots/yt/1.PNG", "screenshots/yt/2.PNG", "screenshots/yt/3.PNG", "screenshots/yt/4.png"
+    ],
+    "hasHeaderPhoto": false
+}

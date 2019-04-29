@@ -10,8 +10,8 @@ $.getJSON( path, function( data){
   });
   $(".app-name").not(".noappend").each(function() {
     var currentApp = this.getAttribute("app");
-    $(this).html("" + JSONItems.appname[currentApp]);
     $(this).attr("data-depictionJSON", JSONItems.depictions[currentApp]);
+    appendAppName(JSONItems.depictions[currentApp], $(this));
   });
   $(".subtitle").not(".noappend").each(function() {
     var currentApp = this.getAttribute("app");
@@ -20,11 +20,8 @@ $.getJSON( path, function( data){
   });
   $(".app-icon-wrapper").not(".noappend").each(function() {
     var currentApp = this.getAttribute("app");
-    $(this).html('<img class="app-icon" src="' + JSONItems.icon[currentApp] + '">');
-    $(this).attr("icon-src", JSONItems.icon[currentApp]);
-    $(this).children().attr("icon-src", JSONItems.icon[currentApp]);
-
     $(this).attr("data-depictionJSON", JSONItems.depictions[currentApp]);
+    appendIcon(JSONItems.depictions[currentApp], $(this));
   });
   $(".btn-download").not(".noappend").each(function(freeAppText) {
     var currentApp = this.getAttribute("app");
@@ -33,9 +30,8 @@ $.getJSON( path, function( data){
   });
   $(".bottom-bar").each(function() {
     var currentApp = this.getAttribute("app");
-    $(this).css("background-color", JSONItems.tint2[currentApp]);
-
     $(this).attr("data-depictionJSON", JSONItems.depictions[currentApp]);
+    appendBottomBarColor(JSONItems.depictions[currentApp], $(this));
   });
 });
 };
