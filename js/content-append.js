@@ -47,3 +47,10 @@ function appendBottomBarColor(path, parent) {
         parent.css("background-color", JSONItems.tint2);
 });
 }
+function appendDescription(path, parent) {
+    var JSONItems = [];
+    $.getJSON(path, function(data) {
+        JSONItems = data;
+        parent.html("" + JSONItems.description);
+});
+}

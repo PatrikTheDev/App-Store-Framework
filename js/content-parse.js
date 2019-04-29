@@ -5,8 +5,8 @@ $.getJSON( path, function( data){
   
   $(".description").not(".noappend").each(function() {
     var currentApp = this.getAttribute("app");
-    $(this).html("" + JSONItems.description[currentApp]);
     $(this).attr("data-depictionJSON", JSONItems.depictions[currentApp]);
+    appendDescription(JSONItems.depictions[currentApp], $(this));
   });
   $(".app-name").not(".noappend").each(function() {
     var currentApp = this.getAttribute("app");
