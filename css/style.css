@@ -663,7 +663,9 @@ h5.bottom-subtitle-bar {
     overflow-y: hidden;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
-    margin: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-radius: 0.5em;
 }
 .screenshot {
     display: inline;
@@ -687,4 +689,7 @@ h5.bottom-subtitle-bar {
 }
 .card.fullscreen {
     margin: 0;
+}
+.subtitle-popupbar, .app-name-popupbar, .popup-rating i {
+    color: rgba(30, 30, 30, 0.8)!important;
 }

@@ -51,32 +51,20 @@ function appPageInit(parent) {
         JSONItems = data;
         
         var refAppIconSrc = JSONItems.icon;
-        var refAppName = JSONItems.appName;
         var refAppPrice = JSONItems.price;
-        var refAppSubtitle = JSONItems.subtitle;
-        var refAppFiles = JSONItems.location;
-        var refAppTint = JSONItems.tint;
-        var refAppTextTint = JSONItems.textTint;
-        var refAppTextTint2 = JSONItems.textTint2;
         var refAppRating = JSONItems.rating;
         var refAppScreenshots = depictionPath;
         var refAppDescription = JSONItems.description;
         var cardDisplay = $(".card").not(".active").css("display");
-        var btnDownloadString;
-        if (refAppPrice == "Free") {
-            btnDownloadString = "Get";
-        } else {
-            btnDownloadString = refAppPrice;
-        }
         var cardsWereVisible;
         if (cardDisplay == "none") {
             cardsWereVisible = "false";
         } else {
             cardsWereVisible = "true";
         }
-        $(".app-page-app-name").text("" + refAppName);
-        $(".app-page-app-subtitle").text("" + refAppSubtitle);
-        $(".app-page-app-subtitle").css("color", refAppTextTint2);
+        appendAppName(depictionPath, $(".app-page-app-name"));
+        $(".app-page-app-name").attr("data-depictionJSON", depictionPath);
+        appendSubtitleContent(depictionPath, $(".app-page-app-subtitle"));
         $(".app-page-app-icon-wrapper").html('<img class="app-page-app-icon" src="' + refAppIconSrc + '">');
         $(".app-page-price").text("" + refAppPrice);
         $(".app-page").css({"visibility": "visible", "right": "0"});
@@ -85,9 +73,8 @@ function appPageInit(parent) {
         setTimeout(function() {
             $(".card").not(".active").hide();
         }, 500);
-        $(".app-page-btn-download").text("" + btnDownloadString);
+        appendBtnDownloadContent(depictionPath, $(".app-page-btn-download"));
         $(".app-page-btn-download").attr("data-depictionJSON", depictionPath);
-        $(".app-page-btn-download").css({"background-color": refAppTint, "color": refAppTextTint});
         $(".rating-num").text("" + refAppRating);
         parseRating(refAppRating, $("[first-star]"), $("[second-star]"), $("[third-star]"), $("[fourth-star]"), $("[fifth-star]"));
         parseScreenshots($(".app-page-screenshot-wrapper"), refAppScreenshots);
@@ -100,5 +87,6 @@ function appPageInit(parent) {
                     $(".app-page-btn-download").css("top", "5em");
                 }
         });
+        bottomPopupInit($(".app-page-content"));
     });
 }
