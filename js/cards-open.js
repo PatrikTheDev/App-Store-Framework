@@ -34,11 +34,11 @@ $(".card-trigger").click(function() {
     $(".today").hide();
     $(".bottom-bar").addClass("fullscreen");
     
-    bottomPopupInit($(this).parent());
+    bottomPopupInit(card);
 });
 $(".close").click(function() {
     $(".content").removeClass("fullscreen");
-    $(".bottom-popup").hide();
+    $(".bottom-popup").css("bottom", "-100%");
     $(".title").removeClass("fullscreen");
     var card = $(this).closest(".card");
     card.removeClass("fullscreen");

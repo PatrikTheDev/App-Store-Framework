@@ -1,7 +1,7 @@
 $(".bottom-popup").css("bottom", "-100%"); 
 function bottomPopupInit(parent) {
     console.log(parent);
-    var depictionPath = parent.parent().find(".app-page-app-name").attr("data-depictionJSON");
+    var depictionPath = parent.parent().find(".app-page-app-name").attr("data-depictionJSON") || parent.find(".app-name").attr("data-depictionJSON");
     console.log(depictionPath);
     var JSONItems = [];
     $.getJSON(depictionPath, function (data) {
@@ -24,8 +24,18 @@ function bottomPopupInit(parent) {
         $(".btn-download-popup").attr("data-depictionJSON", depictionPath);
         
         parseRating(refAppRating, $("[first-star]"), $("[second-star]"), $("[third-star]"), $("[fourth-star]"), $("[fifth-star]"));
+        console.log(parent);
         parent.scroll(function() {
-            if(parent.scrollTop() > 500){
+            if(parent.scrollTop() > 400){
+                $(".bottom-popup").css("bottom", "0");
+            }
+            else{
+                $(".bottom-popup").css("bottom", "-100%");
+            }
+        });
+
+        parent.parent().scroll(function() {
+            if(parent.parent().scrollTop() > 400){
                 $(".bottom-popup").css("bottom", "0");
             }
             else{

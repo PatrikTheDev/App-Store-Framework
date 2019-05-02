@@ -9,7 +9,7 @@ body {
     background-color: #fff
 }
 h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 500;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -21,6 +21,9 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     margin-bottom: 1rem;
   }
+h5 {
+    font-size: 1.01rem;
+}
 b, strong {
     font-weight: bolder
 }
@@ -35,8 +38,8 @@ a {
 } 
 i.right {
     position: absolute;
-    top: 2.3rem;
-    right: 2em;
+    top: 2rem;
+    right: 2rem;
     font-size: 2em
 }
 .card {
@@ -73,7 +76,7 @@ i.right {
     margin-left: 2em;
     margin-right: 2em;
     margin-bottom: 0.5em;
-    height: calc(100% - 3em);
+    height: calc(100% - 2em);
 }
 @media (max-width: 600px) {
     .content {
@@ -93,9 +96,6 @@ i.right {
     bottom: 2.5em;
     line-height: 0.9em;
 }
-.lower p {
-    line-height: 1.5em;
-}
 .bottom-text {
     position: absolute;
     bottom: 0.5em;;
@@ -103,16 +103,19 @@ i.right {
     padding-bottom: 0.5em;
     
 }
-.app-promo {
-    width: 500px;
-    height: 500px
+@media (min-width: 600px) {
+    .app-promo {
+        width: 500px;
+        height: 500px
+    }
 }
 @media (max-width: 600px) {
 .app-promo {
     min-height: 400px;
     max-height: 600px;
-    width: 90vw;
+    width: 91vw;
 }
+
 .card {
     margin-right: 0;
 }
@@ -153,7 +156,7 @@ i.right {
     top: 2.5em;
     left: 4em;
     margin-top: 0.5em;
-    margin-left: 1.75em;
+    margin-left: 1em;
     margin-right: 1em;
     margin-bottom: 0.7em;
     width: 60%;
@@ -165,21 +168,24 @@ h5.bottom-text-bar {
 
 .app-icon-bottom-bar {
     width: 4em;
-    margin: 1em;
+    margin: 0.9em;
     border-radius: 10px;
 }
 .btn-download {
     position: absolute;
-    top: 2em;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    top: 1.5em;
     right: 1.5em;
     border-radius: 1em;
-    padding-top: 0.3em;
-    padding-bottom: 0.34em;
-    padding-right: 1em;
-    padding-left: 1em;
-    height: 2em;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-right: 0.7em;
+    padding-left: 0.7em;
+    height: 1.8em;
     color: rgb(47, 126, 246);
-    min-width: 5em;
+    min-width: 4.5rem;
     text-align: center;
     font-weight: 600;
     float: right;
@@ -188,7 +194,7 @@ h5.bottom-text-bar {
 }
 .btn-download.right {
     right: 0;
-    top: 1.3em;
+    top: 0.7rem;
 }
 .black {
     background-color: black;
@@ -258,6 +264,12 @@ h5.bottom-text-bar {
     padding-top: 2em;
 
 }
+.description {
+    color: rgb(119, 119, 119);
+    line-height: 1.4rem;
+    font-weight: 200;
+    font-size: 1.1rem;
+}
 .app-list {
     position: relative;
     margin-top: 1.5em;
@@ -282,29 +294,31 @@ li.app-list::after {
 .app-name {
     position: absolute;
     left: 3.5rem;
-    top: 0.3em;
+    top: 0em;
 }
 .app .app-name {
-    left: 4.5rem;
+    /* left: 4.5rem; */
 }
 
 p.subtitle {
     position: absolute;
-    left: 5.5rem;
-    top: 2.2em;
-    font-weight: lighter;
+    left: 4.5rem;
+    top: 2.2rem;
+    font-weight: 100;
+    float: left;
+    font-size: 0.9rem;
 }
 .app .subtitle {
-    left: 4.5rem;
+    left: 3.5rem;
+    top: 1.7rem;
 }
 @media (max-width: 500px) {
     .app .subtitle {
-        top: 2em;
-        width: 40%;
+        /* top: 1.7rem; */
         line-height: 1em;
     }
     .app .app-name {
-        top: 0.5em;
+        top: 0.2em;
     }
     .app h4.app-name {
         font-size: 18px;
@@ -314,8 +328,7 @@ p.subtitle {
     position: absolute;
     top: 2.5em;
     left: 0em;
-    margin-top: 0.5em;
-    /*margin-left: 0.75em;*/
+    
     margin-right: 1em;
     margin-bottom: 0.7em;
     width: 60%;
@@ -331,8 +344,8 @@ h5.bottom-subtitle-bar {
     color: rgb(177, 177, 177);
 }
 .app-icon {
-    width: 4em;
-    border-radius: 18px;
+    width: 3em;
+    border-radius: 13px;
 }
 .app .app-icon, .pay-popup-app-icon .app-icon {
     border-width: 0.5px;
@@ -397,7 +410,7 @@ h5.bottom-subtitle-bar {
 .app-overview-pay .subtitle {
     margin-left: 0.43em;
     position: relative;
-    left: 0.5rem;
+    left: 0rem;
     top: 0em;
     color: rgb(177, 177, 177);
 }
@@ -411,14 +424,14 @@ h5.bottom-subtitle-bar {
 .pay-popup-price {
     float: right;
     position: absolute;
-    top: 1.3em;
+    top: 1rem;
     right: 2em;
     
 }
 .app-overview-pay::after {
     content: '';
     position: absolute;
-    top: 5.7rem;
+    top: 3.8rem;
     background-color: rgba(156, 156, 156, 0.767);
     height: 1px;
     width: 99%;
@@ -620,8 +633,8 @@ h5.bottom-subtitle-bar {
 }
 .pay-popup-rating {
     position: relative;
-    left: 4.5rem;
-    top: -1em;
+    /* left: 4.5rem; */
+    top: -1.2em;
 }
 .fullscreen.full {
     height: 100vh;
