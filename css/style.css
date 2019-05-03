@@ -21,8 +21,10 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     margin-bottom: 1rem;
   }
-h5 {
-    font-size: 1.01rem;
+@media (max-width: 500px) {
+    h5 {
+        font-size: 1.01rem;
+    }
 }
 b, strong {
     font-weight: bolder
@@ -295,6 +297,7 @@ li.app-list::after {
     position: absolute;
     left: 3.5rem;
     top: 0em;
+    font-size: 18px;
 }
 .app .app-name {
     /* left: 4.5rem; */
@@ -446,6 +449,7 @@ h5.bottom-subtitle-bar {
 .pay-popup-account-wrapper{
     position: relative;
     clear: both;
+    margin-top: 2.7rem;
 }
 .pay-popup-account-wrapper::after {
     content: '';
@@ -633,8 +637,7 @@ h5.bottom-subtitle-bar {
 }
 .pay-popup-rating {
     position: relative;
-    /* left: 4.5rem; */
-    top: -1.2em;
+    left: 0.5rem;
 }
 .fullscreen.full {
     height: 100vh;

@@ -31,7 +31,7 @@ $(".card-trigger").click(function() {
     $(".description").css("visibility", "visible");
     card.addClass("active");
     $(".card").not(".active").hide().attr("wasHidden", "true");
-    $(".today").hide();
+    $(".hide-on-card-open").hide();
     $(".bottom-bar").addClass("fullscreen");
     
     bottomPopupInit(card);
@@ -39,7 +39,7 @@ $(".card-trigger").click(function() {
 $(".close").click(function() {
     $(".content").removeClass("fullscreen");
     $(".bottom-popup").css("bottom", "-100%");
-    $(".title").removeClass("fullscreen");
+    $(".hide-on-card-open").removeClass("fullscreen");
     var card = $(this).closest(".card");
     card.removeClass("fullscreen");
     var back = card.attr("back");

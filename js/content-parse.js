@@ -1,7 +1,13 @@
 var JSONItems = [];
 function parseContent(path) {
-$.getJSON( path, function( data){
-  JSONItems = data;
+  $.ajax({
+    url: path,
+    async: false,
+    dataType: 'json',
+    success: function (data) {
+      JSONItems = data;
+    }
+  });
   
   $(".description").not(".noappend").each(function() {
     var currentApp = this.getAttribute("app");
@@ -21,9 +27,9 @@ $.getJSON( path, function( data){
   $(".app-icon-wrapper").not(".noappend").each(function() {
     var currentApp = this.getAttribute("app");
     $(this).attr("data-depictionJSON", JSONItems.depictions[currentApp]);
-    appendIcon(JSONItems.depictions[currentApp], $(this));
+    appendIcon(JSONItems.depictions[currentApp], $(this), "app-icon");
   });
-  $(".btn-download").not(".noappend").each(function(freeAppText) {
+  $(".btn-download").not(".noappend").each(function() {
     var currentApp = this.getAttribute("app");
     $(this).attr("data-depictionJSON", JSONItems.depictions[currentApp]);
     appendBtnDownloadContent(JSONItems.depictions[currentApp], $(this));
@@ -33,5 +39,4 @@ $.getJSON( path, function( data){
     $(this).attr("data-depictionJSON", JSONItems.depictions[currentApp]);
     appendBottomBarColor(JSONItems.depictions[currentApp], $(this));
   });
-});
 };

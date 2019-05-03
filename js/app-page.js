@@ -1,17 +1,120 @@
+class appPage {
+    constructor(depictionPath) {
+        this.depictionPath = depictionPath;
+    }
+    hideCards() {
+        setTimeout(function() {
+            $(".card").not(".active").hide();
+        }, 500);
+    }
+    checkCardsVisibility() {
+        var cardDisplay = $(".card").not(".active").css("display");
+        var cardsWereVisible;
+        if (cardDisplay == "none") {
+            cardsWereVisible = "false";
+        } else {
+            cardsWereVisible = "true";
+        }
+        $(".app-page").attr("cardsWereVisible", cardsWereVisible);
+        return cardsWereVisible;
+    }
+    initAppIcon() {
+        appendIcon(this.depictionPath, $(".app-page-app-icon-wrapper"), "app-page-app-icon");
+    }
+    initAppName() {
+        appendAppName(this.depictionPath, $(".app-page-app-name"));
+        $(".app-page-app-name").attr("data-depictionJSON", this.depictionPath);
+    }
+    initBtnDownload() {
+        appendBtnDownloadContent(this.depictionPath, $(".app-page-btn-download"));
+        $(".app-page-btn-download").attr("data-depictionJSON", this.depictionPath);
+    }
+    initSubtitle() {
+        appendSubtitleContent(this.depictionPath, $(".app-page-app-subtitle"));
+    }
+    initDescription() {
+        appendDescription(this.depictionPath, $(".app-page-text-description"));
+    }
+    initRating() {
+        $.ajax({
+            url: this.depictionPath,
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+              JSONItems = data;
+            }
+        });
+        var refAppRating = JSONItems.rating;
+        parseRating(refAppRating, $("[first-star]"), $("[second-star]"), $("[third-star]"), $("[fourth-star]"), $("[fifth-star]"));
+        $(".rating-num").text("" + refAppRating);
+    }
+    initScreenshots() {
+        parseScreenshots($(".app-page-screenshot-wrapper"), this.depictionPath);
+    }
+    initAll() {
+        // Append app name
+        this.initAppName();
+        // Append subtitle
+        this.initSubtitle();
+        // Add app icon
+        this.initAppIcon();
+        // Show app-page
+        this.open();
+        // Append the description/depiction
+        this.initDescription();
+        // Check if cards were visible
+        this.checkCardsVisibility();
+        // Hide cards
+        this.hideCards();
+        // Append things to btn-download
+        this.initBtnDownload();
+        // Parse rating
+        this.initRating();
+        // Parse screenshots
+        this.initScreenshots();
+        // Init bottom-popup (unnecessary, but I wanted to do it)
+        bottomPopupInit($(".app-page-content"));
+        
+    }
+    // Open appPage
+    open() {
+        $(".app-page").css({"visibility": "visible", "right": "0"});
+    }
+    close() {
+        toggleCards();
+        $(".app-page").css("right", "-100%");
+        resetScreenshots($(".app-page-screenshot-wrapper"));
+        resetRating($("[fifth-star]"));
+    }
+
+}
+
+function appPageInit(parent) {
+    var depictionPath = parent.attr("data-depictionJSON");
+    var appPage1 = new appPage("" + depictionPath);
+    appPage1.initAll();
+}
+
 $(".app-name").click(function() {
+    
     appPageInit($(this));
 });
+
 $(".back-btn").click(function() {
-    toggleCards($(".card"));
-    $(".app-page").css("right", "-100%");
-    resetScreenshots($(".app-page-screenshot-wrapper"));
-    resetRating($("[fifth-star]"));
+    var depictionPath = "depictions/default.json"
+    var appPage1 = new appPage("" + depictionPath);
+    appPage1.close();
+    // toggleCards($(".card"));
+    // $(".app-page").css("right", "-100%");
+    // resetScreenshots($(".app-page-screenshot-wrapper"));
+    // resetRating($("[fifth-star]"));
 });
+
 function resetScreenshots(parent) {
     parent.html("");
     parent.attr("screenshotsAppended", "false");
 }
-function toggleCards(parent) {
+function toggleCards() {
     var wasVisible = $(".app-page").attr("cardsWereVisible");
     $(".active").show();
     if (wasVisible == "true") {
@@ -44,49 +147,5 @@ function resetRating(lastStar) {
     lastStar.prevAll().addClass("far").removeClass("fas");
     lastStar.addClass("far").removeClass("fas");
 }
-function appPageInit(parent) {
-    var depictionPath = parent.attr("data-depictionJSON");
-    var JSONItems = [];
-    $.getJSON(depictionPath, function (data) {
-        JSONItems = data;
-        
-        var refAppIconSrc = JSONItems.icon;
-        var refAppPrice = JSONItems.price;
-        var refAppRating = JSONItems.rating;
-        var refAppScreenshots = depictionPath;
-        var refAppDescription = JSONItems.description;
-        var cardDisplay = $(".card").not(".active").css("display");
-        var cardsWereVisible;
-        if (cardDisplay == "none") {
-            cardsWereVisible = "false";
-        } else {
-            cardsWereVisible = "true";
-        }
-        appendAppName(depictionPath, $(".app-page-app-name"));
-        $(".app-page-app-name").attr("data-depictionJSON", depictionPath);
-        appendSubtitleContent(depictionPath, $(".app-page-app-subtitle"));
-        $(".app-page-app-icon-wrapper").html('<img class="app-page-app-icon" src="' + refAppIconSrc + '">');
-        $(".app-page-price").text("" + refAppPrice);
-        $(".app-page").css({"visibility": "visible", "right": "0"});
-        $(".app-page").attr("cardsWereVisible", cardsWereVisible);
-        $(".app-page-text-description").text("" + refAppDescription);
-        setTimeout(function() {
-            $(".card").not(".active").hide();
-        }, 500);
-        appendBtnDownloadContent(depictionPath, $(".app-page-btn-download"));
-        $(".app-page-btn-download").attr("data-depictionJSON", depictionPath);
-        $(".rating-num").text("" + refAppRating);
-        parseRating(refAppRating, $("[first-star]"), $("[second-star]"), $("[third-star]"), $("[fourth-star]"), $("[fifth-star]"));
-        parseScreenshots($(".app-page-screenshot-wrapper"), refAppScreenshots);
-        parent.closest(".app-page-content").scroll(function() {
-            if(parent.closest(".app-page-content").scrollTop() > 50){
-                $(".app-page-btn-download").css("top", "1rem");
-                
-                }
-                else{
-                    $(".app-page-btn-download").css("top", "5em");
-                }
-        });
-        bottomPopupInit($(".app-page-content"));
-    });
-}
+
+

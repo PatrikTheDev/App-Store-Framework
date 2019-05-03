@@ -1,8 +1,6 @@
 $(".bottom-popup").css("bottom", "-100%"); 
 function bottomPopupInit(parent) {
-    console.log(parent);
     var depictionPath = parent.parent().find(".app-page-app-name").attr("data-depictionJSON") || parent.find(".app-name").attr("data-depictionJSON");
-    console.log(depictionPath);
     var JSONItems = [];
     $.getJSON(depictionPath, function (data) {
         JSONItems = data;
@@ -18,13 +16,12 @@ function bottomPopupInit(parent) {
         appendSubtitleContent(depictionPath, $(".subtitle-popupbar"))
         $(".subtitle-popupbar").css("color", "rgba(30, 30, 30, 0.8)");
         $(".app-name-popupbar").css("color", "rgba(30, 30, 30, 0.8)");
-        appendIcon(depictionPath, $(".app-icon-popupbar"));
+        appendIcon(depictionPath, $(".app-icon-popupbar"), "app-icon");
         $(".app-page-price").text("" + priceText);
         appendBtnDownloadContent(depictionPath, $(".btn-download-popup"));
         $(".btn-download-popup").attr("data-depictionJSON", depictionPath);
         
         parseRating(refAppRating, $("[first-star]"), $("[second-star]"), $("[third-star]"), $("[fourth-star]"), $("[fifth-star]"));
-        console.log(parent);
         parent.scroll(function() {
             if(parent.scrollTop() > 400){
                 $(".bottom-popup").css("bottom", "0");
