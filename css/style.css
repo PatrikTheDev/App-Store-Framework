@@ -8,6 +8,9 @@ body {
     text-align: left;
     background-color: #fff
 }
+::-webkit-scrollbar { 
+    display: none; 
+}
 h1 {
     font-size: 2rem;
     font-weight: 500;
@@ -110,6 +113,7 @@ i.right {
         width: 500px;
         height: 500px
     }
+    
 }
 @media (max-width: 600px) {
 .app-promo {
@@ -120,6 +124,9 @@ i.right {
 
 .card {
     margin-right: 0;
+}
+.app-promo.fullscreen {
+    min-height: unset;
 }
 }
 .grey-text {
@@ -152,6 +159,9 @@ i.right {
     clear: both;
     -webkit-backdrop-filter: blur(7px);
     backdrop-filter: blur(7px);
+}
+.fullscreen .bottom-bar {
+    border-radius: 0;
 }
 .bottom-text-bar {
     position: absolute;
@@ -708,4 +718,7 @@ h5.bottom-subtitle-bar {
 }
 .subtitle-popupbar, .app-name-popupbar, .popup-rating i {
     color: rgba(30, 30, 30, 0.8)!important;
+}
+.app-page-text-description h1 {
+    font-size: 3rem;
 }

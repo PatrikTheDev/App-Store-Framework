@@ -1,6 +1,10 @@
 {
     "appName": "Alien: Blackout",
-    "description": "A game that might not even be good, but is paid and costs $4.99.",
+    "description": {
+        "textBold": "A game,",
+        "normal": "that might not even be good, but is",
+        "Bold": "paid and costs $4.99"
+    },
     "icon": "img/246x0w.jpg",
     "subtitle": "Space Survival Horror",
     "price": "$4.99",

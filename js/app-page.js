@@ -104,10 +104,6 @@ $(".back-btn").click(function() {
     var depictionPath = "depictions/default.json"
     var appPage1 = new appPage("" + depictionPath);
     appPage1.close();
-    // toggleCards($(".card"));
-    // $(".app-page").css("right", "-100%");
-    // resetScreenshots($(".app-page-screenshot-wrapper"));
-    // resetRating($("[fifth-star]"));
 });
 
 function resetScreenshots(parent) {

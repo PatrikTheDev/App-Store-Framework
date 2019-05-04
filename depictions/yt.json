@@ -1,6 +1,8 @@
 {
     "appName": "Youtube",
-    "description": "Really good app to watch Pewds!",
+    "description": {
+        "text": "Really good app to watch Pewds!"
+    },
     "icon": "img/youtube.png",
     "subtitle": "Videos, Music etc.",
     "price": "Free",

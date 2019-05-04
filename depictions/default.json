@@ -1,0 +1,22 @@
+{
+    "appName": "Electra",
+    "description": {
+        "topHeader1": "Header1", 
+        "bottomHeader2": "Header2",
+        "rip": "normal text",
+        "ItalicBrBefore": "Italic with break before it",
+        "reallyBottomHeader2": "Header2"
+    },
+    "icon": "img/electra-app-icon-small.jpg",
+    "subtitle": "Sileo downloader :D",
+    "price": "Free",
+    "location": "https://mega.nz/#!eMJS1CZR!n1ixxBcnxNv55v8cpHtYs8KojnsqasQ6oO8DojaZgYw",
+    "tint": "rgb(51, 59, 81)",
+    "textTint": "white",
+    "tint2": "transparent",
+    "textTint2": "rgb(177, 177, 177)",
+    "rating": "1",
+    "screenshots": [
+        "img/electra-back.png", "img/electra-back.png", "img/electra-back.png", "img/electra-back.png"
+    ]
+}
