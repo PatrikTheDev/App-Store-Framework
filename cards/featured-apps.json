@@ -1,0 +1,17 @@
+{
+    "title": "Apps We All Love",
+    "description": [],
+    "background": "rgb(211, 211, 211)",
+    "subtitle": "FEATURED APPS",
+    "containsApps": [
+        "yt", "electra", "alien", "snap", "default"
+    ],
+    "minHeight": 350,
+    "tint": "rgba(79,124,44, 0.8)",
+    "textTint": "white",
+    "tint2": "rgba(31, 0, 0, 0.5)",
+    "textTint2": "rgb(79, 124, 44)",
+    "screenshots": [
+        "img/electra-back.png", "img/electra-back.png", "img/electra-back.png", "img/electra-back.png"
+    ]
+}

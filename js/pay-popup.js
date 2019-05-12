@@ -31,7 +31,7 @@ function payPopupInit(parent) {
       
       $(".pay-now-button").css({"background-color": refAppTint, "color": refAppTextTint});
       parseRating(refAppRating, $(".pay-first-star"), $(".pay-second-star"), $(".pay-third-star"), $(".pay-fourth-star"), $(".pay-fifth-star"));
-      $(".bottom-popup").hide();
+      $(".bottom-popup").css("bottom", "-100%");
   });
 }
 function checkPayCookie(refAppFiles) {

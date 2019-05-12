@@ -1,6 +1,6 @@
-class appPage {
+class UIAppPage {
     constructor(depictionPath) {
-        this.depictionPath = depictionPath;
+        this.depictionPath = depictionPath || "depictions/default.json";
     }
     hideCards() {
         setTimeout(function() {
@@ -36,17 +36,20 @@ class appPage {
         appendDescription(this.depictionPath, $(".app-page-text-description"));
     }
     initRating() {
+        var depictionPath = this.depictionPath;
         $.ajax({
             url: this.depictionPath,
             async: false,
             dataType: 'json',
             success: function (data) {
-              JSONItems = data;
+              depictionPath = data;
             }
         });
-        var refAppRating = JSONItems.rating;
+        var refAppRating = depictionPath.rating;
+        var ratingsText = "ratings";
         parseRating(refAppRating, $("[first-star]"), $("[second-star]"), $("[third-star]"), $("[fourth-star]"), $("[fifth-star]"));
         $(".rating-num").text("" + refAppRating);
+        $(".number-of-ratings").text("" + depictionPath.numberOfRatings + " " + ratingsText);
     }
     initScreenshots() {
         parseScreenshots($(".app-page-screenshot-wrapper"), this.depictionPath);
@@ -84,6 +87,7 @@ class appPage {
         toggleCards();
         $(".app-page").css("right", "-100%");
         resetScreenshots($(".app-page-screenshot-wrapper"));
+        resetDescription($(".app-page-text-description"));
         resetRating($("[fifth-star]"));
     }
 
@@ -91,8 +95,8 @@ class appPage {
 
 function appPageInit(parent) {
     var depictionPath = parent.attr("data-depictionJSON");
-    var appPage1 = new appPage("" + depictionPath);
-    appPage1.initAll();
+    var appPage = new UIAppPage("" + depictionPath);
+    appPage.initAll();
 }
 
 $(".app-name").click(function() {
@@ -102,13 +106,17 @@ $(".app-name").click(function() {
 
 $(".back-btn").click(function() {
     var depictionPath = "depictions/default.json"
-    var appPage1 = new appPage("" + depictionPath);
-    appPage1.close();
+    var appPage = new UIAppPage("" + depictionPath);
+    appPage.close();
 });
 
 function resetScreenshots(parent) {
     parent.html("");
     parent.attr("screenshotsAppended", "false");
+}
+function resetDescription(parent) {
+    parent.html("");
+    parent.attr("alreadyRan", "false");
 }
 function toggleCards() {
     var wasVisible = $(".app-page").attr("cardsWereVisible");
@@ -119,22 +127,22 @@ function toggleCards() {
     
 }
 function parseRating(refAppRating, firstStar, secondStar, thirdStar, fourthStar, fifthStar) {
-    if (refAppRating == "1") {
+    if (refAppRating == 1) {
         firstStar.addClass("fas").removeClass("far");
     }
-    if (refAppRating == "2") {
+    if (refAppRating == 2) {
         secondStar.prevAll().not("rating-num").addClass("fas").removeClass("far");
         secondStar.addClass("fas").removeClass("far");
     }
-    if (refAppRating == "3") {
+    if (refAppRating == 3) {
         thirdStar.prevAll().not("rating-num").addClass("fas").removeClass("far");
         thirdStar.addClass("fas").removeClass("far");
     }
-    if (refAppRating == "4") {
+    if (refAppRating == 4) {
         fourthStar.prevAll().not("rating-num").addClass("fas").removeClass("far");
         fourthStar.addClass("fas").removeClass("far");
     }
-    if (refAppRating == "5") {
+    if (refAppRating == 5) {
         fifthStar.prevAll().not("rating-num").addClass("fas").removeClass("far");
         fifthStar.addClass("fas").removeClass("far");
     }

@@ -35,7 +35,10 @@ b, strong {
 small {
     font-size: 80%
 }
-
+.container {
+    max-width: unset;
+    width: unset;
+}
 
 a {
     text-decoration: none !important;
@@ -50,27 +53,13 @@ i.right {
 .card {
     border-radius: 1em;
     border: none;
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 33px rgba(0, 0, 0, 0.3);
     position: relative;
-    margin-bottom: 1em;
+    margin-bottom: 1.5rem;
     transition: 500ms all cubic-bezier(0.65, -0.12, 0.24, 1.3);
     z-index: 10;
     float: left;
     -webkit-overflow-scrolling: touch;
-    margin-left: 2em;
-    margin-right: 0em;
-}
-
-@media (max-width: 1000px) {
-    .card {
-        margin-left: 2em;
-        margin-right: 2em;
-    }
-}
-@media (max-width: 600px) {
-    .card {
-        margin-left: 1em;
-    }
 }
 .card:hover{
     transform: scale(0.98);
@@ -81,7 +70,7 @@ i.right {
     margin-left: 2em;
     margin-right: 2em;
     margin-bottom: 0.5em;
-    height: calc(100% - 2em);
+    height: 100%;
 }
 @media (max-width: 600px) {
     .content {
@@ -91,10 +80,18 @@ i.right {
         margin-bottom: 0.5em;
     }
 }
-
+.bottom-text-bar {
+    margin-top: 0.5em;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: 0.7em;
+    width: 60%;
+}
+h5.bottom-text-bar {
+    top: 0.3rem;
+}
 .content.small-title {
     margin-bottom: 0em;
-
 }
 .lower {
     position: absolute;
@@ -103,15 +100,13 @@ i.right {
 }
 .bottom-text {
     position: absolute;
-    bottom: 0.5em;;
+    bottom: 0;
     padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    
 }
 @media (min-width: 600px) {
     .app-promo {
         width: 500px;
-        height: 500px
+        min-height: 500px
     }
     
 }
@@ -122,9 +117,6 @@ i.right {
     width: 91vw;
 }
 
-.card {
-    margin-right: 0;
-}
 .app-promo.fullscreen {
     min-height: unset;
 }
@@ -163,21 +155,6 @@ i.right {
 .fullscreen .bottom-bar {
     border-radius: 0;
 }
-.bottom-text-bar {
-    position: absolute;
-    top: 2.5em;
-    left: 4em;
-    margin-top: 0.5em;
-    margin-left: 1em;
-    margin-right: 1em;
-    margin-bottom: 0.7em;
-    width: 60%;
-}
-h5.bottom-text-bar {
-    top: 0.5em;
-    
-}
-
 .app-icon-bottom-bar {
     width: 4em;
     margin: 0.9em;
@@ -188,8 +165,8 @@ h5.bottom-text-bar {
     display: grid;
     align-content: center;
     justify-content: center;
-    top: 1.5em;
-    right: 1.5em;
+    top: 1.3rem;
+    right: 0.6rem;
     border-radius: 1em;
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
@@ -207,6 +184,10 @@ h5.bottom-text-bar {
 .btn-download.right {
     right: 0;
     top: 0.7rem;
+}
+.btn-download-card {
+    right: 1rem;
+    top: 1.5rem;
 }
 .black {
     background-color: black;
@@ -261,30 +242,23 @@ h5.bottom-text-bar {
     width: 100vw;
     min-height: 50vh;
     background-color: white;
-    padding-top: 2em;
+    padding-top: 1em;
 
 }
 .description-page.lower.fullscreen {
-    display: block;
-    position: absolute;
     top: 70vh;
-    left: 0;
-    bottom: 0;
-    width: 100vw;
     min-height: 30vh;
-    background-color: white;
-    padding-top: 2em;
-
 }
 .description {
     color: rgb(119, 119, 119);
     line-height: 1.4rem;
     font-weight: 200;
     font-size: 1.1rem;
+    visibility: hidden;
 }
 .app-list {
     position: relative;
-    margin-top: 1.5em;
+    margin-top: 1em;
     width: 100%;
 }
 li.app {
@@ -297,10 +271,11 @@ li.app {
 }
 li.app-list::after {
     content: '';
-    background-color: rgba(156, 156, 156, 0.767);
+    background-color: rgba(166, 166, 166, 0.7);
     height: 1px;
-    width: 100%;
+    width: calc(100% - 3.5rem);
     position: absolute;
+    right: 0;
     bottom: -0.7em;
 }
 .app-name {
@@ -308,9 +283,6 @@ li.app-list::after {
     left: 3.5rem;
     top: 0em;
     font-size: 18px;
-}
-.app .app-name {
-    /* left: 4.5rem; */
 }
 
 p.subtitle {
@@ -321,22 +293,25 @@ p.subtitle {
     float: left;
     font-size: 0.9rem;
 }
+.bottom-popup p.subtitle {
+    top: 2rem;
+    left: 4.4rem;   
+}
 .app .subtitle {
     left: 3.5rem;
     top: 1.7rem;
 }
-@media (max-width: 500px) {
-    .app .subtitle {
-        /* top: 1.7rem; */
-        line-height: 1em;
-    }
-    .app .app-name {
-        top: 0.2em;
-    }
-    .app h4.app-name {
-        font-size: 18px;
-    }
+
+.app .subtitle {
+    line-height: 1em;
 }
+.app .app-name {
+    top: 0.2em;
+}
+.app h4.app-name {
+    font-size: 18px;
+}
+
 .bottom-subtitle-bar {
     position: absolute;
     top: 2.5em;
@@ -359,6 +334,7 @@ h5.bottom-subtitle-bar {
 .app-icon {
     width: 3em;
     border-radius: 13px;
+    display: inline-block;
 }
 .app .app-icon, .pay-popup-app-icon .app-icon {
     border-width: 0.5px;
@@ -561,30 +537,32 @@ h5.bottom-subtitle-bar {
     position: fixed;
     right: -100%;
     top: 0;
+    bottom: 0;
     transition: right 500ms ease;
     width: 100vw;
-    min-height: 100vh;
     background: rgb(255, 255, 255);
     z-index: 998;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
     overflow: scroll;
-}
+    -webkit-overflow-scrolling: touch;
+    padding-top: 3em;
+}   
 .app-page-content {
     overflow: scroll;
     -webkit-overflow-scrolling: touch;
-    height: 100vh;
+    top: 0;
 }
 .app-page-header {
-    position: sticky;
-    position: -webkit-sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     height: 3em;
     display: flex;
     align-items: center;
-    padding: 1em 0em 1em 1em;
+    padding: 2rem 0em 1.5rem 0.5rem;
     color: rgb(47, 126, 246);
     background-color: rgba(255, 255, 255, 0.8);
-    /* box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3); */
     -webkit-backdrop-filter: blur(10px);
     z-index: 999;
 }
@@ -593,7 +571,6 @@ h5.bottom-subtitle-bar {
     height: 1px;
     width: 100%;
     left: 0;
-    
     position: absolute;
     top: 3em;
 }
@@ -627,7 +604,7 @@ h5.bottom-subtitle-bar {
     
 }
 .fa-star {
-    color: rgb(177, 177, 177);
+    color: rgb(141, 144, 147);
 }
 .app-page-rating {
     position: relative;
@@ -636,7 +613,7 @@ h5.bottom-subtitle-bar {
 }
 .app-page-bottom-bar {
     width: 100%;
-    height: 3rem;
+    height: 3.7rem;
     padding: 0.5rem;
     padding-left: 0;
     position: relative;
@@ -655,6 +632,9 @@ h5.bottom-subtitle-bar {
 }
 .card-wrapper {
     position: relative;
+    display: grid;
+    justify-content: center;
+    -webkit-overflow-scrolling: touch;
 }
 .bottom-popup-wrapper {
     display: flex;
@@ -669,7 +649,9 @@ h5.bottom-subtitle-bar {
     background-color: rgba(230, 230, 230, 0.7);
     width: 90%;
     margin: 1em;
-    padding: 0.7em;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    padding: 0.6rem;
     border-radius: 1em;
     z-index: 9999;
     transition: all 500ms, bottom 1000ms  cubic-bezier(0.78, -0.04, 0.18, 1.14);
@@ -695,17 +677,17 @@ h5.bottom-subtitle-bar {
 }
 .screenshot {
     display: inline;
-    height: 500px;
+    width: 45vw;
     margin-right: 0.5em;
     border-radius: 0.5em;
 }
 @media (max-width: 500px) {
     .screenshot {
-        height: 400px;
+        width: 80vw;
     }
 }
 .rating-num {
-    color: rgb(177, 177, 177);
+    color: rgb(141, 144, 147);
     font-size: 1.2rem!important;
     font-weight: 500!important;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"!important;
@@ -721,4 +703,34 @@ h5.bottom-subtitle-bar {
 }
 .app-page-text-description h1 {
     font-size: 3rem;
+}
+.card-description {
+    color: black;
+}
+.small-title {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+.rating-num-text {
+    /* float: left; */
+    position: absolute;
+    top: 1.5rem;
+    left: 0;
+    font-size: 0.8rem;
+    font-weight: 100;
+    color: rgb(180, 181, 185);
+}
+.spacer {
+    width: 100%;
+    background: transparent;
+}
+.separator {
+    width: 100%;
+    height: 1px;
+    background-color: rgb(119, 119, 119);
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+.no-after::after {
+    display: none;
 }

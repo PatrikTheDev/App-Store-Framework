@@ -1,0 +1,21 @@
+{
+    "title": "<b>GAME <br> OF THE <br> DAY</b>",
+    "description": [
+        {
+            "markdown": "A game, that might not even be good, but is paid and costs $4.99",
+            "class": "DepictionMarkdownView"
+        }
+    ],
+    "background": "img/Vetřelci-cover.jpg",
+    "subtitle": null,
+    "minHeight": 400,
+    "containsApps": [],
+    "location": "img/246x0w.jpg",
+    "tint": "rgba(79,124,44, 0.8)",
+    "textTint": "white",
+    "tint2": "rgba(31, 0, 0, 0.5)",
+    "textTint2": "rgb(79, 124, 44)",
+    "screenshots": [
+        "https://www.playoholic.com/wp-content/uploads/2019/01/Alien-Blackout.jpg", "img/electra-back.png", "img/electra-back.png", "img/electra-back.png"
+    ]
+}

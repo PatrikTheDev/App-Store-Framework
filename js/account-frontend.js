@@ -24,7 +24,7 @@ function setCookie(cname,cvalue,exdays) {
   function checkCookie() {
     var user=getCookie("email");
     if (user != "") {
-      $(".log-in-homepage").hide();
+      $(".log-in-homepage").hide().addClass("was-hidden");
       $(".email").text(user);
       $(".pay-now-button").attr("onclick", "");
     } else {

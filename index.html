@@ -56,11 +56,11 @@
             </div>
             <!-- App Page -->
         <div class="app-page">
+                <div class="app-page-header">
+                        <div class="back-btn"><i class="fas fa-chevron-left"></i> Back</div>
+                        <div class="header-app-icon-wrapper"></div>
+                    </div>
             <div class="app-page-content">
-            <div class="app-page-header">
-                <div class="back-btn"><i class="fas fa-chevron-left"></i> Back</div>
-                <div class="header-app-icon-wrapper"></div>
-            </div>
             <div class="app-page-app-wrapper">
                 <div class="app-page-app-icon-wrapper"></div>
                 <h5 class="app-page-app-name"></h5>
@@ -69,7 +69,8 @@
                 <div class="app-page-bottom-bar">
                         <div class="app-page-rating">
                             <b class="rating-num"></b>
-                                <i class="far fa-star" first-star></i><i class="far fa-star" second-star></i><i class="far fa-star" third-star></i><i class="far fa-star" fourth-star></i><i class="far fa-star" fifth-star></i>
+                            <i class="far fa-star" first-star></i><i class="far fa-star" second-star></i><i class="far fa-star" third-star></i><i class="far fa-star" fourth-star></i><i class="far fa-star" fifth-star></i>
+                            <span class="rating-num-text"><span class="number-of-ratings">2,04K</span></span>
                         </div>
                 </div>
                 <div class="app-page-description">
@@ -86,9 +87,9 @@
                 <h5 class="bottom-text-bar grey-text-darker app-name noappend app-name-popupbar"></h5>
                 <p class="bottom-subtitle-bar subtitle noappend subtitle-popupbar grey-text-lighter"></p>
                 <div class="btn-download btn-download-popup noappend"></div>
-                <div class="popup-rating">
+                <!-- <div class="popup-rating">
                         <i class="far fa-star" first-star></i><i class="far fa-star" second-star></i><i class="far fa-star" third-star></i><i class="far fa-star" fourth-star></i><i class="far fa-star" fifth-star></i>
-                    </div>
+                    </div> -->
         </div>
             <!-- Cards -->
             <div class="cards-wrapper-all">
@@ -96,20 +97,20 @@
             <div class="card-wrapper">
         <div class="card app-promo" app-promo back="img/unsplash.jpg" card="coders">
             <div class="content">
-                <b class="grey-text small-title"></b>
+                <span class="grey-text small-title"></span>
                 <h1 class="grey-text-lighter card-trigger title"></h1>
                 <div class="close hidden"><i class="fas fa-times"></i></div>
                 <p class="bottom-text grey-text-lighter">Tap to meet the two teens behind Patrik's vibrant coding community.</p>
                 <div class="description-page"> <div class="container">
                 <p><b>The best thing</b> about playing games in iMessages? Bantering between turns. Wheter it's bowling or battleships, here's how to add some friendly competition to your chat threads.
                 </p>
-                <ul class="apps-list">
-                    <li class="app app-list" app="yt"> <div class="app-icon-wrapper"></div>
+                <ul class="apps-list card-apps-list">
+                    <!-- <li class="app app-list" app="yt"> <div class="app-icon-wrapper"></div>
                         <h4 class="app-name"></h4>
                         <p class="subtitle grey-text"></p>
                         <div class="btn-download right light-grey" >Get</div>
                         
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             </div>
@@ -127,11 +128,11 @@
             <div class="bottom-bar" app="alien"><div class="app-icon-wrapper app-icon-bottom-bar"></div>
                 <h5 class="bottom-text-bar grey-text-lighter app-name"></h5>
                 <p class="bottom-subtitle-bar subtitle grey-text-lighter"></p>
-                <div class="btn-download"></div>
+                <div class="btn-download btn-download-card"></div>
             </div>
             <div class="description-page lower" app="alien">
                 <div class="container">
-                    <p class="description" app="alien"></p>
+                    <p class="description card-description" app="alien"></p>
                 </div>
             </div>
         </div>
@@ -147,11 +148,11 @@
             <div class="bottom-bar" app="electra"><div class="app-icon-wrapper app-icon-bottom-bar"></div>
                 <h5 class="bottom-text-bar grey-text-lighter app-name"></h5>
                 <p class="bottom-subtitle-bar subtitle grey-text-lighter"></p>
-                <div class="btn-download"></div>
+                <div class="btn-download btn-download-card"></div>
             </div>
             <div class="description-page" app="electra">
                 <div class="container">
-                    <p class="description" app="electra"></p>
+                    <p class="description card-description" app="electra"></p>
                 </div>
             </div>
             
@@ -160,10 +161,11 @@
             <div class="card-wrapper">
                 <div class="card app-promo full" card="featured-apps">
                     <div class="content">
-                        <b class="grey-text small-title" card="featured-apps"></b>
+                        <span class="grey-text small-title" card="featured-apps"></span>
                         <h1 class="card-trigger title" card="featured-apps"></h1>
                         <div class="close hidden"><i class="fas fa-times"></i></div>
-                        <ul class="apps-list apps-list-all">
+                        <ul class="apps-list card-apps-list apps-list-featured">
+                            <!-- Apps get spawned here -->
                         </ul>
                         
                     
@@ -177,11 +179,14 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.4.2/markdown-it.min.js"></script>
     <script src="js/spawn.js"></script>
+    <script src="js/depiction-render.js"></script>
     <script src="js/app-global.js"></script>
     <script src="js/main-parse.js"></script>
     <script src="js/content-parse.js"></script>
     <script src="js/screenshots.js"></script>
+    <script src="js/card-append.js"></script>
     <script src="js/card-parse.js"></script>
     <script src="js/translate.js"></script>
     <script src="js/pay-popup.js"></script>

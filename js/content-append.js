@@ -65,8 +65,8 @@ function appendBottomBarColor(path, element) {
     });
     element.css("background-color", JSONItems.tint2);
 }
-function appendDescription(path, element) {
-    var alreadyRan = element.attr("screenshotsAppended");
+function appendDescriptionOLD(path, element) {
+    var alreadyRan = element.attr("alreadyRan");
     if (alreadyRan != "true") {
         var JSONItems = [];
         $.ajax({
@@ -77,18 +77,11 @@ function appendDescription(path, element) {
               JSONItems = data;
             }
         });
-        // console.log(JSONItems);
         var keyname = Object.keys(JSONItems.description);
-        console.log(keyname);
         for (var i = 0; i < keyname.length; i++) { 
-            console.log(i);
             var currentKey = keyname[i];
-            console.log(JSONItems.description[currentKey]);
-            console.log(JSONItems.description[i]);
             
-            console.log(keyname);
             var isHeader1 = currentKey.includes("Header1");
-            console.log(isHeader1);
             var isHeader2 = currentKey.includes("Header2");
             var isItalic = currentKey.includes("Italic");
             var isBold = currentKey.includes("Bold");
@@ -114,10 +107,22 @@ function appendDescription(path, element) {
                 element.append("<br>");
             }
         }
-        console.log("ran");
     }
-    element.attr("screenshotsAppended", "true");
+    element.attr("alreadyRan", "true");
     
 
 
+}
+function appendCardText(path, element, type) {
+    var JSONItems = [];
+    $.ajax({
+        url: path,
+        async: false,
+        dataType: 'json',
+        success: function (data) {
+          JSONItems = data;
+        }
+    });
+    var appendedText = JSONItems[type];
+    element.html("" + appendedText);
 }

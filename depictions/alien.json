@@ -1,10 +1,11 @@
 {
     "appName": "Alien: Blackout",
-    "description": {
-        "textBold": "A game,",
-        "normal": "that might not even be good, but is",
-        "Bold": "paid and costs $4.99"
-    },
+    "description": [
+        {
+            "markdown": "A game, that might not even be good, but is paid and costs $4.99",
+            "class": "DepictionMarkdownView"
+        }
+    ],
     "icon": "img/246x0w.jpg",
     "subtitle": "Space Survival Horror",
     "price": "$4.99",
@@ -13,9 +14,10 @@
     "textTint": "white",
     "tint2": "rgba(31, 0, 0, 0.5)",
     "textTint2": "rgb(79, 124, 44)",
-    "rating": "4",
+    "rating": 4,
+    "numberOfRatings": 1,
     "screenshots": [
-        "img/electra-back.png", "img/electra-back.png", "img/electra-back.png", "img/electra-back.png"
+        "https://cdn57.androidauthority.net/wp-content/uploads/2019/01/alien-blackout-5.jpg", "https://sm.ign.com/ign_cz/screenshot/default/2018-11-1-mendel-announcement-screenshots-1242x2208-final-po_tkks.jpg", "https://www.playoholic.com/wp-content/uploads/2019/01/Alien-Blackout.jpg"
     ],
     "hasHeaderPhoto": true,
     "headerPhoto": "screenshots/alien/headerPhoto.jpg"

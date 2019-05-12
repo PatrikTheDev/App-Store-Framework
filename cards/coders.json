@@ -1,0 +1,22 @@
+{
+    "title": "Bringing Coders Together",
+    "description": [
+        {
+            "markdown": "**The best thing** about playing games in iMessages? Bantering between turns. Wheter it's bowling or battleships, here's how to add some friendly competition to your chat threads.",
+            "class": "DepictionMarkdownView"
+        }
+    ],
+    "background": "img/unsplash.jpg",
+    "subtitle": "APP CULTURE",
+    "containsApps": [
+        "yt"
+    ],
+    "minHeight": 400,
+    "tint": "rgba(79,124,44, 0.8)",
+    "textTint": "white",
+    "tint2": "rgba(31, 0, 0, 0.5)",
+    "textTint2": "rgb(79, 124, 44)",
+    "screenshots": [
+        "img/electra-back.png", "img/electra-back.png", "img/electra-back.png", "img/electra-back.png"
+    ]
+}

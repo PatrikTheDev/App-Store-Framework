@@ -1,17 +1,21 @@
 {
     "appName": "Snapchat",
-    "description": {
-        "text": "Really good app to watch Pewds!"
-    },
+    "description": [
+        {
+            "markdown": "A good app to send pics to somebody who will screenshot it",
+            "class": "DepictionMarkdownView"
+        }
+    ],
     "icon": "icons/snapchat.jpg",
-    "subtitle": "Videos, Music etc.",
+    "subtitle": "Pics, nudes, etc.",
     "price": "Free",
     "location": "icons/snapchat.jpg",
     "tint": "rgb(255, 250, 84)",
     "textTint": "black",
     "tint2": "black",
     "textTint2": "rgb(235, 222, 74)",
-    "rating": "3",
+    "rating": 3,
+    "numberOfRatings": 1,
     "screenshots": [
         "screenshots/yt/1.PNG", "screenshots/yt/2.PNG", "screenshots/yt/3.PNG", "screenshots/yt/4.png"
     ],

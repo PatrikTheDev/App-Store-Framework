@@ -1,4 +1,3 @@
-$(".description").css("visibility", "hidden");
 $(".card-trigger").click(function() {
     var card = $(this).closest(".card");
     var cardPosition = card.parent().offset();
@@ -16,14 +15,20 @@ $(".card-trigger").click(function() {
             "height": "100vh",
             "border-radius": 0
         });
-        card.css({
+        card.not(".full").css({
             "width": "100vw",
             "height": "50vh",
+            "border-radius": 0
+        });
+        $(".full.fullscreen").css({
+            "width": "100vw",
+            "height": "100vh",
             "border-radius": 0
         });
     }, 10);
     card.addClass("fullscreen");
     card.addClass("opened");
+    $(".apps-list-featured li:nth-child(4)").removeClass("no-after");
     $(".content").addClass("fullscreen");
     $(".title").addClass("fullscreen");
     $(".close").removeClass("hidden");
@@ -33,18 +38,19 @@ $(".card-trigger").click(function() {
     $(".card").not(".active").hide().attr("wasHidden", "true");
     $(".hide-on-card-open").hide();
     $(".bottom-bar").addClass("fullscreen");
-    
+    $(".apps-list-featured li:nth-child(4)").nextAll().show();
     bottomPopupInit(card);
 });
 $(".close").click(function() {
     $(".content").removeClass("fullscreen");
+    $(".apps-list-featured li:visible:last").addClass("no-after");
     $(".bottom-popup").css("bottom", "-100%");
-    $(".hide-on-card-open").removeClass("fullscreen");
+    $(".hide-on-card-open").not(".was-hidden").removeClass("fullscreen").show();
+    $(".title").removeClass("fullscreen");
     var card = $(this).closest(".card");
     card.removeClass("fullscreen");
     var back = card.attr("back");
     var cardPosition = card.parent().offset();
-    $(".today").show();
     card.parents(".card-wrapper").css({
         "top": 0,
         "left": 0,
@@ -64,7 +70,7 @@ $(".close").click(function() {
         card.parents(".card-wrapper").removeAttr("style");
         card.attr("style", "background: url(" + back + ") center; background-size: cover;");
     }, 10);
-    
+    $(".apps-list-featured li:nth-child(4)").nextAll().hide();    
     
     $(this).closest(".opened").removeClass("opened");
     $(".close").addClass("hidden");
