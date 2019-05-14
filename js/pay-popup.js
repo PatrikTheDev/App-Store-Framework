@@ -22,7 +22,7 @@ function payPopupInit(parent) {
       $(".pay-popup-app-icon").html('<img class="app-icon" src="' + refAppIconSrc + '">');
       $(".pay-popup-price").text("" + refAppPrice);
       checkPayCookie(refAppFiles);
-      $(".pay-now").css("visibility", "visible");
+      $(".pay-now").css("opacity", "1");
       if (window.innerWidth < 700) {
         $(".pay-now").css("bottom", "0em");
       } else {
@@ -57,6 +57,6 @@ $(".pay-now-button").click(function(){
 });
 function payPopupClose() {
     $(".pay-now").css("bottom", "-100%");
-    $(".pay-now").css("visibility", "hidden");
+    $(".pay-now").css("opacity", "0");
     resetRating($(".pay-fifth-star"));
 }

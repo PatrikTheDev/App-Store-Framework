@@ -67,9 +67,6 @@ function appendDescription(path, element) {
         }
     }
     element.attr("alreadyRan", "true");
-    
-
-
 }
 function renderMarkdown(markdown) {
     var md = window.markdownit();

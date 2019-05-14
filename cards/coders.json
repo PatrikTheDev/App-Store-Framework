@@ -11,6 +11,7 @@
     "containsApps": [
         "yt"
     ],
+    "bottomText": "Tap to meet the two teens behind Patrik's vibrant coding community.",
     "minHeight": 400,
     "tint": "rgba(79,124,44, 0.8)",
     "textTint": "white",

@@ -67,18 +67,10 @@ i.right {
 }
 .content {
     margin-top: 1em;
-    margin-left: 2em;
-    margin-right: 2em;
+    margin-left: 1.3em;
+    margin-right: 1.3em;
     margin-bottom: 0.5em;
     height: 100%;
-}
-@media (max-width: 600px) {
-    .content {
-        margin-top: 1em;
-        margin-left: 1.3em;
-        margin-right: 1.3em;
-        margin-bottom: 0.5em;
-    }
 }
 .bottom-text-bar {
     margin-top: 0.5em;
@@ -243,7 +235,6 @@ h5.bottom-text-bar {
     min-height: 50vh;
     background-color: white;
     padding-top: 1em;
-
 }
 .description-page.lower.fullscreen {
     top: 70vh;
@@ -342,16 +333,16 @@ h5.bottom-subtitle-bar {
     border-color: rgb(187, 187, 187); 
 }
 .pay-now {
-    transition: bottom 500ms 100ms, visibility 500ms 300ms;
+    transition: bottom 500ms 100ms, visibility 500ms 300ms, opacity 500ms 100ms;
     padding: 1em;
     position: fixed;
-    visibility: hidden;
+    opacity: 0;
     bottom: -100%;
     width: 30em;
     left: calc(50% - 15em);
     background-color: rgba(255, 255, 255, 0.8);
     z-index: 9999;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 0 200vh rgba(0, 0, 0, 0.4);
     border-radius: 1em;
     -webkit-backdrop-filter: blur(15px);
 }

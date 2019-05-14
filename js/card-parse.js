@@ -16,6 +16,10 @@ function parseCards(path) {
       var currentCard = this.getAttribute("card");
       appendCardText(JSONItems.jsons[currentCard], $(this), "title");
     });
+    $(".bottom-text").each(function() {
+      var currentCard = this.getAttribute("card");
+      appendCardText(JSONItems.jsons[currentCard], $(this), "bottomText");
+    })
     $(".small-title").each(function() {
       var currentCard = this.getAttribute("card");
       appendCardText(JSONItems.jsons[currentCard], $(this), "subtitle");
