@@ -36,20 +36,20 @@ class UIAppPage {
         appendDescription(this.depictionPath, $(".app-page-text-description"));
     }
     initRating() {
-        var depictionPath = this.depictionPath;
+        var JSONItems = [];
         $.ajax({
             url: this.depictionPath,
             async: false,
             dataType: 'json',
             success: function (data) {
-              depictionPath = data;
+              JSONItems = data;
             }
         });
-        var refAppRating = depictionPath.rating;
+        var refAppRating = JSONItems.rating;
         var ratingsText = "ratings";
         parseRating(refAppRating, $("[first-star]"), $("[second-star]"), $("[third-star]"), $("[fourth-star]"), $("[fifth-star]"));
         $(".rating-num").text("" + refAppRating);
-        $(".number-of-ratings").text("" + depictionPath.numberOfRatings + " " + ratingsText);
+        $(".number-of-ratings").text("" + JSONItems.numberOfRatings + " " + ratingsText);
     }
     initScreenshots() {
         parseScreenshots($(".app-page-screenshot-wrapper"), this.depictionPath);
@@ -82,10 +82,12 @@ class UIAppPage {
     // Open appPage
     open() {
         $(".app-page").css({"visibility": "visible", "right": "0"});
+        $(".app-page-header").css({right: "0", visibility: "visible"});
     }
     close() {
         toggleCards();
         $(".app-page").css("right", "-100%");
+        $(".app-page-header").css({right: "-100%", visibility: "hidden"});
         resetScreenshots($(".app-page-screenshot-wrapper"));
         resetDescription($(".app-page-text-description"));
         resetRating($("[fifth-star]"));
@@ -97,6 +99,7 @@ function appPageInit(parent) {
     var depictionPath = parent.attr("data-depictionJSON");
     var appPage = new UIAppPage("" + depictionPath);
     appPage.initAll();
+    appPage = null; // Free up some ram
 }
 
 $(".app-name").click(function() {
@@ -108,6 +111,7 @@ $(".back-btn").click(function() {
     var depictionPath = "depictions/default.json"
     var appPage = new UIAppPage("" + depictionPath);
     appPage.close();
+    appPage = null; // Free up some ram
 });
 
 function resetScreenshots(parent) {

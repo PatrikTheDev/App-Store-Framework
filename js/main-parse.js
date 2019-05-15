@@ -1,9 +1,9 @@
 var JSONItems = [];
 $.getJSON( "js/main.json", function( data){
   JSONItems = data;
-  parseCards(JSONItems.jsons["cards"]);
+  parseCards();
   $(".card-apps-list").each(function(){
-    spawnAppsInCards($(this), JSONItems.jsons["cards"]);
+    spawnAppsInCards($(this), JSONItems.cards);
   });
   parseContent("depictions/");
 });

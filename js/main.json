@@ -2,8 +2,10 @@
     "jsons": {
         "cards": "cards/cards.json",
         "apps": "js/content.json"
-    }, "languages": {
-        "en-EN": "",
-        "cs-CZ": "lang/cz.json"
+    }, "cards": {
+        "coders": "cards/coders.json",
+        "alien": "cards/alien.json",
+        "electra": "cards/electra.json",
+        "featured-apps": "cards/featured-apps.json"
     }
 }

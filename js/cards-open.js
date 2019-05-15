@@ -97,5 +97,5 @@ $(".card-trigger").click(function() {
 $(".close").click(function() {
     let card = new UICard($(this));
     card.close();
-    card = null;
+    card = null; // Free up some ram
 });

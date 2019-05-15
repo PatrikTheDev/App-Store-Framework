@@ -33,8 +33,9 @@ function spawnApps(parent, path) {
         appPageInit($(this));
     });
 }
-function spawnAppsInCards(parent, path) {
+function spawnAppsInCards(parent, pathObject) {
     var currentCard = parent.attr("card");
+    var path = pathObject[currentCard];
     var JSONItems = [];
     $.ajax({
         url: path,
@@ -44,30 +45,16 @@ function spawnAppsInCards(parent, path) {
           JSONItems = data;
         }
     });
-    path = JSONItems.jsons[currentCard];
-    $.ajax({
-        url: path,
-        async: false,
-        dataType: 'json',
-        success: function (data) {
-          JSONItems = data;
-        }
-    });
-    // spawnApps($(this), JSONItems.containsApps);
     var i;
     for (i = 0; i < JSONItems.containsApps.length; i++) { 
         if (JSONItems.containsApps[i] != null && JSONItems.containsApps[i] != undefined) {
-            parent.append('\
-            <li class="app app-list" app="' + JSONItems.containsApps[i] + '">\
-            <div class="app-icon-wrapper" app="' + JSONItems.containsApps[i] + '">\
-            </div><h4 class="app-name" app="' + JSONItems.containsApps[i] + '">\
-            </h4><p class="subtitle grey-text" app="' + JSONItems.containsApps[i] + '">\
-            </p>\
+            parent.append('<li class="app app-list" app="' + JSONItems.containsApps[i] + '">\
+            <div class="app-icon-wrapper" app="' + JSONItems.containsApps[i] + '"></div>\
+            <h4 class="app-name" app="' + JSONItems.containsApps[i] + '"></h4>\
+            <p class="subtitle grey-text" app="' + JSONItems.containsApps[i] + '"></p>\
             <div class="btn-download right light-grey" app="' + JSONItems.containsApps[i] + '">Get</div>\
             </li>');
-            
         }
-        
     }
     $(".apps-list-featured li:nth-child(4)").nextAll().hide();
     $(".apps-list-featured li:visible:last").addClass("no-after");

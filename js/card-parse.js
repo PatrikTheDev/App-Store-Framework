@@ -1,31 +1,30 @@
-function parseCards(path) {
-  var JSONItems = [];
-    $.ajax({
-      url: path,
-      async: false,
-      dataType: 'json',
-      success: function (data) {
-        JSONItems = data;
-      }
-    });
-    $(".card").each(function() {
-      var currentCard = this.getAttribute("card");
-      appendCardCSS(JSONItems.jsons[currentCard], $(this));
-    });
-    $(".title").each(function() {
-      var currentCard = this.getAttribute("card");
-      appendCardText(JSONItems.jsons[currentCard], $(this), "title");
-    });
-    $(".bottom-text").each(function() {
-      var currentCard = this.getAttribute("card");
-      appendCardText(JSONItems.jsons[currentCard], $(this), "bottomText");
-    })
-    $(".small-title").each(function() {
-      var currentCard = this.getAttribute("card");
-      appendCardText(JSONItems.jsons[currentCard], $(this), "subtitle");
-    });
-    $(".card-description").each(function() {
-      var currentCard = this.getAttribute("card");
-      appendDescription(JSONItems.jsons[currentCard], $(this));
-    });
-};
+function parseCards() {
+  var directoryPrefix = "cards/";
+  var currentCard;
+  var path;
+  $(".card").each(function() {
+    currentCard = this.getAttribute("card");
+    path = directoryPrefix + currentCard + ".json";
+    appendCardCSS(path, $(this));
+  });
+  $(".title").each(function() {
+    currentCard = this.getAttribute("card");
+    path = directoryPrefix + currentCard + ".json";
+    appendCardText(path, $(this), "title");
+  });
+  $(".bottom-text").each(function() {
+    currentCard = this.getAttribute("card");
+    path = directoryPrefix + currentCard + ".json";
+    appendCardText(path, $(this), "bottomText");
+  });
+  $(".small-title").each(function() {
+    currentCard = this.getAttribute("card");
+    path = directoryPrefix + currentCard + ".json";
+    appendCardText(path, $(this), "subtitle");
+  });
+  $(".card-description").each(function() {
+    currentCard = this.getAttribute("card");
+    path = directoryPrefix + currentCard + ".json";
+    appendDescription(path, $(this));
+  });
+}

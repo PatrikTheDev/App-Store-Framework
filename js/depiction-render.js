@@ -33,7 +33,6 @@ function appendDescription(path, element) {
             } else if (currentClass == "DepictionMarkdownView") {
                 // Setup markdown
                 markdown = currentView.markdown;
-                markdownHTML;
                 useRawFormat = currentView.useRawFormat || false;
                 if (useRawFormat == false) {
                     markdownHTML = renderMarkdown(markdown);
@@ -71,5 +70,5 @@ function appendDescription(path, element) {
 function renderMarkdown(markdown) {
     var md = window.markdownit();
     var result = md.render(markdown);
-    return result
+    return result;
 }
