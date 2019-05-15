@@ -93,7 +93,9 @@ h5.bottom-text-bar {
 .bottom-text {
     position: absolute;
     bottom: 0;
+    left: 1.3em;
     padding-top: 0.5em;
+    right: 1.3em;
 }
 @media (min-width: 600px) {
     .app-promo {
