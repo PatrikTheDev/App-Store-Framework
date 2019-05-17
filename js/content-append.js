@@ -1,70 +1,81 @@
-function appendBtnDownloadContent(path, element) {
-    var JSONItems = [];
-    $.ajax({
-        url: path,
-        async: false,
-        dataType: 'json',
-        success: function (data) {
-          JSONItems = data;
-        }
-    });
-    var price = JSONItems.price;
+function appendBtnDownloadContent(path, element, JSONData) {
+    if (JSONData == undefined) {
+        $.ajax({
+            url: path,
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+            JSONData = data;
+            console.log("Parsed a JSON");
+            }
+        });
+    }
+    var price = JSONData.price;
     if (price == "Free") {
         price = "Get";
-    };
+    }
     element.text("" + price);
-    element.css({"background-color": JSONItems.tint, "color": JSONItems.textTint});
-};
-function appendSubtitleContent(path, element) {
-    var JSONItems = [];
-    $.ajax({
-        url: path,
-        async: false,
-        dataType: 'json',
-        success: function (data) {
-          JSONItems = data;
-        }
-    });
-    element.html("" + JSONItems.subtitle);
-    element.css("color", JSONItems.textTint2);
-};
-function appendAppName(path, element) {
-    var JSONItems = [];
-    $.ajax({
-        url: path,
-        async: false,
-        dataType: 'json',
-        success: function (data) {
-          JSONItems = data;
-        }
-    });
-    element.text("" + JSONItems.appName);
-};
-function appendIcon(path, element, iconClass) {
-    var JSONItems = [];
-    $.ajax({
-        url: path,
-        async: false,
-        dataType: 'json',
-        success: function (data) {
-          JSONItems = data;
-        }
-    });
-    element.html('<img class="' + iconClass + '" src="' + JSONItems.icon + '">');
-    element.attr("icon-src", JSONItems.icon);
-};
-function appendBottomBarColor(path, element) {
-    var JSONItems = [];
-    $.ajax({
-        url: path,
-        async: false,
-        dataType: 'json',
-        success: function (data) {
-          JSONItems = data;
-        }
-    });
-    element.css("background-color", JSONItems.tint2);
+    element.css({"background-color": JSONData.tint, "color": JSONData.textTint});
 }
+function appendSubtitleContent(path, element, JSONData) {
+    if (JSONData == undefined) {
+        $.ajax({
+            url: path,
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+            JSONData = data;
+            console.log("Parsed a JSON");
+            }
+        });
+    }
+    element.html("" + JSONData.subtitle);
+    element.css("color", JSONData.textTint2);
+}
+function appendAppName(path, element, JSONData) {
+    if (JSONData == undefined) {
+        $.ajax({
+            url: path,
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+            JSONData = data;
+            console.log("Parsed a JSON");
+            }
+        });
+    }
+    element.text("" + JSONData.appName);
+}
+function appendIcon(path, element, iconClass, JSONData) {
+    if (JSONData == undefined) {
+        $.ajax({
+            url: path,
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+            JSONData = data;
+            console.log("Parsed a JSON");
+            }
+        });
+    }
+    element.html('<img class="' + iconClass + '" src="' + JSONData.icon + '">');
+    element.attr("icon-src", JSONData.icon);
+}
+function appendBottomBarColor(path, element, JSONData) {
+    if (JSONData == undefined) {
+        $.ajax({
+            url: path,
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+            JSONData = data;
+            console.log("Parsed a JSON");
+            }
+        });
+    }
+    element.css("background-color", JSONData.tint2);
+}
+// Old description appending method (ineffective). DO NOT USE! This will be removed soon
 function appendDescriptionOLD(path, element) {
     var alreadyRan = element.attr("alreadyRan");
     if (alreadyRan != "true") {
@@ -109,9 +120,6 @@ function appendDescriptionOLD(path, element) {
         }
     }
     element.attr("alreadyRan", "true");
-    
-
-
 }
 function appendCardText(path, element, type) {
     var JSONItems = [];
@@ -121,6 +129,7 @@ function appendCardText(path, element, type) {
         dataType: 'json',
         success: function (data) {
           JSONItems = data;
+          console.log("Parsed a JSON");
         }
     });
     var appendedText = JSONItems[type];

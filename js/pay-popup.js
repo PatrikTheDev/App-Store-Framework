@@ -14,9 +14,9 @@ function payPopupInit(parent) {
       var refAppTint = JSONItems.tint;
       var refAppTextTint = JSONItems.textTint;
       var refAppTextTint2 = JSONItems.textTint2;
-      var refAppRating = JSONItems.rating;
       
       $(".pay-popup-name").text("" + refAppName);
+      $(".pay-popup-name").attr("data-depictionJSON", depictionPath);
       $(".pay-popup-subtitle").text("" + refAppSubtitle);
       $(".pay-popup-subtitle").css("color", refAppTextTint2);
       $(".pay-popup-app-icon").html('<img class="app-icon" src="' + refAppIconSrc + '">');
@@ -28,9 +28,7 @@ function payPopupInit(parent) {
       } else {
         $(".pay-now").css("bottom", "1em");
       }
-      
       $(".pay-now-button").css({"background-color": refAppTint, "color": refAppTextTint});
-      parseRating(refAppRating, $(".pay-first-star"), $(".pay-second-star"), $(".pay-third-star"), $(".pay-fourth-star"), $(".pay-fifth-star"));
       $(".bottom-popup").css("bottom", "-100%");
   });
 }

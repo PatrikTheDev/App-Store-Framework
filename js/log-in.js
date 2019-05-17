@@ -1,13 +1,17 @@
 function logInPopupOpen() {
-    $(".log-in").css("visibility", "visible");
-    $(".log-in").css("bottom", "2em");
+    $(".log-in").css({opacity: 1});
+    if (window.innerWidth < 700) {
+        $(".log-in").css("bottom", "0em");
+      } else {
+        $(".log-in").css("bottom", "1em");
+      }
 }
 $(".log-in-homepage").click(function() {
     logInPopupOpen();
 });
 function logInPopupClose() {
-    $(".log-in").css("bottom", "-100%");
-    $(".log-in").css("visibility", "hidden");
+    $(".log-in").css({bottom: "-100%"});
+    $(".log-in").css({opacity: 0});
 }
 $(".cancel").click(function() {
     logInPopupClose();

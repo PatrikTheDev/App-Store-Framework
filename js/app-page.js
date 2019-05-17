@@ -18,24 +18,8 @@ class UIAppPage {
         $(".app-page").attr("cardsWereVisible", cardsWereVisible);
         return cardsWereVisible;
     }
-    initAppIcon() {
-        appendIcon(this.depictionPath, $(".app-page-app-icon-wrapper"), "app-page-app-icon");
-    }
-    initAppName() {
-        appendAppName(this.depictionPath, $(".app-page-app-name"));
-        $(".app-page-app-name").attr("data-depictionJSON", this.depictionPath);
-    }
-    initBtnDownload() {
-        appendBtnDownloadContent(this.depictionPath, $(".app-page-btn-download"));
-        $(".app-page-btn-download").attr("data-depictionJSON", this.depictionPath);
-    }
-    initSubtitle() {
-        appendSubtitleContent(this.depictionPath, $(".app-page-app-subtitle"));
-    }
-    initDescription() {
-        appendDescription(this.depictionPath, $(".app-page-text-description"));
-    }
-    initRating() {
+    parseJSON(pathToJSON) {
+        var path = pathToJSON || this.depictionPath;
         var JSONItems = [];
         $.ajax({
             url: this.depictionPath,
@@ -45,16 +29,51 @@ class UIAppPage {
               JSONItems = data;
             }
         });
-        var refAppRating = JSONItems.rating;
+        this.JSONData = JSONItems;
+        return JSONItems;
+    }
+    initAppIcon() {
+        appendIcon(this.depictionPath, $(".app-page-app-icon-wrapper"), "app-page-app-icon", this.JSONData);
+    }
+    initAppName() {
+        appendAppName(this.depictionPath, $(".app-page-app-name"), this.JSONData);
+        $(".app-page-app-name").attr("data-depictionJSON", this.depictionPath);
+    }
+    initBtnDownload() {
+        appendBtnDownloadContent(this.depictionPath, $(".app-page-btn-download"), this.JSONData);
+        $(".app-page-btn-download").attr("data-depictionJSON", this.depictionPath);
+    }
+    initSubtitle() {
+        appendSubtitleContent(this.depictionPath, $(".app-page-app-subtitle"), this.JSONData);
+    }
+    initDescription() {
+        appendDescription(this.depictionPath, $(".app-page-text-description"), this.JSONData);
+    }
+    initRating() {
+        var JSONData = this.JSONData;
+        if (JSONData == undefined) {
+            $.ajax({
+                url: this.depictionPath,
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                JSONData = data;
+                console.log("Parsed a JSON");
+                }
+            });
+        }
+        var refAppRating = JSONData.rating;
         var ratingsText = "ratings";
         parseRating(refAppRating, $("[first-star]"), $("[second-star]"), $("[third-star]"), $("[fourth-star]"), $("[fifth-star]"));
         $(".rating-num").text("" + refAppRating);
-        $(".number-of-ratings").text("" + JSONItems.numberOfRatings + " " + ratingsText);
+        $(".number-of-ratings").text("" + JSONData.numberOfRatings + " " + ratingsText);
     }
     initScreenshots() {
-        parseScreenshots($(".app-page-screenshot-wrapper"), this.depictionPath);
+        parseScreenshots($(".app-page-screenshot-wrapper"), this.depictionPath, this.JSONData);
     }
     initAll() {
+        // Parse the JSON
+        this.parseJSON();
         // Append app name
         this.initAppName();
         // Append subtitle
@@ -81,7 +100,7 @@ class UIAppPage {
     }
     // Open appPage
     open() {
-        $(".app-page").css({"visibility": "visible", "right": "0"});
+        $(".app-page").css({visibility: "visible", right: "0"});
         $(".app-page-header").css({right: "0", visibility: "visible"});
     }
     close() {
@@ -103,7 +122,6 @@ function appPageInit(parent) {
 }
 
 $(".app-name").click(function() {
-    
     appPageInit($(this));
 });
 
@@ -128,7 +146,6 @@ function toggleCards() {
     if (wasVisible == "true") {
         $(".card").show();
     }
-    
 }
 function parseRating(refAppRating, firstStar, secondStar, thirdStar, fourthStar, fifthStar) {
     if (refAppRating == 1) {

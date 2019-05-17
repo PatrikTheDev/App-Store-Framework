@@ -33,9 +33,9 @@ function spawnApps(parent, path) {
         appPageInit($(this));
     });
 }
-function spawnAppsInCards(parent, pathObject) {
+function spawnAppsInCards(parent, object, eachContainer) {
     var currentCard = parent.attr("card");
-    var path = pathObject[currentCard];
+    var path = object[currentCard];
     var JSONItems = [];
     $.ajax({
         url: path,

@@ -36,4 +36,4 @@ function parseContent(depictionFolder) {
     $(this).attr("data-depictionJSON", depictionPath);
     appendBottomBarColor(depictionPath, $(this));
   });
-};
+}
