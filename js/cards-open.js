@@ -29,7 +29,7 @@ class UICard {
                 "border-radius": "0",
                 "min-height": ''
             });
-            $(".full.fullscreen").css({
+            $(".card.full.fullscreen").css({
                 "width": "100vw",
                 "height": "100vh",
                 "border-radius": "0",

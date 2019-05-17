@@ -11,6 +11,14 @@ body {
 ::-webkit-scrollbar { 
     display: none; 
 }
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
 h1 {
     font-size: 2rem;
     font-weight: 500;
@@ -18,12 +26,11 @@ h1 {
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     margin-bottom: 0;
-  }
-  
-  p {
+}
+p {
     margin-top: 0;
     margin-bottom: 1rem;
-  }
+}
 @media (max-width: 500px) {
     h5 {
         font-size: 1.01rem;
@@ -38,17 +45,40 @@ small {
 .container {
     max-width: unset;
     width: unset;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-left: 2em;
+    margin-right: 2em;
 }
-
+@media (max-width: 600px) {
+    .container {
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+    }
+}
 a {
     text-decoration: none !important;
     color: black;
-} 
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+button, input {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
 i.right {
     position: absolute;
     top: 2rem;
     right: 2rem;
     font-size: 2em
+}
+.today-view {
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
 }
 .card {
     border-radius: 1em;
@@ -124,17 +154,6 @@ h5.bottom-text-bar {
 .grey-text-darker {
     color: darkgray;
 }
-.container {
-    margin-left: 2em;
-    margin-right: 2em;
-    
-}
-@media (max-width: 600px) {
-    .container {
-        margin-left: 0.5em;
-        margin-right: 0.5em;
-    }
-}
 .bottom-bar {
     position: absolute;
     bottom: 0;
@@ -202,21 +221,26 @@ h5.bottom-text-bar {
 
 }
 
-.hidden {
-    display: none;
-}
 .close {
     position: absolute;
+    font-size: 1.2rem;
     top: 1.5em;
     right: 2em;
     width: 2em;
     height: 2em;
-    padding-right: 0.5em;
-    padding-left: 0.65em;
-    padding-top: 0.5em;
     border-radius: 50%;
-    background-color: white;
-    
+    background-color: rgba(255, 255, 255, 0.5);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+.close:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.hidden {
+    display: none;
 }
 .hidden-rollout {
     max-height: 0;

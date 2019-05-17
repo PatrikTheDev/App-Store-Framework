@@ -4,8 +4,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>App Store</title>
@@ -25,7 +25,8 @@
                     <div class="log-in-btn-wrapper"><div class="log-in-btn" onclick="logIn()">Log in</div></div>
                     <p class="reporterror"></p>
                 </div>
-        <div class="row container my-4">
+        <!-- Today view/text -->
+        <div class="row container my-4 today-view">
             <h1 class="text-left today hide-on-card-open" today>Today</h1>
             <a href="#" class="log-in-homepage hide-on-card-open">
                 <i class="far fa-user right"></i>
@@ -82,77 +83,70 @@
                 <h5 class="bottom-text-bar grey-text-darker app-name noappend app-name-popupbar"></h5>
                 <p class="bottom-subtitle-bar subtitle noappend subtitle-popupbar grey-text-lighter"></p>
                 <div class="btn-download btn-download-popup noappend"></div>
-                <!-- <div class="popup-rating">
-                        <i class="far fa-star" first-star></i><i class="far fa-star" second-star></i><i class="far fa-star" third-star></i><i class="far fa-star" fourth-star></i><i class="far fa-star" fifth-star></i>
-                    </div> -->
         </div>
-            <!-- Cards -->
-            <div class="cards-wrapper-all">
-
+        <!-- Cards -->
+        <div class="cards-wrapper-all">
+            <!-- Cards go here -->
             <div class="card-wrapper">
-        <div class="card app-promo" app-promo card="coders">
-            <div class="content">
-                <span class="grey-text small-title"></span>
-                <h1 class="grey-text-lighter card-trigger title"></h1>
-                <div class="close hidden"><i class="fas fa-times"></i></div>
-                <p class="bottom-text grey-text-lighter"></p>
-                <div class="description-page"> <div class="container">
-                <p><b>The best thing</b> about playing games in iMessages? Bantering between turns. Wheter it's bowling or battleships, here's how to add some friendly competition to your chat threads.
-                </p>
-                <ul class="apps-list card-apps-list">
-                    <!-- <li class="app app-list" app="yt"> <div class="app-icon-wrapper"></div>
-                        <h4 class="app-name"></h4>
-                        <p class="subtitle grey-text"></p>
-                        <div class="btn-download right light-grey" >Get</div>
-                        
-                    </li> -->
-                </ul>
-            </div>
-            </div>
-            </div>
-        </div>
-    </div>
-
-    
-            <div class="card-wrapper">
-        <div class="card app-promo" card="alien">
-            <div class="close hidden"><i class="fas fa-times"></i></div>
-            <div class="content card-trigger">
-                <h1 class="grey-text-lighter lower title" card="alien"></h1>
-            </div>
-            <div class="bottom-bar" app="alien"><div class="app-icon-wrapper app-icon-bottom-bar"></div>
-                <h5 class="bottom-text-bar grey-text-lighter app-name"></h5>
-                <p class="bottom-subtitle-bar subtitle grey-text-lighter"></p>
-                <div class="btn-download btn-download-card"></div>
-            </div>
-            <div class="description-page" app="alien">
-                <div class="container">
-                    <p class="description card-description" app="alien"></p>
+                <div class="card app-promo" app-promo card="coders">
+                    <div class="close hidden"><i class="fas fa-times"></i></div>
+                    <div class="content card-trigger">
+                        <span class="grey-text small-title"></span>
+                        <h1 class="grey-text-lighter card-trigger title"></h1>
+                        <p class="bottom-text grey-text-lighter"></p>
+                    </div>
+                    <div class="description-page"> <div class="container">
+                        <p><b>The best thing</b> about playing games in iMessages? Bantering between turns. Wheter it's bowling or battleships, here's how to add some friendly competition to your chat threads.
+                        </p>
+                        <ul class="apps-list card-apps-list">
+                            <!-- Apps get spawned here -->
+                            <!-- <li class="app app-list" app="yt"> <div class="app-icon-wrapper"></div>
+                                <h4 class="app-name"></h4>
+                                <p class="subtitle grey-text"></p>
+                                <div class="btn-download right light-grey">Get</div>
+                            </li> -->
+                        </ul>
+                    </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    
-    <div class="card-wrapper">
-        <div class="card app-promo" app="electra" card="electra">
-            <div class="close hidden"><i class="fas fa-times"></i></div>
-            <div class="content card-trigger">
-                <h1 class="grey-text-lighter lower title" card="electra"></h1>
-            </div>
-            <div class="bottom-bar" app="electra"><div class="app-icon-wrapper app-icon-bottom-bar"></div>
-                <h5 class="bottom-text-bar grey-text-lighter app-name"></h5>
-                <p class="bottom-subtitle-bar subtitle grey-text-lighter"></p>
-                <div class="btn-download btn-download-card"></div>
-            </div>
-            <div class="description-page" app="electra">
-                <div class="container">
-                    <p class="description card-description" app="electra"></p>
+            <div class="card-wrapper">
+                <div class="card app-promo" card="alien">
+                    <div class="close hidden"><i class="fas fa-times"></i></div>
+                    <div class="content card-trigger">
+                        <h1 class="grey-text-lighter lower title" card="alien"></h1>
+                    </div>
+                    <div class="bottom-bar" app="alien"><div class="app-icon-wrapper app-icon-bottom-bar"></div>
+                        <h5 class="bottom-text-bar grey-text-lighter app-name"></h5>
+                        <p class="bottom-subtitle-bar subtitle grey-text-lighter"></p>
+                        <div class="btn-download btn-download-card"></div>
+                    </div>
+                    <div class="description-page" app="alien">
+                        <div class="container">
+                            <p class="description card-description" app="alien"></p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-        </div>
-    </div>
+            <div class="card-wrapper">
+                <div class="card app-promo" app="electra" card="electra">
+                    <div class="close hidden"><i class="fas fa-times"></i></div>
+                    <div class="content card-trigger">
+                        <h1 class="grey-text-lighter lower title" card="electra"></h1>
+                    </div>
+                    <div class="bottom-bar" app="electra"><div class="app-icon-wrapper app-icon-bottom-bar"></div>
+                        <h5 class="bottom-text-bar grey-text-lighter app-name"></h5>
+                        <p class="bottom-subtitle-bar subtitle grey-text-lighter"></p>
+                        <div class="btn-download btn-download-card"></div>
+                    </div>
+                    <div class="description-page" app="electra">
+                        <div class="container">
+                            <p class="description card-description" app="electra"></p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
         <div class="card-wrapper">
             <div class="card app-promo full" card="featured-apps">
                 <div class="content">
@@ -176,9 +170,8 @@
         </div>
     </div>
 </main>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.4.2/markdown-it.min.js"></script>
     <script src="js/spawn.js"></script>
     <script src="js/depiction-render.js"></script>
