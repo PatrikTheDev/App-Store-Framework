@@ -55,7 +55,7 @@ function appendDescription(path, element) {
 
                 $("[spawnedId=" + i + "]").removeAttr("spawnedId");
             } else if (currentClass == "DepictionVideoView") {
-                element.append('<video width="' + currentView.width + 'px" height="' + currentView.height + 'px" controls style="max-width: 100%; border-radius:' + borderRadius + 'px"><source src="' + currentView.URL + '" type="video/mp4"></video>');
+                element.append('<video controls style="width: 100%; border-radius:' + borderRadius + 'px"><source src="' + currentView.URL + '" type="video/mp4"></video>');
             } else if (currentClass == "DepictionImageView") {
                 element.append('<img src="' + currentView.URL + '" width="' + currentView.width + 'px" height="' + currentView.height + 'px" style="max-width: 100%; border-radius:' + borderRadius + 'px">');
             } else if (currentClass == "DepictionSpacerView") {
