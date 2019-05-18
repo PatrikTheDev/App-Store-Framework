@@ -14,7 +14,7 @@ function parseCards() {
         dataType: 'json',
         success: function (data) {
           JSONData = data;
-          console.log("yeet");
+          console.log(path);
         }
       });
       appendCardCSS(path, $(this), JSONData);
@@ -29,7 +29,7 @@ function parseCards() {
           dataType: 'json',
           success: function (data) {
             JSONData = data;
-            console.log("yeet");
+            console.log(path);
           }
         });
       }
@@ -46,7 +46,7 @@ function parseCards() {
           dataType: 'json',
           success: function (data) {
             JSONData = data;
-            console.log("yeet");
+            console.log(path);
           }
         });
       }
@@ -63,7 +63,7 @@ function parseCards() {
           dataType: 'json',
           success: function (data) {
             JSONData = data;
-            console.log("yeet");
+            console.log(path);
           }
         });
       }
@@ -80,7 +80,7 @@ function parseCards() {
           dataType: 'json',
           success: function (data) {
             JSONData = data;
-            console.log("yeet");
+            console.log(path);
           }
         });
       }

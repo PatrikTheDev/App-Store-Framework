@@ -2,7 +2,7 @@ function parseContent(depictionFolder) {
   var depictionPath;
   var currentApp;
   var lastPath;
-  $(".app, .bottom-bar").each(function(){
+  $(".app, .bottom-bar, .append").each(function(){
     $(this).find(".description").not(".noappend").each(function() {
       currentApp = this.getAttribute("app");
       depictionPath = depictionFolder + currentApp + ".json";
@@ -29,7 +29,6 @@ function parseContent(depictionFolder) {
           dataType: 'json',
           success: function (data) {
             JSONData = data;
-            console.log("yeet");
             console.log(depictionPath);
           }
         });
@@ -48,7 +47,7 @@ function parseContent(depictionFolder) {
           dataType: 'json',
           success: function (data) {
             JSONData = data;
-            console.log("yeet");
+            console.log(depictionPath);
           }
         });
       }
@@ -66,7 +65,7 @@ function parseContent(depictionFolder) {
           dataType: 'json',
           success: function (data) {
             JSONData = data;
-            console.log("yeet");
+            console.log(depictionPath);
           }
         });
       }
@@ -84,7 +83,7 @@ function parseContent(depictionFolder) {
           dataType: 'json',
           success: function (data) {
             JSONData = data;
-            console.log("yeet");
+            console.log(depictionPath);
           }
         });
       }
@@ -102,7 +101,7 @@ function parseContent(depictionFolder) {
           dataType: 'json',
           success: function (data) {
             JSONData = data;
-            console.log("yeet");
+            console.log(depictionPath);
           }
         });
       }
