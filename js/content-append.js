@@ -121,17 +121,3 @@ function appendDescriptionOLD(path, element) {
     }
     element.attr("alreadyRan", "true");
 }
-function appendCardText(path, element, type) {
-    var JSONItems = [];
-    $.ajax({
-        url: path,
-        async: false,
-        dataType: 'json',
-        success: function (data) {
-          JSONItems = data;
-          console.log("Parsed a JSON");
-        }
-    });
-    var appendedText = JSONItems[type];
-    element.html("" + appendedText);
-}

@@ -14,8 +14,5 @@
     "tint": "rgba(79,124,44, 0.8)",
     "textTint": "white",
     "tint2": "rgba(31, 0, 0, 0.5)",
-    "textTint2": "rgb(79, 124, 44)",
-    "screenshots": [
-        "https://www.playoholic.com/wp-content/uploads/2019/01/Alien-Blackout.jpg", "img/electra-back.png", "img/electra-back.png", "img/electra-back.png"
-    ]
+    "textTint2": "rgb(79, 124, 44)"
 }
