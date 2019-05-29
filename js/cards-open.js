@@ -1,14 +1,17 @@
+/* JSHint settings */
+/* jshint esversion: 6 */
+
 class UICard {
-    constructor(element) {
-        this.trigger = element;
-        this.card = this.trigger.closest(".card");
+    constructor(element, trigger, closeBtn) {
+        this.trigger = element || $(".card");
+        this.card = trigger || this.trigger.closest(".card");
+        this.closeBtn = closeBtn || $(".close");
     }
     open() {
         var cardPosition = this.card.parent().offset();
         var card = this.card;
         var minHeightBefore = this.card.css("min-height");
         this.card.attr("min-height", minHeightBefore);
-
         this.card.parents(".card-wrapper").css({
             "top": cardPosition.top,
             "left": cardPosition.left,
@@ -35,24 +38,27 @@ class UICard {
                 "border-radius": "0",
                 "min-height": ''
             });
-        }, 10);
-        this.card.addClass("fullscreen");
-        this.card.addClass("opened");
+        }, 1);
+        this.card.addClass("fullscreen", "opened");
     }
     init() {
         this.open();
-        this.card.find(".apps-list-featured li:nth-child(4)").removeClass("no-after");
+        this.showLatterApps();
         $(".content").addClass("fullscreen");
         $(".title").addClass("fullscreen");
-        $(".close").removeClass("hidden");
+        this.closeBtn.removeClass("hidden");
         this.trigger.siblings(".description-page").addClass("fullscreen");
         $(".description").css("visibility", "visible");
         this.card.addClass("active");
         $(".card").not(".active").hide().attr("wasHidden", "true");
         $(".hide-on-card-open").hide();
         $(".bottom-bar").addClass("fullscreen");
-        this.card.find(".apps-list-featured li:nth-child(4)").nextAll().show();
+        
         bottomPopupInit(this.card);
+    }
+    showLatterApps() {
+        this.card.find(".apps-list-featured li:nth-child(4)").removeClass("no-after");
+        this.card.find(".apps-list-featured li:nth-child(4)").nextAll().show();
     }
     close() {
         $(".content").removeClass("fullscreen");
@@ -66,14 +72,14 @@ class UICard {
             top: 0,
             left: 0,
             position: '',
-            minHeight: minHeightBefore,
             overflow: '',
             width: '',
             height: ''
         });
-        card.css({
+        this.card.css({
             top: '',
             left: '',
+            minHeight: minHeightBefore,
             borderRadius: '',
             width: '',
             height: ''
@@ -81,7 +87,7 @@ class UICard {
         this.card.find(".apps-list-featured li:nth-child(4)").nextAll().hide();
         this.card.find(".apps-list-featured li:visible:last").addClass("no-after");   
         this.trigger.closest(".opened").removeClass("opened");
-        $(".close").addClass("hidden");
+        this.closeBtn.addClass("hidden");
         this.trigger.siblings(".description-page").removeClass("fullscreen");
         $(".description").css("visibility", "hidden");
         $(".card").not(".active").show().attr("wasHidden", "false");
@@ -89,13 +95,16 @@ class UICard {
         $(".bottom-bar").removeClass("fullscreen");
     }
 }
+
+var card = new UICard();
+
+/* This should be replaced with your code if it is different */
 $(".card-trigger").click(function() {
-    var card = new UICard($(this));
+    card.trigger = $(this);
+    card.card = card.trigger.closest(".card");
     card.init();
-    card = null; // Free up some ram
 });
 $(".close").click(function() {
-    var card = new UICard($(this));
+    // var card = new UICard($(this));
     card.close();
-    card = null; // Free up some ram
 });

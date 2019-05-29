@@ -1,3 +1,6 @@
+/* JSHint settings */
+/* jshint multistr: true */
+
 function spawnApps(parent, path) {
     var JSONItems = [];
     $.ajax({
@@ -11,8 +14,7 @@ function spawnApps(parent, path) {
     var i;
     for (i = 0; i < JSONItems.applist.length; i++) { 
         if (JSONItems.applist[i] != null && JSONItems.applist[i] != undefined) {
-            parent.append('\
-            <li class="app app-list" app="' + JSONItems.applist[i] + '">\
+            parent.append('<li class="app app-list" app="' + JSONItems.applist[i] + '">\
             <div class="app-icon-wrapper" app="' + JSONItems.applist[i] + '">\
             </div><h4 class="app-name" app="' + JSONItems.applist[i] + '">\
             </h4><p class="subtitle grey-text" app="' + JSONItems.applist[i] + '">\

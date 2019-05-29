@@ -79,6 +79,10 @@ i.right {
 .today-view {
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
+    max-width: unset;
+    width: unset;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 .card {
     border-radius: 1em;
@@ -402,6 +406,7 @@ h5.bottom-subtitle-bar {
 .header h5 {
     position: relative;
     left: 0.5em;
+    font-size: 1.2rem;
 }
 .header::after {
     content: '';
@@ -648,7 +653,6 @@ h5.bottom-subtitle-bar {
     padding: 0;
     position: relative;
     top: 1em;
-    margin-bottom: 1em;
     display: flex;
     align-content: center;
 }

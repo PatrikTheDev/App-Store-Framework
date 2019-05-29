@@ -1,6 +1,3 @@
-$(".btn-download").click(function() {
-    payPopupInit($(this));
-});
 function payPopupInit(parent) {
   var depictionPath = parent.attr("data-depictionJSON");
   var JSONItems = [];
@@ -46,15 +43,19 @@ function checkPayCookie(refAppFiles) {
   $(".pay-now-button").attr("onclick", "logInPopupOpen(); payPopupClose();");
     
   }
-};
+}
+function payPopupClose() {
+    $(".pay-now").css("bottom", "-100%");
+    $(".pay-now").css("opacity", "0");
+    resetRating($(".pay-fifth-star"));
+}
+/* This should be replaced with your code if it is different */
 $(".cancel").click(function() {
   payPopupClose();
 });
 $(".pay-now-button").click(function(){
     payPopupClose();
 });
-function payPopupClose() {
-    $(".pay-now").css("bottom", "-100%");
-    $(".pay-now").css("opacity", "0");
-    resetRating($(".pay-fifth-star"));
-}
+$(".btn-download").click(function() {
+    payPopupInit($(this));
+});

@@ -1,16 +1,18 @@
-function appendDescription(path, element) {
+function appendDescription(path, element, JSONData) {
     var alreadyRan = element.attr("alreadyRan");
     if (alreadyRan != "true") {
-        var JSONItems = [];
-        // Get data
-        $.ajax({
-            url: path,
-            async: false,
-            dataType: 'json',
-            success: function (data) {
-              JSONItems = data;
-            }
-        });
+        // Get JSON data
+        if (JSONData == undefined) {
+            $.ajax({
+                url: path,
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    JSONData = data;
+                    console.log("Parsed a JSON");
+                }
+            });
+        }
 
         var i;
         var currentClass;
@@ -21,8 +23,8 @@ function appendDescription(path, element) {
         var borderRadius;
         var spacing;
         // Loop through views
-        for (i = 0; i < JSONItems.description.length; i++) {
-            currentView = JSONItems.description[i];
+        for (i = 0; i < JSONData.description.length; i++) {
+            currentView = JSONData.description[i];
             currentClass = currentView.class;
             borderRadius = currentView.borderRadius || 0;
             spacing = currentView.spacing;

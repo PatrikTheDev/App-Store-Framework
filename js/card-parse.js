@@ -7,16 +7,18 @@ function parseCards() {
     $(this).find(".card").each(function() {
       currentCard = this.getAttribute("card");
       path = directoryPrefix + currentCard + ".json";
+      if (path !== lastPath) {
+        $.ajax({
+          url: path,
+          async: false,
+          dataType: 'json',
+          success: function (data) {
+            JSONData = data;
+            console.log(path);
+          }
+        });
+      }
       lastPath = directoryPrefix + currentCard + ".json";
-      $.ajax({
-        url: path,
-        async: false,
-        dataType: 'json',
-        success: function (data) {
-          JSONData = data;
-          console.log(path);
-        }
-      });
       appendCardCSS(path, $(this), JSONData);
     });
     $(this).find(".title").each(function() {

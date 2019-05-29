@@ -1,14 +1,16 @@
-function bottomPopupInit(parent) {
+function bottomPopupInit(parent, JSONData) {
     var depictionPath = parent.parent().find(".app-page-app-name").attr("data-depictionJSON") || parent.find(".app-name").attr("data-depictionJSON");
-    var JSONData = [];
-    $.ajax({
-        url: depictionPath,
-        async: false,
-        dataType: 'json',
-        success: function (data) {
+    if (JSONData == undefined) {
+        $.ajax({
+            url: depictionPath,
+            async: false,
+            dataType: 'json',
+            success: function (data) {
             JSONData = data;
-        }
-    });    
+            console.log("Parsed a JSON");
+            }
+        });
+    }
     var refAppPrice = JSONItems.price;
     if (refAppPrice == "Free") {
         priceText = "Get";

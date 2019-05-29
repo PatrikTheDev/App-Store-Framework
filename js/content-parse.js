@@ -7,16 +7,17 @@ function parseContent(depictionFolder) {
       currentApp = this.getAttribute("app");
       depictionPath = depictionFolder + currentApp + ".json";
       lastPath = depictionFolder + currentApp + ".json";
-      $.ajax({
-        url: depictionPath,
-        async: false,
-        dataType: 'json',
-        success: function (data) {
-          JSONData = data;
-          console.log("yeet");
-          console.log(depictionPath);
-        }
-      });
+      if (depictionPath !== lastPath) {
+        $.ajax({
+          url: depictionPath,
+          async: false,
+          dataType: 'json',
+          success: function (data) {
+            JSONData = data;
+            console.log(depictionPath);
+          }
+        });
+      }
       $(this).attr("data-depictionJSON", depictionPath);
     });
     $(this).find(".app-name").not(".noappend").each(function() {

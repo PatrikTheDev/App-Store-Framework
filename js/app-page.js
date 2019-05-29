@@ -1,6 +1,10 @@
+/* JSHint settings */
+/* jshint esversion: 6 */
+
 class UIAppPage {
-    constructor(depictionPath) {
+    constructor(depictionPath, appPage) {
         this.depictionPath = depictionPath || "depictions/default.json";
+        this.appPage = appPage || $(".app-page");
     }
     hideCards() {
         setTimeout(function() {
@@ -22,13 +26,16 @@ class UIAppPage {
         var path = pathToJSON || this.depictionPath;
         var JSONItems = [];
         $.ajax({
-            url: this.depictionPath,
+            url: path,
             async: false,
             dataType: 'json',
             success: function (data) {
               JSONItems = data;
             }
         });
+        if (typeof JSONItems != {}){
+            console.log("Error while parsing JSON");
+        }
         this.JSONData = JSONItems;
         return JSONItems;
     }
@@ -95,12 +102,12 @@ class UIAppPage {
         // Parse screenshots
         this.initScreenshots();
         // Init bottom-popup (unnecessary, but I wanted to do it)
-        bottomPopupInit($(".app-page-content"));
+        bottomPopupInit($(".app-page-content"), this.JSONData);
         
     }
     // Open appPage
     open() {
-        $(".app-page").css({visibility: "visible", right: "0"});
+        this.appPage.css({visibility: "visible", right: "0"});
         $(".app-page-header").css({right: "0", visibility: "visible"});
     }
     close() {
@@ -113,12 +120,11 @@ class UIAppPage {
     }
 
 }
-
+var appPage = new UIAppPage();
 function appPageInit(parent) {
     var depictionPath = parent.attr("data-depictionJSON");
-    var appPage = new UIAppPage("" + depictionPath);
+    appPage.depictionPath = depictionPath;
     appPage.initAll();
-    appPage = null; // Free up some ram
 }
 
 $(".app-name").click(function() {
@@ -126,10 +132,9 @@ $(".app-name").click(function() {
 });
 
 $(".back-btn").click(function() {
-    var depictionPath = "depictions/default.json"
-    var appPage = new UIAppPage("" + depictionPath);
+    var depictionPath = "depictions/default.json";
+    appPage.depictionPath = depictionPath;
     appPage.close();
-    appPage = null; // Free up some ram
 });
 
 function resetScreenshots(parent) {
@@ -140,8 +145,9 @@ function resetDescription(parent) {
     parent.html("");
     parent.attr("alreadyRan", "false");
 }
-function toggleCards() {
-    var wasVisible = $(".app-page").attr("cardsWereVisible");
+function toggleCards(parentElem) {
+    var parent = parentElem || $(".app-page");
+    var wasVisible = parent.attr("cardsWereVisible");
     $(".active").show();
     if (wasVisible == "true") {
         $(".card").show();
@@ -167,10 +173,8 @@ function parseRating(refAppRating, firstStar, secondStar, thirdStar, fourthStar,
         fifthStar.prevAll().not("rating-num").addClass("fas").removeClass("far");
         fifthStar.addClass("fas").removeClass("far");
     }
-};
+}
 function resetRating(lastStar) {
     lastStar.prevAll().addClass("far").removeClass("fas");
     lastStar.addClass("far").removeClass("fas");
 }
-
-

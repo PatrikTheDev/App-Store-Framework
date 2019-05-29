@@ -1,8 +1,13 @@
+/* 
+    This file "globalizes" (sets it for the children) the 'app' and 'card' attributes
+*/
+var currentApp;
+var currentCard;
 $("[app]").each(function() {
-    var currentApp = this.getAttribute("app");
+    currentApp = $(this).attr("app");
     $(this).find('*').attr("app", currentApp);
 });
 $(".card").each(function() {
-    var currentCard = $(this).attr("card"); //this.getAttribute("card")
+    currentCard = $(this).attr("card"); 
     $(this).find('*').attr("card", currentCard);
 });
