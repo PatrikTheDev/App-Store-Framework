@@ -1,8 +1,4 @@
-{
-    "jsons": {
-        "cards": "cards/cards.json",
-        "apps": "js/content.json"
-    }, "cards": {
+{ "cards": {
         "coders": "cards/coders.json",
         "alien": "cards/alien.json",
         "electra": "cards/electra.json",

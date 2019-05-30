@@ -114,6 +114,7 @@ class UIAppPage {
         this.initRating();
         // Parse screenshots
         this.initScreenshots();
+        // Init the header (if present)
         this.initHeader();
         // Init bottom-popup (unnecessary, but I wanted to do it)
         bottomPopupInit($(".app-page-content"), this.JSONData);
@@ -137,23 +138,11 @@ class UIAppPage {
     }
 
 }
-var appPage = new UIAppPage();
 function appPageInit(parent) {
     var depictionPath = parent.attr("data-depictionJSON");
     appPage.depictionPath = depictionPath;
     appPage.initAll();
 }
-
-$(".app-name").click(function() {
-    appPageInit($(this));
-});
-
-$(".back-btn").click(function() {
-    var depictionPath = "depictions/default.json";
-    appPage.depictionPath = depictionPath;
-    appPage.close();
-});
-
 function resetScreenshots(parent) {
     parent.html("");
     parent.attr("screenshotsAppended", "false");
@@ -195,3 +184,17 @@ function resetRating(lastStar) {
     lastStar.prevAll().addClass("far").removeClass("fas");
     lastStar.addClass("far").removeClass("fas");
 }
+/*
+    Set appPage variable to be UIAppPage
+    This is also where you set the overrides for default elements
+*/
+var appPage = new UIAppPage();
+/* This should be replaced with your code if it's any different */
+$(".app-name").click(function() {
+    appPageInit($(this));
+});
+
+$(".back-btn").click(function() {
+    appPage.close();
+});
+
