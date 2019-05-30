@@ -6,7 +6,7 @@
             "class": "DepictionMarkdownView"
         }
     ],
-    "icon": "icons/snapchat.jpg",
+    "icon": "resources/icons/snapchat.jpg",
     "subtitle": "Pics, nudes, etc.",
     "price": "Free",
     "location": "icons/snapchat.jpg",
@@ -16,8 +16,8 @@
     "textTint2": "rgb(235, 222, 74)",
     "rating": 3,
     "numberOfRatings": 1,
+    "hasHeader": false,
     "screenshots": [
-        "screenshots/yt/1.PNG", "screenshots/yt/2.PNG", "screenshots/yt/3.PNG", "screenshots/yt/4.png"
-    ],
-    "hasHeaderPhoto": false
+        "resources/screenshots/yt/1.PNG", "resources/screenshots/yt/2.PNG", "resources/screenshots/yt/3.PNG", "resources/screenshots/yt/4.png"
+    ]
 }

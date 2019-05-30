@@ -6,7 +6,7 @@
             "class": "DepictionMarkdownView"
         }
     ],
-    "icon": "icons/youtube.png",
+    "icon": "resources/icons/youtube.png",
     "subtitle": "Videos, Music etc.",
     "price": "Free",
     "location": "icons/youtube.png",
@@ -17,7 +17,7 @@
     "rating": 3,
     "numberOfRatings": 1,
     "screenshots": [
-        "screenshots/yt/1.PNG", "screenshots/yt/2.PNG", "screenshots/yt/3.PNG", "screenshots/yt/4.png"
+        "resources/screenshots/yt/1.PNG", "resources/screenshots/yt/2.PNG", "resources/screenshots/yt/3.PNG", "resources/screenshots/yt/4.png"
     ],
-    "hasHeaderPhoto": false
+    "hasHeader": false
 }

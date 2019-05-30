@@ -6,7 +6,7 @@
             "class": "DepictionMarkdownView"
         }
     ],
-    "background": "img/unsplash.jpg",
+    "background": "resources/backgrounds/cards/unsplash.jpg",
     "subtitle": "APP CULTURE",
     "containsApps": [
         "yt"

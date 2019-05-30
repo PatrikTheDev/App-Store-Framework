@@ -6,7 +6,7 @@
             "class": "DepictionMarkdownView"
         }
     ],
-    "background": "img/Vetřelci-cover.jpg",
+    "background": "resources/backgrounds/cards/Vetřelci-cover.jpg",
     "subtitle": null,
     "minHeight": 400,
     "containsApps": [],

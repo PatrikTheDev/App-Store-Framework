@@ -90,5 +90,4 @@ function parseCards() {
       appendDescription(path, $(this), JSONData);
     });
   });
-  
 }

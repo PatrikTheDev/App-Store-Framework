@@ -10,7 +10,7 @@
             "class": "DepictionMarkdownView"
         }
     ],
-    "icon": "icons/electra-app-icon-small.jpg",
+    "icon": "resources/icons/electra-app-icon-small.jpg",
     "subtitle": "Default",
     "price": "Free",
     "location": "https://mega.nz/#!eMJS1CZR!n1ixxBcnxNv55v8cpHtYs8KojnsqasQ6oO8DojaZgYw",
@@ -20,6 +20,7 @@
     "textTint2": "rgb(177, 177, 177)",
     "rating": 1,
     "numberOfRatings": 2,
+    "hasHeader": false,
     "screenshots": [
         "img/electra-back.png", "img/electra-back.png", "img/electra-back.png", "img/electra-back.png"
     ]

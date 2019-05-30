@@ -33,7 +33,7 @@ class UIAppPage {
               JSONItems = data;
             }
         });
-        if (typeof JSONItems != {}){
+        if (typeof JSONItems != "object"){
             console.log("Error while parsing JSON");
         }
         this.JSONData = JSONItems;
@@ -75,6 +75,19 @@ class UIAppPage {
         $(".rating-num").text("" + refAppRating);
         $(".number-of-ratings").text("" + JSONData.numberOfRatings + " " + ratingsText);
     }
+    initHeader() {
+        var alreadyRan = this.appPage.find(".app-page-header-img-wrapper").attr("alreadyRan");
+        if (this.JSONData.hasHeader == true && alreadyRan !== "true") {
+            this.appPage.find(".app-page-header-img-wrapper").css({display: "block"});
+            this.appPage.find(".app-page-header-img-wrapper").append('<img class="app-page-header-img" src="' + this.JSONData.headerPhoto + '"></img>');
+        }
+        this.appPage.find(".app-page-header-img-wrapper").attr("alreadyRan", "true");
+    }
+    resetHeader() {
+        this.appPage.find(".app-page-header-img-wrapper").html("");
+        this.appPage.find(".app-page-header-img-wrapper").css({display: "none"});
+        this.appPage.find(".app-page-header-img-wrapper").attr("alreadyRan", "false");
+    }
     initScreenshots() {
         parseScreenshots($(".app-page-screenshot-wrapper"), this.depictionPath, this.JSONData);
     }
@@ -101,6 +114,7 @@ class UIAppPage {
         this.initRating();
         // Parse screenshots
         this.initScreenshots();
+        this.initHeader();
         // Init bottom-popup (unnecessary, but I wanted to do it)
         bottomPopupInit($(".app-page-content"), this.JSONData);
         
@@ -112,11 +126,14 @@ class UIAppPage {
     }
     close() {
         toggleCards();
+        // Hide the app page
         $(".app-page").css("right", "-100%");
         $(".app-page-header").css({right: "-100%", visibility: "hidden"});
+        // Reset all the things
         resetScreenshots($(".app-page-screenshot-wrapper"));
         resetDescription($(".app-page-text-description"));
         resetRating($("[fifth-star]"));
+        this.resetHeader();
     }
 
 }
