@@ -46,7 +46,7 @@ function appendAppName(path, element, JSONData) {
     }
     element.text("" + JSONData.appName);
 }
-function appendIcon(path, element, iconClass, JSONData) {
+function appendIcon(path, wrapper, iconClass, JSONData) {
     if (JSONData == undefined) {
         $.ajax({
             url: path,
@@ -58,8 +58,8 @@ function appendIcon(path, element, iconClass, JSONData) {
             }
         });
     }
-    element.html('<img class="' + iconClass + '" src="' + JSONData.icon + '">');
-    element.attr("icon-src", JSONData.icon);
+    wrapper.html('<img class="' + iconClass + '" src="' + JSONData.icon + '">');
+    wrapper.attr("icon-src", JSONData.icon);
 }
 function appendBottomBarColor(path, element, JSONData) {
     if (JSONData == undefined) {

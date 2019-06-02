@@ -1,7 +1,0 @@
-{ "cards": {
-        "coders": "cards/coders.json",
-        "alien": "cards/alien.json",
-        "electra": "cards/electra.json",
-        "featured-apps": "cards/featured-apps.json"
-    }
-}

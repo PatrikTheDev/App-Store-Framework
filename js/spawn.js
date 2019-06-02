@@ -35,9 +35,11 @@ function spawnApps(parent, path) {
         appPageInit($(this));
     });
 }
-function spawnAppsInCards(parent, object, eachContainer) {
+function spawnAppsInCards(parent, directoryPrefix, path) {
     var currentCard = parent.attr("card");
-    var path = object[currentCard];
+    if (typeof path == "undefined") {
+        path = directoryPrefix + currentCard + ".json";
+    }
     var JSONItems = [];
     $.ajax({
         url: path,

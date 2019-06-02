@@ -28,11 +28,11 @@
     "tint": "rgb(51, 59, 81)",
     "textTint": "white",
     "tint2": "transparent",
-    "textTint2": "rgb(177, 177, 177)",
+    "textTint2": "rgb(141, 144, 147)",
     "rating": 3,
     "numberOfRatings": 1,
-    "hasHeader": false,
     "screenshots": [
         "resources/backgrounds/cards/electra-back.png", "resources/backgrounds/cards/electra-back.png", "resources/backgrounds/cards/electra-back.png", "resources/backgrounds/cards/electra-back.png"
-    ]
+    ],
+    "hasHeader": false
 }

@@ -240,7 +240,7 @@ h5.bottom-text-bar {
     width: 2em;
     height: 2em;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(225, 225, 225, 0.5);
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     display: grid;
@@ -439,6 +439,9 @@ h5.bottom-subtitle-bar {
     float: left;
     margin-top: 0.2em;
 }
+.pay-popup-app-icon img {
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
 .pay-popup-price {
     float: right;
     position: absolute;
@@ -589,11 +592,13 @@ h5.bottom-subtitle-bar {
     height: 3em;
     display: flex;
     align-items: center;
-    padding: 2rem 0em 1.5rem 0.5rem;
+    justify-content: center;
+    padding: 2rem 0.5rem 1.5rem 0rem;
     color: rgb(47, 126, 246);
-    background-color: rgba(255, 255, 255, 0.8);
-    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.5);
+    -webkit-backdrop-filter: blur(15px);
     z-index: 999;
+    transition: -webkit-backdrop-filter 400ms;
 }
 .app-page-header::after {
     content: '';
@@ -616,6 +621,7 @@ h5.bottom-subtitle-bar {
     border-width: 0.5px;
     border-style: solid; 
     border-color: rgb(177, 177, 177); 
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
 }
 .app-page-app-name {
     position: relative;
@@ -794,4 +800,28 @@ h5.bottom-subtitle-bar {
     height: 100%;
     background-size: cover;
     object-fit: cover;
+}
+.header-app-icon-wrapper img {
+    position: relative;
+    width: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    top: 3em;
+    transition: top 500ms 150ms, opacity 500ms 0ms;
+}
+.header-app-icon-wrapper img.is-visible {
+    transition: top 500ms 0ms, opacity 500ms 150ms;
+}
+.back-btn {
+    position: absolute;
+    left: 0.5rem;
+}
+.app-page-btn-download-header {
+    opacity: 0;
+    top: unset;
+    transition: top 500ms 150ms, opacity 500ms 0ms;
+}
+.app-page-btn-download-header.is-visible {
+    transition: top 500ms 0ms, opacity 500ms 150ms;
 }
