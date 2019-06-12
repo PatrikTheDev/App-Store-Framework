@@ -61,9 +61,9 @@ function appendDescription(path, element, JSONData) {
             } else if (currentClass == "DepictionImageView") {
                 element.append('<img src="' + currentView.URL + '" width="' + currentView.width + 'px" height="' + currentView.height + 'px" style="max-width: 100%; border-radius:' + borderRadius + 'px">');
             } else if (currentClass == "DepictionSpacerView") {
-                element.append('<div class="spacer" style="margin-top:' + spacing + 'px"></div>');
+                element.append(spacer(spacing));
             } else if (currentClass == "DepictionSeparatorView") {
-                element.append('<div class="separator"></div>');
+                element.append(separator());
             }
         }
     }
