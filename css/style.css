@@ -317,7 +317,6 @@ p.subtitle {
     position: absolute;
     left: 4.5rem;
     top: 2.2rem;
-    font-weight: 100;
     float: left;
     font-size: 0.9rem;
 }
@@ -807,11 +806,8 @@ h5.bottom-subtitle-bar {
     border-radius: 10px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
     opacity: 0;
-    top: 3em;
-    transition: top 500ms 150ms, opacity 500ms 0ms;
-}
-.header-app-icon-wrapper img.is-visible {
-    transition: top 500ms 0ms, opacity 500ms 150ms;
+    top: 0;
+    transition: opacity 500ms 0ms;
 }
 .back-btn {
     position: absolute;
@@ -820,8 +816,5 @@ h5.bottom-subtitle-bar {
 .app-page-btn-download-header {
     opacity: 0;
     top: unset;
-    transition: top 500ms 150ms, opacity 500ms 0ms;
-}
-.app-page-btn-download-header.is-visible {
-    transition: top 500ms 0ms, opacity 500ms 150ms;
+    transition: opacity 500ms 0ms;
 }

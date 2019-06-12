@@ -79,15 +79,12 @@ class UIAppPage {
     initHeader() {
         var alreadyRan = this.appPage.find(".app-page-header-img-wrapper").attr("alreadyRan");
         if (this.JSONData.hasHeader == true && alreadyRan !== "true") {
-            this.appPage.find(".app-page-header-img-wrapper").css({display: "block"});
-            this.appPage.find(".app-page-header-img-wrapper").append('<img class="app-page-header-img" src="' + this.JSONData.headerPhoto + '"></img>');
+            this.appPage.find(".app-page-header-img-wrapper").css({display: "block"}).append('<img class="app-page-header-img" src="' + this.JSONData.headerPhoto + '"></img>').addClass("has-header");
             this.appPage.find(".app-page-header").css({"-webkit-backdrop-filter": "blur(0)", backgroundColor: "transparent"});
             this.appPage.css({paddingTop: "0"});
-            this.appPage.find(".app-page-header-img-wrapper").addClass("has-header");
         }
+        statusBarInit($(".header-app-icon, .app-page-btn-download-header"));
         this.appPage.find(".app-page-header-img-wrapper").attr("alreadyRan", "true");
-        statusBarInit($(".header-app-icon"));
-        statusBarBtnDownloadInit($(".app-page-btn-download-header"));
     }
     resetHeader() {
         this.appPage.find(".app-page-header-img-wrapper").html("");
@@ -199,7 +196,7 @@ function statusBarInit(element, scrollView) {
     var scrollViewElement = scrollView || ".app-page";
     element.closest(scrollViewElement).scroll(function() {
         if (element.closest(scrollViewElement).scrollTop() > 100){
-            element.css({top: 0, opacity: 1});
+            element.css({opacity: 1});
             element.addClass("is-visible");
             if (element.closest(".app-page-header").hasClass("has-header")) {
                 element.closest(".app-page-header").css({"-webkit-backdrop-filter": "blur(15px)", backgroundColor: "rgba(255,255,255,0.5)"});
@@ -213,18 +210,7 @@ function statusBarInit(element, scrollView) {
         }
     });
 }
-function statusBarBtnDownloadInit(element, scrollView) {
-    var scrollViewElement = scrollView || ".app-page";
-    element.closest(scrollViewElement).scroll(function() {
-        if (element.closest(scrollViewElement).scrollTop() > 100){
-            element.css({opacity: 1});
-            element.addClass("is-visible");
-        } else {
-            element.css({opacity: ''});
-            element.removeClass("is-visible");
-        }
-    });
-}
+
 /*
     Set appPage variable to be UIAppPage
     This is also where you set the overrides for default elements
