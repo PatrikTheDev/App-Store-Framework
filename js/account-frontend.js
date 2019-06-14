@@ -5,33 +5,33 @@ function setCookie(cname,cvalue,exdays) {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   }
   
-  function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
+function getCookie(ncame) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
     }
-    return "";
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
   }
   
-  function checkCookie() {
-    var user=getCookie("email");
-    if (user != "") {
-      $(".log-in-homepage").hide().addClass("was-hidden");
-      $(".email").text(user);
-      $(".pay-now-button").attr("onclick", "");
-    } else {
-      $(".email").text("Not logged in");
-       
-    }
+function checkCookie() {
+  var user=getCookie("email");
+  if (user != "") {
+    $(".log-in-homepage").hide().addClass("was-hidden");
+    $(".email").text(user);
+    $(".pay-now-button").attr("onclick", "");
+  } else {
+    $(".email").text("Not logged in");
+      
   }
+}
 checkCookie();
 
 

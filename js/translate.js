@@ -10,4 +10,4 @@ $.getJSON( path, function( data){
   $("[pay-now-btn]").text(JSONItems.payNowBtn);
   $("[account]").html(JSONItems.account + ': <span class="email"></span>');
 });
-};
+}

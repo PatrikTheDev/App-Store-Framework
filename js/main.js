@@ -4,9 +4,9 @@
 */
 
 $(document).ready(function() {
-    parseCards();
+    var cardCache = parseCards();
     $(".card-apps-list").each(function(){
-        spawnAppsInCards($(this), "cards/");
+        spawnAppsInCards($(this), "cards/", cardCache);
     });
     var appCache = parseContent("depictions/");
 });

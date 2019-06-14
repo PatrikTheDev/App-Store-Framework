@@ -44,7 +44,7 @@ function appendDescription(path, element, JSONData) {
                 // Append it
                 element.append(markdownHTML);
             } else if (currentClass == "DepictionLabelView") {
-                element.append("<span spawnedId=" + i + ">" + currentView.text + "</span>");
+                element.append("<span>" + currentView.text + "</span>").attr("spawnedId", i);
                 if (currentView.fontWeight != undefined && currentView.fontWeight != null) {
                     $("[spawnedId=" + i + "]").css("font-weight", currentView.fontWeight);
                 }
@@ -57,9 +57,9 @@ function appendDescription(path, element, JSONData) {
 
                 $("[spawnedId=" + i + "]").removeAttr("spawnedId");
             } else if (currentClass == "DepictionVideoView") {
-                element.append('<video controls style="width: 100%; border-radius:' + borderRadius + 'px"><source src="' + currentView.URL + '" type="video/mp4"></video>');
+                element.append(video(borderRadius, currentView.URL));
             } else if (currentClass == "DepictionImageView") {
-                element.append('<img src="' + currentView.URL + '" width="' + currentView.width + 'px" height="' + currentView.height + 'px" style="max-width: 100%; border-radius:' + borderRadius + 'px">');
+                element.append(image(currentView.URL, currentView.width, currentView.height, borderRadius));
             } else if (currentClass == "DepictionSpacerView") {
                 element.append(spacer(spacing));
             } else if (currentClass == "DepictionSeparatorView") {

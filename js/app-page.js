@@ -5,6 +5,15 @@ class UIAppPage {
     constructor(depictionPath, appPage) {
         this.depictionPath = depictionPath || "depictions/default.json";
         this.appPage = appPage || $(".app-page");
+        this.iconWrapper = $(".app-page-app-icon-wrapper");
+        this.headerIconWrapper = $(".header-app-icon-wrapper");
+        this.appNameElement = $(".app-page-app-name");
+
+        // Overrides
+        this.overrideBackup = {
+            "appName": false
+        };
+        this.override = this.overrideBackup;
     }
     hideCards() {
         setTimeout(function() {
@@ -40,12 +49,12 @@ class UIAppPage {
         return JSONData;
     }
     initAppIcon() {
-        appendIcon(this.depictionPath, $(".app-page-app-icon-wrapper"), "app-page-app-icon", this.JSONData);
-        appendIcon(this.depictionPath, $(".header-app-icon-wrapper"), "header-app-icon app-icon", this.JSONData);
+        appendIcon(this.depictionPath, this.iconWrapper, "app-page-app-icon", this.JSONData);
+        appendIcon(this.depictionPath, this.headerIconWrapper, "header-app-icon app-icon", this.JSONData);
     }
     initAppName() {
-        appendAppName(this.depictionPath, $(".app-page-app-name"), this.JSONData);
-        $(".app-page-app-name").attr("data-depictionJSON", this.depictionPath);
+        appendAppName(this.depictionPath, this.appNameElement, this.JSONData, this.override.appName, this.appName);
+        this.appNameElement.attr("data-depictionJSON");
     }
     initBtnDownload() {
         appendBtnDownloadContent(this.depictionPath, $(".app-page-btn-download-append"), this.JSONData);
@@ -87,9 +96,10 @@ class UIAppPage {
         this.appPage.find(".app-page-header-img-wrapper").attr("alreadyRan", "true");
     }
     resetHeader() {
-        this.appPage.find(".app-page-header-img-wrapper").html("");
-        this.appPage.find(".app-page-header-img-wrapper").css({display: "none"});
-        this.appPage.find(".app-page-header-img-wrapper").attr("alreadyRan", "false");
+        this.appPage.find(".app-page-header-img-wrapper")
+            .html("")
+            .css({display: "none"})
+            .attr("alreadyRan", "false");
         this.appPage.find(".app-page-header").css({"-webkit-backdrop-filter": '', backgroundColor: ''});
         this.appPage.css({paddingTop: ''});
         this.appPage.find(".app-page-header-img-wrapper").removeClass("has-header");
@@ -125,7 +135,7 @@ class UIAppPage {
         this.initRating();
         // Parse screenshots
         this.initScreenshots();
-        // Init the header (if present)
+        // Init the header
         this.initHeader();
     }
     // Open appPage
@@ -143,6 +153,8 @@ class UIAppPage {
         resetDescription($(".app-page-text-description"));
         resetRating($("[fifth-star]"));
         this.resetHeader();
+        this.override = this.overrideBackup;
+        this.appName = undefined;
     }
 
 }
@@ -152,12 +164,14 @@ function appPageInit(parent) {
     appPage.initAll();
 }
 function resetScreenshots(parent) {
-    parent.html("");
-    parent.attr("screenshotsAppended", "false");
+    parent
+        .html("")
+        .attr("screenshotsAppended", "false");
 }
 function resetDescription(parent) {
-    parent.html("");
-    parent.attr("alreadyRan", "false");
+    parent
+        .html("")
+        .attr("alreadyRan", "false");
 }
 function toggleCards(parentElem) {
     var parent = parentElem || $(".app-page");
@@ -196,14 +210,16 @@ function statusBarInit(element, scrollView) {
     var scrollViewElement = scrollView || ".app-page";
     element.closest(scrollViewElement).scroll(function() {
         if (element.closest(scrollViewElement).scrollTop() > 100){
-            element.css({opacity: 1});
-            element.addClass("is-visible");
+            element
+                .css({opacity: 1})
+                .addClass("is-visible");
             if (element.closest(".app-page-header").hasClass("has-header")) {
                 element.closest(".app-page-header").css({"-webkit-backdrop-filter": "blur(15px)", backgroundColor: "rgba(255,255,255,0.5)"});
             }
         } else {
-            element.css({top: '', opacity: ''});
-            element.removeClass("is-visible");
+            element
+                .css({top: '', opacity: ''})
+                .removeClass("is-visible");
             if (element.closest(".app-page-header").hasClass("has-header")) {
                 element.closest(".app-page-header").css({"-webkit-backdrop-filter": 'blur(0)', backgroundColor: 'transparent'});
             }
@@ -216,6 +232,7 @@ function statusBarInit(element, scrollView) {
     This is also where you set the overrides for default elements
 */
 var appPage = new UIAppPage();
+
 /* This should be replaced with your code if it's any different */
 $(".app-name").click(function() {
     appPageInit($(this));

@@ -381,6 +381,7 @@ h5.bottom-subtitle-bar {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 0 200vh rgba(0, 0, 0, 0.4);
     border-radius: 1em;
     -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
 }
 @media (max-width: 500px) {
     .pay-now {
@@ -519,6 +520,7 @@ h5.bottom-subtitle-bar {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 0 200vh rgba(0, 0, 0, 0.4);
     border-radius: 1em;
     -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
 }
 @media (max-width: 500px) {
     .log-in {

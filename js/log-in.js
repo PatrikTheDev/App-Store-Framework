@@ -32,6 +32,6 @@ function logIn() {
     $(".pay-now-button").text("Download now");
     
     } else {
-        $(".reporterror").html("You have to enter your email!")
+        $(".reporterror").html("You have to enter your email!");
     }
 }

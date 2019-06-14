@@ -14,8 +14,9 @@ function appendBtnDownloadContent(path, element, JSONData) {
     if (price == "Free") {
         price = "Get";
     }
-    element.text("" + price);
-    element.css({"background-color": JSONData.tint, "color": JSONData.textTint});
+    element
+        .text("" + price)
+        .css({"background-color": JSONData.tint, "color": JSONData.textTint});
 }
 function appendSubtitleContent(path, element, JSONData) {
     if (JSONData == undefined) {
@@ -29,11 +30,12 @@ function appendSubtitleContent(path, element, JSONData) {
             }
         });
     }
-    element.html("" + JSONData.subtitle);
-    element.css("color", JSONData.textTint2);
+    element
+        .html("" + JSONData.subtitle)
+        .css("color", JSONData.textTint2);
 }
-function appendAppName(path, element, JSONData) {
-    if (JSONData == undefined) {
+function appendAppName(path, element, JSONData, override, appName) {
+    if (JSONData == undefined && override == true && appName == undefined) {
         $.ajax({
             url: path,
             async: false,
@@ -43,6 +45,8 @@ function appendAppName(path, element, JSONData) {
             console.log("Parsed a JSON");
             }
         });
+    } else if (override == true && typeof appName == "string") {
+        JSONData.appName = appName;
     }
     element.text("" + JSONData.appName);
 }
@@ -58,8 +62,9 @@ function appendIcon(path, wrapper, iconClass, JSONData) {
             }
         });
     }
-    wrapper.html('<img class="' + iconClass + '" src="' + JSONData.icon + '">');
-    wrapper.attr("icon-src", JSONData.icon);
+    wrapper
+        .html('<img class="' + iconClass + '" src="' + JSONData.icon + '">')
+        .attr("icon-src", JSONData.icon);
 }
 function appendBottomBarColor(path, element, JSONData) {
     if (JSONData == undefined) {

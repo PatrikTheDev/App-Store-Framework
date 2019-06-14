@@ -3,17 +3,19 @@ function parseCards() {
   var currentCard;
   var path;
   var lastPath;
+  var cache = {};
   $(".card-wrapper").each(function() {
     $(this).find(".card").each(function() {
       currentCard = this.getAttribute("card");
       path = directoryPrefix + currentCard + ".json";
-      if (path !== lastPath) {
+      if (typeof cache[currentCard] == "undefined") {
         $.ajax({
           url: path,
           async: false,
           dataType: 'json',
           success: function (data) {
             JSONData = data;
+            cache[currentCard] = data;
             console.log(path);
           }
         });
@@ -24,13 +26,14 @@ function parseCards() {
     $(this).find(".title").each(function() {
       currentCard = this.getAttribute("card");
       path = directoryPrefix + currentCard + ".json";
-      if (path !== lastPath) {
+      if (typeof cache[currentCard] == "undefined") {
         $.ajax({
           url: path,
           async: false,
           dataType: 'json',
           success: function (data) {
             JSONData = data;
+            cache[currentCard] = data;
             console.log(path);
           }
         });
@@ -41,13 +44,14 @@ function parseCards() {
     $(this).find(".bottom-text").each(function() {
       currentCard = this.getAttribute("card");
       path = directoryPrefix + currentCard + ".json";
-      if (path !== lastPath) {
+      if (typeof cache[currentCard] == "undefined") {
         $.ajax({
           url: path,
           async: false,
           dataType: 'json',
           success: function (data) {
             JSONData = data;
+            cache[currentCard] = data;
             console.log(path);
           }
         });
@@ -58,13 +62,14 @@ function parseCards() {
     $(this).find(".small-title").each(function() {
       currentCard = this.getAttribute("card");
       path = directoryPrefix + currentCard + ".json";
-      if (path !== lastPath) {
+      if (typeof cache[currentCard] == "undefined") {
         $.ajax({
           url: path,
           async: false,
           dataType: 'json',
           success: function (data) {
             JSONData = data;
+            cache[currentCard] = data;
             console.log(path);
           }
         });
@@ -75,13 +80,14 @@ function parseCards() {
     $(this).find(".card-description").each(function() {
       currentCard = this.getAttribute("card");
       path = directoryPrefix + currentCard + ".json";
-      if (path !== lastPath) {
+      if (typeof cache[currentCard] == "undefined") {
         $.ajax({
           url: path,
           async: false,
           dataType: 'json',
           success: function (data) {
             JSONData = data;
+            cache[currentCard] = data;
             console.log(path);
           }
         });
@@ -90,4 +96,6 @@ function parseCards() {
       appendDescription(path, $(this), JSONData);
     });
   });
+  console.log(cache);
+  return cache;
 }

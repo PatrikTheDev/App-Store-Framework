@@ -35,20 +35,24 @@ function spawnApps(parent, path) {
         appPageInit($(this));
     });
 }
-function spawnAppsInCards(parent, directoryPrefix, path) {
+function spawnAppsInCards(parent, directoryPrefix, currentCache, path) {
     var currentCard = parent.attr("card");
+    var cache = currentCache || {};
     if (typeof path == "undefined") {
         path = directoryPrefix + currentCard + ".json";
     }
     var JSONItems = [];
-    $.ajax({
-        url: path,
-        async: false,
-        dataType: 'json',
-        success: function (data) {
-          JSONItems = data;
-        }
-    });
+    if (typeof cache[currentCard] == "undefined") {
+        $.ajax({
+            url: path,
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                cache[currentCard] = data;
+            }
+        });
+    }
+    JSONItems = cache[currentCard];
     var i;
     for (i = 0; i < JSONItems.containsApps.length; i++) { 
         if (JSONItems.containsApps[i] != null && JSONItems.containsApps[i] != undefined) {
