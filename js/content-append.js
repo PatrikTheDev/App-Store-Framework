@@ -18,17 +18,19 @@ function appendBtnDownloadContent(path, element, JSONData) {
         .text("" + price)
         .css({"background-color": JSONData.tint, "color": JSONData.textTint});
 }
-function appendSubtitleContent(path, element, JSONData) {
-    if (JSONData == undefined) {
+function appendSubtitleContent(path, element, JSONData, override, appSubtitle) {
+    if (JSONData == undefined && override == true && appSubtitle == undefined) {
         $.ajax({
             url: path,
             async: false,
             dataType: 'json',
             success: function (data) {
-            JSONData = data;
-            console.log("Parsed a JSON");
+                JSONData = data;
+                console.log("Parsed a JSON");
             }
         });
+    } else if (override == true && typeof appSubtitle == "string") {
+        JSONData.subtitle = appSubtitle;
     }
     element
         .html("" + JSONData.subtitle)
@@ -41,8 +43,8 @@ function appendAppName(path, element, JSONData, override, appName) {
             async: false,
             dataType: 'json',
             success: function (data) {
-            JSONData = data;
-            console.log("Parsed a JSON");
+                JSONData = data;
+                console.log("Parsed a JSON");
             }
         });
     } else if (override == true && typeof appName == "string") {

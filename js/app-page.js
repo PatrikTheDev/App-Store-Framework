@@ -4,16 +4,21 @@
 class UIAppPage {
     constructor(depictionPath, appPage) {
         this.depictionPath = depictionPath || "depictions/default.json";
+        // Defaults for elements, you can change these if your elements are different
         this.appPage = appPage || $(".app-page");
         this.iconWrapper = $(".app-page-app-icon-wrapper");
         this.headerIconWrapper = $(".header-app-icon-wrapper");
         this.appNameElement = $(".app-page-app-name");
-
+        this.appSubtitleElement = $(".app-page-app-subtitle");
+        this.btnDownload = $(".app-page-btn-download-append");
         // Overrides
-        this.overrideBackup = {
-            "appName": false
+        this.settingsOverrideDefaults = {
+            "appName": false,
+            "appSubtitle": false
         };
-        this.override = this.overrideBackup;
+        this.overrideDefaults = {};
+        this.override = this.overrideDefaults;
+        this.settingsOverride = this.settingsOverrideDefaults;
     }
     hideCards() {
         setTimeout(function() {
@@ -53,15 +58,15 @@ class UIAppPage {
         appendIcon(this.depictionPath, this.headerIconWrapper, "header-app-icon app-icon", this.JSONData);
     }
     initAppName() {
-        appendAppName(this.depictionPath, this.appNameElement, this.JSONData, this.override.appName, this.appName);
+        appendAppName(this.depictionPath, this.appNameElement, this.JSONData, this.settingsOverride.appName, this.override.appName);
         this.appNameElement.attr("data-depictionJSON");
     }
     initBtnDownload() {
-        appendBtnDownloadContent(this.depictionPath, $(".app-page-btn-download-append"), this.JSONData);
-        $(".app-page-btn-download-append").attr("data-depictionJSON", this.depictionPath);
+        appendBtnDownloadContent(this.depictionPath, this.btnDownload, this.JSONData);
+        this.btnDownload.attr("data-depictionJSON", this.depictionPath);
     }
     initSubtitle() {
-        appendSubtitleContent(this.depictionPath, $(".app-page-app-subtitle"), this.JSONData);
+        appendSubtitleContent(this.depictionPath, this.appSubtitleElement, this.JSONData, this.settingsOverride.appSubtitle, this.override.appSubtitle);
     }
     initDescription() {
         appendDescription(this.depictionPath, $(".app-page-text-description"), this.JSONData);
@@ -153,8 +158,9 @@ class UIAppPage {
         resetDescription($(".app-page-text-description"));
         resetRating($("[fifth-star]"));
         this.resetHeader();
-        this.override = this.overrideBackup;
-        this.appName = undefined;
+        // Reset overrides back to default
+        this.settingsOverride = this.settingsOverrideDefaults;
+        this.override = this.overrideDefaults;
     }
 
 }
