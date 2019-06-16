@@ -2,11 +2,12 @@
     This is the main (init) file
     You can do whatever you want here, but to ensure everything works, you have to run these things
 */
-
+var cardCache;
+var appCache;
 $(document).ready(function() {
-    var cardCache = parseCards();
-    $(".card-apps-list").each(function(){
-        spawnAppsInCards($(this), "cards/", cardCache);
+    cardCache = parseCards();
+    cardAppList.each(function(){
+        spawnAppsInCards($(this), cardDirectory, cardCache);
     });
-    var appCache = parseContent("depictions/");
+    appCache = parseContent(appDirectory);
 });

@@ -1,4 +1,4 @@
-function appendBtnDownloadContent(path, element, JSONData) {
+function appendBtnDownloadContent(path, element, currentApp, JSONData) {
     if (JSONData == undefined) {
         $.ajax({
             url: path,
@@ -16,7 +16,8 @@ function appendBtnDownloadContent(path, element, JSONData) {
     }
     element
         .text("" + price)
-        .css({"background-color": JSONData.tint, "color": JSONData.textTint});
+        .css({"background-color": JSONData.tint, "color": JSONData.textTint})
+        .attr("app", currentApp);
 }
 function appendSubtitleContent(path, element, JSONData, override, appSubtitle) {
     if (JSONData == undefined && override == true && appSubtitle == undefined) {
@@ -36,7 +37,7 @@ function appendSubtitleContent(path, element, JSONData, override, appSubtitle) {
         .html("" + JSONData.subtitle)
         .css("color", JSONData.textTint2);
 }
-function appendAppName(path, element, JSONData, override, appName) {
+function appendAppName(path, element, currentApp, JSONData, override, appName) {
     if (JSONData == undefined && override == true && appName == undefined) {
         $.ajax({
             url: path,
@@ -50,7 +51,9 @@ function appendAppName(path, element, JSONData, override, appName) {
     } else if (override == true && typeof appName == "string") {
         JSONData.appName = appName;
     }
-    element.text("" + JSONData.appName);
+    element
+        .text("" + JSONData.appName)
+        .attr("app", currentApp);
 }
 function appendIcon(path, wrapper, iconClass, JSONData) {
     if (JSONData == undefined) {

@@ -22,8 +22,8 @@ function parseContent(depictionFolder) {
           }
         });
       }
-      $(this).attr("data-depictionJSON", depictionPath);
-      appendAppName(depictionPath, $(this), cache[currentApp]);
+      $(this).attr({"data-depictionJSON": depictionPath});
+      appendAppName(depictionPath, $(this), currentApp, cache[currentApp]);
     });
     $(this).find(".subtitle").not(".noappend").each(function() {
       currentApp = this.getAttribute("app") || "default";
@@ -74,7 +74,7 @@ function parseContent(depictionFolder) {
         });
       }
       $(this).attr("data-depictionJSON", depictionPath);
-      appendBtnDownloadContent(depictionPath, $(this), cache[currentApp]);
+      appendBtnDownloadContent(depictionPath, $(this), currentApp, cache[currentApp]);
     });
     $(this).find(".bottom-bar").each(function() {
       currentApp = this.getAttribute("app") || "default";

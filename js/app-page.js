@@ -2,15 +2,19 @@
 /* jshint esversion: 6 */
 
 class UIAppPage {
-    constructor(depictionPath, appPage) {
-        this.depictionPath = depictionPath || "depictions/default.json";
+    constructor(currentApp, directory, cache, appPage) {
+        this.cache = cache || {};
+        this.currentApp = currentApp || "default";
+        this.directory = directory || "depictions/";
         // Defaults for elements, you can change these if your elements are different
         this.appPage = appPage || $(".app-page");
         this.iconWrapper = $(".app-page-app-icon-wrapper");
         this.headerIconWrapper = $(".header-app-icon-wrapper");
+        this.headerImgWrapper = this.appPage.find(".app-page-header-img-wrapper");
         this.appNameElement = $(".app-page-app-name");
         this.appSubtitleElement = $(".app-page-app-subtitle");
         this.btnDownload = $(".app-page-btn-download-append");
+        this.header = this.appPage.find(".app-page-header");
         // Overrides
         this.settingsOverrideDefaults = {
             "appName": false,
@@ -21,9 +25,7 @@ class UIAppPage {
         this.settingsOverride = this.settingsOverrideDefaults;
     }
     hideCards() {
-        setTimeout(function() {
-            $(".card").not(".active").hide();
-        }, 500);
+        $("body").addClass("noscroll");
     }
     checkCardsVisibility() {
         var cardDisplay = $(".card").not(".active").css("display");
@@ -37,32 +39,34 @@ class UIAppPage {
         return cardsWereVisible;
     }
     parseJSON(pathToJSON) {
-        var path = pathToJSON || this.depictionPath;
+        var path = pathToJSON || this.directory + this.currentApp + ".json";
         var JSONData = [];
-        $.ajax({
-            url: path,
-            async: false,
-            dataType: 'json',
-            success: function (data) {
-              JSONData = data;
-            }
-        });
-        if (typeof JSONItems != "object"){
-            console.log("Error while parsing JSON");
+        var cache = this.cache;
+        if (typeof this.cache[this.currentApp] == "undefined") {
+            $.ajax({
+                url: path,
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                  JSONData = data;
+                  cache[currentApp] = data;
+                }
+            });
+            this.JSONData = JSONData;
+        } else {
+            this.JSONData = this.cache[this.currentApp];
         }
-        this.JSONData = JSONData;
-        return JSONData;
+        return this.JSONData;
     }
     initAppIcon() {
         appendIcon(this.depictionPath, this.iconWrapper, "app-page-app-icon", this.JSONData);
         appendIcon(this.depictionPath, this.headerIconWrapper, "header-app-icon app-icon", this.JSONData);
     }
     initAppName() {
-        appendAppName(this.depictionPath, this.appNameElement, this.JSONData, this.settingsOverride.appName, this.override.appName);
-        this.appNameElement.attr("data-depictionJSON");
+        appendAppName(this.depictionPath, this.appNameElement, this.currentApp, this.JSONData, this.settingsOverride.appName, this.override.appName);
     }
     initBtnDownload() {
-        appendBtnDownloadContent(this.depictionPath, this.btnDownload, this.JSONData);
+        appendBtnDownloadContent(this.depictionPath, this.btnDownload, this.currentApp, this.JSONData);
         this.btnDownload.attr("data-depictionJSON", this.depictionPath);
     }
     initSubtitle() {
@@ -72,42 +76,29 @@ class UIAppPage {
         appendDescription(this.depictionPath, $(".app-page-text-description"), this.JSONData);
     }
     initRating() {
-        var JSONData = this.JSONData;
-        if (JSONData == undefined) {
-            $.ajax({
-                url: this.depictionPath,
-                async: false,
-                dataType: 'json',
-                success: function (data) {
-                JSONData = data;
-                console.log("Parsed a JSON");
-                }
-            });
-        }
-        var refAppRating = JSONData.rating;
         var ratingsText = "ratings";
-        parseRating(refAppRating, $("[first-star]"), $("[second-star]"), $("[third-star]"), $("[fourth-star]"), $("[fifth-star]"));
-        this.appPage.find(".rating-num").text("" + refAppRating);
-        this.appPage.find(".number-of-ratings").text("" + JSONData.numberOfRatings + " " + ratingsText);
+        parseRating(this.JSONData.rating, $("[first-star]"), $("[second-star]"), $("[third-star]"), $("[fourth-star]"), $("[fifth-star]"));
+        this.appPage.find(".rating-num").text("" + this.JSONData.rating);
+        this.appPage.find(".number-of-ratings").text("" + this.JSONData.numberOfRatings + " " + ratingsText);
     }
     initHeader() {
-        var alreadyRan = this.appPage.find(".app-page-header-img-wrapper").attr("alreadyRan");
+        var alreadyRan = this.headerImgWrapper.attr("alreadyRan");
         if (this.JSONData.hasHeader == true && alreadyRan !== "true") {
-            this.appPage.find(".app-page-header-img-wrapper").css({display: "block"}).append('<img class="app-page-header-img" src="' + this.JSONData.headerPhoto + '"></img>').addClass("has-header");
-            this.appPage.find(".app-page-header").css({"-webkit-backdrop-filter": "blur(0)", backgroundColor: "transparent"});
+            this.headerImgWrapper.css({display: "block"}).append('<img class="app-page-header-img" src="' + this.JSONData.headerPhoto + '"></img>').addClass("has-header");
+            this.header.css({"-webkit-backdrop-filter": "blur(0)", backgroundColor: "transparent"});
             this.appPage.css({paddingTop: "0"});
         }
         statusBarInit($(".header-app-icon, .app-page-btn-download-header"));
-        this.appPage.find(".app-page-header-img-wrapper").attr("alreadyRan", "true");
+        this.headerImgWrapper.attr("alreadyRan", "true");
     }
     resetHeader() {
-        this.appPage.find(".app-page-header-img-wrapper")
+        this.headerImgWrapper
             .html("")
             .css({display: "none"})
             .attr("alreadyRan", "false");
-        this.appPage.find(".app-page-header").css({"-webkit-backdrop-filter": '', backgroundColor: ''});
+        this.header.css({"-webkit-backdrop-filter": '', backgroundColor: ''});
         this.appPage.css({paddingTop: ''});
-        this.appPage.find(".app-page-header-img-wrapper").removeClass("has-header");
+        this.headerImgWrapper.removeClass("has-header");
     }
     initScreenshots() {
         parseScreenshots($(".app-page-screenshot-wrapper"), this.depictionPath, this.JSONData);
@@ -146,13 +137,13 @@ class UIAppPage {
     // Open appPage
     open() {
         this.appPage.css({visibility: "visible", right: "0"});
-        $(".app-page-header").css({right: "0", visibility: "visible"});
+        this.header.css({right: "0", visibility: "visible"});
     }
     close() {
         toggleCards();
         // Hide the app page
-        this.appPage.css("right", "-100%");
-        this.appPage.find(".app-page-header").css({right: "-100%", visibility: "hidden"});
+        this.appPage.css({right: "-100%"});
+        this.header.css({right: "-100%", visibility: "hidden"});
         // Reset all the things back
         resetScreenshots($(".app-page-screenshot-wrapper"));
         resetDescription($(".app-page-text-description"));
@@ -164,9 +155,11 @@ class UIAppPage {
     }
 
 }
-function appPageInit(parent) {
-    var depictionPath = parent.attr("data-depictionJSON");
-    appPage.depictionPath = depictionPath;
+function appPageInit(parent, currentCache) {
+    var cache = currentCache || {};
+    var currentApp = parent.attr("app");
+    appPage.currentApp = currentApp;
+    appPage.cache = cache;
     appPage.initAll();
 }
 function resetScreenshots(parent) {
@@ -186,6 +179,7 @@ function toggleCards(parentElem) {
     if (wasVisible == "true") {
         $(".card").show();
     }
+    $("body").removeClass("noscroll");
 }
 function parseRating(refAppRating, firstStar, secondStar, thirdStar, fourthStar, fifthStar) {
     if (refAppRating == 1) {
@@ -238,10 +232,9 @@ function statusBarInit(element, scrollView) {
     This is also where you set the overrides for default elements
 */
 var appPage = new UIAppPage();
-
 /* This should be replaced with your code if it's any different */
 $(".app-name").click(function() {
-    appPageInit($(this));
+    appPageInit($(this), appCache);
 });
 
 $(".back-btn").click(function() {

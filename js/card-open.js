@@ -2,59 +2,73 @@
 /* jshint esversion: 6 */
 
 class UICard {
-    constructor(element, trigger, closeBtn) {
+    constructor(element, trigger, cache, closeBtn) {
         this.trigger = element || $(".card");
         this.card = trigger || this.trigger.closest(".card");
+        this.currentCard = this.card.attr("card");
         this.closeBtn = closeBtn || $(".close");
+        this.cache = cache || {};
+        this.appCache = {};
     }
     open() {
+        // Get the position of the parent, so you can change the position to fixed without any glitches
         var cardPosition = this.card.parent().offset();
         var card = this.card;
         var minHeightBefore = this.card.css("min-height");
         this.card.attr("min-height", minHeightBefore);
         this.card.parents(".card-wrapper").css({
-            "top": cardPosition.top,
-            "left": cardPosition.left,
-            "position": "fixed",
-            "overflow": "scroll"
+            top: cardPosition.top,
+            left: cardPosition.left,
+            position: "fixed",
+            overflow: "scroll"
         });
         setTimeout(function() {
             card.parents(".card-wrapper").css({
-                "top": 0,
-                "left": 0,
-                "width": "100vw",
-                "height": "100vh",
-                "border-radius": "0"
+                top: 0,
+                left: 0,
+                width: "100vw",
+                height: "100vh",
+                borderRadius: 0
+            });
+            card.css({
+                width: "100vw",
+                borderRadius:  "0",
+                minHeight:  ''
             });
             card.not(".full").css({
-                "width": "100vw",
-                "height": "50vh",
-                "border-radius": "0",
-                "min-height": ''
+                height: "50vh"
             });
             $(".card.full.fullscreen").css({
-                "width": "100vw",
-                "height": "100vh",
-                "border-radius": "0",
-                "min-height": ''
+                height: "100vh"
             });
         }, 1);
+        this.card.parent().addClass("fullscreen", "opened");
         this.card.addClass("fullscreen", "opened");
     }
     init() {
         this.open();
         this.showLatterApps();
-        $(".content").addClass("fullscreen");
-        $(".title").addClass("fullscreen");
+        this.card.find(".content").addClass("fullscreen");
+        this.card.find(".title").addClass("fullscreen");
         this.closeBtn.removeClass("hidden");
         this.trigger.siblings(".description-page").addClass("fullscreen");
         $(".description").css("visibility", "visible");
         this.card.addClass("active");
-        $(".card").not(".active").hide().attr("wasHidden", "true");
+        this.disableScroll();
         $(".hide-on-card-open").hide();
         $(".bottom-bar").addClass("fullscreen");
-        
-        bottomPopupInit(this.card);
+        this.initBottomPopup();
+    }
+    disableScroll() {
+        $("body").addClass("noscroll");
+    }
+    enableScroll() {
+        $("body").removeClass("noscroll");
+    }
+    initBottomPopup() {
+        if (this.cache[this.currentCard].containsApps.length < 2 && this.cache[this.currentCard].containsApps.length > 0) {
+            bottomPopupInit(this.card, this.appCache[this.cache[this.currentCard].containsApps[0]], this.currentCard);
+        }
     }
     showLatterApps() {
         this.card.find(".apps-list-featured li:nth-child(4)").removeClass("no-after");
@@ -68,6 +82,7 @@ class UICard {
         var card = this.trigger.closest(".card");
         var minHeightBefore = this.card.attr("min-height");
         this.card.removeClass("fullscreen");
+        this.card.closest(".card-wrapper").removeClass("fullscreen");
         this.card.parents(".card-wrapper").css({
             top: 0,
             left: 0,
@@ -90,7 +105,7 @@ class UICard {
         this.closeBtn.addClass("hidden");
         this.trigger.siblings(".description-page").removeClass("fullscreen");
         $(".description").css("visibility", "hidden");
-        $(".card").not(".active").show().attr("wasHidden", "false");
+        this.enableScroll();
         this.card.removeClass("active");
         $(".bottom-bar").removeClass("fullscreen");
     }
@@ -102,6 +117,9 @@ var card = new UICard();
 $(".card-trigger").click(function() {
     card.trigger = $(this);
     card.card = card.trigger.closest(".card");
+    card.currentCard = card.card.attr("card");
+    card.cache = cardCache;
+    card.appCache = appCache;
     card.init();
 });
 $(".close").click(function() {

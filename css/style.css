@@ -98,6 +98,9 @@ i.right {
     max-height: 600px;
     width: 91vw;
 }
+.card.fullscreen, .card-wrapper.fullscreen {
+    z-index: 900;
+}
 .card:hover{
     transform: scale(0.98);
     box-shadow: 0 3px 28px rgba(0, 0, 0, 0.4);
@@ -396,7 +399,7 @@ h5.bottom-subtitle-bar {
     position: absolute;
     right: 1.5em;
     top: 1em;
-    color: rgb(47, 126, 246) !important;
+    color: rgb(47, 126, 246);
 }
 .header {
     height: 3em;
@@ -446,7 +449,7 @@ h5.bottom-subtitle-bar {
     float: right;
     position: absolute;
     top: 1rem;
-    right: 2em;
+    right: 0.5rem;
     
 }
 .app-overview-pay::after {
@@ -819,4 +822,7 @@ h5.bottom-subtitle-bar {
     opacity: 0;
     top: unset;
     transition: opacity 500ms 0ms;
+}
+.noscroll {
+    overflow: hidden;
 }

@@ -2,7 +2,6 @@ function parseCards() {
   var directoryPrefix = "cards/";
   var currentCard;
   var path;
-  var lastPath;
   var cache = {};
   $(".card-wrapper").each(function() {
     $(this).find(".card").each(function() {

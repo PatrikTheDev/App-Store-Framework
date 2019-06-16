@@ -35,12 +35,10 @@ function spawnApps(parent, path) {
         appPageInit($(this));
     });
 }
-function spawnAppsInCards(parent, directoryPrefix, currentCache, path) {
+function spawnAppsInCards(parent, directoryPrefix, currentCache) {
     var currentCard = parent.attr("card");
     var cache = currentCache || {};
-    if (typeof path == "undefined") {
-        path = directoryPrefix + currentCard + ".json";
-    }
+    path = directoryPrefix + currentCard + ".json";
     var JSONItems = [];
     if (typeof cache[currentCard] == "undefined") {
         $.ajax({
