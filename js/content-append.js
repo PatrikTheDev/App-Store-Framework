@@ -78,10 +78,13 @@ function appendBottomBarColor(path, element, JSONData) {
             async: false,
             dataType: 'json',
             success: function (data) {
-            JSONData = data;
-            console.log("Parsed a JSON");
+                JSONData = data;
+                console.log("Parsed a JSON");
             }
         });
     }
     element.css("background-color", JSONData.tint2);
+}
+function tintElements(elementsToTint, tint) {
+    elementsToTint.css({color: tint});
 }

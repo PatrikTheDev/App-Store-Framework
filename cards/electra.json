@@ -6,7 +6,7 @@
             "class": "DepictionMarkdownView"
         }
     ],
-    "background": "resources/backgrounds/cards/electra-back.png",
+    "background": "url(resources/backgrounds/cards/electra-back.png)",
     "subtitle": null,
     "minHeight": 400,
     "containsApps": [],

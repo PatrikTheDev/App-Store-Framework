@@ -12,7 +12,7 @@ function appendCardCSS(path, element, JSONData) {
     }
     element.css({
         "min-height": JSONData.minHeight,
-        "background": "url(" + JSONData.background + ") center",
+        "background": JSONData.background + " center",
         "background-size": "cover"
     });
 }

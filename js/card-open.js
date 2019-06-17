@@ -6,7 +6,7 @@ class UICard {
         this.trigger = element || $(".card");
         this.card = trigger || this.trigger.closest(".card");
         this.currentCard = this.card.attr("card");
-        this.closeBtn = closeBtn || $(".close");
+        this.closeBtn = closeBtn || this.card.find(".close");
         this.cache = cache || {};
         this.appCache = {};
     }
@@ -74,6 +74,10 @@ class UICard {
         this.card.find(".apps-list-featured li:nth-child(4)").removeClass("no-after");
         this.card.find(".apps-list-featured li:nth-child(4)").nextAll().show();
     }
+    hideLatterApps() {
+        this.card.find(".apps-list-featured li:nth-child(4)").nextAll().hide();
+        this.card.find(".apps-list-featured li:visible:last").addClass("no-after"); 
+    }
     close() {
         $(".content").removeClass("fullscreen");
         $(".bottom-popup").css("bottom", "-100%");
@@ -99,8 +103,7 @@ class UICard {
             width: '',
             height: ''
         });
-        this.card.find(".apps-list-featured li:nth-child(4)").nextAll().hide();
-        this.card.find(".apps-list-featured li:visible:last").addClass("no-after");   
+        this.hideLatterApps();
         this.trigger.closest(".opened").removeClass("opened");
         this.closeBtn.addClass("hidden");
         this.trigger.siblings(".description-page").removeClass("fullscreen");
@@ -123,6 +126,5 @@ $(".card-trigger").click(function() {
     card.init();
 });
 $(".close").click(function() {
-    // var card = new UICard($(this));
     card.close();
 });

@@ -11,6 +11,9 @@ class UIPayPopup {
         this.appSubtitleElement = $(".pay-popup-subtitle");
         this.iconWrapper = $(".pay-popup-app-icon");
         this.payButton = $(".pay-now-button");
+        this.price = $(".pay-popup-price");
+        this.email = $(".email");
+        this.tintedElements = this.payPopup.find(".tinted");
         // Overrides
         this.settingsOverrideDefaults = {
             "appName": false,
@@ -84,21 +87,21 @@ class UIPayPopup {
         appendIcon(this.depictionPath, this.iconWrapper, "app-icon", this.JSONData);
     }
     initPrice() {
-        $(".pay-popup-price").text("" + this.JSONData.price);
+        this.price.text("" + this.JSONData.price);
     }
     initBtnDownload() {
         this.payButton.css({"background-color": this.JSONData.tint, "color": this.JSONData.textTint});
     }
     tintElements() {
-        this.payPopup.find(".tinted").css({color: this.JSONData.textTint2});
+        tintElements(this.tintedElements, this.JSONData.textTint2);
     }
     checkCookie() {
         this.user = getCookie("email");
         if (this.user != "") {
-            $(".email").text(this.user);
+            this.email.text(this.user);
             this.payButton.attr({"onclick": "", "href": this.JSONData.location});
         } else {
-            $(".email").text("Not logged in");
+            this.email.text("Not logged in");
             this.payButton
                 .text("Log in")
                 .attr("onclick", "logInPopupOpen(); payPopupClose();");

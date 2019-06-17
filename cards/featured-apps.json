@@ -1,7 +1,7 @@
 {
     "title": "Apps We All Love",
     "description": [],
-    "background": "rgb(211, 211, 211)",
+    "background": "white",
     "subtitle": "FEATURED APPS",
     "containsApps": [
         "yt", "electra", "alien", "snap", "default"

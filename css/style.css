@@ -106,10 +106,10 @@ i.right {
     box-shadow: 0 3px 28px rgba(0, 0, 0, 0.4);
 }
 .content {
-    margin-top: 1em;
-    margin-left: 1.3em;
-    margin-right: 1.3em;
-    margin-bottom: 0.5em;
+    padding-top: 1em;
+    padding-left: 1.3em;
+    padding-right: 1.3em;
+    padding-bottom: 0.5em;
     height: 100%;
 }
 .bottom-text-bar {
@@ -260,15 +260,16 @@ h5.bottom-text-bar {
     max-height: 0;
 }
 .description-page {
-    position: absolute;
+    position: relative;
     z-index: 1;
     display: none;
     transition: 500ms;
+    top: -100%;
 }
 .description-page.fullscreen {
     display: block;
-    position: absolute;
-    top: 50vh;
+    position: relative;
+    top: 0;
     left: 0;
     bottom: 0;
     width: 100vw;
@@ -298,7 +299,7 @@ li.app {
     width: 100%;
     list-style: none;
     list-style-type: none !important;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 li.app-list::after {
     content: '';
@@ -328,15 +329,18 @@ p.subtitle {
     left: 4.4rem;   
 }
 .app .subtitle {
-    left: 3.5rem;
-    top: 1.7rem;
+    position: relative;
+    left: 0;
+    top: 0;
 }
 
 .app .subtitle {
     line-height: 1em;
 }
 .app .app-name {
-    top: 0.2em;
+    position: relative;
+    left: 0;
+    top: 0;
 }
 .app h4.app-name {
     font-size: 18px;
@@ -825,4 +829,18 @@ h5.bottom-subtitle-bar {
 }
 .noscroll {
     overflow: hidden;
+}
+.app-cell-stack {
+    display: grid;
+    grid-template-columns: 3em calc(100% - (3em + 4.5rem));
+    padding-top: 0.5rem;
+}
+.app-cell-details {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+.app-cell-btn-download {
+    display: grid;
+    justify-content: center;
+    align-content: center;
 }

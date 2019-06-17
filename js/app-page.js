@@ -8,13 +8,17 @@ class UIAppPage {
         this.directory = directory || "depictions/";
         // Defaults for elements, you can change these if your elements are different
         this.appPage = appPage || $(".app-page");
-        this.iconWrapper = $(".app-page-app-icon-wrapper");
-        this.headerIconWrapper = $(".header-app-icon-wrapper");
+        this.iconWrapper = this.appPage.find(".app-page-app-icon-wrapper");
+        this.headerIconWrapper = this.appPage.find(".header-app-icon-wrapper");
+        this.headerIcon = this.appPage.find(".header-app-icon");
+        this.headerItems = this.appPage.find(".header-app-icon, .app-page-btn-download-header");
         this.headerImgWrapper = this.appPage.find(".app-page-header-img-wrapper");
-        this.appNameElement = $(".app-page-app-name");
-        this.appSubtitleElement = $(".app-page-app-subtitle");
-        this.btnDownload = $(".app-page-btn-download-append");
+        this.appNameElement = this.appPage.find(".app-page-app-name");
+        this.appSubtitleElement = this.appPage.find(".app-page-app-subtitle");
+        this.btnDownload = this.appPage.find(".app-page-btn-download-append");
+        this.headerBtnDownload = this.appPage.find(".app-page-btn-download-header");
         this.header = this.appPage.find(".app-page-header");
+        this.tintedElements = this.appPage.find(".tinted");
         // Overrides
         this.settingsOverrideDefaults = {
             "appName": false,
@@ -24,7 +28,7 @@ class UIAppPage {
         this.override = this.overrideDefaults;
         this.settingsOverride = this.settingsOverrideDefaults;
     }
-    hideCards() {
+    blockScroll() {
         $("body").addClass("noscroll");
     }
     checkCardsVisibility() {
@@ -67,7 +71,6 @@ class UIAppPage {
     }
     initBtnDownload() {
         appendBtnDownloadContent(this.depictionPath, this.btnDownload, this.currentApp, this.JSONData);
-        this.btnDownload.attr("data-depictionJSON", this.depictionPath);
     }
     initSubtitle() {
         appendSubtitleContent(this.depictionPath, this.appSubtitleElement, this.JSONData, this.settingsOverride.appSubtitle, this.override.appSubtitle);
@@ -95,16 +98,16 @@ class UIAppPage {
         this.headerImgWrapper
             .html("")
             .css({display: "none"})
-            .attr("alreadyRan", "false");
+            .attr("alreadyRan", "false")
+            .removeClass("has-header");
         this.header.css({"-webkit-backdrop-filter": '', backgroundColor: ''});
         this.appPage.css({paddingTop: ''});
-        this.headerImgWrapper.removeClass("has-header");
     }
     initScreenshots() {
         parseScreenshots($(".app-page-screenshot-wrapper"), this.depictionPath, this.JSONData);
     }
     tintElements() {
-        this.appPage.find(".tinted").css({color: this.JSONData.textTint2});
+        tintElements(this.tintedElements, this.JSONData.textTint2);
     }
     initAll() {
         // Parse the JSON
@@ -123,8 +126,8 @@ class UIAppPage {
         this.initDescription();
         // Check if cards were visible
         this.checkCardsVisibility();
-        // Hide cards
-        this.hideCards();
+        // Block scroll
+        this.blockScroll();
         // Append things to btn-download
         this.initBtnDownload();
         // Parse rating
@@ -153,7 +156,6 @@ class UIAppPage {
         this.settingsOverride = this.settingsOverrideDefaults;
         this.override = this.overrideDefaults;
     }
-
 }
 function appPageInit(parent, currentCache) {
     var cache = currentCache || {};
