@@ -10,9 +10,15 @@ class UICard {
         this.cache = cache || {};
         this.appCache = {};
     }
+    getCardPosition() {
+        this.cardPosition = this.card.parent().offset();
+    }
     open() {
         // Get the position of the parent, so you can change the position to fixed without any glitches
-        var cardPosition = this.card.parent().offset();
+        if (!this.cardPosition) {
+            this.getCardPosition();
+        }
+        var cardPosition = this.cardPosition;
         var card = this.card;
         var minHeightBefore = this.card.css("min-height");
         this.card.attr("min-height", minHeightBefore);
@@ -46,6 +52,7 @@ class UICard {
         this.card.addClass("fullscreen", "opened");
     }
     init() {
+        //this.getCardPosition();
         this.open();
         this.showLatterApps();
         this.card.find(".content").addClass("fullscreen");

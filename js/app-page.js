@@ -63,28 +63,49 @@ class UIAppPage {
         return this.JSONData;
     }
     initAppIcon() {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
+            this.parseJSON();
+        }
         appendIcon(this.depictionPath, this.iconWrapper, "app-page-app-icon", this.JSONData);
         appendIcon(this.depictionPath, this.headerIconWrapper, "header-app-icon app-icon", this.JSONData);
     }
     initAppName() {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
+            this.parseJSON();
+        }
         appendAppName(this.depictionPath, this.appNameElement, this.currentApp, this.JSONData, this.settingsOverride.appName, this.override.appName);
     }
     initBtnDownload() {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
+            this.parseJSON();
+        }
         appendBtnDownloadContent(this.depictionPath, this.btnDownload, this.currentApp, this.JSONData);
     }
     initSubtitle() {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
+            this.parseJSON();
+        }
         appendSubtitleContent(this.depictionPath, this.appSubtitleElement, this.JSONData, this.settingsOverride.appSubtitle, this.override.appSubtitle);
     }
     initDescription() {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
+            this.parseJSON();
+        }
         appendDescription(this.depictionPath, $(".app-page-text-description"), this.JSONData);
     }
     initRating() {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
+            this.parseJSON();
+        }
         var ratingsText = "ratings";
         parseRating(this.JSONData.rating, $("[first-star]"), $("[second-star]"), $("[third-star]"), $("[fourth-star]"), $("[fifth-star]"));
         this.appPage.find(".rating-num").text("" + this.JSONData.rating);
         this.appPage.find(".number-of-ratings").text("" + this.JSONData.numberOfRatings + " " + ratingsText);
     }
     initHeader() {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
+            this.parseJSON();
+        }
         var alreadyRan = this.headerImgWrapper.attr("alreadyRan");
         if (this.JSONData.hasHeader == true && alreadyRan !== "true") {
             this.headerImgWrapper.css({display: "block"}).append('<img class="app-page-header-img" src="' + this.JSONData.headerPhoto + '"></img>').addClass("has-header");

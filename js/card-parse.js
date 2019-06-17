@@ -7,7 +7,7 @@ function parseCards() {
     $(this).find(".card").each(function() {
       currentCard = this.getAttribute("card");
       path = directoryPrefix + currentCard + ".json";
-      if (typeof cache[currentCard] == "undefined") {
+      if (!cache[currentCard]) {
         $.ajax({
           url: path,
           async: false,
@@ -25,7 +25,7 @@ function parseCards() {
     $(this).find(".title").each(function() {
       currentCard = this.getAttribute("card");
       path = directoryPrefix + currentCard + ".json";
-      if (typeof cache[currentCard] == "undefined") {
+      if (!cache[currentCard]) {
         $.ajax({
           url: path,
           async: false,
@@ -43,7 +43,7 @@ function parseCards() {
     $(this).find(".bottom-text").each(function() {
       currentCard = this.getAttribute("card");
       path = directoryPrefix + currentCard + ".json";
-      if (typeof cache[currentCard] == "undefined") {
+      if (!cache[currentCard]) {
         $.ajax({
           url: path,
           async: false,
@@ -61,7 +61,7 @@ function parseCards() {
     $(this).find(".small-title").each(function() {
       currentCard = this.getAttribute("card");
       path = directoryPrefix + currentCard + ".json";
-      if (typeof cache[currentCard] == "undefined") {
+      if (!cache[currentCard]) {
         $.ajax({
           url: path,
           async: false,
@@ -79,7 +79,7 @@ function parseCards() {
     $(this).find(".card-description").each(function() {
       currentCard = this.getAttribute("card");
       path = directoryPrefix + currentCard + ".json";
-      if (typeof cache[currentCard] == "undefined") {
+      if (!cache[currentCard]) {
         $.ajax({
           url: path,
           async: false,

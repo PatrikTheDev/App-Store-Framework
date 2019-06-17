@@ -77,25 +77,46 @@ class UIPayPopup {
         $(".bottom-popup").css("bottom", "-100%");
     }
     initAppName() {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
+            this.parseJSON();
+        }
         appendAppName(this.depictionPath, this.appNameElement, this.currentApp, this.JSONData, this.settingsOverride.appName, this.override.appName);
         this.appNameElement.attr("data-depictionJSON");
     }
     initSubtitle() {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
+            this.parseJSON();
+        }
         appendSubtitleContent(this.depictionPath, this.appSubtitleElement, this.JSONData, this.settingsOverride.appSubtitle, this.override.appSubtitle);
     }
     initAppIcon() {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
+            this.parseJSON();
+        }
         appendIcon(this.depictionPath, this.iconWrapper, "app-icon", this.JSONData);
     }
     initPrice() {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
+            this.parseJSON();
+        }
         this.price.text("" + this.JSONData.price);
     }
     initBtnDownload() {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
+            this.parseJSON();
+        }
         this.payButton.css({"background-color": this.JSONData.tint, "color": this.JSONData.textTint});
     }
     tintElements() {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
+            this.parseJSON();
+        }
         tintElements(this.tintedElements, this.JSONData.textTint2);
     }
     checkCookie() {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
+            this.parseJSON();
+        }
         this.user = getCookie("email");
         if (this.user != "") {
             this.email.text(this.user);
