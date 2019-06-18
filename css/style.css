@@ -260,20 +260,23 @@ h5.bottom-text-bar {
     max-height: 0;
 }
 .description-page {
+    display: block;
+    visibility: hidden;
     position: relative;
     z-index: 1;
-    display: none;
-    transition: 500ms;
-    top: -100%;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    transition: all 500ms 0ms, top 0ms 0ms, visibility 0ms 200ms;
+    top: -10000%;
 }
 .description-page.fullscreen {
-    display: block;
+    visibility: visible;
     position: relative;
     top: 0;
     left: 0;
-    bottom: 0;
     width: 100vw;
     min-height: 50vh;
+    border-radius: 0;
     background-color: white;
     padding-top: 1em;
 }

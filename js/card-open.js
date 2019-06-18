@@ -22,6 +22,9 @@ class UICard {
         var card = this.card;
         var minHeightBefore = this.card.css("min-height");
         this.card.attr("min-height", minHeightBefore);
+        if (typeof minHeightBefore == "string") {
+            
+        
         this.card.parents(".card-wrapper").css({
             top: cardPosition.top,
             left: cardPosition.left,
@@ -48,6 +51,7 @@ class UICard {
                 height: "100vh"
             });
         }, 1);
+        }
         this.card.parent().addClass("fullscreen", "opened");
         this.card.addClass("fullscreen", "opened");
     }
