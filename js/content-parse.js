@@ -4,14 +4,14 @@ function parseContent(depictionFolder) {
     var cache = {};
     $(".app, .bottom-bar, .append").each(function(){
         $(this).find(".description").not(".noappend").each(function() {
-            currentApp = this.getAttribute("app");
+            currentApp = this.getAttribute("app") || "default";
             depictionPath = depictionFolder + currentApp + ".json";
             $(this).attr("data-depictionJSON", depictionPath);
         });
         $(this).find(".app-name").not(".noappend").each(function() {
             currentApp = this.getAttribute("app") || "default";
             depictionPath = depictionFolder + currentApp + ".json";
-            if (typeof cache[currentApp] == "undefined") {
+            if (!cache[currentApp]) {
                 $.ajax({
                 url: depictionPath,
                 async: false,
@@ -28,7 +28,7 @@ function parseContent(depictionFolder) {
         $(this).find(".subtitle").not(".noappend").each(function() {
             currentApp = this.getAttribute("app") || "default";
             depictionPath = depictionFolder + currentApp + ".json";
-            if (typeof cache[currentApp] == "undefined") {
+            if (!cache[currentApp]) {
                 $.ajax({
                 url: depictionPath,
                 async: false,
@@ -45,7 +45,7 @@ function parseContent(depictionFolder) {
         $(this).find(".app-icon-wrapper").not(".noappend").each(function() {
             currentApp = this.getAttribute("app") || "default";
             depictionPath = depictionFolder + currentApp + ".json";
-            if (typeof cache[currentApp] == "undefined") {
+            if (!cache[currentApp]) {
                 $.ajax({
                 url: depictionPath,
                 async: false,
@@ -62,7 +62,7 @@ function parseContent(depictionFolder) {
         $(this).find(".btn-download").not(".noappend").each(function() {
             currentApp = this.getAttribute("app") || "default";
             depictionPath = depictionFolder + currentApp + ".json";
-            if (typeof cache[currentApp] == "undefined") {
+            if (!cache[currentApp]) {
                 $.ajax({
                 url: depictionPath,
                 async: false,
@@ -79,7 +79,7 @@ function parseContent(depictionFolder) {
         $(this).find(".bottom-bar").each(function() {
             currentApp = this.getAttribute("app") || "default";
             depictionPath = depictionFolder + currentApp + ".json";
-            if (typeof cache[currentApp] == "undefined") {
+            if (!cache[currentApp]) {
                 $.ajax({
                 url: depictionPath,
                 async: false,
