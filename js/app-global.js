@@ -1,5 +1,5 @@
 /* 
-    This file "globalizes" (sets it for the children) the 'app' and 'card' attributes
+    This file "globalizes" the 'app' and 'card' attributes (sets it for the children)
 */
 var currentApp;
 var currentCard;

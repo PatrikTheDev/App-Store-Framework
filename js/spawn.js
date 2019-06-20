@@ -1,7 +1,7 @@
 /* JSHint settings */
 /* jshint multistr: true */
 
-function spawnApps(parent, path) {
+function spawnApps(parent, path, JSONData) {
     var JSONItems = [];
     $.ajax({
         url: path,
@@ -23,29 +23,69 @@ function spawnApps(parent, path) {
                         <h4 class="app-name" app="' + JSONItems.containsApps[i] + '"></h4>\
                         <span class="subtitle grey-text" app="' + JSONItems.containsApps[i] + '"></span>\
                 </div>\
-                <div class="btn-download right light-grey" app="' + JSONItems.containsApps[i] + '">Get</div>\
+                <div class="app-cell-btn-download">\
+                    <div class="btn-download right light-grey" app="' + JSONItems.containsApps[i] + '">Get</div>\
+                </div>\
             </div>\
         </li>');
         }
     }
     $(".apps-list-featured li:nth-child(4)").nextAll().hide();
     $(".apps-list-featured li:visible:last").addClass("no-after");
-    parent.find(".btn-download").click(function() {
-        payPopupInit($(this));
-    });
-    parent.find(".cancel").click(function() {
-        payPopupClose();
-    });
-    parent.find(".app-name").click(function() {
-        appPageInit($(this));
-    });
+    payPopupListeners(parent);
+    appPageListeners(parent);
 }
-function spawnAppsInCards(parent, directoryPrefix, currentCache) {
+$.fn.spawnSimilarApps = function(currentCache, currentApp) {
+    var directoryPrefix = appDirectory();
+    var path = directoryPrefix + currentApp + ".json";
+    if (!currentCache) {
+        currentCache = {};
+    }
+    if (!currentCache[currentApp]) {
+        $.ajax({
+            url: path,
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                currentCache[currentApp] = data;
+            }
+        });
+    }
+    var i;
+    if (currentCache[currentApp].similarApps && currentCache[currentApp].similarApps.length > 0) {
+        console.log("working");
+        for (i = 0; i < currentCache[currentApp].similarApps.length; i++) {
+            var elementToAppend = '<li class="app app-list" app="' + currentCache[currentApp].similarApps[i] + '">\
+            <div class="app-cell-stack">\
+                <div class="app-cell-icon">\
+                        <div class="app-icon-wrapper" app="' + currentCache[currentApp].similarApps[i] + '"></div>\
+                </div>\
+                <div class="app-cell-details">\
+                        <h4 class="app-name" app="' + currentCache[currentApp].similarApps[i] + '"></h4>\
+                        <span class="subtitle grey-text" app="' + currentCache[currentApp].similarApps[i] + '"></span>\
+                </div>\
+                <div class="app-cell-btn-download">\
+                    <div class="btn-download right light-grey" app="' + currentCache[currentApp].similarApps[i] + '">Get</div>\
+                </div>\
+            </div>\
+        </li>';
+            this.append(elementToAppend);
+            var appCell = $($.parseHTML(elementToAppend)).filter('.app');
+            console.log(appCell.attr("app"));
+            appendContentToAppCell(this.find(".app"), currentCache);
+        }
+    } else {
+        this.html('<p class="no-similar">No similar apps</p>');
+    }
+    return this;
+};
+function spawnAppsInCards(parent, currentCache) {
+    var directoryPrefix = appDirectory();
     var currentCard = parent.attr("card");
     var cache = currentCache || {};
     path = directoryPrefix + currentCard + ".json";
     var JSONItems = [];
-    if (typeof cache[currentCard] == "undefined") {
+    if (!cache[currentCard]) {
         $.ajax({
             url: path,
             async: false,
@@ -58,7 +98,7 @@ function spawnAppsInCards(parent, directoryPrefix, currentCache) {
     JSONItems = cache[currentCard];
     var i;
     for (i = 0; i < JSONItems.containsApps.length; i++) { 
-        if (JSONItems.containsApps[i] != null && JSONItems.containsApps[i] != undefined) {
+        if (JSONItems.containsApps[i]) {
             parent.append('<li class="app app-list" app=app="' + JSONItems.containsApps[i] + '">\
             <div class="app-cell-stack">\
                 <div class="app-cell-icon">\
@@ -77,13 +117,6 @@ function spawnAppsInCards(parent, directoryPrefix, currentCache) {
     }
     $(".apps-list-featured li:nth-child(4)").nextAll().hide();
     $(".apps-list-featured li:visible:last").addClass("no-after");
-    parent.find(".btn-download").click(function() {
-        payPopupInit($(this));
-    });
-    parent.find(".cancel").click(function() {
-        payPopupClose();
-    });
-    parent.find(".app-name").click(function() {
-        appPageInit($(this));
-    });
+    payPopupListeners(parent);
+    appPageListeners(parent);
 }

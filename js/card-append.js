@@ -5,8 +5,8 @@ function appendCardCSS(path, element, JSONData) {
             async: false,
             dataType: 'json',
             success: function (data) {
-            JSONData = data;
-            console.log("Parsed a JSON");
+                JSONData = data;
+                console.log("Parsed a JSON");
             }
         });
     }
@@ -23,8 +23,8 @@ function appendCardText(path, element, type, JSONData) {
             async: false,
             dataType: 'json',
             success: function (data) {
-            JSONData = data;
-            console.log("Parsed a JSON");
+                JSONData = data;
+                console.log("Parsed a JSON");
             }
         });
     }

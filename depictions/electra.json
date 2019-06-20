@@ -34,5 +34,8 @@
     "screenshots": [
         "resources/backgrounds/cards/electra-back.png", "resources/backgrounds/cards/electra-back.png", "resources/backgrounds/cards/electra-back.png", "resources/backgrounds/cards/electra-back.png"
     ],
-    "hasHeader": false
+    "hasHeader": false,
+    "similarApps": [
+        "yt", "alien"
+    ]
 }

@@ -23,5 +23,8 @@
     "hasHeader": false,
     "screenshots": [
         "img/electra-back.png", "img/electra-back.png", "img/electra-back.png", "img/electra-back.png"
+    ],
+    "similarApps": [
+        "yt", "alien"
     ]
 }

@@ -146,13 +146,3 @@ function payPopupInit(parent) {
 function payPopupClose() {
     payPopup.close();
 }
-/* This should be replaced with your code if it is different */
-$(".cancel").click(function() {
-    payPopupClose();
-});
-$(".pay-now-button").click(function(){
-    payPopupClose();
-});
-$(".btn-download").click(function() {
-    payPopupInit($(this));
-});

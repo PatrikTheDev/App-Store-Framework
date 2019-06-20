@@ -2,10 +2,10 @@
 /* jshint esversion: 6 */
 
 class UIAppPage {
-    constructor(currentApp, directory, cache, appPage) {
+    constructor(currentApp, cache, appPage) {
         this.cache = cache || {};
-        this.currentApp = currentApp || "default";
-        this.directory = directory || "depictions/";
+        this.currentApp = currentApp || defaultApp();
+        this.directory = appDirectory();
         // Defaults for elements, you can change these if your elements are different
         this.appPage = appPage || $(".app-page");
         this.iconWrapper = this.appPage.find(".app-page-app-icon-wrapper");
@@ -19,6 +19,7 @@ class UIAppPage {
         this.headerBtnDownload = this.appPage.find(".app-page-btn-download-header");
         this.header = this.appPage.find(".app-page-header");
         this.tintedElements = this.appPage.find(".tinted");
+        this.similarApps = this.appPage.find(".app-page-similar-apps-list");
         // Overrides
         this.settingsOverrideDefaults = {
             "appName": false,
@@ -30,6 +31,11 @@ class UIAppPage {
     }
     blockScroll() {
         $("body").addClass("noscroll");
+    }
+    checkApp(app) {
+        if (this.currentApp !== app) {
+            this.reset();
+        }
     }
     checkCardsVisibility() {
         var cardDisplay = $(".card").not(".active").css("display");
@@ -57,10 +63,18 @@ class UIAppPage {
                 }
             });
             this.JSONData = JSONData;
+            this.cache[this.currentApp] = cache[this.currentApp];
         } else {
             this.JSONData = this.cache[this.currentApp];
         }
         return this.JSONData;
+    }
+    spawnSimilarApps() {
+        var alreadyRan = this.similarApps.attr("already-ran");
+        if (alreadyRan == "false") {
+            this.similarApps.spawnSimilarApps(this.cache, this.currentApp);
+        }
+        this.similarApps.attr("already-ran", true);
     }
     initAppIcon() {
         if (!this.JSONData && !this.cache[this.currentApp]) {
@@ -141,8 +155,8 @@ class UIAppPage {
         this.initAppIcon();
         // Tint elements
         this.tintElements();
-        // Show app-page
-        this.open();
+        // Spawn similarApps
+        this.spawnSimilarApps();
         // Append the description/depiction
         this.initDescription();
         // Check if cards were visible
@@ -157,6 +171,8 @@ class UIAppPage {
         this.initScreenshots();
         // Init the header
         this.initHeader();
+        // Show app-page
+        this.open();
     }
     // Open appPage
     open() {
@@ -169,9 +185,13 @@ class UIAppPage {
         this.appPage.css({right: "-100%"});
         this.header.css({right: "-100%", visibility: "hidden"});
         // Reset all the things back
+        this.reset();
+    }
+    reset() {
         resetScreenshots($(".app-page-screenshot-wrapper"));
         resetDescription($(".app-page-text-description"));
         resetRating($("[fifth-star]"));
+        this.similarApps.html("").attr("already-ran", false);
         this.resetHeader();
         // Reset overrides back to default
         this.settingsOverride = this.settingsOverrideDefaults;
@@ -180,7 +200,9 @@ class UIAppPage {
 }
 function appPageInit(parent, currentCache) {
     var cache = currentCache || {};
+    console.log(cache);
     var currentApp = parent.attr("app");
+    appPage.checkApp(currentApp);
     appPage.currentApp = currentApp;
     appPage.cache = cache;
     appPage.initAll();
@@ -255,12 +277,3 @@ function statusBarInit(element, scrollView) {
     This is also where you set the overrides for default elements
 */
 var appPage = new UIAppPage();
-/* This should be replaced with your code if it's any different */
-$(".app-name").click(function() {
-    appPageInit($(this), appCache);
-});
-
-$(".back-btn").click(function() {
-    appPage.close();
-});
-

@@ -19,5 +19,8 @@
     "screenshots": [
         "resources/screenshots/yt/1.PNG", "resources/screenshots/yt/2.PNG", "resources/screenshots/yt/3.PNG", "resources/screenshots/yt/4.PNG"
     ],
-    "hasHeader": false
+    "hasHeader": false,
+    "similarApps": [
+        "yt", "alien"
+    ]
 }

@@ -95,6 +95,5 @@ function parseCards() {
       appendDescription(path, $(this), JSONData);
     });
   });
-  console.log(cache);
   return cache;
 }
