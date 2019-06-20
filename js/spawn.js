@@ -53,7 +53,6 @@ $.fn.spawnSimilarApps = function(currentCache, currentApp) {
     }
     var i;
     if (currentCache[currentApp].similarApps && currentCache[currentApp].similarApps.length > 0) {
-        console.log("working");
         for (i = 0; i < currentCache[currentApp].similarApps.length; i++) {
             var elementToAppend = '<li class="app app-list" app="' + currentCache[currentApp].similarApps[i] + '">\
             <div class="app-cell-stack">\
@@ -71,7 +70,6 @@ $.fn.spawnSimilarApps = function(currentCache, currentApp) {
         </li>';
             this.append(elementToAppend);
             var appCell = $($.parseHTML(elementToAppend)).filter('.app');
-            console.log(appCell.attr("app"));
             appendContentToAppCell(this.find(".app"), currentCache);
         }
     } else {

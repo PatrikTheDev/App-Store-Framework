@@ -200,7 +200,6 @@ class UIAppPage {
 }
 function appPageInit(parent, currentCache) {
     var cache = currentCache || {};
-    console.log(cache);
     var currentApp = parent.attr("app");
     appPage.checkApp(currentApp);
     appPage.currentApp = currentApp;

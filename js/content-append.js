@@ -89,7 +89,6 @@ function tintElements(elementsToTint, tint) {
     elementsToTint.css({color: tint});
 }
 function appendContentToAppCell(cell, currentCache) {
-    console.log(currentCache);
     var directory = appDirectory();
     var btnDownload = cell.find(".btn-download");
     btnDownload.each(function() {
