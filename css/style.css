@@ -606,7 +606,7 @@ h5.bottom-subtitle-bar {
     justify-content: center;
     padding: 2rem 0.5rem 1.5rem 0rem;
     color: rgb(47, 126, 246);
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.8);
     -webkit-backdrop-filter: blur(15px);
     z-index: 999;
     transition: -webkit-backdrop-filter 400ms;
@@ -733,7 +733,7 @@ h5.bottom-subtitle-bar {
     border-radius: 0.3rem;
     max-height: 55vh;
     object-fit: contain;
-    scroll-snap-align: start;
+    scroll-snap-align: center;
 }
 @media (max-width: 500px) {
     .screenshot {

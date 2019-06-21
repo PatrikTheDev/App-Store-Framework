@@ -1,6 +1,6 @@
 function bottomPopupInit(parent, JSONData, currentApp) {
     var depictionPath = parent.find(".app-name").attr("data-depictionJSON");
-    if (JSONData == undefined) {
+    if (!JSONData) {
         $.ajax({
             url: depictionPath,
             async: false,

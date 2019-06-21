@@ -52,7 +52,7 @@ class UIAppPage {
         var path = pathToJSON || this.directory + this.currentApp + ".json";
         var JSONData = [];
         var cache = this.cache;
-        if (typeof this.cache[this.currentApp] == "undefined") {
+        if (!this.cache[this.currentApp]) {
             $.ajax({
                 url: path,
                 async: false,
@@ -123,7 +123,7 @@ class UIAppPage {
         var alreadyRan = this.headerImgWrapper.attr("alreadyRan");
         if (this.JSONData.hasHeader == true && alreadyRan !== "true") {
             this.headerImgWrapper.css({display: "block"}).append('<img class="app-page-header-img" src="' + this.JSONData.headerPhoto + '"></img>').addClass("has-header");
-            this.header.css({"-webkit-backdrop-filter": "blur(0)", backgroundColor: "transparent"});
+            this.header.css({"-webkit-backdrop-filter": "blur(0)", backgroundColor: "transparent"}).addClass("has-header");
             this.appPage.css({paddingTop: "0"});
         }
         statusBarInit($(".header-app-icon, .app-page-btn-download-header"));
@@ -135,7 +135,9 @@ class UIAppPage {
             .css({display: "none"})
             .attr("alreadyRan", "false")
             .removeClass("has-header");
-        this.header.css({"-webkit-backdrop-filter": '', backgroundColor: ''});
+        this.header
+            .css({"-webkit-backdrop-filter": '', backgroundColor: ''})
+            .removeClass("has-header");
         this.appPage.css({paddingTop: ''});
     }
     initScreenshots() {
@@ -251,6 +253,7 @@ function resetRating(lastStar) {
     lastStar.addClass("far").removeClass("fas");
 }
 function statusBarInit(element, scrollView) {
+    console.log(element);
     var scrollViewElement = scrollView || ".app-page";
     element.closest(scrollViewElement).scroll(function() {
         if (element.closest(scrollViewElement).scrollTop() > 100){
@@ -258,7 +261,8 @@ function statusBarInit(element, scrollView) {
                 .css({opacity: 1})
                 .addClass("is-visible");
             if (element.closest(".app-page-header").hasClass("has-header")) {
-                element.closest(".app-page-header").css({"-webkit-backdrop-filter": "blur(15px)", backgroundColor: "rgba(255,255,255,0.5)"});
+                console.log("got this far");
+                element.closest(".app-page-header").css({"-webkit-backdrop-filter": "blur(15px)", backgroundColor: ''});
             }
         } else {
             element
@@ -267,6 +271,7 @@ function statusBarInit(element, scrollView) {
             if (element.closest(".app-page-header").hasClass("has-header")) {
                 element.closest(".app-page-header").css({"-webkit-backdrop-filter": 'blur(0)', backgroundColor: 'transparent'});
             }
+            
         }
     });
 }
@@ -274,5 +279,6 @@ function statusBarInit(element, scrollView) {
 /*
     Set appPage variable to be UIAppPage
     This is also where you set the overrides for default elements
+    For example: appPage.header = $(".header"); (Don't use this, it will F up if you won't change your markup acordingly)
 */
 var appPage = new UIAppPage();

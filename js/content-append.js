@@ -1,5 +1,5 @@
 function appendBtnDownloadContent(path, element, currentApp, JSONData) {
-    if (JSONData == undefined) {
+    if (!JSONData) {
         $.ajax({
             url: path,
             async: false,
@@ -20,7 +20,7 @@ function appendBtnDownloadContent(path, element, currentApp, JSONData) {
         .attr("app", currentApp);
 }
 function appendSubtitleContent(path, element, JSONData, override, appSubtitle) {
-    if (JSONData == undefined && override == false && appSubtitle == undefined) {
+    if (!JSONData && override == false && !appSubtitle) {
         $.ajax({
             url: path,
             async: false,
@@ -38,7 +38,7 @@ function appendSubtitleContent(path, element, JSONData, override, appSubtitle) {
         .css("color", JSONData.textTint2);
 }
 function appendAppName(path, element, currentApp, JSONData, override, appName) {
-    if (JSONData == undefined && override == false && appName == undefined) {
+    if (!JSONData && override == false && !appName) {
         $.ajax({
             url: path,
             async: false,
@@ -56,7 +56,7 @@ function appendAppName(path, element, currentApp, JSONData, override, appName) {
         .attr("app", currentApp);
 }
 function appendIcon(path, wrapper, iconClass, JSONData) {
-    if (JSONData == undefined) {
+    if (!JSONData) {
         $.ajax({
             url: path,
             async: false,
@@ -72,7 +72,7 @@ function appendIcon(path, wrapper, iconClass, JSONData) {
         .attr("icon-src", JSONData.icon);
 }
 function appendBottomBarColor(path, element, JSONData) {
-    if (JSONData == undefined) {
+    if (!JSONData) {
         $.ajax({
             url: path,
             async: false,
