@@ -374,7 +374,7 @@ h5.bottom-subtitle-bar {
     display: inline-block;
 }
 .app .app-icon, .pay-popup-app-icon .app-icon {
-    border-width: 0.5px;
+    border-width: 1px;
     border-style: solid; 
     border-color: rgb(187, 187, 187); 
 }
@@ -610,10 +610,11 @@ h5.bottom-subtitle-bar {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem 0.5rem 1.5rem 0rem;
+    padding: 2rem 0.5rem 1.5rem 0;
     color: rgb(47, 126, 246);
     background-color: rgba(255, 255, 255, 0.8);
     -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
     z-index: 999;
     transition: all 400ms, right 500ms;
 }
@@ -635,7 +636,7 @@ h5.bottom-subtitle-bar {
     float: left;
     width: 6em;
     border-radius: 25px;
-    border-width: 0.5px;
+    border-width: 1px;
     border-style: solid; 
     border-color: rgb(177, 177, 177); 
     box-shadow: 0 1px 4px rgba(0,0,0,0.3);

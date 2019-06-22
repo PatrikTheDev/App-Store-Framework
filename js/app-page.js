@@ -124,7 +124,7 @@ class UIAppPage {
         var alreadyRan = this.headerImgWrapper.attr("alreadyRan");
         if (this.JSONData.hasHeader == true && alreadyRan !== "true") {
             this.headerImgWrapper.css({display: "block"}).append('<img class="app-page-header-img" src="' + this.JSONData.headerPhoto + '"></img>').addClass("has-header");
-            this.header.css({"-webkit-backdrop-filter": "blur(0)", backgroundColor: "transparent"}).addClass("has-header");
+            this.header.css({"-webkit-backdrop-filter": "blur(0)", "backdrop-filter": "blur(0)", backgroundColor: "transparent"}).addClass("has-header");
             this.appPage.css({paddingTop: "0"});
         }
         statusBarInit($(".header-app-icon, .app-page-btn-download-header"));
@@ -260,14 +260,14 @@ function statusBarInit(element, scrollView) {
                 .css({opacity: 1})
                 .addClass("is-visible");
             if (appPageHeader.hasClass("has-header")) {
-                appPageHeader.css({"-webkit-backdrop-filter": "blur(15px)", backgroundColor: ''});
+                appPageHeader.css({"-webkit-backdrop-filter": "blur(15px)", "backdrop-filter": 'blur(15px)', backgroundColor: ''});
             }
         } else {
             element
                 .css({top: '', opacity: ''})
                 .removeClass("is-visible");
             if (appPageHeader.hasClass("has-header")) {
-                appPageHeader.css({"-webkit-backdrop-filter": 'blur(0)', backgroundColor: 'transparent'});
+                appPageHeader.css({"-webkit-backdrop-filter": 'blur(0)', "backdrop-filter": 'blur(0)', backgroundColor: 'transparent'});
             }
             
         }
