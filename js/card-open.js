@@ -7,8 +7,8 @@ class UICard {
         this.card = trigger || this.trigger.closest(".card");
         this.currentCard = this.card.attr("card");
         this.closeBtn = closeBtn || this.card.find(".close");
-        this.cache = cache || {};
-        this.appCache = {};
+        this.cache = window.cardCache || cache || {};
+        this.appCache = window.appCache || {};
     }
     getCardPosition() {
         this.cardPosition = this.card.parent().offset();
@@ -76,9 +76,9 @@ class UICard {
         $("body").removeClass("noscroll");
     }
     initBottomPopup() {
-        if (this.cache[this.currentCard].containsApps.length < 2 && this.cache[this.currentCard].containsApps.length > 0) {
+        /* if (this.cache[this.currentCard].containsApps.length < 2 && this.cache[this.currentCard].containsApps.length > 0) {
             bottomPopupInit(this.card, this.appCache[this.cache[this.currentCard].containsApps[0]], this.currentCard);
-        }
+        } */
     }
     showLatterApps() {
         this.card.find(".apps-list-featured li:nth-child(4)").removeClass("no-after");
@@ -131,8 +131,6 @@ $(".card-trigger").click(function() {
     card.trigger = $(this);
     card.card = card.trigger.closest(".card");
     card.currentCard = card.card.attr("card");
-    card.cache = cardCache;
-    card.appCache = appCache;
     card.init();
 });
 $(".close").click(function() {

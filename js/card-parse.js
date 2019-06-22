@@ -2,7 +2,7 @@ function parseCards() {
   var directoryPrefix = "cards/";
   var currentCard;
   var path;
-  var cache = {};
+  var cache = window.cardCache || {};
   $(".card-wrapper").each(function() {
     $(this).find(".card").each(function() {
       currentCard = this.getAttribute("card");

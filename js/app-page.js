@@ -3,7 +3,7 @@
 
 class UIAppPage {
     constructor(currentApp, cache, appPage) {
-        this.cache = cache || {};
+        this.cache = window.appCache || cache || {};
         this.currentApp = currentApp || defaultApp();
         this.directory = appDirectory();
         // Defaults for elements, you can change these if your elements are different
@@ -32,7 +32,7 @@ class UIAppPage {
     blockScroll() {
         $("body").addClass("noscroll");
     }
-    checkApp(app) {
+    checkIfNeededToReload(app) {
         if (this.currentApp !== app) {
             this.reset();
         }
@@ -72,9 +72,10 @@ class UIAppPage {
     spawnSimilarApps() {
         var alreadyRan = this.similarApps.attr("already-ran");
         if (alreadyRan == "false") {
-            this.similarApps.spawnSimilarApps(this.cache, this.currentApp);
+            this.similarApps.spawnSimilarApps(this.cache);
         }
         this.similarApps.attr("already-ran", true);
+        window.currentApp = this.currentApp;
     }
     initAppIcon() {
         if (!this.JSONData && !this.cache[this.currentApp]) {
@@ -99,7 +100,7 @@ class UIAppPage {
         if (!this.JSONData && !this.cache[this.currentApp]) {
             this.parseJSON();
         }
-        appendSubtitleContent(this.depictionPath, this.appSubtitleElement, this.JSONData, this.settingsOverride.appSubtitle, this.override.appSubtitle);
+        appendSubtitleContent(this.depictionPath, this.appSubtitleElement, this.settingsOverride.appSubtitle, this.override.appSubtitle);
     }
     initDescription() {
         if (!this.JSONData && !this.cache[this.currentApp]) {
@@ -157,8 +158,6 @@ class UIAppPage {
         this.initAppIcon();
         // Tint elements
         this.tintElements();
-        // Spawn similarApps
-        this.spawnSimilarApps();
         // Append the description/depiction
         this.initDescription();
         // Check if cards were visible
@@ -173,6 +172,8 @@ class UIAppPage {
         this.initScreenshots();
         // Init the header
         this.initHeader();
+        // Spawn similarApps
+        this.spawnSimilarApps();
         // Show app-page
         this.open();
     }
@@ -200,12 +201,10 @@ class UIAppPage {
         this.override = this.overrideDefaults;
     }
 }
-function appPageInit(parent, currentCache) {
-    var cache = currentCache || {};
-    var currentApp = parent.attr("app");
-    appPage.checkApp(currentApp);
+function appPageInit(parent) {
+    window.currentApp = parent.attr("app");
+    appPage.checkIfNeededToReload(currentApp);
     appPage.currentApp = currentApp;
-    appPage.cache = cache;
     appPage.initAll();
 }
 function resetScreenshots(parent) {
@@ -253,23 +252,22 @@ function resetRating(lastStar) {
     lastStar.addClass("far").removeClass("fas");
 }
 function statusBarInit(element, scrollView) {
-    console.log(element);
     var scrollViewElement = scrollView || ".app-page";
+    var appPageHeader = element.closest(".app-page-header");
     element.closest(scrollViewElement).scroll(function() {
         if (element.closest(scrollViewElement).scrollTop() > 100){
             element
                 .css({opacity: 1})
                 .addClass("is-visible");
-            if (element.closest(".app-page-header").hasClass("has-header")) {
-                console.log("got this far");
-                element.closest(".app-page-header").css({"-webkit-backdrop-filter": "blur(15px)", backgroundColor: ''});
+            if (appPageHeader.hasClass("has-header")) {
+                appPageHeader.css({"-webkit-backdrop-filter": "blur(15px)", backgroundColor: ''});
             }
         } else {
             element
                 .css({top: '', opacity: ''})
                 .removeClass("is-visible");
-            if (element.closest(".app-page-header").hasClass("has-header")) {
-                element.closest(".app-page-header").css({"-webkit-backdrop-filter": 'blur(0)', backgroundColor: 'transparent'});
+            if (appPageHeader.hasClass("has-header")) {
+                appPageHeader.css({"-webkit-backdrop-filter": 'blur(0)', backgroundColor: 'transparent'});
             }
             
         }
@@ -281,4 +279,7 @@ function statusBarInit(element, scrollView) {
     This is also where you set the overrides for default elements
     For example: appPage.header = $(".header"); (Don't use this, it will F up if you won't change your markup acordingly)
 */
-var appPage = new UIAppPage();
+var appPage;
+$("document").ready(function() {
+    appPage = new UIAppPage();
+});

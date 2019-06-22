@@ -17,3 +17,7 @@ function video(borderRadius, path) {
     var generatedElement = '<video controls style="width: 100%; border-radius:' + borderRadius + 'px"><source src="' + path + '" type="video/mp4"></video>';
     return generatedElement;
 }
+function label(text) {
+    var generatedElement = "<span>" + text + "</span>";
+    return generatedElement;
+}

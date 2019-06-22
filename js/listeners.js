@@ -12,8 +12,8 @@ function payPopupListeners(parent) {
     });
 }
 function appPageListeners(parent) {
-    parent.find(".app-name").click(function() {
-        appPageInit($(this), appCache);
+    parent.find(".app-trigger").click(function() {
+        appPageInit($(this));
     });
     
     parent.find(".back-btn").click(function() {

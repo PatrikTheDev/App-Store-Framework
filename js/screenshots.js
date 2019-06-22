@@ -1,4 +1,5 @@
-function parseScreenshots(parent, path, JSONData) {
+function parseScreenshots(parent, path, JSONDat) {
+    var JSONData = window.appCache[window.currentApp];
     var alreadyRan = parent.attr("screenshotsAppended");
     if (alreadyRan !== "true") {
         if (JSONData == undefined) {
@@ -7,8 +8,8 @@ function parseScreenshots(parent, path, JSONData) {
                 async: false,
                 dataType: 'json',
                 success: function (data) {
-                JSONData = data;
-                console.log("Parsed a JSON");
+                    JSONData = data;
+                    console.log("Parsed a JSON");
                 }
             });
         }

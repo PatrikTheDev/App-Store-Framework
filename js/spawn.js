@@ -35,7 +35,8 @@ function spawnApps(parent, path, JSONData) {
     payPopupListeners(parent);
     appPageListeners(parent);
 }
-$.fn.spawnSimilarApps = function(currentCache, currentApp) {
+$.fn.spawnSimilarApps = function(currentCache) {
+    var currentApp = window.currentApp;
     var directoryPrefix = appDirectory();
     var path = directoryPrefix + currentApp + ".json";
     if (!currentCache) {
@@ -56,12 +57,12 @@ $.fn.spawnSimilarApps = function(currentCache, currentApp) {
         for (i = 0; i < currentCache[currentApp].similarApps.length; i++) {
             var elementToAppend = '<li class="app app-list" app="' + currentCache[currentApp].similarApps[i] + '">\
             <div class="app-cell-stack">\
-                <div class="app-cell-icon">\
-                        <div class="app-icon-wrapper" app="' + currentCache[currentApp].similarApps[i] + '"></div>\
+                <div class="app-cell-icon app-trigger">\
+                        <div class="app-icon-wrapper app-trigger" app="' + currentCache[currentApp].similarApps[i] + '"></div>\
                 </div>\
                 <div class="app-cell-details">\
-                        <h4 class="app-name" app="' + currentCache[currentApp].similarApps[i] + '"></h4>\
-                        <span class="subtitle grey-text" app="' + currentCache[currentApp].similarApps[i] + '"></span>\
+                        <h4 class="app-name app-trigger" app="' + currentCache[currentApp].similarApps[i] + '"></h4>\
+                        <span class="subtitle grey-text app-trigger" app="' + currentCache[currentApp].similarApps[i] + '"></span>\
                 </div>\
                 <div class="app-cell-btn-download">\
                     <div class="btn-download right light-grey" app="' + currentCache[currentApp].similarApps[i] + '">Get</div>\
@@ -100,14 +101,14 @@ function spawnAppsInCards(parent, currentCache) {
             parent.append('<li class="app app-list" app=app="' + JSONItems.containsApps[i] + '">\
             <div class="app-cell-stack">\
                 <div class="app-cell-icon">\
-                        <div class="app-icon-wrapper" app="' + JSONItems.containsApps[i] + '"></div>\
+                        <div class="app-icon-wrapper app-trigger" app="' + JSONItems.containsApps[i] + '"></div>\
                 </div>\
                 <div class="app-cell-details">\
-                        <h4 class="app-name" app="' + JSONItems.containsApps[i] + '"></h4>\
-                        <span class="subtitle grey-text" app="' + JSONItems.containsApps[i] + '"></span>\
+                        <h4 class="app-name app-trigger" app="' + JSONItems.containsApps[i] + '"></h4>\
+                        <span class="subtitle app-trigger" app="' + JSONItems.containsApps[i] + '"></span>\
                 </div>\
                 <div class="app-cell-btn-download">\
-                    <div class="btn-download right light-grey" app="' + JSONItems.containsApps[i] + '">Get</div>\
+                    <div class="btn-download right" app="' + JSONItems.containsApps[i] + '">Get</div>\
                 </div>\
             </div>\
         </li>');

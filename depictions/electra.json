@@ -12,13 +12,6 @@
         },
         {
             "class": "DepictionSeparatorView"
-        },
-        {
-            "URL": "https://www.w3schools.com/html/mov_bbb.mp4",
-            "width": 600,
-            "height": 330,
-            "borderRadius": 2,
-            "class": "DepictionVideoView"
         }
     ],
     "icon": "resources/icons/electra-app-icon-small.jpg",

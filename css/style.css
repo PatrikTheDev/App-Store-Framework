@@ -575,6 +575,12 @@ h5.bottom-subtitle-bar {
 .apps-list {
     padding-left: 0 !important;
 }
+.apps-list li:last-child::after {
+    display: none;
+}
+.apps-list li:visible:last::after {
+    display: none;
+}
 .app-page {
     visibility: hidden;
     position: fixed;
@@ -609,7 +615,7 @@ h5.bottom-subtitle-bar {
     background-color: rgba(255, 255, 255, 0.8);
     -webkit-backdrop-filter: blur(15px);
     z-index: 999;
-    transition: -webkit-backdrop-filter 400ms;
+    transition: all 400ms, right 500ms;
 }
 .app-page-header::after {
     content: '';

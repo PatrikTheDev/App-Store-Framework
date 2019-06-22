@@ -1,9 +1,9 @@
 /* JSHint settings */
 /* jshint esversion: 6 */
 class UIPayPopup {
-    constructor(directory, currentApp, cache, payPopup) {
-        this.cache = cache || {};
-        this.currentApp = currentApp || "default";
+    constructor(directory, cache, payPopup) {
+        this.cache = window.appCache || cache || {};
+        this.currentApp = window.currentApp || "default";
         this.directory = directory || "depictions/";
         // Defaults for elements, you can change these if your elements are different
         this.payPopup = payPopup || $(".pay-now");
@@ -24,6 +24,7 @@ class UIPayPopup {
         this.settingsOverride = this.settingsOverrideDefaults;
     }
     initAll() {
+        window.currentApp = this.currentApp;
         // Parse the JSON
         this.parseJSON();
         // Append app name
@@ -134,13 +135,16 @@ class UIPayPopup {
         this.override = this.overrideDefaults;
     }
 }
-var payPopup = new UIPayPopup();
+var payPopup;
+$("document").ready(function() {
+    payPopup = new UIPayPopup();
+});
+
 
 
 function payPopupInit(parent) {
     var currentApp = parent.attr("app");
     payPopup.currentApp = currentApp;
-    payPopup.cache = appCache;
     payPopup.initAll();
 }
 function payPopupClose() {
