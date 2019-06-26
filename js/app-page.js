@@ -21,6 +21,8 @@ class UIAppPage {
         this.tintedElements = this.appPage.find(".tinted");
         this.similarApps = this.appPage.find(".app-page-similar-apps-list");
         this.lastStar = $("[fifth-star]");
+        // Values
+        this.closeDuration = 500;
         // Overrides
         this.settingsOverrideDefaults = {
             "appName": false,
@@ -90,26 +92,26 @@ class UIAppPage {
         window.currentApp = this.currentApp;
     }
     initAppIcon() {
-        appendIcon(this.depictionPath, this.iconWrapper, "app-page-app-icon");
-        appendIcon(this.depictionPath, this.headerIconWrapper, "header-app-icon app-icon");
+        appendIcon(this.iconWrapper, "app-page-app-icon");
+        appendIcon(this.headerIconWrapper, "header-app-icon app-icon");
     }
     initAppName() {
         if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
-        appendAppName(this.depictionPath, this.appNameElement, this.settingsOverride.appName, this.override.appName);
+        appendAppName(this.appNameElement, this.settingsOverride.appName, this.override.appName);
     }
     initBtnDownload() {
         if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
-        appendBtnDownloadContent(this.depictionPath, this.btnDownload);
+        appendBtnDownloadContent(this.btnDownload);
     }
     initSubtitle() {
         if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
-        appendSubtitleContent(this.depictionPath, this.appSubtitleElement, this.settingsOverride.appSubtitle, this.override.appSubtitle);
+        appendSubtitleContent(this.appSubtitleElement, this.settingsOverride.appSubtitle, this.override.appSubtitle);
     }
     initDescription() {
         if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
@@ -198,10 +200,10 @@ class UIAppPage {
         // Hide the app page
         this.appPage.css({right: "-100%"});
         this.header.css({right: "-100%", visibility: "hidden"});
-        // Reset all the things back
+        // Reset all the things back once it is closed
         setTimeout(function() {
             window.appPage.reset();
-        }, 500);
+        }, this.closeDuration);
         
     }
     reset() {

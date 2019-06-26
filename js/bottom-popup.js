@@ -17,13 +17,13 @@ function bottomPopupInit(parent, JSONData, currentApp) {
     } else {
         priceText = refAppPrice;
     }
-    appendAppName(depictionPath, $(".app-name-popupbar"), false);
-    appendSubtitleContent(depictionPath, $(".subtitle-popupbar"));
+    appendAppName($(".app-name-popupbar"), false);
+    appendSubtitleContent($(".subtitle-popupbar"), false);
     $(".subtitle-popupbar").css("color", "rgba(30, 30, 30, 0.8)");
     $(".app-name-popupbar").css("color", "rgba(30, 30, 30, 0.8)");
     $(".app-name-popupbar").attr("data-depictionJSON", depictionPath);
-    appendIcon(depictionPath, $(".app-icon-popupbar"), "app-icon", JSONData);
-    appendBtnDownloadContent(depictionPath, $(".btn-download-popup"));
+    appendIcon($(".app-icon-popupbar"), "app-icon", JSONData);
+    appendBtnDownloadContent($(".btn-download-popup"));
     $(".btn-download-popup").attr("data-depictionJSON", depictionPath);
     parent.scroll(function() {
         if(parent.scrollTop() > 400){

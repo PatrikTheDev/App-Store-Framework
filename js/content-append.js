@@ -1,4 +1,5 @@
-function appendBtnDownloadContent(path, element) {
+function appendBtnDownloadContent(element) {
+    var path = appDirectory() + window.currentApp + ".json";
     var currentApp = window.currentApp;
     var JSONData = window.appCache[window.currentApp];
     if (typeof JSONData == "undefined") {
@@ -22,7 +23,8 @@ function appendBtnDownloadContent(path, element) {
         .css({"background-color": JSONData.tint, "color": JSONData.textTint})
         .attr("app", currentApp);
 }
-function appendSubtitleContent(path, element, override, appSubtitle) {
+function appendSubtitleContent(element, override, appSubtitle) {
+    var path = appDirectory() + window.currentApp + ".json";
     var JSONData = window.appCache[window.currentApp];
     if (typeof JSONData == "undefined" && override == false && typeof appSubtitle != "string") {
         $.ajax({
@@ -42,7 +44,8 @@ function appendSubtitleContent(path, element, override, appSubtitle) {
         .html("" + JSONData.subtitle)
         .css("color", JSONData.textTint2);
 }
-function appendAppName(path, element, override, appName) {
+function appendAppName(element, override, appName) {
+    var path = appDirectory() + window.currentApp + ".json";
     var JSONData = window.appCache[window.currentApp];
     if (typeof JSONData == "undefined" && override == false && typeof appName != "string") {
         $.ajax({
@@ -62,8 +65,9 @@ function appendAppName(path, element, override, appName) {
         .text("" + JSONData.appName)
         .attr("app", window.currentApp);
 }
-function appendIcon(path, wrapper, iconClass) {
+function appendIcon(wrapper, iconClass) {
     var JSONData = window.appCache[window.currentApp];
+    var path = appDirectory() + window.currentApp + ".json";
     if (typeof iconClass == "undefined") {
         iconClass = "app-icon";
     }
@@ -80,8 +84,7 @@ function appendIcon(path, wrapper, iconClass) {
         });
     }
     wrapper
-        .html('<img class="' + iconClass + '" src="' + JSONData.icon + '" alt="' + JSONData.appName +'">')
-        .attr("icon-src", JSONData.icon);
+        .html('<img class="' + iconClass + '" src="' + JSONData.icon + '" alt="' + JSONData.appName +'">');
 }
 function appendBottomBarColor(path, element) {
     var JSONData = window.appCache[window.currentApp];
@@ -103,32 +106,27 @@ function tintElements(elementsToTint, tint) {
     elementsToTint.css({color: tint});
 }
 function appendContentToAppCell(cell) {
-    var directory = appDirectory();
     var btnDownload = cell.find(".btn-download");
     btnDownload.each(function() {
         window.currentApp = $(this).attr("app");
-        var path = directory + window.currentApp + ".json";
-        appendBtnDownloadContent(path, $(this));
+        appendBtnDownloadContent($(this));
         payPopupListeners($(this).parent());
     });
     var appName = cell.find(".app-name");
     appName.each(function() {
         window.currentApp = $(this).attr("app");
-        var path = directory + window.currentApp + ".json";
-        appendAppName(path, $(this), false);
+        appendAppName($(this), false);
         appPageListeners($(this).parent());
     });
     var subtitle = cell.find(".subtitle");
     subtitle.each(function() {
         window.currentApp = $(this).attr("app");
-        var path = directory + window.currentApp + ".json";
-        appendSubtitleContent(path, $(this), false);
+        appendSubtitleContent($(this), false);
     });
     var appIcon = cell.find(".app-icon-wrapper");
     appIcon.each(function() {
         window.currentApp = $(this).attr("app");
-        var path = directory + window.currentApp + ".json";
-        appendIcon(path, $(this), "app-icon");
+        appendIcon($(this), "app-icon");
         appPageListeners($(this).parent());
     });
 }

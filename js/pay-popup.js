@@ -81,19 +81,19 @@ class UIPayPopup {
         if (typeof this.JSONData == "undefined" && typeof this.cache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
-        appendAppName(this.depictionPath, this.appNameElement, this.currentApp, this.JSONData, this.settingsOverride.appName, this.override.appName);
+        appendAppName(this.appNameElement, this.currentApp, this.JSONData, this.settingsOverride.appName, this.override.appName);
     }
     initSubtitle() {
         if (typeof this.JSONData == "undefined" && typeof this.cache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
-        appendSubtitleContent(this.depictionPath, this.appSubtitleElement, this.JSONData, this.settingsOverride.appSubtitle, this.override.appSubtitle);
+        appendSubtitleContent(this.appSubtitleElement, this.JSONData, this.settingsOverride.appSubtitle, this.override.appSubtitle);
     }
     initAppIcon() {
         if (typeof this.JSONData == "undefined" && typeof this.cache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
-        appendIcon(this.depictionPath, this.iconWrapper, "app-icon", this.JSONData);
+        appendIcon(this.iconWrapper, "app-icon", this.JSONData);
     }
     initPrice() {
         if (typeof this.JSONData == "undefined" && typeof this.cache[this.currentApp] == "undefined") {

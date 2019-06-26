@@ -24,7 +24,7 @@ function parseContent(depictionFolder) {
                     }
                 });
             }
-            appendAppName(depictionPath, $(this));
+            appendAppName($(this), false);
         });
         $(this).find(".subtitle").not(".noappend").each(function() {
             window.currentApp = this.getAttribute("app") || defaultApp();
@@ -41,7 +41,7 @@ function parseContent(depictionFolder) {
                     }
                 });
             }
-            appendSubtitleContent(depictionPath, $(this), cache[window.currentApp]);
+            appendSubtitleContent($(this), cache[window.currentApp]);
         });
         $(this).find(".app-icon-wrapper").not(".noappend").each(function() {
             window.currentApp = this.getAttribute("app") || defaultApp();
@@ -58,7 +58,7 @@ function parseContent(depictionFolder) {
                     }
                 });
             }
-            appendIcon(depictionPath, $(this), "app-icon", cache[window.currentApp]);
+            appendIcon($(this), "app-icon", cache[window.currentApp]);
         });
         $(this).find(".btn-download").not(".noappend").each(function() {
             window.currentApp = this.getAttribute("app") || defaultApp();
@@ -75,7 +75,7 @@ function parseContent(depictionFolder) {
                     }
                 });
             }
-            appendBtnDownloadContent(depictionPath, $(this));
+            appendBtnDownloadContent($(this));
         });
         $(this).find(".bottom-bar").each(function() {
             window.currentApp = this.getAttribute("app") || defaultApp();
