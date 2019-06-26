@@ -1,5 +1,5 @@
 function spacer(spacing) {
-    if (!spacing) {
+    if (typeof spacing == "undefined") {
         spacing = 5;
     }
     var generatedElement = '<div class="spacer" style="margin-top:' + spacing + 'px"></div>';

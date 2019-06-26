@@ -1,5 +1,5 @@
 function appendCardCSS(path, element, JSONData) {
-    if (!JSONData) {
+    if (typeof JSONData == "undefined") {
         $.ajax({
             url: path,
             async: false,
@@ -17,7 +17,7 @@ function appendCardCSS(path, element, JSONData) {
     });
 }
 function appendCardText(path, element, type, JSONData) {
-    if (!JSONData) {
+    if (typeof JSONData == "undefined") {
         $.ajax({
             url: path,
             async: false,

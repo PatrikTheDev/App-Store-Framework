@@ -20,6 +20,7 @@ class UIAppPage {
         this.header = this.appPage.find(".app-page-header");
         this.tintedElements = this.appPage.find(".tinted");
         this.similarApps = this.appPage.find(".app-page-similar-apps-list");
+        this.lastStar = $("[fifth-star]");
         // Overrides
         this.settingsOverrideDefaults = {
             "appName": false,
@@ -32,9 +33,19 @@ class UIAppPage {
     blockScroll() {
         $("body").addClass("noscroll");
     }
+    init(app) {
+        this.checkIfNeededToReload(app);
+    }
+    closePayPopup() {
+        payPopupClose();
+    }
     checkIfNeededToReload(app) {
-        if (this.currentApp !== app) {
+        if (this.currentApp != app) {
             this.reset();
+            this.currentApp = app;
+            this.initAll();
+        } else if (this.currentApp == app) {
+            this.initAll();
         }
     }
     checkCardsVisibility() {
@@ -52,7 +63,7 @@ class UIAppPage {
         var path = pathToJSON || this.directory + this.currentApp + ".json";
         var JSONData = [];
         var cache = this.cache;
-        if (!this.cache[this.currentApp]) {
+        if (typeof this.cache[this.currentApp] == "undefined") {
             $.ajax({
                 url: path,
                 async: false,
@@ -60,6 +71,7 @@ class UIAppPage {
                 success: function (data) {
                   JSONData = data;
                   cache[currentApp] = data;
+                  window.appCache[currentApp] = data;
                 }
             });
             this.JSONData = JSONData;
@@ -72,57 +84,54 @@ class UIAppPage {
     spawnSimilarApps() {
         var alreadyRan = this.similarApps.attr("already-ran");
         if (alreadyRan == "false") {
-            this.similarApps.spawnSimilarApps(this.cache);
+            this.similarApps.spawnSimilarApps();
         }
-        this.similarApps.attr("already-ran", true);
+        this.similarApps.attr("already-ran", "true");
         window.currentApp = this.currentApp;
     }
     initAppIcon() {
-        if (!this.JSONData && !this.cache[this.currentApp]) {
-            this.parseJSON();
-        }
-        appendIcon(this.depictionPath, this.iconWrapper, "app-page-app-icon", this.JSONData);
-        appendIcon(this.depictionPath, this.headerIconWrapper, "header-app-icon app-icon", this.JSONData);
+        appendIcon(this.depictionPath, this.iconWrapper, "app-page-app-icon");
+        appendIcon(this.depictionPath, this.headerIconWrapper, "header-app-icon app-icon");
     }
     initAppName() {
-        if (!this.JSONData && !this.cache[this.currentApp]) {
+        if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
-        appendAppName(this.depictionPath, this.appNameElement, this.currentApp, this.JSONData, this.settingsOverride.appName, this.override.appName);
+        appendAppName(this.depictionPath, this.appNameElement, this.settingsOverride.appName, this.override.appName);
     }
     initBtnDownload() {
-        if (!this.JSONData && !this.cache[this.currentApp]) {
+        if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
-        appendBtnDownloadContent(this.depictionPath, this.btnDownload, this.currentApp, this.JSONData);
+        appendBtnDownloadContent(this.depictionPath, this.btnDownload);
     }
     initSubtitle() {
-        if (!this.JSONData && !this.cache[this.currentApp]) {
+        if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
         appendSubtitleContent(this.depictionPath, this.appSubtitleElement, this.settingsOverride.appSubtitle, this.override.appSubtitle);
     }
     initDescription() {
-        if (!this.JSONData && !this.cache[this.currentApp]) {
+        if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
         appendDescription(this.depictionPath, $(".app-page-text-description"), this.JSONData);
     }
     initRating() {
-        if (!this.JSONData && !this.cache[this.currentApp]) {
+        if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
         var ratingsText = "ratings";
-        parseRating(this.JSONData.rating, $("[first-star]"), $("[second-star]"), $("[third-star]"), $("[fourth-star]"), $("[fifth-star]"));
+        parseRating(this.JSONData.rating, $("[first-star]"), $("[second-star]"), $("[third-star]"), $("[fourth-star]"), this.lastStar);
         this.appPage.find(".rating-num").text("" + this.JSONData.rating);
         this.appPage.find(".number-of-ratings").text("" + this.JSONData.numberOfRatings + " " + ratingsText);
     }
     initHeader() {
-        if (!this.JSONData && !this.cache[this.currentApp]) {
+        if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
         var alreadyRan = this.headerImgWrapper.attr("alreadyRan");
-        if (this.JSONData.hasHeader == true && alreadyRan !== "true") {
+        if (this.JSONData.hasHeader == true && alreadyRan != "true") {
             this.headerImgWrapper.css({display: "block"}).append('<img class="app-page-header-img" src="' + this.JSONData.headerPhoto + '"></img>').addClass("has-header");
             this.header.css({"-webkit-backdrop-filter": "blur(0)", "backdrop-filter": "blur(0)", backgroundColor: "transparent"}).addClass("has-header");
             this.appPage.css({paddingTop: "0"});
@@ -174,6 +183,8 @@ class UIAppPage {
         this.initHeader();
         // Spawn similarApps
         this.spawnSimilarApps();
+        // Close pay popup
+        this.closePayPopup();
         // Show app-page
         this.open();
     }
@@ -188,24 +199,26 @@ class UIAppPage {
         this.appPage.css({right: "-100%"});
         this.header.css({right: "-100%", visibility: "hidden"});
         // Reset all the things back
-        this.reset();
+        setTimeout(function() {
+            window.appPage.reset();
+        }, 500);
+        
     }
     reset() {
         resetScreenshots($(".app-page-screenshot-wrapper"));
         resetDescription($(".app-page-text-description"));
-        resetRating($("[fifth-star]"));
+        resetRating(this.lastStar);
         this.similarApps.html("").attr("already-ran", false);
         this.resetHeader();
         // Reset overrides back to default
         this.settingsOverride = this.settingsOverrideDefaults;
         this.override = this.overrideDefaults;
+        return;
     }
 }
 function appPageInit(parent) {
     window.currentApp = parent.attr("app");
-    appPage.checkIfNeededToReload(currentApp);
-    appPage.currentApp = currentApp;
-    appPage.initAll();
+    appPage.init(currentApp);
 }
 function resetScreenshots(parent) {
     parent
@@ -260,14 +273,20 @@ function statusBarInit(element, scrollView) {
                 .css({opacity: 1})
                 .addClass("is-visible");
             if (appPageHeader.hasClass("has-header")) {
-                appPageHeader.css({"-webkit-backdrop-filter": "blur(15px)", "backdrop-filter": 'blur(15px)', backgroundColor: ''});
+                appPageHeader.css({
+                    "-webkit-backdrop-filter": "blur(15px)",
+                    "backdrop-filter": 'blur(15px)',
+                    backgroundColor: ''});
             }
         } else {
             element
                 .css({top: '', opacity: ''})
                 .removeClass("is-visible");
             if (appPageHeader.hasClass("has-header")) {
-                appPageHeader.css({"-webkit-backdrop-filter": 'blur(0)', "backdrop-filter": 'blur(0)', backgroundColor: 'transparent'});
+                appPageHeader.css({
+                    "-webkit-backdrop-filter": 'blur(0)',
+                    "backdrop-filter": 'blur(0)',
+                    backgroundColor: 'transparent'});
             }
             
         }
@@ -280,6 +299,6 @@ function statusBarInit(element, scrollView) {
     For example: appPage.header = $(".header"); (Don't use this, it will F up if you won't change your markup acordingly)
 */
 var appPage;
-$("document").ready(function() {
-    appPage = new UIAppPage();
-});
+function defineAppPage() {
+    window.appPage = new UIAppPage();
+}

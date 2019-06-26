@@ -30,7 +30,6 @@ function logIn() {
     checkCookie();
     logInPopupClose();
     $(".pay-now-button").text("Download now");
-    
     } else {
         $(".reporterror").html("You have to enter your email!");
     }

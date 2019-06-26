@@ -13,7 +13,7 @@ function spawnApps(parent, path, JSONData) {
     });
     var i;
     for (i = 0; i < JSONItems.applist.length; i++) { 
-        if (JSONItems.applist[i] != null && JSONItems.applist[i] != undefined) {
+        if (typeof JSONItems.applist[i] != "undefined") {
             parent.append('<li class="app app-list" app=app="' + JSONItems.containsApps[i] + '">\
             <div class="app-cell-stack">\
                 <div class="app-cell-icon">\
@@ -31,18 +31,19 @@ function spawnApps(parent, path, JSONData) {
         }
     }
     $(".apps-list-featured li:nth-child(4)").nextAll().hide();
-    $(".apps-list-featured li:visible:last").addClass("no-after");
+    $(".apps-list-featured li:visible").last().addClass("no-after");
     payPopupListeners(parent);
     appPageListeners(parent);
 }
-$.fn.spawnSimilarApps = function(currentCache) {
+$.fn.spawnSimilarApps = function() {
     var currentApp = window.currentApp;
+    var currentCache = window.appCache;
     var directoryPrefix = appDirectory();
     var path = directoryPrefix + currentApp + ".json";
-    if (!currentCache) {
+    if (typeof currentCache == "undefined") {
         currentCache = {};
     }
-    if (!currentCache[currentApp]) {
+    if (typeof currentCache[currentApp] == "undefined") {
         $.ajax({
             url: path,
             async: false,
@@ -71,7 +72,7 @@ $.fn.spawnSimilarApps = function(currentCache) {
         </li>';
             this.append(elementToAppend);
             var appCell = $($.parseHTML(elementToAppend)).filter('.app');
-            appendContentToAppCell(this.find(".app"), currentCache);
+            appendContentToAppCell(this.find(".app"));
         }
     } else {
         this.html('<p class="no-similar">No similar apps</p>');
@@ -84,7 +85,7 @@ function spawnAppsInCards(parent, currentCache) {
     var cache = currentCache || {};
     path = directoryPrefix + currentCard + ".json";
     var JSONItems = [];
-    if (!cache[currentCard]) {
+    if (typeof cache[currentCard] == "undefined") {
         $.ajax({
             url: path,
             async: false,
@@ -115,7 +116,7 @@ function spawnAppsInCards(parent, currentCache) {
         }
     }
     $(".apps-list-featured li:nth-child(4)").nextAll().hide();
-    $(".apps-list-featured li:visible:last").addClass("no-after");
+    $(".apps-list-featured li:visible").last().addClass("no-after");
     payPopupListeners(parent);
     appPageListeners(parent);
 }

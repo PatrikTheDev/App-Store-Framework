@@ -7,10 +7,11 @@ var cardCache;
 var appCache;
 $(document).ready(function() {
     cardCache = parseCards();
-    cardAppList.each(function(){
+    cardAppList().each(function(){
         spawnAppsInCards($(this), cardCache);
     });
     appCache = parseContent(appDirectory());
     payPopupListeners($("body"));
     appPageListeners($("body"));
+    defineAppPage();
 });

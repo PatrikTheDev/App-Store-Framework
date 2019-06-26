@@ -15,7 +15,7 @@ class UICard {
     }
     open() {
         // Get the position of the parent, so you can change the position to fixed without any glitches
-        if (!this.cardPosition) {
+        if (typeof this.cardPosition == "undefined") {
             this.getCardPosition();
         }
         var cardPosition = this.cardPosition;
@@ -76,6 +76,7 @@ class UICard {
         $("body").removeClass("noscroll");
     }
     initBottomPopup() {
+        // Broken right now, gonna rewrite it at some point
         /* if (this.cache[this.currentCard].containsApps.length < 2 && this.cache[this.currentCard].containsApps.length > 0) {
             bottomPopupInit(this.card, this.appCache[this.cache[this.currentCard].containsApps[0]], this.currentCard);
         } */
@@ -86,7 +87,7 @@ class UICard {
     }
     hideLatterApps() {
         this.card.find(".apps-list-featured li:nth-child(4)").nextAll().hide();
-        this.card.find(".apps-list-featured li:visible:last").addClass("no-after"); 
+        this.card.find(".apps-list-featured li:visible").last().addClass("no-after"); 
     }
     close() {
         $(".content").removeClass("fullscreen");

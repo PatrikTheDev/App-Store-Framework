@@ -2,7 +2,7 @@ function appendDescription(path, element, JSONData) {
     var alreadyRan = element.attr("alreadyRan");
     if (alreadyRan != "true") {
         // Get JSON data
-        if (!JSONData) {
+        if (typeof JSONData == "undefined") {
             $.ajax({
                 url: path,
                 async: false,
@@ -57,13 +57,13 @@ function appendDepictionInternal(element, JSONData, i) {
     // Label
     if (currentClass == "DepictionLabelView") {
         element.append(label(currentView.text)).attr("spawnedId", i);
-        if (currentView.fontWeight != undefined && currentView.fontWeight != null) {
+        if (typeof currentView.fontWeight != "undefined") {
             $("[spawnedId=" + i + "]").css("font-weight", currentView.fontWeight);
         }
-        if (currentView.fontSize != undefined && currentView.fontSize != null) {
+        if (typeof currentView.fontSize != "undefined") {
             $("[spawnedId=" + i + "]").css("font-size", currentView.fontSize);
         }
-        if (currentView.textColor != undefined && currentView.textColor != null) {
+        if (typeof currentView.textColor != "undefined") {
             $("[spawnedId=" + i + "]").css("color", currentView.textColor);
         }
         $("[spawnedId=" + i + "]").removeAttr("spawnedId");
