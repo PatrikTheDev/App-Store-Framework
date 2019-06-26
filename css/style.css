@@ -873,6 +873,3 @@ ul.app-page-similar-apps-list li {
 ul.app-page-similar-apps-list li:last-child {
     margin-right: 0;
 }
-.no-similar {
-    font-size: 1.2rem;
-}

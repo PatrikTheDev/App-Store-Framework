@@ -211,6 +211,7 @@ class UIAppPage {
         resetDescription($(".app-page-text-description"));
         resetRating(this.lastStar);
         this.similarApps.html("").attr("already-ran", false);
+        this.similarApps.closest(".similar-apps").show();
         this.resetHeader();
         // Reset overrides back to default
         this.settingsOverride = this.settingsOverrideDefaults;
