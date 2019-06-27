@@ -1,7 +1,7 @@
 function appendBtnDownloadContent(element) {
-    var path = appDirectory() + window.currentApp + ".json";
-    var currentApp = window.currentApp;
-    var JSONData = window.appCache[window.currentApp];
+    var path = appDirectory() + window.currentApp + ".json",
+        currentApp = window.currentApp,
+        JSONData = window.appCache[window.currentApp];
     if (typeof JSONData == "undefined") {
         $.ajax({
             url: path,
@@ -24,8 +24,8 @@ function appendBtnDownloadContent(element) {
         .attr("app", currentApp);
 }
 function appendSubtitleContent(element, override, appSubtitle) {
-    var path = appDirectory() + window.currentApp + ".json";
-    var JSONData = window.appCache[window.currentApp];
+    var path = appDirectory() + window.currentApp + ".json",
+        JSONData = window.appCache[window.currentApp];
     if (typeof JSONData == "undefined" && override == false && typeof appSubtitle != "string") {
         $.ajax({
             url: path,
@@ -45,8 +45,8 @@ function appendSubtitleContent(element, override, appSubtitle) {
         .css("color", JSONData.textTint2);
 }
 function appendAppName(element, override, appName) {
-    var path = appDirectory() + window.currentApp + ".json";
-    var JSONData = window.appCache[window.currentApp];
+    var path = appDirectory() + window.currentApp + ".json",
+        JSONData = window.appCache[window.currentApp];
     if (typeof JSONData == "undefined" && override == false && typeof appName != "string") {
         $.ajax({
             url: path,
@@ -66,8 +66,8 @@ function appendAppName(element, override, appName) {
         .attr("app", window.currentApp);
 }
 function appendIcon(wrapper, iconClass) {
-    var JSONData = window.appCache[window.currentApp];
-    var path = appDirectory() + window.currentApp + ".json";
+    var JSONData = window.appCache[window.currentApp],
+        path = appDirectory() + window.currentApp + ".json";
     if (typeof iconClass == "undefined") {
         iconClass = "app-icon";
     }

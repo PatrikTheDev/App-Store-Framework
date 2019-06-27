@@ -23,13 +23,13 @@ function appendDescription(path, element, JSONData) {
     element.attr("alreadyRan", "true");
 }
 function depictionAppendEngine(element, JSONData, index) {
-    var currentView = JSONData.description[index];
-    var currentClass = currentView.class;
-    var borderRadius = currentView.borderRadius || 0;
-    var spacing = currentView.spacing;
-    var markdown;
-    var useRawFormat;
-    var markdownHTML;
+    var currentView = JSONData.description[index],
+        currentClass = currentView.class,
+        borderRadius = currentView.borderRadius || 0,
+        spacing = currentView.spacing,
+        markdown,
+        useRawFormat,
+        markdownHTML;
     // Header
     if (currentClass == "DepictionHeaderView") {
         element.append("<h1>" + currentView.title + "</h1>");

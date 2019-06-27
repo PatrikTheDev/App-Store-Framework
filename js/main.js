@@ -14,4 +14,5 @@ $(document).ready(function() {
     payPopupListeners($("body"));
     appPageListeners($("body"));
     defineAppPage();
+    definePayPopup();
 });

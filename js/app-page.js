@@ -247,25 +247,20 @@ function parseRating(refAppRating, firstStar, secondStar, thirdStar, fourthStar,
         firstStar.addClass("fas").removeClass("far");
     }
     if (refAppRating == 2) {
-        secondStar.prevAll().not("rating-num").addClass("fas").removeClass("far");
-        secondStar.addClass("fas").removeClass("far");
+        secondStar.prevAll().addBack().not("rating-num").addClass("fas").removeClass("far");
     }
     if (refAppRating == 3) {
-        thirdStar.prevAll().not("rating-num").addClass("fas").removeClass("far");
-        thirdStar.addClass("fas").removeClass("far");
+        thirdStar.prevAll().addBack().not("rating-num").addClass("fas").removeClass("far");
     }
     if (refAppRating == 4) {
-        fourthStar.prevAll().not("rating-num").addClass("fas").removeClass("far");
-        fourthStar.addClass("fas").removeClass("far");
+        fourthStar.prevAll().addBack().not("rating-num").addClass("fas").removeClass("far");
     }
     if (refAppRating == 5) {
-        fifthStar.prevAll().not("rating-num").addClass("fas").removeClass("far");
-        fifthStar.addClass("fas").removeClass("far");
+        fifthStar.prevAll().addBack().not("rating-num").addClass("fas").removeClass("far");
     }
 }
 function resetRating(lastStar) {
-    lastStar.prevAll().addClass("far").removeClass("fas");
-    lastStar.addClass("far").removeClass("fas");
+    lastStar.prevAll().addBack().addClass("far").removeClass("fas");
 }
 function statusBarInit(element, scrollView) {
     var scrollViewElement = scrollView || ".app-page";

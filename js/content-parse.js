@@ -2,8 +2,8 @@ function parseContent(depictionFolder) {
     if (typeof window.appCache == "undefined") {
         window.appCache = {};
     }
-    var depictionPath;
-    var cache = window.appCache || {};
+    var depictionPath,
+        cache = window.appCache || {};
     $(".app, .bottom-bar, .append").each(function(){
         $(this).find(".description").not(".noappend").each(function() {
             window.currentApp = this.getAttribute("app") || defaultApp();

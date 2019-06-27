@@ -134,13 +134,6 @@ class UIPayPopup {
         this.override = this.overrideDefaults;
     }
 }
-var payPopup;
-$("document").ready(function() {
-    payPopup = new UIPayPopup();
-});
-
-
-
 function payPopupInit(parent) {
     var currentApp = parent.attr("app");
     payPopup.currentApp = currentApp;
@@ -148,4 +141,10 @@ function payPopupInit(parent) {
 }
 function payPopupClose() {
     payPopup.close();
+}
+
+
+var payPopup;
+function definePayPopup() {
+    window.payPopup = new UIPayPopup();
 }

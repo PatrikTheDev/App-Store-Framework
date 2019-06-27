@@ -1,6 +1,5 @@
 function parseCards() {
-  var directoryPrefix = "cards/";
-  var currentCard;
+  var directoryPrefix = cardDirectory();
   var path;
   var cache = window.cardCache || {};
   if (typeof window.cardCache == "undefined") {
@@ -8,99 +7,90 @@ function parseCards() {
   }
   $(".card-wrapper").each(function() {
     $(this).find(".card").each(function() {
-      currentCard = this.getAttribute("card");
-      path = directoryPrefix + currentCard + ".json";
-      if (typeof cache[currentCard] == "undefined") {
+      window.currentCard = this.getAttribute("card");
+      path = directoryPrefix + window.currentCard + ".json";
+      if (typeof cache[window.currentCard] == "undefined") {
         $.ajax({
           url: path,
           async: false,
           dataType: 'json',
           success: function (data) {
-            JSONData = data;
-            cache[currentCard] = data;
-            window.cardCache[currentCard] = data;
+            cache[window.currentCard] = data;
+            window.cardCache[window.currentCard] = data;
             console.log(path);
           }
         });
       }
-      lastPath = directoryPrefix + currentCard + ".json";
-      appendCardCSS(path, $(this), window.cardCache[currentCard]);
+      appendCardCSS(path, $(this));
     });
     $(this).find(".title").each(function() {
-      currentCard = this.getAttribute("card");
-      path = directoryPrefix + currentCard + ".json";
-      if (typeof cache[currentCard] == "undefined") {
+      window.currentCard = this.getAttribute("card");
+      path = directoryPrefix + window.currentCard + ".json";
+      if (typeof cache[window.currentCard] == "undefined") {
         $.ajax({
           url: path,
           async: false,
           dataType: 'json',
           success: function (data) {
-            JSONData = data;
-            cache[currentCard] = data;
-            window.cardCache[currentCard] = data;
+            cache[window.currentCard] = data;
+            window.cardCache[window.currentCard] = data;
             console.log(path);
           }
         });
       }
-      lastPath = directoryPrefix + currentCard + ".json";
-      appendCardText(path, $(this), "title", JSONData);
+      appendCardText(path, $(this), "title");
     });
     $(this).find(".bottom-text").each(function() {
-      currentCard = this.getAttribute("card");
-      path = directoryPrefix + currentCard + ".json";
-      if (typeof cache[currentCard] == "undefined") {
+      window.currentCard = this.getAttribute("card");
+      path = directoryPrefix + window.currentCard + ".json";
+      if (typeof cache[window.currentCard] == "undefined") {
         $.ajax({
           url: path,
           async: false,
           dataType: 'json',
           success: function (data) {
-            JSONData = data;
-            cache[currentCard] = data;
-            window.cardCache[currentCard] = data;
+            cache[window.currentCard] = data;
+            window.cardCache[window.currentCard] = data;
             console.log(path);
           }
         });
       }
-      lastPath = directoryPrefix + currentCard + ".json";
-      appendCardText(path, $(this), "bottomText", JSONData);
+      appendCardText(path, $(this), "bottomText");
     });
     $(this).find(".small-title").each(function() {
-      currentCard = this.getAttribute("card");
-      path = directoryPrefix + currentCard + ".json";
-      if (typeof cache[currentCard] == "undefined") {
+      window.currentCard = this.getAttribute("card");
+      path = directoryPrefix + window.currentCard + ".json";
+      if (typeof cache[window.currentCard] == "undefined") {
         $.ajax({
           url: path,
           async: false,
           dataType: 'json',
           success: function (data) {
             JSONData = data;
-            cache[currentCard] = data;
-            window.cardCache[currentCard] = data;
+            cache[window.currentCard] = data;
+            window.cardCache[window.currentCard] = data;
             console.log(path);
           }
         });
       }
-      lastPath = directoryPrefix + currentCard + ".json";
-      appendCardText(path, $(this), "subtitle", JSONData);
+      appendCardText(path, $(this), "subtitle");
     });
     $(this).find(".card-description").each(function() {
-      currentCard = this.getAttribute("card");
-      path = directoryPrefix + currentCard + ".json";
-      if (typeof cache[currentCard] == "undefined") {
+      window.currentCard = this.getAttribute("card");
+      path = directoryPrefix + window.currentCard + ".json";
+      if (typeof cache[window.currentCard] == "undefined") {
         $.ajax({
           url: path,
           async: false,
           dataType: 'json',
           success: function (data) {
-            JSONData = data;
-            cache[currentCard] = data;
-            window.cardCache[currentCard] = data;
+            cache[window.currentCard] = data;
+            window.cardCache[window.currentCard] = data;
             console.log(path);
           }
         });
       }
-      lastPath = directoryPrefix + currentCard + ".json";
-      appendDescription(path, $(this), JSONData);
+      appendDescription(path, $(this), window.cardCache[window.currentCard]);
     });
   });
   return cache;

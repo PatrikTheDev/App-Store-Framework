@@ -1,4 +1,5 @@
-function appendCardCSS(path, element, JSONData) {
+function appendCardCSS(path, element) {
+    var JSONData = window.cardCache[window.currentCard];
     if (typeof JSONData == "undefined") {
         $.ajax({
             url: path,
@@ -16,7 +17,8 @@ function appendCardCSS(path, element, JSONData) {
         "background-size": "cover"
     });
 }
-function appendCardText(path, element, type, JSONData) {
+function appendCardText(path, element, type) {
+    var JSONData = window.cardCache[window.currentCard];
     if (typeof JSONData == "undefined") {
         $.ajax({
             url: path,
