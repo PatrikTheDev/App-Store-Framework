@@ -17,13 +17,13 @@ function appendDescription(path, element, JSONData) {
         var i;
         // Loop through views and append them
         for (i = 0; i < JSONData.description.length; i++) {
-            appendDepictionInternal(element, JSONData, i);
+            depictionAppendEngine(element, JSONData, i);
         }
     }
     element.attr("alreadyRan", "true");
 }
-function appendDepictionInternal(element, JSONData, i) {
-    var currentView = JSONData.description[i];
+function depictionAppendEngine(element, JSONData, index) {
+    var currentView = JSONData.description[index];
     var currentClass = currentView.class;
     var borderRadius = currentView.borderRadius || 0;
     var spacing = currentView.spacing;
@@ -56,17 +56,17 @@ function appendDepictionInternal(element, JSONData, i) {
     }
     // Label
     if (currentClass == "DepictionLabelView") {
-        element.append(label(currentView.text)).attr("spawnedId", i);
+        element.append(label(currentView.text)).attr("spawnedId", index);
         if (typeof currentView.fontWeight != "undefined") {
-            $("[spawnedId=" + i + "]").css("font-weight", currentView.fontWeight);
+            $("[spawnedId=" + index + "]").css("font-weight", currentView.fontWeight);
         }
         if (typeof currentView.fontSize != "undefined") {
-            $("[spawnedId=" + i + "]").css("font-size", currentView.fontSize);
+            $("[spawnedId=" + index + "]").css("font-size", currentView.fontSize);
         }
         if (typeof currentView.textColor != "undefined") {
-            $("[spawnedId=" + i + "]").css("color", currentView.textColor);
+            $("[spawnedId=" + index + "]").css("color", currentView.textColor);
         }
-        $("[spawnedId=" + i + "]").removeAttr("spawnedId");
+        $("[spawnedId=" + index + "]").removeAttr("spawnedId");
         return;
     }
     // Video
