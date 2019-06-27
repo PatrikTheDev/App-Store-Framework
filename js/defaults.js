@@ -1,5 +1,5 @@
 /* 
-    This file includes most defaults (paths etc.)
+    This file includes most defaults (paths, elements, etc.)
 */
 function appDirectory() {
     return "depictions/";

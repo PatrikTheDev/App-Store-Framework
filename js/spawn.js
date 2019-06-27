@@ -71,9 +71,8 @@ $.fn.spawnSimilarApps = function() {
             </div>\
         </li>';
             this.append(elementToAppend);
-            var appCell = $($.parseHTML(elementToAppend)).filter('.app');
-            appendContentToAppCell(this.find(".app"));
         }
+        appendContentToAppCell(this.find(".app"));
     } else {
         this.closest(".similar-apps").hide();
     }

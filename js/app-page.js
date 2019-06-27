@@ -288,7 +288,7 @@ function statusBarInit(element, scrollView) {
             if (appPageHeader.hasClass("has-header")) {
                 appPageHeader.css({
                     "-webkit-backdrop-filter": 'blur(0)',
-                    "backdrop-filter": 'blur(0)',
+                    backdropFilter: 'blur(0)',
                     backgroundColor: 'transparent'});
             }
             

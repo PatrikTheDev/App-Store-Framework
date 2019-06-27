@@ -97,15 +97,3 @@ function parseContent(depictionFolder) {
     });
     return cache;
 }
-function parseJSON(path) {
-    $.ajax({
-        url: path,
-        async: false,
-        dataType: 'json',
-        success: function (data) {
-            JSONData = data;
-            console.log(path);
-        }
-    });
-    return JSONData;
-}
