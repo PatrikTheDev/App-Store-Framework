@@ -42,7 +42,8 @@ function appendSubtitleContent(element, override, appSubtitle) {
     }
     element
         .html("" + JSONData.subtitle)
-        .css("color", JSONData.textTint2);
+        .css("color", JSONData.textTint2)
+        .attr("app", window.currentApp);
 }
 function appendAppName(element, override, appName) {
     var path = appDirectory() + window.currentApp + ".json",
