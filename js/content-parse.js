@@ -18,9 +18,7 @@ function parseContent(depictionFolder) {
                     async: false,
                     dataType: 'json',
                     success: function (data) {
-                        cache[window.currentApp] = data;
-                        window.appCache[window.currentApp] = data;
-                        console.log(depictionPath);
+                        cache[window.currentApp] = window.appCache[window.currentApp] = data;
                     }
                 });
             }
@@ -35,9 +33,7 @@ function parseContent(depictionFolder) {
                     async: false,
                     dataType: 'json',
                     success: function (data) {
-                        cache[window.currentApp] = data;
-                        window.appCache[window.currentApp] = data;
-                        console.log(depictionPath);
+                        cache[window.currentApp] = window.appCache[window.currentApp] = data;
                     }
                 });
             }
@@ -52,9 +48,7 @@ function parseContent(depictionFolder) {
                     async: false,
                     dataType: 'json',
                     success: function (data) {
-                        cache[window.currentApp] = data;
-                        window.appCache[window.currentApp] = data;
-                        console.log(depictionPath);
+                        cache[window.currentApp] = window.appCache[window.currentApp] = data;
                     }
                 });
             }
@@ -69,9 +63,7 @@ function parseContent(depictionFolder) {
                     async: false,
                     dataType: 'json',
                     success: function (data) {
-                        cache[window.currentApp] = data;
-                        window.appCache[window.currentApp] = data;
-                        console.log(depictionPath);
+                        cache[window.currentApp] = window.appCache[window.currentApp] = data;
                     }
                 });
             }
@@ -86,9 +78,7 @@ function parseContent(depictionFolder) {
                     async: false,
                     dataType: 'json',
                     success: function (data) {
-                        cache[window.currentApp] = data;
-                        window.appCache[window.currentApp] = data;
-                        console.log(depictionPath);
+                        cache[window.currentApp] = window.appCache[window.currentApp] = data;
                     }
                 });
             }

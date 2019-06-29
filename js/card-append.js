@@ -17,15 +17,16 @@ function appendCardCSS(path, element) {
         "background-size": "cover"
     });
 }
-function appendCardText(path, element, type) {
+function appendCardText(element, type) {
     var JSONData = window.cardCache[window.currentCard];
+    var path = cardDirectory() + window.currentCard + ".json";
     if (typeof JSONData == "undefined") {
         $.ajax({
             url: path,
             async: false,
             dataType: 'json',
             success: function (data) {
-                JSONData = data;
+                JSONData = window.cardCache[window.currentCard] = data;
                 console.log("Parsed a JSON");
             }
         });

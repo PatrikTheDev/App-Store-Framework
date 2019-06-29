@@ -8,8 +8,7 @@ function appendBtnDownloadContent(element) {
             async: false,
             dataType: 'json',
             success: function (data) {
-                JSONData = data;
-                window.appCache[window.currentApp] = data;
+                JSONData = window.appCache[window.currentApp] = data;
                 console.log("Parsed a JSON");
             }
         });
@@ -32,8 +31,7 @@ function appendSubtitleContent(element, override, appSubtitle) {
             async: false,
             dataType: 'json',
             success: function (data) {
-                JSONData = data;
-                window.appCache[window.currentApp] = data;
+                JSONData = window.appCache[window.currentApp] = data;
                 console.log("Parsed a JSON");
             }
         });
@@ -54,8 +52,7 @@ function appendAppName(element, override, appName) {
             async: false,
             dataType: 'json',
             success: function (data) {
-                JSONData = data;
-                window.appCache[window.currentApp] = data;
+                JSONData = window.appCache[window.currentApp] = data;
                 console.log("Parsed a JSON");
             }
         });
@@ -78,14 +75,13 @@ function appendIcon(wrapper, iconClass) {
             async: false,
             dataType: 'json',
             success: function (data) {
-                JSONData = data;
-                window.appCache[window.currentApp] = data;
+                JSONData = window.appCache[window.currentApp] = data;
                 console.log("Parsed a JSON");
             }
         });
     }
     wrapper
-        .html('<img class="' + iconClass + '" src="' + JSONData.icon + '" alt="' + JSONData.appName +'">');
+        .html('<img class="' + iconClass + '" src="' + JSONData.icon + '" alt="' + JSONData.appName +'" app="' + window.currentApp + '">');
 }
 function appendBottomBarColor(path, element) {
     var JSONData = window.appCache[window.currentApp];
@@ -95,8 +91,7 @@ function appendBottomBarColor(path, element) {
             async: false,
             dataType: 'json',
             success: function (data) {
-                JSONData = data;
-                window.appCache[window.currentApp] = data;
+                JSONData = window.appCache[window.currentApp] = data;
                 console.log("Parsed a JSON");
             }
         });

@@ -14,7 +14,7 @@ function spawnApps(parent, path, JSONData) {
     var i;
     for (i = 0; i < JSONItems.applist.length; i++) { 
         if (typeof JSONItems.applist[i] != "undefined") {
-            parent.append('<li class="app app-list" app=app="' + JSONItems.containsApps[i] + '">\
+            parent.append('<li class="app app-list" app="' + JSONItems.containsApps[i] + '">\
             <div class="app-cell-stack">\
                 <div class="app-cell-icon">\
                         <div class="app-icon-wrapper" app="' + JSONItems.containsApps[i] + '"></div>\
@@ -80,7 +80,7 @@ $.fn.spawnSimilarApps = function() {
 };
 function spawnAppsInCards(parent, currentCache) {
     var directoryPrefix = appDirectory();
-    var currentCard = parent.attr("card");
+    var currentCard = window.currentCard = parent.attr("card");
     var cache = currentCache || {};
     path = directoryPrefix + currentCard + ".json";
     var JSONItems = [];
@@ -90,7 +90,7 @@ function spawnAppsInCards(parent, currentCache) {
             async: false,
             dataType: 'json',
             success: function (data) {
-                cache[currentCard] = data;
+                cache[currentCard] = window.cardCache[window.currentCard] = data;
             }
         });
     }
@@ -98,7 +98,7 @@ function spawnAppsInCards(parent, currentCache) {
     var i;
     for (i = 0; i < JSONItems.containsApps.length; i++) { 
         if (JSONItems.containsApps[i]) {
-            parent.append('<li class="app app-list" app=app="' + JSONItems.containsApps[i] + '">\
+            parent.append('<li class="app app-list" app="' + JSONItems.containsApps[i] + '">\
             <div class="app-cell-stack">\
                 <div class="app-cell-icon">\
                         <div class="app-icon-wrapper app-trigger" app="' + JSONItems.containsApps[i] + '"></div>\
@@ -108,7 +108,7 @@ function spawnAppsInCards(parent, currentCache) {
                         <span class="subtitle app-trigger" app="' + JSONItems.containsApps[i] + '"></span>\
                 </div>\
                 <div class="app-cell-btn-download">\
-                    <div class="btn-download right" app="' + JSONItems.containsApps[i] + '">Get</div>\
+                    <div class="btn-download right" app="' + JSONItems.containsApps[i] + '"></div>\
                 </div>\
             </div>\
         </li>');
