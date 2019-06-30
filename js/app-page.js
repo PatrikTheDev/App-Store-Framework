@@ -93,7 +93,7 @@ class UIAppPage {
         window.currentApp = this.currentApp;
     }
     initAppIcon() {
-        appendIcon(this.iconWrapper, "app-page-app-icon");
+        appendIcon(this.iconWrapper, "app-page-app-icon app-icon");
         appendIcon(this.headerIconWrapper, "header-app-icon app-icon");
     }
     initAppName() {

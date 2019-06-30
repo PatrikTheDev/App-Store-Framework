@@ -22,17 +22,6 @@ function appendBtnDownloadContent(element) {
     if (tint == true) {
         element
             .css({"background-color": JSONData.tint, "color": JSONData.textTint});
-    } else {
-        if (element.hasClass("btn-download-card")) {
-            element
-                .css({"background-color": btnDownloadBackground("card"), "color": btnDownloadText()});
-        } else if (element.hasClass("app-page-btn-download")) {
-            element
-                .css({"background-color": btnDownloadBackground("appPage"), "color": btnDownloadText("appPage")});
-        } else {
-            element
-                .css({"background-color": btnDownloadBackground(), "color": btnDownloadText()});
-        }
     }
 }
 function appendSubtitleContent(element, override, appSubtitle) {
@@ -57,9 +46,6 @@ function appendSubtitleContent(element, override, appSubtitle) {
     if (tint == true) {
         element
             .css("color", JSONData.textTint2);
-    } else {
-        element
-            .css("color", subtitleColor());
     }
 }
 function appendAppName(element, override, appName) {

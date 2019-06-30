@@ -17,7 +17,7 @@ function appendCardCSS(path, element) {
         "background-size": "cover"
     });
 }
-function appendCardText(element, type) {
+function appendCardText(element, type, color) {
     var JSONData = window.cardCache[window.currentCard];
     var path = cardDirectory() + window.currentCard + ".json";
     if (typeof JSONData == "undefined") {
@@ -33,4 +33,7 @@ function appendCardText(element, type) {
     }
     var appendedText = JSONData[type];
     element.html("" + appendedText);
+    if (typeof color != "undefined") {
+        element.css({color: color});
+    }
 }

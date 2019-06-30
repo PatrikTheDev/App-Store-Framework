@@ -14,20 +14,20 @@ function cardAppList() {
     return $(".card-apps-list");
 }
 function tintState() {
-    return true;
+    return false;
 }
 
 // Colors
 function globalTint() {
-    return "rgb(46, 126, 246)";
+    return "var(--main-tint)";
 }
 function btnDownloadBackground(type) {
     if (type == "card") {
-        return "rgb(241, 242, 246)";
+        return "var(--btn-download-card-background)";
     } else if (type == "appPage") {
-        return globalTint();
+        return "var(--main-tint)";
     } else {
-        return "rgb(221, 222, 224)";
+        return "var(--btn-download-background)";
     }
 }
 function btnDownloadText(type) {
@@ -38,5 +38,5 @@ function btnDownloadText(type) {
     }
 }
 function subtitleColor() {
-    return "rgb(150, 151, 155)";
+    return "var(--subtitle-color)";
 }
