@@ -386,7 +386,7 @@ h5.bottom-subtitle-bar {
 }
 .app-icon {
     width: 3em;
-    border-radius: 13px;
+    border-radius: 14px;
     display: inline-block;
     border-width: 1px;
     border-style: solid; 
@@ -836,7 +836,7 @@ h5.bottom-subtitle-bar {
 .header-app-icon-wrapper img {
     position: relative;
     width: 2.5rem;
-    border-radius: 10px;
+    border-radius: 11px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
     opacity: 0;
     top: 0;
