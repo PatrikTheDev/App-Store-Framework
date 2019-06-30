@@ -14,7 +14,7 @@ function cardAppList() {
     return $(".card-apps-list");
 }
 function tintState() {
-    return true;
+    return false;
 }
 
 // Colors
