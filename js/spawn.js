@@ -119,3 +119,39 @@ function spawnAppsInCards(parent, currentCache) {
     payPopupListeners(parent);
     appPageListeners(parent);
 }
+$.fn.spawnReviews = function() {
+    var currentApp = window.currentApp;
+    var currentCache = window.appCache;
+    var directoryPrefix = appDirectory();
+    var path = directoryPrefix + currentApp + ".json";
+    if (typeof currentCache == "undefined") {
+        currentCache = {};
+    }
+    if (typeof currentCache[currentApp] == "undefined") {
+        $.ajax({
+            url: path,
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                currentCache[currentApp] = data;
+            }
+        });
+    }
+    var i;
+    if (currentCache[currentApp].reviews && currentCache[currentApp].reviews.length > 0) {
+        for (i = 0; i < currentCache[currentApp].reviews.length; i++) {
+            var elementToAppend = '<li class="review">\
+            <div class="review-header">\
+                <h3>' + currentCache[currentApp].reviews[i].title + '</h3>\
+            </div>\
+            <div class="content">\
+                <span>' + currentCache[currentApp].reviews[i].text +'</span>\
+            </div>\
+        </li>';
+            this.append(elementToAppend);
+        }
+    } else {
+        this.closest(".reviews").hide();
+    }
+    return this;
+};

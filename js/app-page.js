@@ -22,6 +22,7 @@ class UIAppPage {
         this.tintedElements = this.appPage.find(".tinted");
         this.similarApps = this.appPage.find(".app-page-similar-apps-list");
         this.lastStar = $("[fifth-star]");
+        this.reviews = this.appPage.find(".reviews");
         // Values
         this.closeDuration = 500;
         // Overrides
@@ -86,11 +87,18 @@ class UIAppPage {
     }
     spawnSimilarApps() {
         var alreadyRan = this.similarApps.attr("already-ran");
-        if (alreadyRan == "false") {
+        if (alreadyRan != "true") {
             this.similarApps.spawnSimilarApps();
         }
         this.similarApps.attr("already-ran", "true");
         window.currentApp = this.currentApp;
+    }
+    spawnReviews() {
+        var alreadyRan = this.reviews.attr("already-ran");
+        if (alreadyRan != "true") {
+            this.reviews.spawnReviews();
+        }
+        this.reviews.attr("already-ran", "true");
     }
     initAppIcon() {
         appendIcon(this.iconWrapper, "app-page-app-icon app-icon");
@@ -184,6 +192,8 @@ class UIAppPage {
         this.initScreenshots();
         // Init the header
         this.initHeader();
+        // Spawn reviews
+        this.spawnReviews();
         // Spawn similarApps
         this.spawnSimilarApps();
         // Close pay popup
@@ -212,7 +222,9 @@ class UIAppPage {
         resetDescription($(".app-page-text-description"));
         resetRating(this.lastStar);
         this.similarApps.html("").attr("already-ran", false);
+        this.reviews.html("").attr("already-ran", false);
         this.similarApps.closest(".similar-apps").show();
+        this.reviews.show();
         this.resetHeader();
         // Reset overrides back to default
         this.settingsOverride = this.settingsOverrideDefaults;

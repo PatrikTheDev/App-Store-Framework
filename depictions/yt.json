@@ -22,5 +22,16 @@
     "hasHeader": false,
     "similarApps": [
         "yt", "alien"
+    ], 
+    "reviews": [
+        {
+            "title": "Ads!!!", 
+            "rating": 4, 
+            "text": "Noooooo, ads are bad, don't show them to me"
+        },{
+            "title": "Pewdiepie", 
+            "rating": 4, 
+            "text": "I love his videos, he is very good, the app itself is not very good tho."
+        }
     ]
 }
