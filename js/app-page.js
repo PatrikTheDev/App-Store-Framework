@@ -21,7 +21,7 @@ class UIAppPage {
         this.header = this.appPage.find(".app-page-header");
         this.tintedElements = this.appPage.find(".tinted");
         this.similarApps = this.appPage.find(".app-page-similar-apps-list");
-        this.lastStar = $("[fifth-star]");
+        this.lastStar = $(".app-page-rating [fifth-star]");
         this.reviews = this.appPage.find(".reviews");
         // Values
         this.closeDuration = 500;
@@ -133,7 +133,7 @@ class UIAppPage {
             this.parseJSON();
         }
         var ratingsText = "ratings";
-        parseRating(this.JSONData.rating, $("[first-star]"), $("[second-star]"), $("[third-star]"), $("[fourth-star]"), this.lastStar);
+        appendRating(this.JSONData.rating, $(".app-page-rating [first-star]"), $(".app-page-rating [second-star]"), $(".app-page-rating [third-star]"), $(".app-page-rating [fourth-star]"), this.lastStar);
         this.appPage.find(".rating-num").text("" + this.JSONData.rating);
         this.appPage.find(".number-of-ratings").text("" + this.JSONData.numberOfRatings + " " + ratingsText);
     }
@@ -247,37 +247,42 @@ function resetDescription(parent) {
         .attr("alreadyRan", "false");
 }
 function toggleCards(parentElem) {
-    var parent = parentElem || $(".app-page");
-    var wasVisible = parent.attr("cardsWereVisible");
+    var parent = parentElem || $(".app-page"),
+        wasVisible = parent.attr("cardsWereVisible");
     $(".active").show();
     if (wasVisible == "true") {
         $(".card").show();
     }
     $("body").removeClass("noscroll");
 }
-function parseRating(refAppRating, firstStar, secondStar, thirdStar, fourthStar, fifthStar) {
+function appendRating(refAppRating, firstStar, secondStar, thirdStar, fourthStar, fifthStar) {
     if (refAppRating == 1) {
-        firstStar.addClass("fas").removeClass("far");
+        firstStar.not(".rating-num, .review-text").addClass("fas").removeClass("far");
+        firstStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
     }
     if (refAppRating == 2) {
-        secondStar.prevAll().addBack().not("rating-num").addClass("fas").removeClass("far");
+        secondStar.prevAll().addBack().not(".rating-num, .review-text").addClass("fas").removeClass("far");
+        secondStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
     }
     if (refAppRating == 3) {
-        thirdStar.prevAll().addBack().not("rating-num").addClass("fas").removeClass("far");
+        thirdStar.prevAll().addBack().not(".rating-num, .review-text").addClass("fas").removeClass("far");
+        thirdStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
     }
     if (refAppRating == 4) {
-        fourthStar.prevAll().addBack().not("rating-num").addClass("fas").removeClass("far");
+        fourthStar.prevAll().addBack().not(".rating-num, .review-text").addClass("fas").removeClass("far");
+        fourthStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
     }
     if (refAppRating == 5) {
-        fifthStar.prevAll().addBack().not("rating-num").addClass("fas").removeClass("far");
+        fifthStar.prevAll().addBack().not(".rating-num, .review-text").addClass("fas").removeClass("far");
+        fifthStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
     }
 }
 function resetRating(lastStar) {
     lastStar.prevAll().addBack().addClass("far").removeClass("fas");
 }
 function statusBarInit(element, scrollView) {
-    var scrollViewElement = scrollView || ".app-page";
-    var appPageHeader = element.closest(".app-page-header");
+    var scrollViewElement = scrollView || ".app-page",
+        appPageHeader = element.closest(".app-page-header");
     element.closest(scrollViewElement).scroll(function() {
         if (element.closest(scrollViewElement).scrollTop() > 100){
             element

@@ -140,15 +140,19 @@ $.fn.spawnReviews = function() {
     var i;
     if (currentCache[currentApp].reviews && currentCache[currentApp].reviews.length > 0) {
         for (i = 0; i < currentCache[currentApp].reviews.length; i++) {
-            var elementToAppend = '<li class="review">\
+            var elementToAppend = '<li class="review" id="spawned">\
             <div class="review-header">\
-                <h3>' + currentCache[currentApp].reviews[i].title + '</h3>\
+                <h4>' + currentCache[currentApp].reviews[i].title + '</h4>\
             </div>\
             <div class="content">\
-                <span>' + currentCache[currentApp].reviews[i].text +'</span>\
+                <i class="far fa-star" first-star></i><i class="far fa-star" second-star></i><i class="far fa-star" third-star></i><i class="far fa-star" fourth-star></i><i class="far fa-star" fifth-star></i>\
+                <p class="review-text">' + currentCache[currentApp].reviews[i].text +'</p>\
             </div>\
         </li>';
             this.append(elementToAppend);
+            var thisReview = this.find("#spawned");
+            appendRating(currentCache[currentApp].reviews[i].rating, thisReview.find("[first-star]"), thisReview.find("[second-star]"), thisReview.find("[third-star]"), thisReview.find("[fourth-star]"), thisReview.find("[fifth-star]"));
+            this.find("#spawned").removeAttr("id");
         }
     } else {
         this.closest(".reviews").hide();
