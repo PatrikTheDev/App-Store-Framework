@@ -20,6 +20,7 @@
     :root {
         --background-level-0: rgb(0, 0, 1);
         --background-level-1: rgb(27, 28, 30);
+        --background-level-2: rgb(43, 44, 46);
         --popup-background: rgba(85, 85, 85, 0.8);
         --text-color: rgb(255, 255, 255);
         --secondary-text-color: rgb(220, 220, 220);
