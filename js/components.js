@@ -20,7 +20,7 @@ function video(borderRadius, path) {
     if (typeof borderRadius == "undefined") {
         borderRadius = 0;
     }
-    var generatedElement = '<video controls style="width: 100%; border-radius:' + borderRadius + 'px"><source src="' + path + '" type="video/mp4"></video>';
+    var generatedElement = '<video controls style="width: 100%; border-radius:' + borderRadius + 'px; max-width: 100%;"><source src="' + path + '" type="video/mp4"></video>';
     return generatedElement;
 }
 function label(text) {
