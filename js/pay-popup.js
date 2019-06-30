@@ -5,6 +5,7 @@ class UIPayPopup {
         this.cache = window.appCache || cache || {};
         this.currentApp = window.currentApp || "default";
         this.directory = directory || "depictions/";
+        this.tintEnabled = tintState();
         // Defaults for elements, you can change these if your elements are different
         this.payPopup = payPopup || $(".pay-now");
         this.appNameElement = $(".pay-popup-name");
@@ -105,7 +106,12 @@ class UIPayPopup {
         if (typeof this.JSONData == "undefined" && typeof this.cache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
-        this.payButton.css({"background-color": this.JSONData.tint, "color": this.JSONData.textTint});
+        this.payButton.css({color: this.JSONData.textTint});
+        if (this.tintEnabled == true) {
+            this.payButton.css({backgroundColor: this.JSONData.tint});
+        } else {
+            this.payButton.css({backgroundColor: globalTint()});
+        }
     }
     tintElements() {
         if (typeof this.JSONData == "undefined" && typeof this.cache[this.currentApp] == "undefined") {

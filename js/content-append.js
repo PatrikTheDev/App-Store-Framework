@@ -1,7 +1,6 @@
 function appendBtnDownloadContent(element) {
     var path = appDirectory() + window.currentApp + ".json",
-        currentApp = window.currentApp,
-        JSONData = window.appCache[window.currentApp];
+        JSONData = window.appCache[window.currentApp], tint = tintState();
     if (typeof JSONData == "undefined") {
         $.ajax({
             url: path,
@@ -19,12 +18,26 @@ function appendBtnDownloadContent(element) {
     }
     element
         .text("" + price)
-        .css({"background-color": JSONData.tint, "color": JSONData.textTint})
-        .attr("app", currentApp);
+        .attr("app", window.currentApp);
+    if (tint == true) {
+        element
+            .css({"background-color": JSONData.tint, "color": JSONData.textTint});
+    } else {
+        if (element.hasClass("btn-download-card")) {
+            element
+                .css({"background-color": btnDownloadBackground("card"), "color": btnDownloadText()});
+        } else if (element.hasClass("app-page-btn-download")) {
+            element
+                .css({"background-color": btnDownloadBackground("appPage"), "color": btnDownloadText("appPage")});
+        } else {
+            element
+                .css({"background-color": btnDownloadBackground(), "color": btnDownloadText()});
+        }
+    }
 }
 function appendSubtitleContent(element, override, appSubtitle) {
     var path = appDirectory() + window.currentApp + ".json",
-        JSONData = window.appCache[window.currentApp];
+        JSONData = window.appCache[window.currentApp], tint = tintState();
     if (typeof JSONData == "undefined" && override == false && typeof appSubtitle != "string") {
         $.ajax({
             url: path,
@@ -40,8 +53,14 @@ function appendSubtitleContent(element, override, appSubtitle) {
     }
     element
         .html("" + JSONData.subtitle)
-        .css("color", JSONData.textTint2)
         .attr("app", window.currentApp);
+    if (tint == true) {
+        element
+            .css("color", JSONData.textTint2);
+    } else {
+        element
+            .css("color", subtitleColor());
+    }
 }
 function appendAppName(element, override, appName) {
     var path = appDirectory() + window.currentApp + ".json",
@@ -98,8 +117,13 @@ function appendBottomBarColor(path, element) {
     }
     element.css("background-color", JSONData.tint2);
 }
-function tintElements(elementsToTint, tint) {
-    elementsToTint.css({color: tint});
+function tintElements(elementsToTint, tint, override) {
+    var tintEnabled = tintState();
+    if (tintEnabled == true || override == true) {
+        elementsToTint.css({color: tint});
+    } else {
+        elementsToTint.css({color: globalTint()});
+    }
 }
 function appendContentToAppCell(cell) {
     var btnDownload = cell.find(".btn-download");

@@ -6,6 +6,7 @@ class UIAppPage {
         this.cache = window.appCache || cache || {};
         this.currentApp = currentApp || defaultApp();
         this.directory = appDirectory();
+        this.tintEnabled = tintState();
         // Defaults for elements, you can change these if your elements are different
         this.appPage = appPage || $(".app-page");
         this.iconWrapper = this.appPage.find(".app-page-app-icon-wrapper");

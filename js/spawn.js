@@ -108,7 +108,7 @@ function spawnAppsInCards(parent, currentCache) {
                         <span class="subtitle app-trigger" app="' + JSONItems.containsApps[i] + '"></span>\
                 </div>\
                 <div class="app-cell-btn-download">\
-                    <div class="btn-download right" app="' + JSONItems.containsApps[i] + '"></div>\
+                    <div class="btn-download btn-download-cell right" app="' + JSONItems.containsApps[i] + '"></div>\
                 </div>\
             </div>\
         </li>');

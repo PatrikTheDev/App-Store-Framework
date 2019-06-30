@@ -748,7 +748,6 @@ h5.bottom-subtitle-bar {
     font-size: 0.9rem;
 }
 .rating-num-text {
-    /* float: left; */
     position: absolute;
     top: 1.5rem;
     left: 0;
@@ -784,7 +783,7 @@ h5.bottom-subtitle-bar {
 }
 .app-page-header-img-wrapper {
     width: 100%;
-    height: 10rem;
+    height: 13rem;
     display: none;
 }
 .app-page-header-img {
