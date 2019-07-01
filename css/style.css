@@ -910,3 +910,6 @@ ul.app-page-similar-apps-list li:last-child {
 .review .content {
     padding: 0;
 }
+.no-animation {
+    transition: all 0ms !important;
+}

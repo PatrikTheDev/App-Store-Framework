@@ -43,6 +43,18 @@ class UIAppPage {
     closePayPopup() {
         payPopupClose();
     }
+    addToHistory() {
+        log(history);
+        var state = {
+            app: this.currentApp,
+            stateName: "appPage"
+        };
+        var alreadyRan = window.alreadyAddedHistoryAppPage;
+        if (alreadyRan != true) {
+            history.pushState(state, null, "#appPage");
+        }
+        window.alreadyAddedHistoryAppPage = true;
+    }
     checkIfNeededToReload(app) {
         if (this.currentApp != app) {
             this.reset();
@@ -198,6 +210,8 @@ class UIAppPage {
         this.spawnSimilarApps();
         // Close pay popup
         this.closePayPopup();
+        // Add to the history object
+        this.addToHistory();
         // Show app-page
         this.open();
     }
@@ -206,14 +220,27 @@ class UIAppPage {
         this.appPage.css({visibility: "visible", right: "0"});
         this.header.css({right: "0", visibility: "visible"});
     }
-    close() {
+    close(animate) {
+        var appPage = this.appPage;
+        if (typeof animate == "undefined") {
+            animate = true;
+        }
         toggleCards();
         // Hide the app page
+        if (animate === false) {
+            this.appPage.addClass("no-animation");
+        }
         this.appPage.css({right: "-100%"});
         this.header.css({right: "-100%", visibility: "hidden"});
         // Reset all the things back once it is closed
         setTimeout(function() {
+            if (animate === false) {
+                appPage.removeClass("no-animation");
+            }
             window.appPage.reset();
+            console.log(history);
+            history.replaceState("homescreen", null, "#");
+            console.log(history);
         }, this.closeDuration);
         
     }
@@ -229,6 +256,7 @@ class UIAppPage {
         // Reset overrides back to default
         this.settingsOverride = this.settingsOverrideDefaults;
         this.override = this.overrideDefaults;
+        window.alreadyAddedHistoryAppPage = false;
         return;
     }
 }
@@ -317,4 +345,18 @@ function statusBarInit(element, scrollView) {
 var appPage;
 function defineAppPage() {
     window.appPage = new UIAppPage();
+}
+function popState() {
+    window.onpopstate = function(event) {
+        console.log(event.state);
+        if (event.state == "homescreen") {
+            window.appPage.close(false);
+            window.card.close();
+            window.payPopup.close();
+        } else if (event.state == "card") {
+            
+        } else {
+            return;
+        }
+    };
 }

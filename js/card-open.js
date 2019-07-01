@@ -54,8 +54,15 @@ class UICard {
         this.card.addClass("fullscreen", "opened");
         }
     }
+    addToHistory() {
+        log(history);
+        var alreadyRan = window.alreadyAddedHistoryCard;
+        if (alreadyRan != true) {
+            history.pushState("card", null, "#card");
+        }
+        window.alreadyAddedHistoryCard = true;
+    }
     init() {
-        //this.getCardPosition();
         this.open();
         this.showLatterApps();
         this.card.find(".content").addClass("fullscreen");
@@ -68,6 +75,7 @@ class UICard {
         $(".hide-on-card-open").hide();
         $(".bottom-bar").addClass("fullscreen");
         this.initBottomPopup();
+        this.addToHistory();
     }
     disableScroll() {
         $("body").addClass("noscroll");
@@ -114,6 +122,9 @@ class UICard {
             width: '',
             height: ''
         });
+        this.reset();
+    }
+    reset() {
         this.hideLatterApps();
         this.trigger.closest(".opened").removeClass("opened");
         this.closeBtn.addClass("hidden");
@@ -122,6 +133,8 @@ class UICard {
         this.enableScroll();
         this.card.removeClass("active");
         $(".bottom-bar").removeClass("fullscreen");
+        window.alreadyAddedHistoryCard = false;
+        history.replaceState("homescreen", null, "#");
     }
 }
 
@@ -135,5 +148,5 @@ $(".card-trigger").click(function() {
     card.init();
 });
 $(".close").click(function() {
-    card.close();
+    card.reset();
 });

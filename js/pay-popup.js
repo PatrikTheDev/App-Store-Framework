@@ -24,8 +24,18 @@ class UIPayPopup {
         this.override = this.overrideDefaults;
         this.settingsOverride = this.settingsOverrideDefaults;
     }
+    addToHistory() {
+        log(history);
+        var alreadyRan = window.alreadyAddedHistoryPayPopup;
+        if (alreadyRan != true) {
+            history.pushState("payPopup", null, "#card");
+        }
+        window.alreadyAddedHistoryPayPopup = true;
+    }
     initAll() {
         window.currentApp = this.currentApp;
+        // Add to the history object
+        this.addToHistory();
         // Parse the JSON
         this.parseJSON();
         // Append app name
@@ -60,9 +70,6 @@ class UIPayPopup {
                   cache[currentApp] = data;
                 }
             });
-            if (typeof JSONItems != "object"){
-                console.log("Error while parsing JSON");
-            }
             this.JSONData = JSONData;
         } else {
             this.JSONData = this.cache[this.currentApp];
@@ -135,13 +142,14 @@ class UIPayPopup {
         }
     }
     close() {
+        window.alreadyAddedHistoryPayPopup = false;
         this.payPopup.css({bottom: "-100%", opacity: 0});
         this.settingsOverride = this.settingsOverrideDefaults;
         this.override = this.overrideDefaults;
     }
 }
 function payPopupInit(parent) {
-    var currentApp = parent.attr("app");
+    window.currentApp = parent.attr("app");
     payPopup.currentApp = currentApp;
     payPopup.initAll();
 }

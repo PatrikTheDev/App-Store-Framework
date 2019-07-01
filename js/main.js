@@ -15,4 +15,6 @@ $(document).ready(function() {
     appPageListeners($("body"));
     defineAppPage();
     definePayPopup();
+    popState();
+    history.replaceState("homescreen", null, "#");
 });
