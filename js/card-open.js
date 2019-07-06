@@ -148,5 +148,5 @@ $(".card-trigger").click(function() {
     card.init();
 });
 $(".close").click(function() {
-    card.reset();
+    card.close();
 });
