@@ -81,7 +81,7 @@ class UIPayPopup {
         } else {
             this.payPopup.css({bottom: "1em"});
         }
-        this.bottomPopupClose();
+        this.closeBottomPopup();
     }
     closeBottomPopup() {
         bottomPopupClose();
