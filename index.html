@@ -99,8 +99,10 @@
         <!-- Bottom popup -->
         <div class="bottom-popup">
                 <div class="app-icon-wrapper app-icon-popupbar"></div>
-                <h5 class="bottom-text-bar grey-text-darker app-name noappend app-name-popupbar"></h5>
-                <p class="bottom-subtitle-bar subtitle noappend subtitle-popupbar grey-text-lighter"></p>
+                <div class="app-details-stack">
+                        <h5 class="bottom-text-bar app-name noappend app-name-popupbar"></h5>
+                        <p class="bottom-subtitle-bar subtitle noappend subtitle-popupbar"></p>
+                </div>
                 <div class="btn-download btn-download-popup noappend"></div>
         </div>
         <!-- Cards -->
@@ -115,7 +117,7 @@
                         <p class="bottom-text grey-text-lighter"></p>
                     </div>
                     <div class="description-page"> <div class="container">
-                        <p><b>The best thing</b> about playing games in iMessages? Bantering between turns. Wheter it's bowling or battleships, here's how to add some friendly competition to your chat threads.
+                            <p class="description card-description" app="alien"></p>
                         </p>
                         <ul class="apps-list card-apps-list">
                             <!-- Apps get spawned here -->
@@ -197,7 +199,8 @@
     <script src="js/debug.js"></script>
     <script src="js/defaults.js"></script>
     <script src="js/listeners.js"></script>
-    <script src="js/components.js"></script>
+    <script src="js/components/depiction-components.js"></script>
+    <script src="js/components/app-cell.js"></script>
     <script src="js/spawn.js"></script>
     <script src="js/depiction-render.js"></script>
     <script src="js/app-global.js"></script>

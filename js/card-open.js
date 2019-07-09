@@ -18,7 +18,7 @@ class UICard {
     }
     open() {
         // Get the position of the parent, so you can change the position to fixed without any glitches
-        if (typeof this.cardPosition == "undefined") {
+        if (!this.cardPosition) {
             this.getCardPosition();
         }
         var cardPosition = this.cardPosition;
@@ -57,7 +57,6 @@ class UICard {
         }
     }
     addToHistory() {
-        log(history);
         var alreadyRan = window.alreadyAddedHistoryCard;
         if (alreadyRan != true) {
             history.pushState("card", null, "#card");
@@ -87,10 +86,10 @@ class UICard {
         $("body").removeClass("noscroll");
     }
     initBottomPopup() {
-        // Broken right now, gonna rewrite it at some point
-        /* if (this.cache[this.currentCard].containsApps.length < 2 && this.cache[this.currentCard].containsApps.length > 0) {
-            bottomPopupInit(this.card, this.appCache[this.cache[this.currentCard].containsApps[0]], this.currentCard);
-        } */
+        if (this.cache[this.currentCard].containsApps.length == 1) {
+            window.currentApp = this.cache[this.currentCard].containsApps[0];
+            bottomPopupInit(this.card);
+        }
     }
     showLatterApps() {
         this.card.find(".apps-list-featured li:nth-child(4)").removeClass("no-after");
@@ -141,7 +140,9 @@ class UICard {
     }
 }
 
-var card = new UICard();
+function defineCards() {
+    window.card = new UICard();
+}
 
 /* This should be replaced with your code if it is different */
 $(".card-trigger").click(function() {

@@ -14,14 +14,14 @@ function appendBtnDownloadContent(element) {
     }
     var price = JSONData.price;
     if (price == "Free") {
-        price = "Get";
+        price = "GET";
     }
     element
         .text("" + price)
         .attr("app", window.currentApp);
     if (tint == true) {
         element
-            .css({"background-color": JSONData.tint, "color": JSONData.textTint});
+            .css({backgroundColor: JSONData.tint, color: JSONData.textTint});
     }
 }
 function appendSubtitleContent(element, override, appSubtitle) {
@@ -110,29 +110,4 @@ function tintElements(elementsToTint, tint, override) {
     } else {
         elementsToTint.css({color: globalTint()});
     }
-}
-function appendContentToAppCell(cell) {
-    var btnDownload = cell.find(".btn-download");
-    btnDownload.each(function() {
-        window.currentApp = $(this).attr("app");
-        appendBtnDownloadContent($(this));
-        payPopupListeners($(this).parent());
-    });
-    var appName = cell.find(".app-name");
-    appName.each(function() {
-        window.currentApp = $(this).attr("app");
-        appendAppName($(this), false);
-        appPageListeners($(this).parent());
-    });
-    var subtitle = cell.find(".subtitle");
-    subtitle.each(function() {
-        window.currentApp = $(this).attr("app");
-        appendSubtitleContent($(this), false);
-    });
-    var appIcon = cell.find(".app-icon-wrapper");
-    appIcon.each(function() {
-        window.currentApp = $(this).attr("app");
-        appendIcon($(this), "app-icon");
-        appPageListeners($(this).parent());
-    });
 }

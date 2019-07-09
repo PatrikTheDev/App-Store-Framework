@@ -25,9 +25,8 @@ class UIPayPopup {
         this.settingsOverride = this.settingsOverrideDefaults;
     }
     addToHistory() {
-        log(history);
         var alreadyRan = window.alreadyAddedHistoryPayPopup;
-        if (alreadyRan != true) {
+        if (alreadyRan !== true) {
             history.pushState("payPopup", null, "#card");
         }
         window.alreadyAddedHistoryPayPopup = true;
@@ -59,15 +58,14 @@ class UIPayPopup {
         var path = pathToJSON || this.directory + this.currentApp + ".json";
         var JSONData = [];
         var cache = this.cache;
-        if (typeof this.cache[this.currentApp] == "undefined") {
+        if (!this.cache[this.currentApp]) {
             $.ajax({
                 url: path,
                 async: false,
                 dataType: 'json',
                 success: function (data) {
                   JSONData = data;
-                  console.log(cache);
-                  cache[currentApp] = data;
+                  cache[currentApp] = window.appCache[currentApp] = data;
                 }
             });
             this.JSONData = JSONData;
@@ -77,13 +75,16 @@ class UIPayPopup {
         return JSONData;
     }
     open() {
-        this.payPopup.css("opacity", "1");
+        this.payPopup.css({opacity: 1});
         if (window.innerWidth < 700) {
             this.payPopup.css({bottom: 0});
         } else {
             this.payPopup.css({bottom: "1em"});
         }
-        $(".bottom-popup").css("bottom", "-100%");
+        this.bottomPopupClose();
+    }
+    closeBottomPopup() {
+        bottomPopupClose();
     }
     initAppName() {
         if (typeof this.JSONData == "undefined" && typeof this.cache[this.currentApp] == "undefined") {
@@ -148,17 +149,13 @@ class UIPayPopup {
         this.override = this.overrideDefaults;
     }
 }
-function payPopupInit(parent) {
-    window.currentApp = parent.attr("app");
-    payPopup.currentApp = currentApp;
+function payPopupInit(currentApp) {
+    payPopup.currentApp = currentApp || defaultApp();
     payPopup.initAll();
 }
 function payPopupClose() {
     payPopup.close();
 }
-
-
-var payPopup;
 function definePayPopup() {
     window.payPopup = new UIPayPopup();
 }

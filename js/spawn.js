@@ -1,5 +1,5 @@
 /* JSHint settings */
-/* jshint multistr: true */
+/* jshint esversion: 6 */
 
 function spawnApps(parent, path, JSONData) {
     var JSONItems = [];
@@ -14,20 +14,7 @@ function spawnApps(parent, path, JSONData) {
     var i;
     for (i = 0; i < JSONItems.applist.length; i++) { 
         if (typeof JSONItems.applist[i] != "undefined") {
-            parent.append('<li class="app app-list" app="' + JSONItems.containsApps[i] + '">\
-            <div class="app-cell-stack">\
-                <div class="app-cell-icon">\
-                        <div class="app-icon-wrapper" app="' + JSONItems.containsApps[i] + '"></div>\
-                </div>\
-                <div class="app-cell-details">\
-                        <h4 class="app-name" app="' + JSONItems.containsApps[i] + '"></h4>\
-                        <span class="subtitle grey-text" app="' + JSONItems.containsApps[i] + '"></span>\
-                </div>\
-                <div class="app-cell-btn-download">\
-                    <div class="btn-download right light-grey" app="' + JSONItems.containsApps[i] + '">Get</div>\
-                </div>\
-            </div>\
-        </li>');
+            parent.append(appCell(JSONItems.applist[i]));
         }
     }
     $(".apps-list-featured li:nth-child(4)").nextAll().hide();
@@ -49,27 +36,14 @@ $.fn.spawnSimilarApps = function() {
             async: false,
             dataType: 'json',
             success: function (data) {
-                currentCache[currentApp] = data;
+                currentCache[currentApp] = window.appCache[currentApp] = data;
             }
         });
     }
     var i;
     if (currentCache[currentApp].similarApps && currentCache[currentApp].similarApps.length > 0) {
         for (i = 0; i < currentCache[currentApp].similarApps.length; i++) {
-            var elementToAppend = '<li class="app app-list" app="' + currentCache[currentApp].similarApps[i] + '">\
-            <div class="app-cell-stack">\
-                <div class="app-cell-icon app-trigger">\
-                        <div class="app-icon-wrapper app-trigger" app="' + currentCache[currentApp].similarApps[i] + '"></div>\
-                </div>\
-                <div class="app-cell-details">\
-                        <h4 class="app-name app-trigger" app="' + currentCache[currentApp].similarApps[i] + '"></h4>\
-                        <span class="subtitle grey-text app-trigger" app="' + currentCache[currentApp].similarApps[i] + '"></span>\
-                </div>\
-                <div class="app-cell-btn-download">\
-                    <div class="btn-download right light-grey" app="' + currentCache[currentApp].similarApps[i] + '">Get</div>\
-                </div>\
-            </div>\
-        </li>';
+            var elementToAppend = appCell(currentCache[currentApp].similarApps[i]);
             this.append(elementToAppend);
         }
         appendContentToAppCell(this.find(".app"));
@@ -82,7 +56,7 @@ function spawnAppsInCards(parent, currentCache) {
     var directoryPrefix = appDirectory();
     var currentCard = window.currentCard = parent.attr("card");
     var cache = currentCache || {};
-    path = directoryPrefix + currentCard + ".json";
+    var path = directoryPrefix + currentCard + ".json";
     var JSONItems = [];
     if (typeof cache[currentCard] == "undefined") {
         $.ajax({
@@ -98,20 +72,8 @@ function spawnAppsInCards(parent, currentCache) {
     var i;
     for (i = 0; i < JSONItems.containsApps.length; i++) { 
         if (JSONItems.containsApps[i]) {
-            parent.append('<li class="app app-list" app="' + JSONItems.containsApps[i] + '">\
-            <div class="app-cell-stack">\
-                <div class="app-cell-icon">\
-                        <div class="app-icon-wrapper app-trigger" app="' + JSONItems.containsApps[i] + '"></div>\
-                </div>\
-                <div class="app-cell-details">\
-                        <h4 class="app-name app-trigger" app="' + JSONItems.containsApps[i] + '"></h4>\
-                        <span class="subtitle app-trigger" app="' + JSONItems.containsApps[i] + '"></span>\
-                </div>\
-                <div class="app-cell-btn-download">\
-                    <div class="btn-download btn-download-cell right" app="' + JSONItems.containsApps[i] + '"></div>\
-                </div>\
-            </div>\
-        </li>');
+            var elementToAppend = appCell(JSONItems.containsApps[i]);
+            parent.append(elementToAppend);
         }
     }
     $(".apps-list-featured li:nth-child(4)").nextAll().hide();
@@ -140,15 +102,16 @@ $.fn.spawnReviews = function() {
     var i;
     if (currentCache[currentApp].reviews && currentCache[currentApp].reviews.length > 0) {
         for (i = 0; i < currentCache[currentApp].reviews.length; i++) {
-            var elementToAppend = '<li class="review" id="spawned">\
-            <div class="review-header">\
-                <h4>' + currentCache[currentApp].reviews[i].title + '</h4>\
-            </div>\
-            <div class="content">\
-                <i class="far fa-star" first-star></i><i class="far fa-star" second-star></i><i class="far fa-star" third-star></i><i class="far fa-star" fourth-star></i><i class="far fa-star" fifth-star></i>\
-                <p class="review-text">' + currentCache[currentApp].reviews[i].text +'</p>\
-            </div>\
-        </li>';
+            var elementToAppend = `
+        <li class="review" id="spawned">
+            <div class="review-header">
+                <h4>` + currentCache[currentApp].reviews[i].title + `</h4>
+            </div>
+            <div class="content">
+                <i class="far fa-star" first-star></i><i class="far fa-star" second-star></i><i class="far fa-star" third-star></i><i class="far fa-star" fourth-star></i><i class="far fa-star" fifth-star></i>
+                <p class="review-text">` + currentCache[currentApp].reviews[i].text + `</p>
+            </div>
+        </li>`;
             this.append(elementToAppend);
             var thisReview = this.find("#spawned");
             appendRating(currentCache[currentApp].reviews[i].rating, thisReview.find("[first-star]"), thisReview.find("[second-star]"), thisReview.find("[third-star]"), thisReview.find("[fourth-star]"), thisReview.find("[fifth-star]"));

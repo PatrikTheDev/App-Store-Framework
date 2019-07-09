@@ -7,8 +7,8 @@ function payPopupListeners(parent) {
     $(".pay-now-button").click(function(){
         payPopupClose();
     });
-    parent.find(".btn-download").click(function() {
-        payPopupInit($(this));
+    parent.find(".btn-download").not(".noappend").click(function() {
+        payPopupInit($(this).parent().attr("app"));
     });
 }
 function appPageListeners(parent) {

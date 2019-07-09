@@ -7,6 +7,7 @@ var cardCache;
 var appCache;
 $(document).ready(function() {
     cardCache = parseCards();
+    defineCards();
     cardAppList().each(function(){
         spawnAppsInCards($(this), cardCache);
     });
@@ -15,6 +16,7 @@ $(document).ready(function() {
     appPageListeners($("body"));
     defineAppPage();
     definePayPopup();
+    defineBottomPopup();
     popState();
     history.replaceState("homescreen", null, "#");
 });

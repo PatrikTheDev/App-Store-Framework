@@ -44,7 +44,6 @@ class UIAppPage {
         payPopupClose();
     }
     addToHistory() {
-        log(history);
         var state = {
             app: this.currentApp,
             stateName: "appPage"
@@ -212,6 +211,8 @@ class UIAppPage {
         this.closePayPopup();
         // Add to the history object
         this.addToHistory();
+        // Globalize the app attribute
+        globalizeApp(this.appPage, this.currentApp);
         // Show app-page
         this.open();
     }
@@ -233,14 +234,12 @@ class UIAppPage {
         this.appPage.css({right: "-100%"});
         this.header.css({right: "-100%", visibility: "hidden"});
         // Reset all the things back once it is closed
-        setTimeout(function() {
+        setTimeout(() => {
             if (animate === false) {
                 appPage.removeClass("no-animation");
             }
             window.appPage.reset();
-            console.log(history);
             history.replaceState("homescreen", null, "#");
-            console.log(history);
         }, this.closeDuration);
         
     }
@@ -253,6 +252,7 @@ class UIAppPage {
         this.similarApps.closest(".similar-apps").show();
         this.reviews.show();
         this.resetHeader();
+        this.appPage.find("*").removeAttr("app");
         // Reset overrides back to default
         this.settingsOverride = this.settingsOverrideDefaults;
         this.override = this.overrideDefaults;
