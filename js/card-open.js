@@ -10,6 +10,9 @@ class UICard {
         this.cache = window.cardCache || cache || {};
         this.appCache = window.appCache || {};
     }
+    setCurrentCard() {
+        this.currentCard = window.currentCard = this.card.attr("card");
+    }
     getCardPosition() {
         this.cardPosition = this.card.parent().offset();
     }
@@ -20,38 +23,37 @@ class UICard {
         }
         var cardPosition = this.cardPosition;
         var card = this.card;
-        var minHeightBefore = this.card.css("min-height");
-        this.card.attr("min-height", minHeightBefore);
-        if (typeof minHeightBefore == "string") {
-        this.card.parents(".card-wrapper").css({
-            top: cardPosition.top,
-            left: cardPosition.left,
-            position: "fixed",
-            overflow: "scroll"
-        });
-        setTimeout(function() {
-            card.parents(".card-wrapper").css({
-                top: 0,
-                left: 0,
-                width: "100vw",
-                height: "100vh",
-                borderRadius: 0
+        this.minHeightBefore = window.cardCache[window.currentCard].minHeight;
+        if (typeof this.minHeightBefore == "string" || typeof this.minHeightBefore == "number") {
+            this.card.parents(".card-wrapper").css({
+                top: cardPosition.top,
+                left: cardPosition.left,
+                position: "fixed",
+                overflow: "scroll"
             });
-            card.css({
-                width: "100vw",
-                borderRadius:  "0",
-                minHeight:  ''
-            });
-            card.not(".full").css({
-                height: "50vh"
-            });
-            $(".card.full.fullscreen").css({
-                height: "100vh"
-            });
-        }, 1);
-        
-        this.card.parent().addClass("fullscreen", "opened");
-        this.card.addClass("fullscreen", "opened");
+            setTimeout(() => {
+                card.parents(".card-wrapper").css({
+                    top: 0,
+                    left: 0,
+                    width: "100vw",
+                    height: "100vh",
+                    borderRadius: 0
+                });
+                card.css({
+                    width: "100vw",
+                    borderRadius:  "0",
+                    minHeight:  ''
+                });
+                card.not(".full").css({
+                    height: "50vh"
+                });
+                $(".card.full.fullscreen").css({
+                    height: "100vh"
+                });
+            }, 1);
+            
+            this.card.parent().addClass("fullscreen", "opened");
+            this.card.addClass("fullscreen", "opened");
         }
     }
     addToHistory() {
@@ -63,6 +65,7 @@ class UICard {
         window.alreadyAddedHistoryCard = true;
     }
     init() {
+        this.setCurrentCard();
         this.open();
         this.showLatterApps();
         this.card.find(".content").addClass("fullscreen");
@@ -103,7 +106,7 @@ class UICard {
         $(".hide-on-card-open").not(".was-hidden").removeClass("fullscreen").show();
         $(".title").removeClass("fullscreen");
         var card = this.trigger.closest(".card");
-        var minHeightBefore = this.card.attr("min-height");
+        this.minHeightBefore = window.cardCache[window.currentCard].minHeight;
         this.card.removeClass("fullscreen");
         this.card.closest(".card-wrapper").removeClass("fullscreen");
         this.card.parents(".card-wrapper").css({
@@ -117,7 +120,7 @@ class UICard {
         this.card.css({
             top: '',
             left: '',
-            minHeight: minHeightBefore,
+            minHeight: this.minHeightBefore,
             borderRadius: '',
             width: '',
             height: ''
@@ -144,7 +147,6 @@ var card = new UICard();
 $(".card-trigger").click(function() {
     card.trigger = $(this);
     card.card = card.trigger.closest(".card");
-    card.currentCard = card.card.attr("card");
     card.init();
 });
 $(".close").click(function() {

@@ -288,10 +288,10 @@ i.right {
     visibility: hidden;
     position: relative;
     z-index: 1;
-    border-bottom-left-radius: 100%;
-    border-bottom-right-radius: 100%;
     transition: all 500ms 0ms, top 0ms 0ms, visibility 0ms 200ms;
     top: -1000000%;
+    min-height: 0;
+    max-height: 0;
 }
 .description-page.fullscreen {
     visibility: visible;
