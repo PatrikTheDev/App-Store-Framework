@@ -10,6 +10,8 @@
     --subtitle-color: rgb(150, 151, 155);
     --btn-download-background: rgb(221, 222, 224);
     --btn-download-card-background: rgb(241, 242, 246);
+    --btn-download-bottom-popup-background: rgba(0, 0, 1, 0.5);
+    --btn-download-bottom-popup-color: rgb(255, 255, 255);
     --btn-download-app-page-color: rgb(255, 255, 255);
     --current-tint: var(--main-tint);
     --app-page-header-background: rgba(255, 255, 255, 0.8);
@@ -28,6 +30,8 @@
         --subtitle-color: rgb(150, 151, 155);
         --btn-download-background: rgb(43, 44, 53);
         --btn-download-card-background: rgb(241, 242, 246);
+        --btn-download-bottom-popup-background: rgba(0, 0, 1, 0.5);
+        --btn-download-bottom-popup-color: rgb(255, 255, 255);
         --btn-download-app-page-color: rgb(255, 255, 255);
         --app-page-header-background: rgba(40, 40, 41, 0.5);
         --app-icon-border-color: rgb(90, 90, 90);
@@ -726,6 +730,8 @@ h5.bottom-subtitle-bar {
 }
 .btn-download-popup {
     top: 0.7rem;
+    background-color: var(--btn-download-bottom-popup-background);
+    color: var(--btn-download-bottom-popup-color);
 }
 .bottom-popup .app-details-stack {
     margin-left: 0.5rem;
