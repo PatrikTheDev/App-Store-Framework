@@ -13,7 +13,7 @@ function payPopupListeners(parent) {
 }
 function appPageListeners(parent) {
     parent.find(".app-trigger").click(function() {
-        appPageInit($(this));
+        appPageInit($(this).attr("app"));
     });
     
     parent.find(".back-btn").click(function() {

@@ -40,3 +40,11 @@ function btnDownloadText(type) {
 function subtitleColor() {
     return "var(--subtitle-color)";
 }
+// Default settings
+function appPageOptions() {
+    var options = {
+        addToHistory: true,
+        animateOpen: true
+    };
+    return options;
+}

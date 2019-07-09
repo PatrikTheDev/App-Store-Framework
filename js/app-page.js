@@ -33,6 +33,7 @@ class UIAppPage {
         this.overrideDefaults = {};
         this.override = this.overrideDefaults;
         this.settingsOverride = this.settingsOverrideDefaults;
+        this.options = appPageOptions();
     }
     blockScroll() {
         $("body").addClass("noscroll");
@@ -49,7 +50,7 @@ class UIAppPage {
             stateName: "appPage"
         };
         var alreadyRan = window.alreadyAddedHistoryAppPage;
-        if (alreadyRan != true) {
+        if (alreadyRan != true && this.options.addToHistory != false) {
             history.pushState(state, null, "#appPage");
         }
         window.alreadyAddedHistoryAppPage = true;
@@ -214,19 +215,28 @@ class UIAppPage {
         // Globalize the app attribute
         globalizeApp(this.appPage, this.currentApp);
         // Show app-page
-        this.open();
+        this.open(this.options.animateOpen);
     }
     // Open appPage
-    open() {
+    open(animate = true) {
+        var appPage = this.appPage,
+            header = this.header;
+        if (animate === false) {
+            this.appPage.addClass("no-animation");
+            this.header.addClass("no-animation");
+        }
         this.appPage.css({visibility: "visible", right: "0"});
         this.header.css({right: "0", visibility: "visible"});
+        setTimeout(() => {
+            if (animate === false) {
+                appPage.removeClass("no-animation");
+                header.removeClass("no-animation");
+            }
+        }, 1);
     }
-    close(animate) {
-        var appPage = this.appPage;
-        if (typeof animate == "undefined") {
-            animate = true;
-        }
+    close(animate = true) {
         toggleCards();
+        var appPage = this.appPage;
         // Hide the app page
         if (animate === false) {
             this.appPage.addClass("no-animation");
@@ -260,9 +270,18 @@ class UIAppPage {
         return;
     }
 }
-function appPageInit(parent) {
-    window.currentApp = parent.attr("app");
-    appPage.init(currentApp);
+function appPageInit(currentApp, options) {
+    if (!options) {
+        options = appPageOptions();
+    }
+    window.currentApp = currentApp;
+    appPage.options = options;
+    if (options.animateOpen == false) {
+        appPage.closeDuration = 0;
+    } else {
+        appPage.closeDuration = 500;
+    }
+    appPage.init(currentApp, options);
 }
 function resetScreenshots(parent) {
     parent
@@ -353,8 +372,12 @@ function popState() {
             window.appPage.close(false);
             window.card.close();
             window.payPopup.close();
-        } else if (event.state == "card") {
-            
+        } else if (typeof event.state == "object" && event.state.stateName == "appPage") {
+            var options = {
+                addToHistory: false, 
+                animateOpen: false
+            };
+            appPageInit(event.state.app, options);
         } else {
             return;
         }
