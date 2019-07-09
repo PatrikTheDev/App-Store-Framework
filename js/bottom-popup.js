@@ -202,7 +202,6 @@ function bottomPopupClose() {
     }
 }
 function bottomPopupInit(parent) {
-    console.log(parent);
     window.bottomPopup.init(window.currentApp);
     parent.parent().scroll(() => {
         if (parent.parent().scrollTop() > 400) {

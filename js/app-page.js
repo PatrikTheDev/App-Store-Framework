@@ -306,22 +306,27 @@ function appendRating(refAppRating, firstStar, secondStar, thirdStar, fourthStar
     if (refAppRating == 1) {
         firstStar.not(".rating-num, .review-text").addClass("fas").removeClass("far");
         firstStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
+        return;
     }
     if (refAppRating == 2) {
         secondStar.prevAll().addBack().not(".rating-num, .review-text").addClass("fas").removeClass("far");
         secondStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
+        return;
     }
     if (refAppRating == 3) {
         thirdStar.prevAll().addBack().not(".rating-num, .review-text").addClass("fas").removeClass("far");
         thirdStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
+        return;
     }
     if (refAppRating == 4) {
         fourthStar.prevAll().addBack().not(".rating-num, .review-text").addClass("fas").removeClass("far");
         fourthStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
+        return;
     }
     if (refAppRating == 5) {
         fifthStar.prevAll().addBack().not(".rating-num, .review-text").addClass("fas").removeClass("far");
         fifthStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
+        return;
     }
 }
 function resetRating(lastStar) {
