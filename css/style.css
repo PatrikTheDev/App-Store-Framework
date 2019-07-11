@@ -16,6 +16,7 @@
     --current-tint: var(--main-tint);
     --app-page-header-background: rgba(255, 255, 255, 0.8);
     --app-icon-border-color: rgb(187, 187, 187);
+    --big-app-cell-background: rgb(241, 243, 245);
 }
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
@@ -35,6 +36,7 @@
         --btn-download-app-page-color: rgb(255, 255, 255);
         --app-page-header-background: rgba(40, 40, 41, 0.5);
         --app-icon-border-color: rgb(90, 90, 90);
+        --big-app-cell-background: rgb(48, 48, 49);
     }
 }
 body {
@@ -304,6 +306,7 @@ i.right {
     border-radius: 0;
     background-color: var(--background-level-1);
     padding-top: 1em;
+    padding-bottom: 6.5rem;
 }
 .description-page.lower.fullscreen {
     top: 70vh;

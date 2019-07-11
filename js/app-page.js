@@ -387,6 +387,8 @@ function popState() {
                 animateOpen: false
             };
             appPageInit(event.state.app, options);
+        } else if (event.state == "card") {
+            window.appPage.close(false);
         }
     };
 }

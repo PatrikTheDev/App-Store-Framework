@@ -41,8 +41,9 @@ li.app-list::after {
     display: grid;
     justify-items: center;
     grid-template-columns: 1fr;
-    background-color: rgb(50, 50, 50);
+    background-color: var(--big-app-cell-background);
     padding: 0.7rem;
+    border-radius: 1rem;
 }
 .big-app .subtitle {
     margin: 0.6rem;
