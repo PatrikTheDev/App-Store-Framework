@@ -24,6 +24,6 @@ function appPageListeners(parent) {
         history.back();
         setTimeout(() => {
             appPage.animateCloseCaller = "";
-        });
+        }, appPage.closeDuration);
     });    
 }
