@@ -1,6 +1,6 @@
 function log(content) {
-    console.log(content);
+    console.trace(content);
 }
 function ree() {
-    console.log("ree");
+    console.trace("ree");
 }

@@ -64,8 +64,7 @@ class UIPayPopup {
                 async: false,
                 dataType: 'json',
                 success: function (data) {
-                  JSONData = data;
-                  cache[currentApp] = window.appCache[currentApp] = data;
+                    JSONData = cache[currentApp] = window.appCache[currentApp] = data;
                 }
             });
             this.JSONData = JSONData;
@@ -108,7 +107,7 @@ class UIPayPopup {
         if (typeof this.JSONData == "undefined" && typeof this.cache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
-        this.price.text("" + this.JSONData.price);
+        this.price.text(`${this.JSONData.price}`);
     }
     initBtnDownload() {
         if (typeof this.JSONData == "undefined" && typeof this.cache[this.currentApp] == "undefined") {

@@ -1,0 +1,64 @@
+li.app {
+    position: relative;
+    left: 0em;
+    width: 100%;
+    list-style: none;
+    list-style-type: none !important;
+    margin-bottom: 1rem;
+}
+li.app-list::after {
+    content: '';
+    background-color: rgba(166, 166, 166, 0.7);
+    height: 1px;
+    width: calc(100% - 3.5rem);
+    position: absolute;
+    right: 0;
+    bottom: -0.7em;
+}
+.no-after::after {
+    display: none;
+}
+.app-cell-stack {
+    display: grid;
+    grid-template-columns: 3em auto 4.5rem;
+    padding-top: 0.5rem;
+    align-items: center;
+}
+.app-cell-details {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    align-items: center;
+}
+.app .subtitle {
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+
+
+.big-app {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    background-color: rgb(50, 50, 50);
+    padding: 0.7rem;
+}
+.big-app .subtitle {
+    margin: 0.6rem;
+}
+.big-app .app-icon {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 22px;
+}
+.big-app .app-icon-wrapper {
+    margin: 0.6rem;
+}
+.big-app .btn-download {
+    color: var(--btn-download-app-page-color);
+    background-color: var(--main-tint);
+}
+.big-app .app-name {
+    color: var(--main-tint);
+}

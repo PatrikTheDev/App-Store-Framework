@@ -57,13 +57,13 @@ function depictionAppendEngine(element, JSONData, index) {
     // Label
     if (currentClass == "DepictionLabelView") {
         element.append(label(currentView.text)).attr("spawnedId", index);
-        if (typeof currentView.fontWeight != "undefined") {
+        if (currentView.fontWeight) {
             $("[spawnedId=" + index + "]").css("font-weight", currentView.fontWeight);
         }
-        if (typeof currentView.fontSize != "undefined") {
+        if (currentView.fontSize) {
             $("[spawnedId=" + index + "]").css("font-size", currentView.fontSize);
         }
-        if (typeof currentView.textColor != "undefined") {
+        if (currentView.textColor) {
             $("[spawnedId=" + index + "]").css("color", currentView.textColor);
         }
         $("[spawnedId=" + index + "]").removeAttr("spawnedId");
@@ -71,7 +71,7 @@ function depictionAppendEngine(element, JSONData, index) {
     }
     // Video
     if (currentClass == "DepictionVideoView") {
-        element.append(video(borderRadius, currentView.URL));
+        element.append(video(currentView.URL, borderRadius));
         return;
     }
     // Image

@@ -1,3 +1,6 @@
+/* JSHint settings */
+/* jshint esversion: 6 */
+
 function parseCards() {
     var directoryPrefix = cardDirectory();
     var path;
@@ -8,7 +11,7 @@ function parseCards() {
     $(".card-wrapper").each(function () {
         $(this).find(".card").each(function () {
             window.currentCard = this.getAttribute("card");
-            path = directoryPrefix + window.currentCard + ".json";
+            path = `${directoryPrefix}${window.currentCard}.json`;
             if (typeof cache[window.currentCard] == "undefined") {
                 $.ajax({
                     url: path,
@@ -19,11 +22,11 @@ function parseCards() {
                     }
                 });
             }
-            appendCardCSS(path, $(this));
+            appendCardCSS($(this));
         });
         $(this).find(".title").each(function () {
             window.currentCard = this.getAttribute("card");
-            path = directoryPrefix + window.currentCard + ".json";
+            path = `${directoryPrefix}${window.currentCard}.json`;
             if (typeof cache[window.currentCard] == "undefined") {
                 $.ajax({
                     url: path,
@@ -38,7 +41,7 @@ function parseCards() {
         });
         $(this).find(".bottom-text").each(function () {
             window.currentCard = this.getAttribute("card");
-            path = directoryPrefix + window.currentCard + ".json";
+            path = `${directoryPrefix}${window.currentCard}.json`;            
             if (typeof cache[window.currentCard] == "undefined") {
                 $.ajax({
                     url: path,
@@ -53,7 +56,7 @@ function parseCards() {
         });
         $(this).find(".small-title").each(function () {
             window.currentCard = this.getAttribute("card");
-            path = directoryPrefix + window.currentCard + ".json";
+            path = `${directoryPrefix}${window.currentCard}.json`;
             if (typeof cache[window.currentCard] == "undefined") {
                 $.ajax({
                     url: path,
@@ -68,7 +71,7 @@ function parseCards() {
         });
         $(this).find(".card-description").each(function () {
             window.currentCard = this.getAttribute("card");
-            path = directoryPrefix + window.currentCard + ".json";
+            path = `${directoryPrefix}${window.currentCard}.json`;
             if (typeof cache[window.currentCard] == "undefined") {
                 $.ajax({
                     url: path,

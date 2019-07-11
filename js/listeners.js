@@ -1,3 +1,6 @@
+/* JSHint settings */
+/* jshint esversion: 6 */
+
 /* This should be replaced with your code if it is different */
 
 function payPopupListeners(parent) {
@@ -17,6 +20,10 @@ function appPageListeners(parent) {
     });
     
     parent.find(".back-btn").click(function() {
-        appPage.close();
+        appPage.animateCloseCaller = "appPage";
+        history.back();
+        setTimeout(() => {
+            appPage.animateCloseCaller = "";
+        });
     });    
 }

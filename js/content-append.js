@@ -1,12 +1,16 @@
+/* JSHint settings */
+/* jshint esversion: 6 */
+
 function appendBtnDownloadContent(element) {
-    var path = appDirectory() + window.currentApp + ".json",
+    var path = `${appDirectory()}${window.currentApp}.json`,
         JSONData = window.appCache[window.currentApp], tint = tintState();
-    if (typeof JSONData == "undefined") {
+    if (!JSONData) {
         $.ajax({
             url: path,
             async: false,
             dataType: 'json',
             success: function (data) {
+                log(window.currentApp);
                 JSONData = window.appCache[window.currentApp] = data;
                 console.log("Parsed a JSON");
             }
@@ -19,13 +23,13 @@ function appendBtnDownloadContent(element) {
     element
         .text("" + price)
         .attr("app", window.currentApp);
-    if (tint == true) {
+    if (tint === true) {
         element
             .css({backgroundColor: JSONData.tint, color: JSONData.textTint});
     }
 }
 function appendSubtitleContent(element, override, appSubtitle) {
-    var path = appDirectory() + window.currentApp + ".json",
+    var path = `${appDirectory()}${window.currentApp}.json`,
         JSONData = window.appCache[window.currentApp], tint = tintState();
     if (typeof JSONData == "undefined" && override == false && typeof appSubtitle != "string") {
         $.ajax({
@@ -49,7 +53,7 @@ function appendSubtitleContent(element, override, appSubtitle) {
     }
 }
 function appendAppName(element, override, appName) {
-    var path = appDirectory() + window.currentApp + ".json",
+    var path = `${appDirectory()}${window.currentApp}.json`,
         JSONData = window.appCache[window.currentApp];
     if (typeof JSONData == "undefined" && override == false && typeof appName != "string") {
         $.ajax({
@@ -61,20 +65,18 @@ function appendAppName(element, override, appName) {
                 console.log("Parsed a JSON");
             }
         });
-    } else if (override == true && typeof appName == "string") {
+    } else if (override === true && typeof appName === "string") {
         JSONData.appName = appName;
     }
     element
         .text("" + JSONData.appName)
         .attr("app", window.currentApp);
 }
-function appendIcon(wrapper, iconClass) {
+function appendIcon(wrapper, iconClass = 'app-icon') {
+    /* element expects the icon wrapper */
     var JSONData = window.appCache[window.currentApp],
-        path = appDirectory() + window.currentApp + ".json";
-    if (typeof iconClass == "undefined") {
-        iconClass = "app-icon";
-    }
-    if (typeof JSONData == "undefined") {
+        path = `${appDirectory()}${window.currentApp}.json`;
+    if (!JSONData) {
         $.ajax({
             url: path,
             async: false,
@@ -86,10 +88,12 @@ function appendIcon(wrapper, iconClass) {
         });
     }
     wrapper
-        .html('<img class="' + iconClass + '" src="' + JSONData.icon + '" alt="' + JSONData.appName +'" app="' + window.currentApp + '">');
+        .html(icon(JSONData.icon, iconClass, JSONData.appName));
 }
-function appendBottomBarColor(path, element) {
-    var JSONData = window.appCache[window.currentApp];
+function appendBottomBarColor(element) {
+    /* element expects the bar itself */
+    var JSONData = window.appCache[window.currentApp],
+        path = `${appDirectory()}${window.currentApp}.json`;
     if (typeof JSONData == "undefined") {
         $.ajax({
             url: path,

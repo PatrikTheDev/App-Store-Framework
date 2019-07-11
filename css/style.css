@@ -10,7 +10,7 @@
     --subtitle-color: rgb(150, 151, 155);
     --btn-download-background: rgb(221, 222, 224);
     --btn-download-card-background: rgb(241, 242, 246);
-    --btn-download-bottom-popup-background: rgba(0, 0, 1, 0.5);
+    --btn-download-bottom-popup-background: rgba(0, 0, 1, 0.35);
     --btn-download-bottom-popup-color: rgb(255, 255, 255);
     --btn-download-app-page-color: rgb(255, 255, 255);
     --current-tint: var(--main-tint);
@@ -108,6 +108,7 @@ button, input {
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
+    background-color: var(--popup-background);
 }
 i.right {
     position: absolute;
@@ -132,6 +133,8 @@ i.right {
     box-shadow: 0 6px 33px rgba(0, 0, 0, 0.3);
     position: relative;
     margin-bottom: 1.5rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
     transition: 500ms all cubic-bezier(0.65, -0.12, 0.24, 1.15);
     z-index: 10;
     float: left;
@@ -174,8 +177,7 @@ i.right {
 }
 @media (min-width: 600px) {
     .card {
-        width: 500px;
-        min-height: 500px
+        width: 45vw;
     }
     
 }
@@ -201,7 +203,7 @@ i.right {
     -webkit-backdrop-filter: blur(7px);
     backdrop-filter: blur(7px);
 }
-.bottom-bar-app-details {
+.bottom-bar .app-details {
     padding-left: 0.5rem;
     padding-top: 1em;
 }
@@ -218,34 +220,31 @@ i.right {
     display: grid;
     align-content: center;
     justify-content: center;
-    top: 1.3rem;
-    border-radius: 1em;
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-    padding-right: 0.7em;
-    padding-left: 0.7em;
-    height: 1.8em;
+    top: 0;
+    border-radius: 1rem;
+    height: 1.7rem;
     color: var(--main-tint);
     background-color: var(--btn-download-background);
     width: 4.5rem;
     text-align: center;
-    font-weight: 600;
+    font-weight: 550;
+    font-size: 0.9rem;
     float: right;
     -webkit-backdrop-filter: blur(7px);
     backdrop-filter: blur(7px);
+    align-self: center;
 }
 .btn-download.right {
     right: 0;
-    top: 0.7rem;
 }
 .btn-download-card {
     background-color: var(--btn-download-card-background);
     color: var(--main-tint);
+    margin-right: 0.9rem;
 }
 .black {
     background-color: black;
 }
-
 .card.fullscreen:hover {
     transform: scale(1);
 }
@@ -259,7 +258,6 @@ i.right {
     border-radius: 0;
     margin: 0;
 }
-
 .close {
     position: absolute;
     font-size: 1.2rem;
@@ -323,57 +321,22 @@ i.right {
     margin-top: 1em;
     width: 100%;
 }
-li.app {
-    position: relative;
-    left: 0em;
-    width: 100%;
-    list-style: none;
-    list-style-type: none !important;
-    margin-bottom: 1rem;
-}
-li.app-list::after {
-    content: '';
-    background-color: rgba(166, 166, 166, 0.7);
-    height: 1px;
-    width: calc(100% - 3.5rem);
-    position: absolute;
-    right: 0;
-    bottom: -0.7em;
-}
 .app-name {
     position: relative;
     left: 0;
     top: 0em;
     font-size: 18px;
+    margin-bottom: 0.1rem;
 }
-p.subtitle {
+.subtitle {
     position: relative;
     left: 0;
     top: 0;
     float: left;
     font-size: 0.9rem;
     margin-bottom: 0;
-}
-.subtitle, .app-page-app-subtitle {
     color: var(--subtitle-color);
-}
-.app .subtitle {
-    position: relative;
-    left: 0;
-    top: 0;
     line-height: 1em;
-}
-.app .app-name {
-    position: relative;
-    left: 0;
-    top: 0;
-}
-.app h4.app-name {
-    font-size: 18px;
-}
-h5.bottom-subtitle-bar {
-    top: 0.5em;
-    left: 3em;
 }
 .light-grey {
     background-color: var(--btn-download-background);
@@ -592,106 +555,7 @@ h5.bottom-subtitle-bar {
 .apps-list li:visible:last::after {
     display: none;
 }
-.app-page {
-    visibility: hidden;
-    position: fixed;
-    right: -100%;
-    top: 0;
-    bottom: 0;
-    transition: right 500ms ease;
-    width: 100vw;
-    background: var(--background-level-0);
-    z-index: 998;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
-    padding-top: 3em;
-}   
-.app-page-content {
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
-    top: 0;
-}
-.app-page-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 3em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 0.5rem 1.5rem 0;
-    color: rgb(47, 126, 246);
-    background-color: var(--app-page-header-background);
-    -webkit-backdrop-filter: blur(15px);
-    backdrop-filter: blur(15px);
-    z-index: 999;
-    transition: all 400ms, right 500ms;
-}
-.app-page-header::after {
-    content: '';
-    height: 1px;
-    width: 100%;
-    left: 0;
-    position: absolute;
-    top: 3em;
-}
-.app-page-app-wrapper {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1em;
-}
-.app-page-app-icon {
-    float: left;
-    width: 6rem;
-    height: 6rem;
-    border-radius: 27px;
-    border-width: 1px;
-    border-style: solid; 
-    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-}
-.app-page-app-name {
-    position: relative;
-    left: 0;
-    font-size: 1.3rem;
-    font-weight: 500;
-    align-self: center;
-}
-.app-page-app-subtitle {
-    position: relative;
-    left: 0;
-    margin-bottom: 0;
-    margin-block-end: 0;
-    align-self: start;
-}
-.app-page-btn-download {
-    left: 0;
-    right: 0;
-    top: 0;
-    position: relative;
-    float: left;
-    margin-top: 1rem;
-    color: var(--btn-download-app-page-color);
-    background-color: var(--main-tint);
-}
-.fa-star {
-    color: rgb(141, 144, 147);
-}
-.app-page-rating {
-    position: relative;
-    left: 0em;
-    top: 0em;
-}
-.app-page-bottom-bar {
-    width: 100%;
-    height: 3.2rem;
-    padding: 0;
-    position: relative;
-    top: 1em;
-    display: flex;
-    align-content: center;
-}
+
 .pay-popup-rating {
     position: relative;
     left: 0.5rem;
@@ -729,7 +593,6 @@ h5.bottom-subtitle-bar {
     grid-template-columns: 3em auto 4.5rem;
 }
 .btn-download-popup {
-    top: 0.7rem;
     background-color: var(--btn-download-bottom-popup-background);
     color: var(--btn-download-bottom-popup-color);
 }
@@ -778,121 +641,12 @@ h5.bottom-subtitle-bar {
 .card.fullscreen {
     margin: 0;
 }
-.app-page-text-description h1 {
-    font-size: 3rem;
-}
-.app-page-text-description p {
-    font-weight: 300;
-}
 .card-description {
     color: var(--text-color);
 }
 .small-title {
     font-weight: 500;
     font-size: 0.9rem;
-}
-.rating-num-text {
-    position: absolute;
-    top: 1.5rem;
-    left: 0;
-    font-size: 0.8rem;
-    font-weight: 100;
-    color: rgb(180, 181, 185);
-}
-.spacer {
-    width: 100%;
-    background: transparent;
-}
-.separator {
-    width: 100%;
-    height: 1px;
-    background-color: rgb(119, 119, 119);
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-}
-.no-after::after {
-    display: none;
-}
-.app-page-info-stack {
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: 6em auto;
-    column-gap: 1rem;
-}
-.app-page .app-details-stack {
-    display: grid;
-    grid-template-rows: auto auto 1.8em;
-    grid-template-columns: auto;
-    align-content: baseline;
-}
-.app-page-header-img-wrapper {
-    width: 100%;
-    height: 11rem;
-    display: none;
-}
-.app-page-header-img {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    object-fit: cover;
-}
-.header-app-icon-wrapper img {
-    position: relative;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 11px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    top: 0;
-    transition: opacity 500ms 0ms;
-}
-.back-btn {
-    position: absolute;
-    left: 0.5rem;
-}
-.app-page-btn-download-header {
-    position: absolute;
-    right: 1rem;
-    opacity: 0;
-    top: unset;
-    transition: opacity 500ms 0ms;
-    background-color: var(--main-tint);
-    color: var(--btn-download-app-page-color);
-}
-.noscroll {
-    overflow: hidden;
-}
-.app-cell-stack {
-    display: grid;
-    grid-template-columns: 3em auto 4.5rem;
-    padding-top: 0.5rem;
-}
-.app-cell-details {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-}
-.app-cell-btn-download {
-    display: grid;
-    justify-content: center;
-    align-content: center;
-}
-ul.app-page-similar-apps-list {
-    overflow-x: scroll;
-    overflow-y: hidden;
-    padding: 0;
-    white-space: nowrap;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-}
-ul.app-page-similar-apps-list li {
-    display: inline-block;
-    margin-top: 0;
-    margin-right: 1rem;
-    scroll-snap-align: center;
-    max-width: 25rem;
-}
-ul.app-page-similar-apps-list li:last-child {
-    margin-right: 0;
 }
 .reviews {
     list-style: none;
@@ -917,4 +671,13 @@ ul.app-page-similar-apps-list li:last-child {
 }
 .no-animation {
     transition: all 0ms !important;
+}
+.cards-wrapper-all {
+    display: grid;
+    grid-template-columns: auto;
+}
+@media(min-width: 600px) {
+    .cards-wrapper-all {
+        grid-template-columns: 1fr 1fr;
+    }
 }

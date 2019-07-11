@@ -1,7 +1,7 @@
 /* JSHint settings */
 /* jshint esversion: 6 */
 
-function spawnApps(parent, path, JSONData) {
+function spawnApps(parent, path) {
     var JSONItems = [];
     $.ajax({
         url: path,
@@ -26,7 +26,7 @@ $.fn.spawnSimilarApps = function() {
     var currentApp = window.currentApp;
     var currentCache = window.appCache;
     var directoryPrefix = appDirectory();
-    var path = directoryPrefix + currentApp + ".json";
+    var path = `${directoryPrefix}${currentCard}.json`;
     if (typeof currentCache == "undefined") {
         currentCache = {};
     }
@@ -52,11 +52,11 @@ $.fn.spawnSimilarApps = function() {
     }
     return this;
 };
-function spawnAppsInCards(parent, currentCache) {
+$.fn.spawnAppsInCards = function() {
     var directoryPrefix = appDirectory();
-    var currentCard = window.currentCard = parent.attr("card");
-    var cache = currentCache || {};
-    var path = directoryPrefix + currentCard + ".json";
+    var currentCard = window.currentCard = this.attr("card");
+    var cache = window.cardCache || {};
+    var path = `${directoryPrefix}${currentCard}.json`;
     var JSONItems = [];
     if (typeof cache[currentCard] == "undefined") {
         $.ajax({
@@ -70,22 +70,35 @@ function spawnAppsInCards(parent, currentCache) {
     }
     JSONItems = cache[currentCard];
     var i;
-    for (i = 0; i < JSONItems.containsApps.length; i++) { 
+    var bigCell;
+    for (i = 0; i < JSONItems.containsApps.length; i++) {
+        if (JSONItems.containsApps.length === 1) {
+            bigCell = true;
+        } else {
+            bigCell = false;
+        }
         if (JSONItems.containsApps[i]) {
-            var elementToAppend = appCell(JSONItems.containsApps[i]);
-            parent.append(elementToAppend);
+            var elementToAppend = appCell(JSONItems.containsApps[i], bigCell);
+            this.append(elementToAppend);
         }
     }
+    var appCellSelector;
+    if (bigCell === false) {
+        appCellSelector = this.find(".app");
+    } else {
+        appCellSelector = this.find(".big-app");
+    }
+    appendContentToAppCell(appCellSelector, bigCell);
     $(".apps-list-featured li:nth-child(4)").nextAll().hide();
     $(".apps-list-featured li:visible").last().addClass("no-after");
-    payPopupListeners(parent);
-    appPageListeners(parent);
-}
+    payPopupListeners(this);
+    appPageListeners(this);
+};
 $.fn.spawnReviews = function() {
     var currentApp = window.currentApp;
     var currentCache = window.appCache;
     var directoryPrefix = appDirectory();
-    var path = directoryPrefix + currentApp + ".json";
+    var path = `${directoryPrefix}${currentApp}.json`;
     if (typeof currentCache == "undefined") {
         currentCache = {};
     }
@@ -103,19 +116,19 @@ $.fn.spawnReviews = function() {
     if (currentCache[currentApp].reviews && currentCache[currentApp].reviews.length > 0) {
         for (i = 0; i < currentCache[currentApp].reviews.length; i++) {
             var elementToAppend = `
-        <li class="review" id="spawned">
+        <li class="review" spawned>
             <div class="review-header">
-                <h4>` + currentCache[currentApp].reviews[i].title + `</h4>
+                <h4>${currentCache[currentApp].reviews[i].title}</h4>
             </div>
             <div class="content">
                 <i class="far fa-star" first-star></i><i class="far fa-star" second-star></i><i class="far fa-star" third-star></i><i class="far fa-star" fourth-star></i><i class="far fa-star" fifth-star></i>
-                <p class="review-text">` + currentCache[currentApp].reviews[i].text + `</p>
+                <p class="review-text">${currentCache[currentApp].reviews[i].text}</p>
             </div>
         </li>`;
             this.append(elementToAppend);
-            var thisReview = this.find("#spawned");
+            var thisReview = this.find("[spawned]");
             appendRating(currentCache[currentApp].reviews[i].rating, thisReview.find("[first-star]"), thisReview.find("[second-star]"), thisReview.find("[third-star]"), thisReview.find("[fourth-star]"), thisReview.find("[fifth-star]"));
-            this.find("#spawned").removeAttr("id");
+            this.find("[spawned]").removeAttr("spawned");
         }
     } else {
         this.closest(".reviews").hide();

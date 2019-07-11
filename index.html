@@ -6,6 +6,9 @@
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/app-page.css">
+    <link rel="stylesheet" href="css/app-cell.css">
+    <link rel="stylesheet" href="css/depictions.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>App Store</title>
   </head>
@@ -55,19 +58,19 @@
                 <div class="app-page-header">
                         <div class="back-btn tinted"><i class="fas fa-chevron-left"></i> Back</div>
                         <div class="header-app-icon-wrapper"></div>
-                        <div class="app-page-btn-download-append app-page-btn-download-header btn-download">Get</div>
+                        <div class="app-page-btn-download-append app-page-btn-download-header btn-download">GET</div>
                     </div>
             <div class="app-page-content">
-                <div class="app-page-header-img-wrapper"></div>
+                <div class="header-img-wrapper"></div>
                 <div class="app-page-app-wrapper">
-                    <div class="app-page-info-stack">
+                    <div class="info-stack">
                         <div class="app-icon-view">
                                 <div class="app-page-app-icon-wrapper"></div>
                         </div>
                         <div class="app-details-stack">
-                                <h5 class="app-page-app-name"></h5>
-                                <p class="app-page-app-subtitle"></p>
-                                <div class="app-page-btn-download app-page-btn-download-append btn-download">Get</div>
+                                <h5 class="app-name"></h5>
+                                <p class="subtitle"></p>
+                                <div class="app-page-btn-download app-page-btn-download-append btn-download">GET</div>
                         </div>
                     </div>
                     <div class="app-page-bottom-bar">
@@ -78,9 +81,12 @@
                             </div>
                     </div>
                     <div class="app-page-description">
-                        <div class="screenshot-wrapper app-page-screenshot-wrapper"></div>
-                        <div class="app-page-text-description"></div>
-                        
+                        <div class="screenshot-wrapper app-page-screenshot-wrapper">
+                            <!-- Screenshots get spawned here -->
+                        </div>
+                        <div class="app-page-text-description">
+                            <!-- Depictions get spawned here -->
+                        </div>
                     </div>
                     <div class="app-page-reviews">
                         <h2>Reviews</h2>
@@ -100,8 +106,8 @@
         <div class="bottom-popup">
                 <div class="app-icon-wrapper app-icon-popupbar app-trigger"></div>
                 <div class="app-details-stack">
-                        <h5 class="bottom-text-bar app-name noappend app-name-popupbar app-trigger"></h5>
-                        <p class="bottom-subtitle-bar subtitle noappend subtitle-popupbar app-trigger"></p>
+                        <h5 class="app-name noappend app-name-popupbar app-trigger"></h5>
+                        <p class="subtitle noappend subtitle-popupbar app-trigger"></p>
                 </div>
                 <div class="btn-download btn-download-popup noappend"></div>
         </div>
@@ -134,9 +140,9 @@
                     </div>
                     <div class="bottom-bar" app="alien">
                         <div class="app-icon-wrapper app-icon-bottom-bar app-trigger"></div>
-                        <div class="bottom-bar-app-details">
-                                <h5 class="bottom-text-bar grey-text-lighter app-name app-trigger"></h5>
-                                <p class="bottom-subtitle-bar subtitle grey-text-lighter app-trigger"></p>
+                        <div class="app-details">
+                                <h5 class="app-name app-trigger"></h5>
+                                <p class="subtitle app-trigger"></p>
                         </div>
                         <div class="btn-download btn-download-card"></div>
                     </div>
@@ -155,9 +161,9 @@
                     </div>
                     <div class="bottom-bar" app="electra">
                         <div class="app-icon-wrapper app-icon-bottom-bar app-trigger"></div>
-                        <div class="bottom-bar-app-details">
-                                <h5 class="bottom-text-bar grey-text-lighter app-name app-trigger"></h5>
-                                <p class="bottom-subtitle-bar subtitle grey-text-lighter app-trigger"></p>
+                        <div class="app-details">
+                                <h5 class="app-name app-trigger"></h5>
+                                <p class=" subtitle app-trigger"></p>
                         </div>
                         <div class="btn-download btn-download-card"></div>
                     </div>
@@ -199,8 +205,10 @@
     <script src="js/debug.js"></script>
     <script src="js/defaults.js"></script>
     <script src="js/listeners.js"></script>
+    <!-- Components -->
     <script src="js/components/depiction-components.js"></script>
     <script src="js/components/app-cell.js"></script>
+    <script src="js/components/images.js"></script>
     <script src="js/spawn.js"></script>
     <script src="js/depiction-render.js"></script>
     <script src="js/app-global.js"></script>

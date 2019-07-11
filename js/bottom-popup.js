@@ -1,53 +1,6 @@
 /* JSHint settings */
 /* jshint esversion: 6 */
-function bottomPopupInitOld(parent, JSONData, currentApp) {
-    var depictionPath = parent.find(".app-name").attr("data-depictionJSON");
-    if (typeof JSONData == "undefined") {
-        $.ajax({
-            url: depictionPath,
-            async: false,
-            dataType: 'json',
-            success: function (data) {
-            JSONData = data;
-            console.log("Parsed a JSON");
-            }
-        });
-    }
-    var refAppPrice = JSONData.price;
-    if (refAppPrice == "Free") {
-        priceText = "Get";
-    } else {
-        priceText = refAppPrice;
-    }
-    appendAppName($(".app-name-popupbar"), false);
-    appendSubtitleContent($(".subtitle-popupbar"), false);
-    $(".subtitle-popupbar").css("color", "rgba(30, 30, 30, 0.8)");
-    $(".app-name-popupbar").css("color", "rgba(30, 30, 30, 0.8)");
-    $(".app-name-popupbar").attr("data-depictionJSON", depictionPath);
-    appendIcon($(".app-icon-popupbar"), "app-icon", JSONData);
-    appendBtnDownloadContent($(".btn-download-popup"));
-    $(".btn-download-popup").attr("data-depictionJSON", depictionPath);
-    parent.scroll(function() {
-        if(parent.scrollTop() > 400){
-            $(".bottom-popup").css({bottom: 0});
-            $(".app-page").css({paddingBottom: "6em"});
-        }
-        else{
-            $(".bottom-popup").css({bottom: "-100%"});
-            $(".app-page").css({paddingBottom: 0});
-        }
-    });
-    parent.parent().scroll(function() {
-        if(parent.parent().scrollTop() > 400){
-            $(".bottom-popup").css({bottom: 0});
-            $(".app-page").css({paddingBottom: "6em"});
-        }
-        else{
-            $(".bottom-popup").css({bottom: "-100%"});
-            $(".app-page").css({paddingBottom: 0});
-        }
-    });
-}
+
 class UIBottomPopup {
     constructor(currentApp, cache) {
         this.cache = window.appCache || cache || {};
@@ -85,7 +38,7 @@ class UIBottomPopup {
         }
     }
     parseJSON(pathToJSON) {
-        var path = pathToJSON || this.directory + this.currentApp + ".json";
+        var path = pathToJSON || `${this.directory}${this.currentApp}.json`;
         var JSONData = [];
         var cache = this.cache;
         if (typeof this.cache[this.currentApp] == "undefined") {
@@ -94,9 +47,7 @@ class UIBottomPopup {
                 async: false,
                 dataType: 'json',
                 success: function (data) {
-                  JSONData = data;
-                  cache[currentApp] = data;
-                  window.appCache[currentApp] = data;
+                    JSONData = cache[currentApp] = window.appCache[currentApp] = data;
                 }
             });
             this.JSONData = JSONData;
@@ -154,10 +105,7 @@ class UIBottomPopup {
     open() {
         this.bottomPopup.css({visibility: "visible", bottom: "0"});
     }
-    close(animate) {
-        if (typeof animate == "undefined") {
-            animate = true;
-        }
+    close(animate = true) {
         toggleCards();
         // Hide the app page
         if (animate === false) {
@@ -202,6 +150,7 @@ function bottomPopupClose() {
     }
 }
 function bottomPopupInit(parent) {
+    /* parent expects card element */
     window.bottomPopup.init(window.currentApp);
     parent.parent().scroll(() => {
         if (parent.parent().scrollTop() > 400) {

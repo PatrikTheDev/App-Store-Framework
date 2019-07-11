@@ -1,4 +1,8 @@
-function parseContent(depictionFolder) {
+/* JSHint settings */
+/* jshint esversion: 6 */
+
+function parseContent() {
+    var depictionFolder = appDirectory();
     if (typeof window.appCache == "undefined") {
         window.appCache = {};
     }
@@ -7,11 +11,11 @@ function parseContent(depictionFolder) {
     $(".app, .bottom-bar, .append").each(function(){
         $(this).find(".description").not(".noappend").each(function() {
             window.currentApp = this.getAttribute("app") || defaultApp();
-            depictionPath = depictionFolder + window.currentApp + ".json";
+            depictionPath = `${depictionFolder}${window.currentApp}.json`;
         });
         $(this).find(".app-name").not(".noappend").each(function() {
             window.currentApp = this.getAttribute("app") || defaultApp();
-            depictionPath = depictionFolder + window.currentApp + ".json";
+            depictionPath = `${depictionFolder}${window.currentApp}.json`;
             if (typeof cache[window.currentApp] == "undefined") {
                 $.ajax({
                     url: depictionPath,
@@ -26,7 +30,7 @@ function parseContent(depictionFolder) {
         });
         $(this).find(".subtitle").not(".noappend").each(function() {
             window.currentApp = this.getAttribute("app") || defaultApp();
-            depictionPath = depictionFolder + window.currentApp + ".json";
+            depictionPath = `${depictionFolder}${window.currentApp}.json`;
             if (typeof cache[window.currentApp] == "undefined") {
                 $.ajax({
                     url: depictionPath,
@@ -41,7 +45,7 @@ function parseContent(depictionFolder) {
         });
         $(this).find(".app-icon-wrapper").not(".noappend").each(function() {
             window.currentApp = this.getAttribute("app") || defaultApp();
-            depictionPath = depictionFolder + window.currentApp + ".json";
+            depictionPath = `${depictionFolder}${window.currentApp}.json`;
             if (typeof cache[window.currentApp] == "undefined") {
                 $.ajax({
                     url: depictionPath,
@@ -56,7 +60,7 @@ function parseContent(depictionFolder) {
         });
         $(this).find(".btn-download").not(".noappend").each(function() {
             window.currentApp = this.getAttribute("app") || defaultApp();
-            depictionPath = depictionFolder + window.currentApp + ".json";
+            depictionPath = `${depictionFolder}${window.currentApp}.json`;
             if (typeof cache[window.currentApp] == "undefined") {
                 $.ajax({
                     url: depictionPath,
@@ -71,7 +75,7 @@ function parseContent(depictionFolder) {
         });
         $(this).find(".bottom-bar").each(function() {
             window.currentApp = this.getAttribute("app") || defaultApp();
-            depictionPath = depictionFolder + window.currentApp + ".json";
+            depictionPath = `${depictionFolder}${window.currentApp}.json`;
             if (typeof cache[window.currentApp] == "undefined") {
                 $.ajax({
                     url: depictionPath,
@@ -82,7 +86,7 @@ function parseContent(depictionFolder) {
                     }
                 });
             }
-            appendBottomBarColor(depictionPath, $(this), cache[window.currentApp]);
+            appendBottomBarColor($(this));
         });
     });
     return cache;

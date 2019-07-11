@@ -13,10 +13,10 @@ class UIAppPage {
         this.headerIconWrapper = this.appPage.find(".header-app-icon-wrapper");
         this.headerIcon = this.appPage.find(".header-app-icon");
         this.headerItems = this.appPage.find(".header-app-icon, .app-page-btn-download-header");
-        this.headerImgWrapper = this.appPage.find(".app-page-header-img-wrapper");
-        this.appNameElement = this.appPage.find(".app-page-app-name");
-        this.appSubtitleElement = this.appPage.find(".app-page-app-subtitle");
-        this.btnDownload = this.appPage.find(".app-page-btn-download-append");
+        this.headerImgWrapper = this.appPage.find(".header-img-wrapper");
+        this.appNameElement = this.appPage.find(".app-name");
+        this.appSubtitleElement = this.appPage.find(".subtitle");
+        this.btnDownload = this.appPage.find(".btn-download-append");
         this.headerBtnDownload = this.appPage.find(".app-page-btn-download-header");
         this.header = this.appPage.find(".app-page-header");
         this.tintedElements = this.appPage.find(".tinted");
@@ -34,6 +34,7 @@ class UIAppPage {
         this.override = this.overrideDefaults;
         this.settingsOverride = this.settingsOverrideDefaults;
         this.options = appPageOptions();
+        this.animateCloseCaller = "";
     }
     blockScroll() {
         $("body").addClass("noscroll");
@@ -58,25 +59,14 @@ class UIAppPage {
     checkIfNeededToReload(app) {
         if (this.currentApp != app) {
             this.reset();
-            this.currentApp = app;
+            this.currentApp = window.currentApp = app;
             this.initAll();
-        } else if (this.currentApp == app) {
-            this.initAll();
-        }
-    }
-    checkCardsVisibility() {
-        var cardDisplay = $(".card").not(".active").css("display");
-        var cardsWereVisible;
-        if (cardDisplay == "none") {
-            cardsWereVisible = "false";
         } else {
-            cardsWereVisible = "true";
+            this.initAll();
         }
-        this.appPage.attr("cardsWereVisible", cardsWereVisible);
-        return cardsWereVisible;
     }
     parseJSON(pathToJSON) {
-        var path = pathToJSON || this.directory + this.currentApp + ".json";
+        var path = pathToJSON || `${this.directory}${this.currentApp}.json`;
         var JSONData = [];
         var cache = this.cache;
         if (typeof this.cache[this.currentApp] == "undefined") {
@@ -113,7 +103,7 @@ class UIAppPage {
         this.reviews.attr("already-ran", "true");
     }
     initAppIcon() {
-        appendIcon(this.iconWrapper, "app-page-app-icon app-icon");
+        appendIcon(this.iconWrapper, "app-icon");
         appendIcon(this.headerIconWrapper, "header-app-icon app-icon");
     }
     initAppName() {
@@ -146,17 +136,17 @@ class UIAppPage {
         }
         var ratingsText = "ratings";
         appendRating(this.JSONData.rating, $(".app-page-rating [first-star]"), $(".app-page-rating [second-star]"), $(".app-page-rating [third-star]"), $(".app-page-rating [fourth-star]"), this.lastStar);
-        this.appPage.find(".rating-num").text("" + this.JSONData.rating);
-        this.appPage.find(".number-of-ratings").text("" + this.JSONData.numberOfRatings + " " + ratingsText);
+        this.appPage.find(".rating-num").text(`${this.JSONData.rating}`);
+        this.appPage.find(".number-of-ratings").text(`${this.JSONData.numberOfRatings} ${ratingsText}`);
     }
     initHeader() {
         if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
         var alreadyRan = this.headerImgWrapper.attr("alreadyRan");
-        if (this.JSONData.hasHeader == true && alreadyRan != "true") {
-            this.headerImgWrapper.css({display: "block"}).append('<img class="app-page-header-img" src="' + this.JSONData.headerPhoto + '"></img>').addClass("has-header");
-            this.header.css({"-webkit-backdrop-filter": "blur(0)", "backdrop-filter": "blur(0)", backgroundColor: "transparent"}).addClass("has-header");
+        if (this.JSONData.hasHeader === true && alreadyRan != "true") {
+            this.headerImgWrapper.css({display: "block"}).append(headerImg(this.JSONData.headerPhoto)).addClass("has-header");
+            this.header.css({"backdrop-filter": "blur(0)", backgroundColor: "transparent"}).addClass("has-header");
             this.appPage.css({paddingTop: "0"});
         }
         statusBarInit($(".header-app-icon, .app-page-btn-download-header"));
@@ -172,6 +162,9 @@ class UIAppPage {
             .css({"-webkit-backdrop-filter": '', backgroundColor: ''})
             .removeClass("has-header");
         this.appPage.css({paddingTop: ''});
+    }
+    globalizeApp() {
+        this.appPage.globalizeApp(this.currentApp);
     }
     initScreenshots() {
         parseScreenshots($(".app-page-screenshot-wrapper"), this.depictionPath, this.JSONData);
@@ -192,8 +185,6 @@ class UIAppPage {
         this.tintElements();
         // Append the description/depiction
         this.initDescription();
-        // Check if cards were visible
-        this.checkCardsVisibility();
         // Block scroll
         this.blockScroll();
         // Append things to btn-download
@@ -213,7 +204,7 @@ class UIAppPage {
         // Add to the history object
         this.addToHistory();
         // Globalize the app attribute
-        globalizeApp(this.appPage, this.currentApp);
+        this.globalizeApp();
         // Show app-page
         this.open(this.options.animateOpen);
     }
@@ -225,8 +216,14 @@ class UIAppPage {
             this.appPage.addClass("no-animation");
             this.header.addClass("no-animation");
         }
-        this.appPage.css({visibility: "visible", right: "0"});
-        this.header.css({right: "0", visibility: "visible"});
+        this.appPage.css({
+            visibility: "visible",
+            right: "0"
+        });
+        this.header.css({
+            right: "0",
+            visibility: "visible"
+        });
         setTimeout(() => {
             if (animate === false) {
                 appPage.removeClass("no-animation");
@@ -234,7 +231,7 @@ class UIAppPage {
             }
         }, 1);
     }
-    close(animate = true) {
+    close(animate = this.animateClose = true) {
         toggleCards();
         var appPage = this.appPage;
         // Hide the app page
@@ -242,7 +239,10 @@ class UIAppPage {
             this.appPage.addClass("no-animation");
         }
         this.appPage.css({right: "-100%"});
-        this.header.css({right: "-100%", visibility: "hidden"});
+        this.header.css({
+            right: "-100%",
+            visibility: "hidden"
+        });
         // Reset all the things back once it is closed
         setTimeout(() => {
             if (animate === false) {
@@ -270,10 +270,7 @@ class UIAppPage {
         return;
     }
 }
-function appPageInit(currentApp, options) {
-    if (!options) {
-        options = appPageOptions();
-    }
+function appPageInit(currentApp, options = appPageOptions()) {
     window.currentApp = currentApp;
     appPage.options = options;
     if (options.animateOpen == false) {
@@ -293,16 +290,16 @@ function resetDescription(parent) {
         .html("")
         .attr("alreadyRan", "false");
 }
-function toggleCards(parentElem) {
-    var parent = parentElem || $(".app-page"),
-        wasVisible = parent.attr("cardsWereVisible");
+function toggleCards() {
     $(".active").show();
-    if (wasVisible == "true") {
-        $(".card").show();
-    }
     $("body").removeClass("noscroll");
 }
 function appendRating(refAppRating, firstStar, secondStar, thirdStar, fourthStar, fifthStar) {
+    if (refAppRating == 0) {
+        firstStar.not(".rating-num, .review-text").addClass("far").removeClass("fas");
+        firstStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
+        return;
+    }
     if (refAppRating == 1) {
         firstStar.not(".rating-num, .review-text").addClass("fas").removeClass("far");
         firstStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
@@ -373,8 +370,15 @@ function defineAppPage() {
 function popState() {
     window.onpopstate = function(event) {
         console.log(event.state);
-        if (event.state == "homescreen") {
-            window.appPage.close(false);
+        if (event.state == "homescreen" || !event.state) {
+            var animate;
+            if (window.appPage.animateCloseCaller == "appPage") {
+                animate = true;
+            } else {
+                animate = false;
+            }
+            log(window.appPage.animateCloseCaller);
+            window.appPage.close(animate);
             window.card.close();
             window.payPopup.close();
         } else if (typeof event.state == "object" && event.state.stateName == "appPage") {
@@ -383,8 +387,6 @@ function popState() {
                 animateOpen: false
             };
             appPageInit(event.state.app, options);
-        } else {
-            return;
         }
     };
 }

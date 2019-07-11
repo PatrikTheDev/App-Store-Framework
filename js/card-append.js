@@ -1,5 +1,9 @@
-function appendCardCSS(path, element) {
-    var JSONData = window.cardCache[window.currentCard];
+/* JSHint settings */
+/* jshint esversion: 6 */
+
+function appendCardCSS(element) {
+    var JSONData = window.cardCache[window.currentCard],
+        path = `${cardDirectory()}${window.currentCard}.json`;
     if (typeof JSONData == "undefined") {
         $.ajax({
             url: path,
@@ -12,15 +16,15 @@ function appendCardCSS(path, element) {
         });
     }
     element.css({
-        "min-height": JSONData.minHeight,
-        "background": JSONData.background + " center",
-        "background-size": "cover"
+        minHeight: JSONData.minHeight,
+        background: `${JSONData.background} center`,
+        backgroundSize: "cover"
     });
 }
 function appendCardText(element, type, color) {
-    var JSONData = window.cardCache[window.currentCard];
-    var path = cardDirectory() + window.currentCard + ".json";
-    if (typeof JSONData == "undefined") {
+    var JSONData = window.cardCache[window.currentCard],
+        path = `${cardDirectory()}${window.currentCard}.json`;
+    if (!JSONData) {
         $.ajax({
             url: path,
             async: false,
@@ -33,7 +37,7 @@ function appendCardText(element, type, color) {
     }
     var appendedText = JSONData[type];
     element.html("" + appendedText);
-    if (typeof color != "undefined") {
+    if (color) {
         element.css({color: color});
     }
 }

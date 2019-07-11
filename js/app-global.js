@@ -13,10 +13,10 @@ $(".card").each(function() {
     currentCard = $(this).attr("card"); 
     $(this).find('*').attr("card", currentCard);
 });
-function globalizeApp(parent, currentApp, force = false) {
+$.fn.globalizeApp = function(currentApp, force = false) {
     if (force == true) {
-        parent.find('*').attr("app", currentApp);
+        this.find('*').attr("app", currentApp);
     } else {
-        parent.find('*').not("[app]").attr("app", currentApp);
+        this.find('*').not("[app]").attr("app", currentApp);
     }
-}
+};
