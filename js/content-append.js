@@ -73,7 +73,9 @@ function appendAppName(element, override, appName) {
         .attr("app", window.currentApp);
 }
 function appendIcon(wrapper, iconClass = 'app-icon') {
-    /* element expects the icon wrapper */
+    /*
+        ? element expects the icon wrapper 
+    */
     var JSONData = window.appCache[window.currentApp],
         path = `${appDirectory()}${window.currentApp}.json`;
     if (!JSONData) {
@@ -91,7 +93,9 @@ function appendIcon(wrapper, iconClass = 'app-icon') {
         .html(icon(JSONData.icon, iconClass, JSONData.appName));
 }
 function appendBottomBarColor(element) {
-    /* element expects the bar itself */
+    /*
+        ? element expects the bar itself
+    */
     var JSONData = window.appCache[window.currentApp],
         path = `${appDirectory()}${window.currentApp}.json`;
     if (typeof JSONData == "undefined") {

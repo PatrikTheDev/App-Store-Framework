@@ -1,6 +1,5 @@
 /* JSHint settings */
 /* jshint esversion: 6 */
-
 class UIAppPage {
     constructor(currentApp, cache, appPage) {
         this.cache = window.appCache || cache || {};

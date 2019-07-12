@@ -313,7 +313,7 @@ i.right {
     min-height: 30vh;
 }
 .description {
-    color: rgb(119, 119, 119);
+    color: var(--text-color);
     line-height: 1.4rem;
     font-weight: 300;
     font-size: 1.1rem;

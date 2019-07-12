@@ -1,6 +1,6 @@
 /* 
 	Translations
-	broken and unmaintained, DO NOT USE UNLESS YOU FIX IT
+	! broken and unmaintained, DO NOT USE UNLESS YOU FIX IT
 */
 function parseStrings(path) {
 	var JSONItems = [];
