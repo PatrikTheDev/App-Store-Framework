@@ -8,6 +8,12 @@
         {
             "markdown": "# I don't feel so good",
             "class": "DepictionMarkdownView"
+        },
+        {
+            "text": "Reeeeee",
+            "class": "DepictionLabelView",
+            "fontSize": 30,
+            "textColor": "rgb(30, 30, 30)"
         }
     ],
     "icon": "resources/icons/electra-app-icon-small.jpg",

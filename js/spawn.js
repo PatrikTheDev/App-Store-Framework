@@ -70,24 +70,14 @@ $.fn.spawnAppsInCards = function() {
     }
     JSONItems = cache[currentCard];
     var i;
-    var bigCell;
+    var bigCell = JSONItems.containsApps.length === 1;
     for (i = 0; i < JSONItems.containsApps.length; i++) {
-        if (JSONItems.containsApps.length === 1) {
-            bigCell = true;
-        } else {
-            bigCell = false;
-        }
         if (JSONItems.containsApps[i]) {
             var elementToAppend = appCell(JSONItems.containsApps[i], bigCell);
             this.append(elementToAppend);
         }
     }
-    var appCellSelector;
-    if (bigCell === false) {
-        appCellSelector = this.find(".app");
-    } else {
-        appCellSelector = this.find(".big-app");
-    }
+    var appCellSelector = bigCell ? this.find(".big-app") : this.find(".app");
     appendContentToAppCell(appCellSelector, bigCell);
     $(".apps-list-featured li:nth-child(4)").nextAll().hide();
     $(".apps-list-featured li:visible").last().addClass("no-after");
@@ -96,12 +86,9 @@ $.fn.spawnAppsInCards = function() {
 };
 $.fn.spawnReviews = function() {
     var currentApp = window.currentApp;
-    var currentCache = window.appCache;
+    var currentCache = window.appCache || {};
     var directoryPrefix = appDirectory();
     var path = `${directoryPrefix}${currentApp}.json`;
-    if (typeof currentCache == "undefined") {
-        currentCache = {};
-    }
     if (typeof currentCache[currentApp] == "undefined") {
         $.ajax({
             url: path,

@@ -1,7 +1,7 @@
 /* JSHint settings */
 /* jshint esversion: 6 */
 
-/* This should be replaced with your code if it is different */
+/* This should be replaced with your code if it is different (uses different classes/system) */
 
 function payPopupListeners(parent) {
     $(".cancel").click(function() {

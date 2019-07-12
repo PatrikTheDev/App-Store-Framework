@@ -74,12 +74,8 @@ class UIPayPopup {
         return JSONData;
     }
     open() {
-        this.payPopup.css({opacity: 1});
-        if (window.innerWidth < 700) {
-            this.payPopup.css({bottom: 0});
-        } else {
-            this.payPopup.css({bottom: "1em"});
-        }
+        var bottom = window.innerWidth < 700 ? 0 : "1em";
+        this.payPopup.css({opacity: 1, bottom: bottom});
         this.closeBottomPopup();
     }
     closeBottomPopup() {

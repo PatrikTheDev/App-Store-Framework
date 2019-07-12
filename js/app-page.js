@@ -1,7 +1,7 @@
 /* JSHint settings */
 /* jshint esversion: 6 */
 class UIAppPage {
-    constructor(currentApp, cache, appPage) {
+    constructor(appPage, cache, currentApp) {
         this.cache = window.appCache || cache || {};
         this.currentApp = currentApp || defaultApp();
         this.directory = appDirectory();
@@ -65,18 +65,16 @@ class UIAppPage {
         }
     }
     parseJSON(pathToJSON) {
-        var path = pathToJSON || `${this.directory}${this.currentApp}.json`;
-        var JSONData = [];
-        var cache = this.cache;
+        var path = pathToJSON || `${this.directory}${this.currentApp}.json`,
+            JSONData = [],
+            cache = this.cache;
         if (typeof this.cache[this.currentApp] == "undefined") {
             $.ajax({
                 url: path,
                 async: false,
                 dataType: 'json',
                 success: function (data) {
-                  JSONData = data;
-                  cache[currentApp] = data;
-                  window.appCache[currentApp] = data;
+                  JSONData = cache[currentApp] = window.appCache[currentApp] = data;
                 }
             });
             this.JSONData = JSONData;
@@ -92,6 +90,7 @@ class UIAppPage {
             this.similarApps.spawnSimilarApps();
         }
         this.similarApps.attr("already-ran", "true");
+        // Reset the current app so that it doesn't mess up
         window.currentApp = this.currentApp;
     }
     spawnReviews() {
@@ -133,7 +132,7 @@ class UIAppPage {
         if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
-        var ratingsText = "ratings";
+        var ratingsText = this.JSONData.rating === 1 ? "rating" : "ratings";
         appendRating(this.JSONData.rating, $(".app-page-rating [first-star]"), $(".app-page-rating [second-star]"), $(".app-page-rating [third-star]"), $(".app-page-rating [fourth-star]"), this.lastStar);
         this.appPage.find(".rating-num").text(`${this.JSONData.rating}`);
         this.appPage.find(".number-of-ratings").text(`${this.JSONData.numberOfRatings} ${ratingsText}`);

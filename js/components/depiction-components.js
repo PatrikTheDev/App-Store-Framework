@@ -17,7 +17,10 @@ function video(path, borderRadius = 0) {
     var generatedElement = `<video controls style="width: 100%; border-radius:${borderRadius}px; max-width: 100%;"><source src="${path}" type="video/mp4"></video>`;
     return generatedElement;
 }
-function label(text) {
-    var generatedElement = `<span>${text}</span>`;
+function label(text, details) {
+    var fontWeight = details.fontWeight ? `font-weight: ${details.fontWeight};` : '',
+        fontSize = details.fontSize ? `font-size: ${details.fontSize}px;` : '',
+        color = details.textColor ? `color: ${details.textColor};` : '';
+    var generatedElement = `<span style="${fontWeight} ${fontSize} ${color}">${text}</span>`;
     return generatedElement;
 }

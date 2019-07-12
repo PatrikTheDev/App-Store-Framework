@@ -28,14 +28,13 @@ function appCell(currentApp, bigCell = false) {
     }
     return appCellElement;
 }
-function appendContentToAppCell(cell, bigCell) {
-    log(cell);
+function appendContentToAppCell(cell, bigCell = false) {
     var btnDownload;
     var appName;
     var subtitle;
     var appIcon;
-    if (bigCell === false) {
-        btnDownload = cell.find(".btn-download");
+    var appIconClass = bigCell ? "app-icon" : "big-app-icon app-icon";
+    btnDownload = cell.find(".btn-download");
         btnDownload.each(function() {
             window.currentApp = $(this).attr("app");
             appendBtnDownloadContent($(this));
@@ -55,32 +54,7 @@ function appendContentToAppCell(cell, bigCell) {
         appIcon = cell.find(".app-icon-wrapper");
         appIcon.each(function() {
             window.currentApp = $(this).attr("app");
-            appendIcon($(this), "app-icon");
+            appendIcon($(this), appIconClass);
             appPageListeners($(this).parent());
         });
-    } else {
-        btnDownload = cell.find(".btn-download");
-        btnDownload.each(function() {
-            window.currentApp = $(this).attr("app");
-            appendBtnDownloadContent($(this));
-            payPopupListeners($(this).parent());
-        });
-        appName = cell.find(".app-name");
-        appName.each(function() {
-            window.currentApp = $(this).attr("app");
-            appendAppName($(this), false);
-            appPageListeners($(this).parent());
-        });
-        subtitle = cell.find(".subtitle");
-        subtitle.each(function() {
-            window.currentApp = $(this).attr("app");
-            appendSubtitleContent($(this), false);
-        });
-        appIcon = cell.find(".app-icon-wrapper");
-        appIcon.each(function() {
-            window.currentApp = $(this).attr("app");
-            appendIcon($(this), "big-app-icon app-icon");
-            appPageListeners($(this).parent());
-        });
-    }
 }

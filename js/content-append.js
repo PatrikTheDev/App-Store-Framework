@@ -112,8 +112,8 @@ function appendBottomBarColor(element) {
     element.css("background-color", JSONData.tint2);
 }
 function tintElements(elementsToTint, tint, override) {
-    var tintEnabled = tintState();
-    if (tintEnabled == true || override == true) {
+    var tintEnabled = override ? override : tintState();
+    if (tintEnabled == true) {
         elementsToTint.css({color: tint});
     } else {
         elementsToTint.css({color: globalTint()});
