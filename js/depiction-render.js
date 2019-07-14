@@ -30,20 +30,17 @@ function appendDescription(path, element, JSONData) {
 function depictionAppendEngine(element, JSONData, index) {
     var currentView = JSONData.description[index],
         currentClass = currentView.class,
-        borderRadius = currentView.cornerRadius || 0,
-        spacing = currentView.spacing,
         markdown,
         useRawFormat,
-        markdownHTML,
-        title = currentView.title;
+        markdownHTML;
     // Header
     if (currentClass === "DepictionHeaderView") {
-        element.append(`<h1>${title}</h1>`);
+        element.append(`<h1>${currentView.title}</h1>`);
         return true;
     }
     // Subheader
     if (currentClass === "DepictionSubheaderView") {
-        element.append(`<h2>${title}</h2>`);
+        element.append(`<h2>${currentView.title}</h2>`);
         return true;
     }
     // Markdown
@@ -58,27 +55,27 @@ function depictionAppendEngine(element, JSONData, index) {
     }
     // Label
     if (currentClass === "DepictionLabelView") {
-        element.append(label(currentView.text, currentView));
+        element.append(label(currentView));
         return true;
     }
     // Video
     if (currentClass === "DepictionVideoView") {
-        element.append(video(currentView.URL, borderRadius));
+        element.append(video(currentView));
         return true;
     }
     // Image
     if (currentClass === "DepictionImageView") {
-        element.append(image(currentView.URL, currentView.width, currentView.height, borderRadius));
+        element.append(image(currentView));
         return true;
     }
     // Spacer
     if (currentClass === "DepictionSpacerView") {
-        element.append(spacer(spacing));
+        element.append(spacer(currentView.spacing));
         return true;
     }
     // Separator
     if (currentClass === "DepictionSeparatorView") {
-        element.append(separator());
+        element.append(separator(currentView));
         return true;
     }
     return false;

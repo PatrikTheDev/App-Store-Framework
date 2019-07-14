@@ -29,32 +29,28 @@ function appCell(currentApp, bigCell = false) {
     return appCellElement;
 }
 function appendContentToAppCell(cell, bigCell = false) {
-    var btnDownload;
-    var appName;
-    var subtitle;
-    var appIcon;
-    var appIconClass = bigCell ? "app-icon" : "big-app-icon app-icon";
-    btnDownload = cell.find(".btn-download");
-        btnDownload.each(function() {
-            window.currentApp = $(this).attr("app");
-            appendBtnDownloadContent($(this));
-            payPopupListeners($(this).parent());
-        });
-        appName = cell.find(".app-name");
-        appName.each(function() {
-            window.currentApp = $(this).attr("app");
-            appendAppName($(this), false);
-            appPageListeners($(this).parent());
-        });
-        subtitle = cell.find(".subtitle");
-        subtitle.each(function() {
-            window.currentApp = $(this).attr("app");
-            appendSubtitleContent($(this), false);
-        });
-        appIcon = cell.find(".app-icon-wrapper");
-        appIcon.each(function() {
-            window.currentApp = $(this).attr("app");
-            appendIcon($(this), appIconClass);
-            appPageListeners($(this).parent());
-        });
+    var btnDownload = cell.find(".btn-download"),
+        appName = cell.find(".app-name"),
+        subtitle = cell.find(".subtitle"),
+        appIcon = cell.find(".app-icon-wrapper"),
+        appIconClass = bigCell ? "app-icon" : "big-app-icon app-icon";
+    btnDownload.each(function() {
+        window.currentApp = $(this).attr("app");
+        appendBtnDownloadContent($(this));
+        payPopupListeners($(this).parent());
+    });
+    appName.each(function() {
+        window.currentApp = $(this).attr("app");
+        appendAppName($(this), false);
+        appPageListeners($(this).parent());
+    });
+    subtitle.each(function() {
+        window.currentApp = $(this).attr("app");
+        appendSubtitleContent($(this), false);
+    });
+    appIcon.each(function() {
+        window.currentApp = $(this).attr("app");
+        appendIcon($(this), appIconClass);
+        appPageListeners($(this).parent());
+    });
 }
