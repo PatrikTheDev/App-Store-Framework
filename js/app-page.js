@@ -355,16 +355,6 @@ function statusBarInit(element, scrollView) {
         }
     });
 }
-
-/*
-    Set appPage variable to be UIAppPage
-    This is also where you set the overrides for default elements
-    For example: appPage.header = $(".header"); (Don't use this, it will F up if you won't change your markup acordingly)
-*/
-var appPage;
-function defineAppPage() {
-    window.appPage = new UIAppPage();
-}
 function popState() {
     window.onpopstate = function(event) {
         console.log(event.state);
@@ -387,6 +377,16 @@ function popState() {
             appPageInit(event.state.app, options);
         } else if (event.state == "card") {
             window.appPage.close(false);
+            window.payPopup.close();
         }
     };
+}
+/*
+    Set appPage variable to be UIAppPage
+    This is also where you set the overrides for default elements
+    For example: appPage.header = $(".header"); (Don't use this, it will F up if you won't change your markup acordingly)
+*/
+var appPage;
+function defineAppPage() {
+    window.appPage = new UIAppPage();
 }
