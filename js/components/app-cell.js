@@ -41,12 +41,12 @@ function appendContentToAppCell(cell, bigCell = false) {
     });
     appName.each(function() {
         window.currentApp = $(this).attr("app");
-        appendAppName($(this), false);
+        appendAppName($(this));
         appPageListeners($(this).parent());
     });
     subtitle.each(function() {
         window.currentApp = $(this).attr("app");
-        appendSubtitleContent($(this), false);
+        appendSubtitleContent($(this));
     });
     appIcon.each(function() {
         window.currentApp = $(this).attr("app");

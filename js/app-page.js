@@ -24,14 +24,6 @@ class UIAppPage {
         this.reviews = this.appPage.find(".reviews");
         // Values
         this.closeDuration = 500;
-        // Overrides
-        this.settingsOverrideDefaults = {
-            "appName": false,
-            "appSubtitle": false
-        };
-        this.overrideDefaults = {};
-        this.override = this.overrideDefaults;
-        this.settingsOverride = this.settingsOverrideDefaults;
         this.options = appPageOptions();
         this.animateCloseCaller = "";
     }
@@ -108,7 +100,7 @@ class UIAppPage {
         if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
-        appendAppName(this.appNameElement, this.settingsOverride.appName, this.override.appName);
+        appendAppName(this.appNameElement);
     }
     initBtnDownload() {
         if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
@@ -120,7 +112,7 @@ class UIAppPage {
         if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
-        appendSubtitleContent(this.appSubtitleElement, this.settingsOverride.appSubtitle, this.override.appSubtitle);
+        appendSubtitleContent(this.appSubtitleElement);
     }
     initDescription() {
         if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {

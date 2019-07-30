@@ -16,14 +16,6 @@ class UIBottomPopup {
         this.tintedElements = this.bottomPopup.find(".tinted");
         // Values
         this.closeDuration = 500;
-        // Overrides
-        this.settingsOverrideDefaults = {
-            "appName": false,
-            "appSubtitle": false
-        };
-        this.overrideDefaults = {};
-        this.override = this.overrideDefaults;
-        this.settingsOverride = this.settingsOverrideDefaults;
     }
     init(app) {
         this.checkIfNeededToReload(app);
@@ -67,7 +59,7 @@ class UIBottomPopup {
         if (!this.JSONData && !window.appCache[this.currentApp]) {
             this.parseJSON();
         }
-        appendAppName(this.appNameElement, this.settingsOverride.appName, this.override.appName);
+        appendAppName(this.appNameElement);
     }
     initBtnDownload() {
         if (!this.JSONData && !window.appCache[this.currentApp]) {
@@ -79,7 +71,7 @@ class UIBottomPopup {
         if (!this.JSONData && !window.appCache[this.currentApp]) {
             this.parseJSON();
         }
-        appendSubtitleContent(this.appSubtitleElement, this.settingsOverride.appSubtitle, this.override.appSubtitle);
+        appendSubtitleContent(this.appSubtitleElement);
     }
     tintElements() {
         if (!this.JSONData && !window.appCache[this.currentApp]) {
@@ -122,9 +114,7 @@ class UIBottomPopup {
         
     }
     reset() {
-        // Reset overrides back to default
-        this.settingsOverride = this.settingsOverrideDefaults;
-        this.override = this.overrideDefaults;
+        // Reset things back to default
         window.alreadyAddedHistoryAppPage = false;
         return;
     }

@@ -16,13 +16,6 @@ class UIPayPopup {
         this.email = $(".email");
         this.tintedElements = this.payPopup.find(".tinted");
         // Overrides
-        this.settingsOverrideDefaults = {
-            "appName": false,
-            "appSubtitle": false
-        };
-        this.overrideDefaults = {};
-        this.override = this.overrideDefaults;
-        this.settingsOverride = this.settingsOverrideDefaults;
     }
     addToHistory() {
         var alreadyRan = window.alreadyAddedHistoryPayPopup;
@@ -85,13 +78,13 @@ class UIPayPopup {
         if (typeof this.JSONData == "undefined" && typeof this.cache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
-        appendAppName(this.appNameElement, this.currentApp, this.JSONData, this.settingsOverride.appName, this.override.appName);
+        appendAppName(this.appNameElement);
     }
     initSubtitle() {
         if (typeof this.JSONData == "undefined" && typeof this.cache[this.currentApp] == "undefined") {
             this.parseJSON();
         }
-        appendSubtitleContent(this.appSubtitleElement, this.JSONData, this.settingsOverride.appSubtitle, this.override.appSubtitle);
+        appendSubtitleContent(this.appSubtitleElement);
     }
     initAppIcon() {
         if (typeof this.JSONData == "undefined" && typeof this.cache[this.currentApp] == "undefined") {

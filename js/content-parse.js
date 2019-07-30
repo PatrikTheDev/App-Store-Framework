@@ -26,7 +26,7 @@ function parseContent() {
                     }
                 });
             }
-            appendAppName($(this), false);
+            appendAppName($(this));
         });
         $(this).find(".subtitle").not(".noappend").each(function() {
             window.currentApp = this.getAttribute("app") || defaultApp();
@@ -41,7 +41,7 @@ function parseContent() {
                     }
                 });
             }
-            appendSubtitleContent($(this), cache[window.currentApp]);
+            appendSubtitleContent($(this));
         });
         $(this).find(".app-icon-wrapper").not(".noappend").each(function() {
             window.currentApp = this.getAttribute("app") || defaultApp();

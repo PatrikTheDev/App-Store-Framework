@@ -15,7 +15,6 @@ $(document).ready(function() {
     cardAppList().each(function(){
         $(this).spawnAppsInCards();
     });
-    
     // Set up click listeners
     payPopupListeners($("body"));
     appPageListeners($("body"));

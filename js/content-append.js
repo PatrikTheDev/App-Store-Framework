@@ -28,10 +28,10 @@ function appendBtnDownloadContent(element) {
             .css({backgroundColor: JSONData.tint, color: JSONData.textTint});
     }
 }
-function appendSubtitleContent(element, override, appSubtitle) {
+function appendSubtitleContent(element) {
     var path = `${appDirectory()}${window.currentApp}.json`,
         JSONData = window.appCache[window.currentApp], tint = tintState();
-    if (typeof JSONData == "undefined" && override == false && typeof appSubtitle != "string") {
+    if (typeof JSONData == "undefined") {
         $.ajax({
             url: path,
             async: false,
@@ -41,8 +41,6 @@ function appendSubtitleContent(element, override, appSubtitle) {
                 console.log("Parsed a JSON");
             }
         });
-    } else if (override == true && typeof appSubtitle == "string") {
-        JSONData.subtitle = appSubtitle;
     }
     element
         .html("" + JSONData.subtitle)
@@ -52,10 +50,10 @@ function appendSubtitleContent(element, override, appSubtitle) {
             .css("color", JSONData.textTint2);
     }
 }
-function appendAppName(element, override, appName) {
+function appendAppName(element) {
     var path = `${appDirectory()}${window.currentApp}.json`,
         JSONData = window.appCache[window.currentApp];
-    if (typeof JSONData == "undefined" && override == false && typeof appName != "string") {
+    if (typeof JSONData == "undefined") {
         $.ajax({
             url: path,
             async: false,
@@ -65,8 +63,6 @@ function appendAppName(element, override, appName) {
                 console.log("Parsed a JSON");
             }
         });
-    } else if (override === true && typeof appName === "string") {
-        JSONData.appName = appName;
     }
     element
         .text("" + JSONData.appName)
