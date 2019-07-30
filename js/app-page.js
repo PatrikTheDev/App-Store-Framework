@@ -253,9 +253,6 @@ class UIAppPage {
         this.reviews.show();
         this.resetHeader();
         this.appPage.find("*").removeAttr("app");
-        // Reset overrides back to default
-        this.settingsOverride = this.settingsOverrideDefaults;
-        this.override = this.overrideDefaults;
         window.alreadyAddedHistoryAppPage = false;
         return;
     }
