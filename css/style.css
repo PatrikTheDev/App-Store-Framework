@@ -651,27 +651,6 @@ i.right {
     font-weight: 500;
     font-size: 0.9rem;
 }
-.reviews {
-    list-style: none;
-    padding: 0;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-    scroll-snap-type: x mandatory;
-}
-.review {
-    display: inline-block;
-    background-color: var(--background-level-2);
-    border-radius: 0.5rem;
-    padding: 1rem;
-    width: 90%;
-    scroll-snap-align: center;
-    margin-right: 0.5rem;
-    white-space: normal;
-}
-.review .content {
-    padding: 0;
-}
 .no-animation {
     transition: all 0ms !important;
 }

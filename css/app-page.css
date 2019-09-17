@@ -171,3 +171,25 @@ ul.app-page-similar-apps-list li {
 ul.app-page-similar-apps-list li:last-child {
     margin-right: 0;
 }
+.reviews {
+    list-style: none;
+    padding: 0;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scroll-snap-type: x mandatory;
+}
+.review {
+    display: inline-block;
+    background-color: var(--background-level-2);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    width: 90%;
+    max-width: 400px;
+    scroll-snap-align: center;
+    margin-right: 0.5rem;
+    white-space: normal;
+}
+.review .content {
+    padding: 0;
+}
