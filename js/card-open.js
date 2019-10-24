@@ -41,7 +41,7 @@ class UICard {
                 });
                 card.css({
                     width: "100vw",
-                    borderRadius:  "0",
+                    borderRadius: 0,
                     minHeight:  ''
                 });
                 card.not(".full").css({
@@ -58,7 +58,7 @@ class UICard {
     }
     addToHistory() {
         var alreadyRan = window.alreadyAddedHistoryCard;
-        if (alreadyRan != true) {
+        if (!alreadyRan) {
             history.pushState("card", null, "#card");
         }
         window.alreadyAddedHistoryCard = true;

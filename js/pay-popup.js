@@ -75,31 +75,31 @@ class UIPayPopup {
         bottomPopupClose();
     }
     initAppName() {
-        if (typeof this.JSONData == "undefined" && typeof this.cache[this.currentApp] == "undefined") {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
             this.parseJSON();
         }
         appendAppName(this.appNameElement);
     }
     initSubtitle() {
-        if (typeof this.JSONData == "undefined" && typeof this.cache[this.currentApp] == "undefined") {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
             this.parseJSON();
         }
         appendSubtitleContent(this.appSubtitleElement);
     }
     initAppIcon() {
-        if (typeof this.JSONData == "undefined" && typeof this.cache[this.currentApp] == "undefined") {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
             this.parseJSON();
         }
         appendIcon(this.iconWrapper, "app-icon", this.JSONData);
     }
     initPrice() {
-        if (typeof this.JSONData == "undefined" && typeof this.cache[this.currentApp] == "undefined") {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
             this.parseJSON();
         }
         this.price.text(`${this.JSONData.price}`);
     }
     initBtnDownload() {
-        if (typeof this.JSONData == "undefined" && typeof this.cache[this.currentApp] == "undefined") {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
             this.parseJSON();
         }
         this.payButton.css({color: this.JSONData.textTint});
@@ -110,13 +110,13 @@ class UIPayPopup {
         }
     }
     tintElements() {
-        if (typeof this.JSONData == "undefined" && typeof this.cache[this.currentApp] == "undefined") {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
             this.parseJSON();
         }
         tintElements(this.tintedElements, this.JSONData.textTint2);
     }
     checkCookie() {
-        if (typeof this.JSONData == "undefined" && typeof this.cache[this.currentApp] == "undefined") {
+        if (!this.JSONData && !this.cache[this.currentApp]) {
             this.parseJSON();
         }
         this.user = getCookie("email");

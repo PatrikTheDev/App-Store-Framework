@@ -20,7 +20,7 @@ function appendDescription(path, element, JSONData) {
         // Loop through views and append them
         for (i = 0; i < JSONData.description.length; i++) {
             success = depictionAppendEngine(element, JSONData, i);
-            if (success === false) {
+            if (!success) {
                 console.error("Unsupported class");
             }
         }
@@ -73,7 +73,7 @@ function depictionAppendEngine(element, JSONData, index) {
             element.append(separator(currentView));
             return true;
         default:
-            return false
+            return false;
     }
 }
 function renderMarkdown(markdown) {
