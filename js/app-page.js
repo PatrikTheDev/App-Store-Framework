@@ -36,6 +36,11 @@ class UIAppPage {
     closePayPopup() {
         payPopupClose();
     }
+    checkData() {
+        if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
+            this.parseJSON();
+        }
+    }
     addToHistory() {
         var state = {
             app: this.currentApp,
@@ -48,7 +53,7 @@ class UIAppPage {
         window.alreadyAddedHistoryAppPage = true;
     }
     checkIfNeededToReload(app) {
-        if (this.currentApp != app) {
+        if (this.currentApp !== app) {
             this.reset();
             this.currentApp = window.currentApp = app;
             this.initAll();
@@ -97,42 +102,30 @@ class UIAppPage {
         appendIcon(this.headerIconWrapper, "header-app-icon app-icon");
     }
     initAppName() {
-        if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
-            this.parseJSON();
-        }
+        this.checkData();
         appendAppName(this.appNameElement);
     }
     initBtnDownload() {
-        if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
-            this.parseJSON();
-        }
+        this.checkData();
         appendBtnDownloadContent(this.btnDownload);
     }
     initSubtitle() {
-        if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
-            this.parseJSON();
-        }
+        this.checkData();
         appendSubtitleContent(this.appSubtitleElement);
     }
     initDescription() {
-        if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
-            this.parseJSON();
-        }
+        this.checkData();
         appendDescription(this.depictionPath, $(".app-page-text-description"), this.JSONData);
     }
     initRating() {
-        if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
-            this.parseJSON();
-        }
+        this.checkData();
         var ratingsText = this.JSONData.rating === 1 ? "rating" : "ratings";
         appendRating(this.JSONData.rating, $(".app-page-rating [first-star]"), $(".app-page-rating [second-star]"), $(".app-page-rating [third-star]"), $(".app-page-rating [fourth-star]"), this.lastStar);
         this.appPage.find(".rating-num").text(`${this.JSONData.rating}`);
         this.appPage.find(".number-of-ratings").text(`${this.JSONData.numberOfRatings} ${ratingsText}`);
     }
     initHeader() {
-        if (typeof this.JSONData == "undefined" && typeof window.appCache[this.currentApp] == "undefined") {
-            this.parseJSON();
-        }
+        this.checkData();
         var alreadyRan = this.headerImgWrapper.attr("alreadyRan");
         if (this.JSONData.hasHeader === true && alreadyRan != "true") {
             this.headerImgWrapper.css({display: "block"}).append(headerImg(this.JSONData.headerPhoto)).addClass("has-header");
@@ -146,7 +139,7 @@ class UIAppPage {
         this.headerImgWrapper
             .html("")
             .css({display: "none"})
-            .attr("alreadyRan", "false")
+            .attr("alreadyRan", false)
             .removeClass("has-header");
         this.header
             .css({"-webkit-backdrop-filter": '', backgroundColor: ''})
@@ -208,10 +201,10 @@ class UIAppPage {
         }
         this.appPage.css({
             visibility: "visible",
-            right: "0"
+            right: 0
         });
         this.header.css({
-            right: "0",
+            right: 0,
             visibility: "visible"
         });
         setTimeout(() => {
@@ -260,11 +253,7 @@ class UIAppPage {
 function appPageInit(currentApp, options = appPageOptions()) {
     window.currentApp = currentApp;
     appPage.options = options;
-    if (options.animateOpen == false) {
-        appPage.closeDuration = 0;
-    } else {
-        appPage.closeDuration = 500;
-    }
+    appPage.closeDuration = options.animateOpen ? 500 : 0;
     appPage.init(currentApp, options);
 }
 function resetScreenshots(parent) {
@@ -282,35 +271,31 @@ function toggleCards() {
     $("body").removeClass("noscroll");
 }
 function appendRating(refAppRating, firstStar, secondStar, thirdStar, fourthStar, fifthStar) {
-    if (refAppRating == 0) {
-        firstStar.not(".rating-num, .review-text").addClass("far").removeClass("fas");
-        firstStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
-        return;
-    }
-    if (refAppRating == 1) {
-        firstStar.not(".rating-num, .review-text").addClass("fas").removeClass("far");
-        firstStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
-        return;
-    }
-    if (refAppRating == 2) {
-        secondStar.prevAll().addBack().not(".rating-num, .review-text").addClass("fas").removeClass("far");
-        secondStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
-        return;
-    }
-    if (refAppRating == 3) {
-        thirdStar.prevAll().addBack().not(".rating-num, .review-text").addClass("fas").removeClass("far");
-        thirdStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
-        return;
-    }
-    if (refAppRating == 4) {
-        fourthStar.prevAll().addBack().not(".rating-num, .review-text").addClass("fas").removeClass("far");
-        fourthStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
-        return;
-    }
-    if (refAppRating == 5) {
-        fifthStar.prevAll().addBack().not(".rating-num, .review-text").addClass("fas").removeClass("far");
-        fifthStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
-        return;
+    switch (refAppRating) {
+        case 0:
+            firstStar.not(".rating-num, .review-text").addClass("far").removeClass("fas");
+            firstStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
+            return;
+        case 1:
+            firstStar.not(".rating-num, .review-text").addClass("fas").removeClass("far");
+            firstStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
+            return;
+        case 2:
+            secondStar.prevAll().addBack().not(".rating-num, .review-text").addClass("fas").removeClass("far");
+            secondStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
+            return;
+        case 3:
+            thirdStar.prevAll().addBack().not(".rating-num, .review-text").addClass("fas").removeClass("far");
+            thirdStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
+            return;
+        case 4:
+            fourthStar.prevAll().addBack().not(".rating-num, .review-text").addClass("fas").removeClass("far");
+            fourthStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
+            return;
+        case 5:
+            fifthStar.prevAll().addBack().not(".rating-num, .review-text").addClass("fas").removeClass("far");
+            fifthStar.nextAll().not(".rating-num, .review-text").addClass("far").removeClass("fas");
+            return;
     }
 }
 function resetRating(lastStar) {
@@ -371,7 +356,7 @@ function popState() {
     };
 }
 /*
-    Set appPage variable to be UIAppPage
+    Set appPage variable to be an instance of UIAppPage
     This is also where you set the overrides for default elements
     For example: appPage.header = $(".header"); (Don't use this, it will F up if you won't change your markup acordingly)
 */

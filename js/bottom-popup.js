@@ -25,7 +25,7 @@ class UIBottomPopup {
             this.reset();
             this.currentApp = app;
             this.initAll();
-        } else if (this.currentApp == app) {
+        } else {
             this.initAll();
         }
     }
@@ -95,7 +95,10 @@ class UIBottomPopup {
     }
     // Open bottomPopup
     open() {
-        this.bottomPopup.css({visibility: "visible", bottom: "0"});
+        this.bottomPopup.css({
+            visibility: "visible",
+            bottom: 0
+        });
     }
     close(animate = true) {
         toggleCards();
